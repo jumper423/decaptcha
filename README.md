@@ -28,39 +28,32 @@ php composer.phar require --prefer-dist jumper423/captcha "*"
 
 в файл `composer.json`.
 
-Конфигурация
-------------
-
-```php
-'components' => [
-    'captcha' => [
-        'class' => 'jumper423\Captcha',
-        'pathTmp' => '@app/captcha',
-        'apiKey' => '42eab4119020dbc729f657fef270r546',
-    ],
-],
-```
-
 Использование
 ------------
 Простой пример использования:
 
 ```php
 $path = 'path/to/captcha.png';
-if (\Yii::$app->captcha->run($path)) {
-    $captcha = \Yii::$app->captcha->result();
+
+$captcha = new \jumper423\Rucaptcha();
+$captcha->setApiKey('42eab4119020dbc729f657fef');
+if ($captcha->run($path)) {
+    $code = $captcha->result(); 
+    ...
+    //оказалось что капча была введена не верно. чтобы вернуть деньги вызовем
+    $captcha->notTrue();
 } else {
-    throw new Exception(\Yii::$app->captcha->error());
+    throw new Exception($captcha->error());
 }
-```
+
 
 Так же можно применять если у Вас есть только ссылка на капчу, но для этого метода Вам следует прописать путь в конфигурации для сохранения капч (pathTmp):
 
 ```php
 $url = 'https://vk.com/captcha.php?sid=698254154192&s=1';
-if (\Yii::$app->captcha->run($url)) {
-    $captcha = \Yii::$app->captcha->result();
+if ($captcha->run($url)) {
+    $code = $captcha->result(); 
 } else {
-    throw new Exception(\Yii::$app->captcha->error());
+    throw new Exception($captcha->error());
 }
 ```
