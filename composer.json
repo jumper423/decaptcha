@@ -1,0 +1,22 @@
+{
+  "name": "jumper423/captcha",
+  "description": "Распознавание капч для всех популярных сервисов rucaptcha.com, 2captcha.com, pixodrom.com, captcha24.com, socialink.ru, anti-captcha.com",
+  "keywords": ["yii2", "captcha", "recognition", "rucaptcha.com", "2captcha.com", "pixodrom.com", "captcha24.com", "socialink.ru", "rucaptcha", "2captcha", "pixodrom", "captcha24", "socialink", "anti-captcha.com", "anti-captcha"],
+  "homepage": "http://infoblog1.ru/learn/cms/yii/raspoznavanie-kapch-na-yii2",
+  "type": "project",
+  "license": "Apache License 2.0",
+  "support": {
+    "issues": "https://github.com/jumper423/captcha/issues?state=open",
+    "source": "https://github.com/jumper423/captcha"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "autoload": {
+    "psr-4": {"jumper423\\": "src/"}
+  }
+}
