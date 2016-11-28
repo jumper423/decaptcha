@@ -11,7 +11,7 @@ use Exception;
  * @link http://infoblog1.ru/goto/rucaptcha
  * @package jumper423
  */
-class Rucaptcha extends CaptchaBase
+class Rucaptcha extends DeCaptchaBase
 {
     public $domain = "rucaptcha.com";
 

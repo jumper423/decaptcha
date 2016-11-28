@@ -7,10 +7,10 @@ use Exception;
 /**
  * Распознавание капчи
  *
- * Class CaptchaBase
+ * Class DeCaptchaBase
  * @package jumper423
  */
-class CaptchaBase extends CaptchaAbstract implements CaptchaInterface
+class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 {
     public $domain = "rucaptcha.com";
     public $isVerbose = true;

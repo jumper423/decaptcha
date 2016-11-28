@@ -2,7 +2,7 @@
 
 namespace jumper423;
 
-interface CaptchaInterface
+interface DeCaptchaInterface
 {
     public function run($filename);
 

@@ -1,9 +1,9 @@
 <?php
 
-include_once '../src/CaptchaErrors.php';
-include_once '../src/CaptchaInterface.php';
-include_once '../src/CaptchaAbstract.php';
-include_once '../src/CaptchaBase.php';
+include_once '../src/DeCaptchaErrors.php';
+include_once '../src/DeCaptchaInterface.php';
+include_once '../src/DeCaptchaAbstract.php';
+include_once '../src/DeCaptchaBase.php';
 include_once '../src/Rucaptcha.php';
 
 $captcha = new \jumper423\Rucaptcha();

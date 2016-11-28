@@ -5,10 +5,10 @@ namespace jumper423;
 use Exception;
 
 /**
- * Class CaptchaAbstract
+ * Class DeCaptchaAbstract
  * @package jumper423
  */
-abstract class CaptchaAbstract implements CaptchaInterface
+abstract class DeCaptchaAbstract implements CaptchaInterface
 {
     /**
      * Сервис на который будем загружать капчу

@@ -5,10 +5,10 @@ namespace jumper423;
 /**
  * Ошибки
  *
- * Class CaptchaErrors
+ * Class DeCaptchaErrors
  * @package jumper423
  */
-class CaptchaErrors{
+class DeCaptchaErrors{
     const ERROR_NO_SLOT_AVAILABLE = 'ERROR_NO_SLOT_AVAILABLE';
     const ERROR_ZERO_CAPTCHA_FILESIZE = 'ERROR_ZERO_CAPTCHA_FILESIZE';
     const ERROR_TOO_BIG_CAPTCHA_FILESIZE = 'ERROR_TOO_BIG_CAPTCHA_FILESIZE';
