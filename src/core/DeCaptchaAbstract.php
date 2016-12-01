@@ -1,6 +1,6 @@
 <?php
 
-namespace jumper423;
+namespace jumper423\decaptcha\core;
 
 use Exception;
 
@@ -8,8 +8,9 @@ use Exception;
  * Class DeCaptchaAbstract
  * @package jumper423
  */
-abstract class DeCaptchaAbstract implements CaptchaInterface
+abstract class DeCaptchaAbstract implements DeCaptchaInterface
 {
+    public $lang = 'en';
     /**
      * Сервис на который будем загружать капчу
      * @var string
@@ -174,23 +175,18 @@ abstract class DeCaptchaAbstract implements CaptchaInterface
      * Проверка на то произошла ли ошибка
      *
      * @param $error
-     *
-     * @throws Exception
+     * @throws DeCaptchaErrors
      */
-    protected function setError($error)
+    protected function isError($error)
     {
         if (strpos($error, 'ERROR') !== false) {
-            if (defined(CaptchaErrors::class . '::' . $error)) {
-                throw new Exception(CaptchaErrors::$error);
-            } else {
-                throw new Exception($error);
-            }
+            throw new DeCaptchaErrors($error);
         }
     }
 
     /**
      * @param $postData
-     * @return mixed
+     * @return string
      * @throws Exception
      */
     protected function getCurlResponse($postData){
@@ -205,7 +201,7 @@ abstract class DeCaptchaAbstract implements CaptchaInterface
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-            throw new Exception("CURL вернул ошибку: " . curl_error($ch));
+            throw new Exception("Exception CURL: " . curl_error($ch));
         }
         curl_close($ch);
         return $result;

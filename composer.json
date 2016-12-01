@@ -17,6 +17,6 @@
     "process-timeout": 1800
   },
   "autoload": {
-    "psr-4": {"jumper423\\": "src/"}
+    "psr-4": {"jumper423\\decaptcha\\": "src/"}
   }
 }

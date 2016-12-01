@@ -1,22 +1,47 @@
 <?php
 
-namespace jumper423;
+namespace jumper423\decaptcha\core;
 
 use Exception;
 
 /**
- * Распознавание капчи Rucaptcha
+ * Распознавание капчи
  *
- * Class Rucaptcha
- * @link http://infoblog1.ru/goto/rucaptcha
+ * Class DeCaptchaBase
  * @package jumper423
  */
-class Rucaptcha extends DeCaptchaBase
+class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 {
     public $domain = "rucaptcha.com";
+    public $isVerbose = true;
+    public $requestTimeout = 5;
+    public $maxTimeout = 120;
+    public $isPhrase = 0;
+    public $isRegSense = 0;
+    public $isNumeric = 0;
+    public $minLen = 0;
+    public $maxLen = 0;
+    public $language = 0;
+
+    public function recognize($filePath)
+    {
+
+    }
+
+    public function getCode()
+    {
+
+    }
+
+    public function getError()
+    {
+
+    }
 
     /**
      * Запуск распознавания капчи
+     *
+     * @deprecated
      *
      * @param string $filename Путь до файла или ссылка на него
      *
@@ -68,5 +93,13 @@ class Rucaptcha extends DeCaptchaBase
             $this->error = $e->getMessage();
             return false;
         }
+    }
+
+    /**
+     * Не верно распознана
+     */
+    public function notTrue()
+    {
+        $this->getResponse('reportbad');
     }
 }

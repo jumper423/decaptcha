@@ -1,27 +1,20 @@
 <?php
 
-namespace jumper423;
+namespace jumper423\decaptcha\services;
 
 use Exception;
+use jumper423\decaptcha\core\DeCaptchaBase;
 
 /**
- * Распознавание капчи
+ * Распознавание капчи Rucaptcha
  *
- * Class DeCaptchaBase
+ * Class Rucaptcha
+ * @link http://infoblog1.ru/goto/rucaptcha
  * @package jumper423
  */
-class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
+class Rucaptcha extends DeCaptchaBase
 {
     public $domain = "rucaptcha.com";
-    public $isVerbose = true;
-    public $requestTimeout = 5;
-    public $maxTimeout = 120;
-    public $isPhrase = 0;
-    public $isRegSense = 0;
-    public $isNumeric = 0;
-    public $minLen = 0;
-    public $maxLen = 0;
-    public $language = 0;
 
     /**
      * Запуск распознавания капчи
@@ -76,13 +69,5 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             $this->error = $e->getMessage();
             return false;
         }
-    }
-
-    /**
-     * Не верно распознана
-     */
-    public function notTrue()
-    {
-        $this->getResponse('reportbad');
     }
 }
