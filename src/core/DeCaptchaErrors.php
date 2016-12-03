@@ -85,8 +85,8 @@ class DeCaptchaErrors extends \Exception {
      * @return null|int
      */
     public function isThereSuch($name) {
-        if (defined($name)) {
-            return $this->$name;
+        if (defined("static::$name")) {
+            return constant("static::$name");
         }
         return null;
     }
@@ -97,13 +97,12 @@ class DeCaptchaErrors extends \Exception {
      * @param string $additionalText
      * @param string $lang
      */
-    public function __construct($alias, $additionalText = '', $lang = 'en')
+    public function __construct($alias, $additionalText = null, $lang = 'en')
     {
         $code = $this->isThereSuch($alias);
         if (is_null($code)) {
             $message = $alias;
             $code = 0;
-            parent::__construct($alias);
         }else {
             $message = $this->errorsMessages[$code][$lang];
         }

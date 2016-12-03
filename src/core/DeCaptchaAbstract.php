@@ -82,6 +82,11 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected $captchaId;
 
+    const RESPONSE_TYPE_STRING = 0;
+    const RESPONSE_TYPE_JSON = 1;
+
+    public $responseType = self::RESPONSE_TYPE_STRING;
+
     public function setApiKey($apiKey)
     {
         if (is_callable($apiKey)) {
@@ -206,4 +211,6 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         curl_close($ch);
         return $result;
     }
+
+    abstract protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING);
 }

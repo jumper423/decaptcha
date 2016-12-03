@@ -25,47 +25,11 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
     public function recognize($filePath)
     {
-
-    }
-
-    public function getCode()
-    {
-
-    }
-
-    public function getError()
-    {
-
-    }
-
-    /**
-     * Запуск распознавания капчи
-     *
-     * @deprecated
-     *
-     * @param string $filename Путь до файла или ссылка на него
-     *
-     * @return bool
-     */
-    public function run($filename)
-    {
         $this->result = null;
         $this->error = null;
         try {
-            $filePath = $this->getFilePath($filename);
-            $postData = [
-                'method' => 'post',
-                'key' => $this->apiKey,
-                'file' => (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($filePath) : '@' . $filePath,
-                'phrase' => $this->isPhrase,
-                'regsense' => $this->isRegSense,
-                'numeric' => $this->isNumeric,
-                'min_len' => $this->minLen,
-                'max_len' => $this->maxLen,
-                'language' => $this->language,
-                'soft_id' => 882,
-            ];
-            $result = $this->getCurlResponse($postData);
+            $filePath = $this->getFilePath($filePath);
+            $result = $this->getCurlResponse($this->getPostData($filePath));
             $this->setError($result);
             list(, $this->captchaId) = explode("|", $result);
             $waitTime = 0;
@@ -95,11 +59,63 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         }
     }
 
+    public function getCode()
+    {
+
+    }
+
+    public function getError()
+    {
+
+    }
+
+    /**
+     * Запуск распознавания капчи
+     * @deprecated
+     *
+     * @param string $filePath Путь до файла или ссылка на него
+     *
+     * @return bool
+     */
+    public function run($filePath)
+    {
+        return $this->recognize($filePath);
+    }
+
     /**
      * Не верно распознана
      */
     public function notTrue()
     {
         $this->getResponse('reportbad');
+    }
+
+    protected function getPostData($filePath){
+        return [
+            'method' => 'post',
+            'key' => $this->apiKey,
+            'file' => (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($filePath) : '@' . $filePath,
+            'phrase' => $this->isPhrase,
+            'regsense' => $this->isRegSense,
+            'numeric' => $this->isNumeric,
+            'min_len' => $this->minLen,
+            'max_len' => $this->maxLen,
+            'language' => $this->language,
+            'soft_id' => 882,
+        ];
+    }
+
+    protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING){
+        $result = [
+            'type' => null,
+            'data' => null,
+        ];
+        switch ($this->responseType) {
+            case self::RESPONSE_TYPE_STRING:
+                if ($type)
+                    $array = explode('|', $this->responseType);
+
+                break;
+        }
     }
 }
