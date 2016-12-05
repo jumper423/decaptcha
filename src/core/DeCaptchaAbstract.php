@@ -85,6 +85,8 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const RESPONSE_TYPE_STRING = 0;
     const RESPONSE_TYPE_JSON = 1;
 
+    public $errorLang = DeCaptchaErrors::LANG_EN;
+
     public $responseType = self::RESPONSE_TYPE_STRING;
 
     public function setApiKey($apiKey)
@@ -111,19 +113,19 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function getFilePath($fileName){
         if (strpos($fileName, 'http://') !== false || strpos($fileName, 'https://') !== false) {
-            $current = file_get_contents($fileName);
+            $current = @file_get_contents($fileName);
             if ($current) {
                 $path = tempnam(sys_get_temp_dir(), 'captcha');
                 if (file_put_contents($path, $current)) {
                     $fileName = $path;
                 } else {
-                    throw new Exception("Нет доступа для записи файла");
+                    throw new DeCaptchaErrors('ERROR_WRITE_ACCESS_FILE', null, $this->errorLang);
                 }
             } else {
-                throw new Exception("Файл {$fileName} не загрузился");
+                throw new DeCaptchaErrors('ERROR_FILE_IS_NOT_LOADED', $fileName, $this->errorLang);
             }
         } elseif (!file_exists($fileName)) {
-            throw new Exception("Файл {$fileName} не найден");
+            throw new DeCaptchaErrors('ERROR_FILE_NOT_FOUND', $fileName, $this->errorLang);
         }
         return $fileName;
     }
@@ -185,7 +187,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     protected function isError($error)
     {
         if (strpos($error, 'ERROR') !== false) {
-            throw new DeCaptchaErrors($error);
+            throw new DeCaptchaErrors($error, null, $this->errorLang);
         }
     }
 
