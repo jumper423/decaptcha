@@ -16,6 +16,26 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('http://domain/', $bound());
     }
 
+    public function testSetApiKey()
+    {
+        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
+        $abstract->setApiKey('123456val');
+        $apiKeyValCaller = function () {
+            return $this->apiKey;
+        };
+        $bound = $apiKeyValCaller->bindTo($abstract, $abstract);
+        $this->assertEquals('123456val', $bound());
+
+        $abstract->setApiKey(function () {
+            return '123456' . 'fun';
+        });
+        $apiKeyFunCaller = function () {
+            return $this->apiKey;
+        };
+        $bound = $apiKeyFunCaller->bindTo($abstract, $abstract);
+        $this->assertEquals('123456fun', $bound());
+    }
+
     public function testGetActionUrl()
     {
         $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
