@@ -58,3 +58,6 @@ if ($captcha->run($url)) {
     throw new Exception($captcha->error());
 }
 ```
+
+
+vendor/bin/phpunit 
