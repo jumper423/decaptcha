@@ -1,7 +1,7 @@
 {
   "name": "jumper423/decaptcha",
   "description": "Распознавание капч для всех популярных сервисов rucaptcha.com, 2captcha.com, pixodrom.com, captcha24.com, socialink.ru, anti-captcha.com",
-  "keywords": ["yii2", "decaptcha", "captcha", "recognition", "rucaptcha.com", "2captcha.com", "pixodrom.com", "captcha24.com", "socialink.ru", "rucaptcha", "2captcha", "pixodrom", "captcha24", "socialink", "anti-captcha.com", "anti-captcha"],
+  "keywords": ["decaptcha", "captcha", "recognition", "rucaptcha.com", "2captcha.com", "pixodrom.com", "captcha24.com", "socialink.ru", "rucaptcha", "2captcha", "pixodrom", "captcha24", "socialink", "anti-captcha.com", "anti-captcha"],
   "homepage": "http://infoblog1.ru/learn/cms/yii/raspoznavanie-kapch-na-yii2",
   "type": "project",
   "license": "Apache License 2.0",
@@ -11,7 +11,7 @@
   },
   "minimum-stability": "stable",
   "require": {
-    "php": ">=5.4.0"
+    "php": ">=5.5.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.8.30"
