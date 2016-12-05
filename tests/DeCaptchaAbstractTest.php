@@ -19,13 +19,19 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testGetActionUrl()
     {
         $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
-        $getBaseUrlCaller = function () {
+        $getBaseUrlGetCodeCaller = function () {
             $this->captchaId = 123;
             return $this->getActionUrl('get_code');
         };
+        $getBaseUrlGetBalanceCaller = function () {
+            $this->captchaId = 234;
+            return $this->getActionUrl('get_balance');
+        };
         $abstract->domain = 'domain';
         $abstract->setApiKey('123456');
-        $bound = $getBaseUrlCaller->bindTo($abstract, $abstract);
+        $bound = $getBaseUrlGetCodeCaller->bindTo($abstract, $abstract);
         $this->assertEquals('http://domain/res.php?key=123456&action=get_code&id=123', $bound());
+        $bound = $getBaseUrlGetBalanceCaller->bindTo($abstract, $abstract);
+        $this->assertEquals('http://domain/res.php?key=123456&action=get_balance&id=234', $bound());
     }
 }
