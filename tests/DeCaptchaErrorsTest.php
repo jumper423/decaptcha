@@ -1,5 +1,7 @@
 <?php
 
+use \jumper423\decaptcha\core\DeCaptchaErrors;
+
 class DeCaptchaErrorsTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -9,7 +11,7 @@ class DeCaptchaErrorsTest extends PHPUnit_Framework_TestCase
      */
     public function testErrorNoSuchMethod()
     {
-        throw new \jumper423\decaptcha\core\DeCaptchaErrors('ERROR_NO_SUCH_METHOD', null, 'ru');
+        throw new DeCaptchaErrors('ERROR_NO_SUCH_METHOD', null, DeCaptchaErrors::LANG_RU);
     }
 
     /**
@@ -19,7 +21,7 @@ class DeCaptchaErrorsTest extends PHPUnit_Framework_TestCase
      */
     public function testErrorTooBigCaptchaFilesize()
     {
-        throw new \jumper423\decaptcha\core\DeCaptchaErrors('ERROR_TOO_BIG_CAPTCHA_FILESIZE', 'вес файла 5 МБ', 'ru');
+        throw new DeCaptchaErrors('ERROR_TOO_BIG_CAPTCHA_FILESIZE', 'вес файла 5 МБ', DeCaptchaErrors::LANG_RU);
     }
 
     /**
@@ -29,6 +31,6 @@ class DeCaptchaErrorsTest extends PHPUnit_Framework_TestCase
      */
     public function testNotConfig()
     {
-        throw new \jumper423\decaptcha\core\DeCaptchaErrors('NOT_CONFIG');
+        throw new DeCaptchaErrors('NOT_CONFIG');
     }
 }
