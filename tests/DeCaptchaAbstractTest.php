@@ -55,7 +55,8 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('http://domain/res.php?key=123456&action=get_balance&id=234', $bound());
     }
 
-    public function testGetFilePath(){
+    public function testGetFilePath()
+    {
         $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
         $getFilePathCaller = function ($val) {
             return $this->getFilePath($val);
@@ -72,7 +73,8 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
      * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
      * @expectedExceptionCode 16
      */
-    public function testGetFilePathErrorFileNotFound(){
+    public function testGetFilePathErrorFileNotFound()
+    {
         $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
         $abstract->errorLang = \jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU;
         $getFilePathCaller = function ($val) {
@@ -87,7 +89,8 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
      * @expectedExceptionMessage Файл не загрузился: https://upload.wikimedia.org/wikipedia/commons/6/69/Captcha46.jpg123
      * @expectedExceptionCode 15
      */
-    public function testGetFilePathErrorFileIsNotLoaded(){
+    public function testGetFilePathErrorFileIsNotLoaded()
+    {
         $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
         $abstract->errorLang = \jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU;
         $getFilePathCaller = function ($val) {
@@ -95,5 +98,17 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
         };
         $bound = $getFilePathCaller->bindTo($abstract, $abstract);
         $bound('https://upload.wikimedia.org/wikipedia/commons/6/69/Captcha46.jpg123');
+    }
+
+    public function testGetResponse()
+    {
+        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
+        $abstract->domain = 'echo.jsontest.com/aaa/bbb';
+        $getResponseCaller = function ($val) {
+            return $this->getResponse($val);
+        };
+        $bound = $getResponseCaller->bindTo($abstract, $abstract);
+        $res = $bound('');
+        $this->assertEquals('{"res.php":"","aaa":"bbb"}', str_replace("\n", '', str_replace(" ", '', $res)));
     }
 }
