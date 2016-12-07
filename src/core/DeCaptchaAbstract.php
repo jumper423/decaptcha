@@ -191,6 +191,25 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         }
     }
 
+    protected $lastRunTime = null;
+
+    /**
+     * Задержка выполнения
+     *
+     * @param int $delay Количество секу
+     * @param \Closure|null $callback
+     * @return mixed
+     */
+    protected function executionDelayed($delay = 0, $callback = null){
+        $time = microtime(true);
+        $timePassed = $time - $this->lastRunTime;
+        if ($timePassed < $delay) {
+            sleep($delay - $timePassed);
+        }
+        $this->lastRunTime = microtime(true);
+        return $callback instanceof \Closure ? $callback($this) : $callback;
+    }
+
     /**
      * @param $postData
      * @return string
