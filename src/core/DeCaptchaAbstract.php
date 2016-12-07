@@ -196,7 +196,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * Задержка выполнения
      *
-     * @param int $delay Количество секу
+     * @param int $delay Количество секунд
      * @param \Closure|null $callback
      * @return mixed
      */
@@ -204,7 +204,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         $time = microtime(true);
         $timePassed = $time - $this->lastRunTime;
         if ($timePassed < $delay) {
-            sleep($delay - $timePassed);
+            usleep(($delay - $timePassed) * 1000000);
         }
         $this->lastRunTime = microtime(true);
         return $callback instanceof \Closure ? $callback($this) : $callback;
