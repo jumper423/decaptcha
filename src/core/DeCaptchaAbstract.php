@@ -227,7 +227,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-            throw new Exception("Exception CURL: " . curl_error($ch));
+            throw new DeCaptchaErrors('ERROR_CURL', curl_error($ch), $this->lang);
         }
         curl_close($ch);
         return $result;

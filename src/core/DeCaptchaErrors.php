@@ -30,6 +30,7 @@ class DeCaptchaErrors extends \Exception {
     const ERROR_WRITE_ACCESS_FILE = 14;
     const ERROR_FILE_IS_NOT_LOADED = 15;
     const ERROR_FILE_NOT_FOUND = 16;
+    const ERROR_CURL = 17;
 
     public $errorsMessages = [
         self::ERROR_NO_SLOT_AVAILABLE => [
@@ -95,6 +96,10 @@ class DeCaptchaErrors extends \Exception {
         self::ERROR_FILE_NOT_FOUND => [
             self::LANG_RU => 'Файл не найден',
             self::LANG_EN => 'Файл не найден',
+        ],
+        self::ERROR_CURL => [
+            self::LANG_RU => 'Ошибка CURL',
+            self::LANG_EN => 'Ошибка CURL',
         ],
     ];
 
