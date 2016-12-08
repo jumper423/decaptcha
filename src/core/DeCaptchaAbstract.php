@@ -161,24 +161,6 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * Результат
-     * @return null|string
-     */
-    public function result()
-    {
-        return $this->result;
-    }
-
-    /**
-     * Ошибка
-     * @return null|string
-     */
-    public function error()
-    {
-        return $this->error;
-    }
-
-    /**
      * Проверка на то произошла ли ошибка
      *
      * @param $error
