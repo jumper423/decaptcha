@@ -146,12 +146,4 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
         }));
         $this->assertEquals(null, $bound(0));
     }
-
-    /**
-     * Сумма двух чисел
-     * @assert (1,2) < 0.5
-     */
-    public function addValues($a, $b) {
-        return abs($a - $b);
-    }
 }
