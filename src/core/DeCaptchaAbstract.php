@@ -107,7 +107,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      * Узнаём путь до файла
      * Если передана ссылка, то скачиваем и кладём во временную директорию
      *
-     * @param $fileName
+     * @param string $fileName
      * @return string
      * @throws Exception
      */
