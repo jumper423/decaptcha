@@ -28,9 +28,15 @@ install:
       # gmagick is not installed on travis currently
       #printf "\n" | pecl install gmagick
     fi
+before_install:
+  - sudo pip install codecov    
+    
 before_script:
+  - composer install --dev
 script:
-  - phpunit --verbose --coverage-clover coverage.clover
+  - phpunit --verbose --coverage-clover=coverage.xml
 after_script:
   - travis_retry wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+after_success:
+  - codecov
