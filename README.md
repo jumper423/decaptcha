@@ -2,6 +2,7 @@ DeCaptcha
 ================
 [![PHP version](https://badge.fury.io/ph/jumper423%2Fdecaptcha.svg)](https://badge.fury.io/ph/jumper423%2Fdecaptcha)
 [![Build Status](https://travis-ci.org/jumper423/decaptcha.svg?branch=master)](https://travis-ci.org/jumper423/decaptcha)
+[![Dependency Status](https://www.versioneye.com/user/projects/5849f365a662a5004c110a29/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5849f365a662a5004c110a29)
 
 Распознавание капч для всех популярных сервисов [rucaptcha.com](http://infoblog1.ru/goto/rucaptcha), 2captcha.com, pixodrom.com, captcha24.com, [socialink.ru](http://www.socialink.ru/?key=84333), anti-captcha.com
 
