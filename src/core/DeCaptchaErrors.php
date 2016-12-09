@@ -104,7 +104,7 @@ class DeCaptchaErrors extends \Exception {
     ];
 
     /**
-     * @param $name
+     * @param string $name
      * @return null|int
      */
     public function isThereSuch($name) {
@@ -126,8 +126,8 @@ class DeCaptchaErrors extends \Exception {
         if (is_null($code)) {
             $message = $alias;
             $code = 0;
-        }else {
-            $message = $this->errorsMessages[$code][$lang];
+        } else {
+            $message = $this->errorsMessages[ $code ][ $lang ];
         }
         if ($additionalText) {
             $message .= ": $additionalText";
