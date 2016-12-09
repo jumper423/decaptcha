@@ -96,8 +96,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testGetFilePathErrorFileIsNotLoaded()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
-        $abstract->errorLang = \jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU;
+        $abstract = $this->newInstance();
         $getFilePathCaller = function ($val) {
             return $this->getFilePath($val);
         };
