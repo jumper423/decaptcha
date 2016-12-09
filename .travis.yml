@@ -28,9 +28,8 @@ install:
       #printf "\n" | pecl install gmagick
     fi
 before_script:
-  - PHPUNIT_FLAGS="--coverage-clover=coverage.clover"
 script:
-  - phpunit --verbose $PHPUNIT_FLAGS
+  - phpunit --verbose --coverage-clover clover.xml
 
 after_script:
   - travis_retry wget https://scrutinizer-ci.com/ocular.phar
