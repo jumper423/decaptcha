@@ -28,16 +28,10 @@ install:
       #printf "\n" | pecl install gmagick
     fi
 before_script:
-  - |
-    if [ $TRAVIS_PHP_VERSION = '5.6' ]; then
-      PHPUNIT_FLAGS="--coverage-clover=coverage.clover"
-    fi
+  - PHPUNIT_FLAGS="--coverage-clover=coverage.clover"
 script:
   - phpunit --verbose $PHPUNIT_FLAGS
 
 after_script:
-  - |
-    if [ $TRAVIS_PHP_VERSION = '5.6' ]; then
-      travis_retry wget https://scrutinizer-ci.com/ocular.phar
-      php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-    fi
+  - travis_retry wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
