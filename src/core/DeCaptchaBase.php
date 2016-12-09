@@ -45,8 +45,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                     sleep($this->requestTimeout);
                 } else {
                     $ex = explode('|', $result);
-                    if (trim($ex[0]) == 'OK') {
-                        $this->result = trim($ex[1]);
+                    if (trim($ex[ 0 ]) == 'OK') {
+                        $this->result = trim($ex[ 1 ]);
 
                         return true;
                     }
@@ -90,6 +90,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         $this->getResponse('reportbad');
     }
 
+    /**
+     * @param string $filePath
+     */
     protected function getPostData($filePath){
         return [
             'method' => 'post',
@@ -105,15 +108,16 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         ];
     }
 
-    protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING){
+    protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING) {
         $result = [
             'type' => null,
             'data' => null,
         ];
         switch ($this->responseType) {
             case self::RESPONSE_TYPE_STRING:
-                if ($type)
-                    $array = explode('|', $this->responseType);
+                if ($type) {
+                                    $array = explode('|', $this->responseType);
+                }
 
                 break;
         }

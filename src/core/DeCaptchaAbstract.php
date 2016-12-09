@@ -111,7 +111,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      * @return string
      * @throws Exception
      */
-    protected function getFilePath($fileName){
+    protected function getFilePath($fileName) {
         if (strpos($fileName, 'http://') !== false || strpos($fileName, 'https://') !== false) {
             $current = @file_get_contents($fileName);
             if ($current) {
@@ -133,7 +133,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * @return string
      */
-    protected function getBaseUrl(){
+    protected function getBaseUrl() {
         return "http://{$this->domain}/";
     }
 
@@ -141,7 +141,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      * @param string $action
      * @return string
      */
-    protected function getActionUrl($action){
+    protected function getActionUrl($action) {
         return "{$this->getBaseUrl()}res.php?key={$this->apiKey}&action={$action}&id={$this->captchaId}";
     }
 
@@ -149,14 +149,14 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      * @param string $action
      * @return string
      */
-    protected function getResponse($action){
+    protected function getResponse($action) {
         return file_get_contents($this->getActionUrl($action));
     }
 
     /**
      * @return string
      */
-    protected function getInUrl(){
+    protected function getInUrl() {
         return "{$this->getBaseUrl()}in.php";
     }
 
@@ -182,7 +182,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      * @param \Closure|null $callback
      * @return mixed
      */
-    protected function executionDelayed($delay = 0, $callback = null){
+    protected function executionDelayed($delay = 0, $callback = null) {
         $time = microtime(true);
         $timePassed = $time - $this->lastRunTime;
         if ($timePassed < $delay) {
@@ -197,7 +197,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      * @return string
      * @throws Exception
      */
-    protected function getCurlResponse($postData){
+    protected function getCurlResponse($postData) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->getInUrl());
         if (version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0) {
