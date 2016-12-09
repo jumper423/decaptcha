@@ -28,7 +28,7 @@ install:
     fi
 before_script:
 script:
-  - phpunit --verbose --coverage-clover clover.xml
+  - phpunit --verbose --coverage-clover coverage.clover
 
 after_script:
   - travis_retry wget https://scrutinizer-ci.com/ocular.phar
