@@ -10,7 +10,8 @@ use Exception;
  * Class DeCaptchaErrors
  * @package jumper423
  */
-class DeCaptchaErrors extends \Exception {
+class DeCaptchaErrors extends Exception
+{
     const LANG_RU = 1;
     const LANG_EN = 2;
 
@@ -108,8 +109,11 @@ class DeCaptchaErrors extends \Exception {
      * @return null|int
      */
     public function isThereSuch($name) {
-        if (defined("static::$name")) {
+        if (is_string($name) && defined("static::$name")) {
             return constant("static::$name");
+        }
+        if (is_int($name)) {
+            return $name;
         }
         return null;
     }
@@ -127,7 +131,11 @@ class DeCaptchaErrors extends \Exception {
             $message = $alias;
             $code = 0;
         } else {
-            $message = $this->errorsMessages[$code][$lang];
+            if (!empty($this->errorsMessages[$code])) {
+                $message = $this->errorsMessages[$code][$lang];
+            } else {
+                $message = "ERROR Code №$code";
+            }
         }
         if ($additionalText) {
             $message .= ": $additionalText";

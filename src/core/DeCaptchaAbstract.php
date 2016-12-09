@@ -119,13 +119,13 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                 if (file_put_contents($path, $current)) {
                     $fileName = $path;
                 } else {
-                    throw new DeCaptchaErrors('ERROR_WRITE_ACCESS_FILE', null, $this->errorLang);
+                    throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_WRITE_ACCESS_FILE, null, $this->errorLang);
                 }
             } else {
-                throw new DeCaptchaErrors('ERROR_FILE_IS_NOT_LOADED', $fileName, $this->errorLang);
+                throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_IS_NOT_LOADED, $fileName, $this->errorLang);
             }
         } elseif (!file_exists($fileName)) {
-            throw new DeCaptchaErrors('ERROR_FILE_NOT_FOUND', $fileName, $this->errorLang);
+            throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_NOT_FOUND, $fileName, $this->errorLang);
         }
         return $fileName;
     }
@@ -209,7 +209,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-            throw new DeCaptchaErrors('ERROR_CURL', curl_error($ch), $this->errorLang);
+            throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_CURL, curl_error($ch), $this->errorLang);
         }
         curl_close($ch);
         return $result;

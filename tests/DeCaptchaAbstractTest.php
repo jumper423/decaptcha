@@ -175,7 +175,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
             return $this->isError($val);
         };
         $bound = $isErrorCaller->bindTo($abstract, $abstract);
-        $bound('ERROR_IP_NOT_ALLOWED');
+        $bound(\jumper423\decaptcha\core\DeCaptchaErrors::ERROR_IP_NOT_ALLOWED);
     }
 
     public function testIsErrorNot()
