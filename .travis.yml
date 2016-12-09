@@ -29,7 +29,7 @@ install:
       #printf "\n" | pecl install gmagick
     fi
 before_install:
-  - sudo pip install codecov    
+  - pip install codecov    
     
 before_script:
   - composer install --dev
