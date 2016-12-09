@@ -12,6 +12,8 @@ cache:
   directories:
     - $HOME/.composer/cache
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 install:
   - travis_retry composer self-update && composer --version
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -29,7 +31,6 @@ install:
 before_script:
 script:
   - phpunit --verbose --coverage-clover coverage.clover
-
 after_script:
   - travis_retry wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
