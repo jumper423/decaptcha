@@ -117,17 +117,17 @@ class DeCaptchaErrors extends \Exception {
     /**
      * DeCaptchaErrors constructor.
      * @param string $alias
-     * @param string $additionalText
-     * @param string $lang
+     * @param null|string $additionalText
+     * @param int $lang
      */
-    public function __construct($alias, $additionalText = null, $lang = 'en')
+    public function __construct($alias, $additionalText = null, $lang = self::LANG_EN)
     {
         $code = $this->isThereSuch($alias);
         if (is_null($code)) {
             $message = $alias;
             $code = 0;
         } else {
-            $message = $this->errorsMessages[ $code ][ $lang ];
+            $message = $this->errorsMessages[$code][$lang];
         }
         if ($additionalText) {
             $message .= ": $additionalText";

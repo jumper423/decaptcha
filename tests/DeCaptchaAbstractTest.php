@@ -2,12 +2,18 @@
 
 class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @return PHPUnit_Framework_MockObject_MockObject|\jumper423\decaptcha\core\DeCaptchaAbstract
+     */
+    public function newInstance(){
+        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
+        $abstract->errorLang = \jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU;
+        return $abstract;
+    }
+
     public function testGetBaseUrl()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
-//        $foo->expects($this->any())
-//            ->method("baz")
-//            ->will($this->returnValue("You called baz!"));
+        $abstract = $this->newInstance();
         $getBaseUrlCaller = function () {
             return $this->getBaseUrl();
         };
@@ -18,7 +24,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 
     public function testSetApiKey()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
+        $abstract = $this->newInstance();
         $abstract->setApiKey('123456val');
         $apiKeyValCaller = function () {
             return $this->apiKey;
@@ -38,7 +44,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 
     public function testGetActionUrl()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
+        $abstract = $this->newInstance();
         $getBaseUrlGetCodeCaller = function () {
             $this->captchaId = 123;
             return $this->getActionUrl('get_code');
@@ -57,7 +63,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 
     public function testGetFilePath()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
+        $abstract = $this->newInstance();
         $getFilePathCaller = function ($val) {
             return $this->getFilePath($val);
         };
@@ -75,8 +81,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testGetFilePathErrorFileNotFound()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
-        $abstract->errorLang = \jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU;
+        $abstract = $this->newInstance();
         $getFilePathCaller = function ($val) {
             return $this->getFilePath($val);
         };
@@ -102,7 +107,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 
     public function testGetResponse()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
+        $abstract = $this->newInstance();
         $abstract->domain = 'echo.jsontest.com/aaa/bbb';
         $getResponseCaller = function ($val) {
             return $this->getResponse($val);
@@ -114,7 +119,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 
     public function testExecutionDelayed()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
+        $abstract = $this->newInstance();
         $executionDelayedCaller = function ($second, $call = null) {
             return $this->executionDelayed($second, $call);
         };
@@ -149,7 +154,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 
     public function testGetInUrl()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
+        $abstract = $this->newInstance();
         $getInUrlCaller = function () {
             return $this->getInUrl();
         };
@@ -165,8 +170,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testIsError()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
-        $abstract->errorLang = \jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU;
+        $abstract = $this->newInstance();
         $isErrorCaller = function ($val) {
             return $this->isError($val);
         };
@@ -176,12 +180,27 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 
     public function testIsErrorNot()
     {
-        $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
-        $abstract->errorLang = \jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU;
+        $abstract = $this->newInstance();
         $isErrorCaller = function ($val) {
             return $this->isError($val);
         };
         $bound = $isErrorCaller->bindTo($abstract, $abstract);
         $this->assertNull($bound('BALANCE:56'));
+    }
+
+    /**
+     * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
+     * @expectedExceptionCode 17
+     * @expectedExceptionMessage Ошибка CURL: Could not resolve host: domain
+     */
+    public function testGetCurlResponse()
+    {
+        $abstract = $this->newInstance();
+        $abstract->domain = 'domain';
+        $getCurlResponseCaller = function ($val) {
+            return $this->getCurlResponse($val);
+        };
+        $bound = $getCurlResponseCaller->bindTo($abstract, $abstract);
+        $bound(['protected' => 'value']);
     }
 }
