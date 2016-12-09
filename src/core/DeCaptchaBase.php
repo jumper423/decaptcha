@@ -93,7 +93,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * @param string $filePath
      */
-    protected function getPostData($filePath){
+    protected function getPostData($filePath) {
         return [
             'method' => 'post',
             'key' => $this->apiKey,
