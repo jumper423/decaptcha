@@ -6,6 +6,9 @@ DeCaptcha
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jumper423/decaptcha/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jumper423/decaptcha/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/jumper423/decaptcha/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/jumper423/decaptcha/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/jumper423/decaptcha/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jumper423/decaptcha/build-status/master)
+[![Code Climate](https://codeclimate.com/github/jumper423/decaptcha/badges/gpa.svg)](https://codeclimate.com/github/jumper423/decaptcha)
+[![Test Coverage](https://codeclimate.com/github/jumper423/decaptcha/badges/coverage.svg)](https://codeclimate.com/github/jumper423/decaptcha/coverage)
+[![Issue Count](https://codeclimate.com/github/jumper423/decaptcha/badges/issue_count.svg)](https://codeclimate.com/github/jumper423/decaptcha)
 
 Распознавание капч для всех популярных сервисов [rucaptcha.com](http://infoblog1.ru/goto/rucaptcha), 2captcha.com, pixodrom.com, captcha24.com, [socialink.ru](http://www.socialink.ru/?key=84333), anti-captcha.com
 
