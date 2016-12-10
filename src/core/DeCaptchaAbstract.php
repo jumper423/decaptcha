@@ -101,7 +101,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * @return void
      */
-    abstract function notTrue();
+    abstract public function notTrue();
 
     /**
      * Узнаём путь до файла
