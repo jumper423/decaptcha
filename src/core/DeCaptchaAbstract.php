@@ -200,7 +200,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     protected function getCurlResponse($postData) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->getInUrl());
-        if (version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0) {
+        if (version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {
             curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
         }
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
