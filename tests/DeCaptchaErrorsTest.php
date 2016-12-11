@@ -33,4 +33,14 @@ class DeCaptchaErrorsTest extends PHPUnit_Framework_TestCase
     {
         throw new DeCaptchaErrors('NOT_CONFIG');
     }
+
+    /**
+     * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
+     * @expectedExceptionMessage ERROR Code №1555
+     * @expectedExceptionCode 1555
+     */
+    public function testNotConfigNumber()
+    {
+        throw new DeCaptchaErrors(1555);
+    }
 }
