@@ -190,7 +190,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     /**
      * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
      * @expectedExceptionCode 17
-     * @expectedExceptionMessage Ошибка CURL: Could not resolve host: domain
+     * @expectedExceptionMessage Ошибка CURL: Could
      */
     public function testGetCurlResponse()
     {
