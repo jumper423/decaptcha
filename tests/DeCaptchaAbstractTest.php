@@ -207,7 +207,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     {
         $abstract = $this->newInstance();
         $abstract->domain = 'httpbin.org';
-        $getCurlResponseCaller = function ($val) {
+        $getCurlResponseCaller = function($val) {
             $this->inUrl = 'post';
             return $this->getCurlResponse($val);
         };
