@@ -131,11 +131,7 @@ class DeCaptchaErrors extends Exception
             $message = $alias;
             $code = 0;
         } else {
-            if (!empty($this->errorsMessages[$code])) {
-                $message = $this->errorsMessages[$code][$lang];
-            } else {
-                $message = "ERROR Code №$code";
-            }
+            $message = !empty($this->errorsMessages[$code]) ? $this->errorsMessages[$code][$lang] : "ERROR Code №$code";
         }
         if ($additionalText) {
             $message .= ": $additionalText";
