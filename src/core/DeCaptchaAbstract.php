@@ -91,11 +91,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     public function setApiKey($apiKey)
     {
-        if (is_callable($apiKey)) {
-            $this->apiKey = $apiKey();
-        } else {
-            $this->apiKey = $apiKey;
-        }
+        $this->apiKey = is_callable($apiKey) ? $apiKey() : $apiKey;
     }
 
     /**
@@ -114,16 +110,14 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     protected function getFilePath($fileName) {
         if (strpos($fileName, 'http://') !== false || strpos($fileName, 'https://') !== false) {
             $current = @file_get_contents($fileName);
-            if ($current) {
-                $path = tempnam(sys_get_temp_dir(), 'captcha');
-                if (file_put_contents($path, $current)) {
-                    $fileName = $path;
-                } else {
-                    throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_WRITE_ACCESS_FILE, null, $this->errorLang);
-                }
-            } else {
+            if (!$current) {
                 throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_IS_NOT_LOADED, $fileName, $this->errorLang);
             }
+            $path = tempnam(sys_get_temp_dir(), 'captcha');
+            if (!file_put_contents($path, $current)) {
+                throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_WRITE_ACCESS_FILE, null, $this->errorLang);
+            }
+            $fileName = $path;
         } elseif (!file_exists($fileName)) {
             throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_NOT_FOUND, $fileName, $this->errorLang);
         }
