@@ -5,7 +5,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     /**
      * @return PHPUnit_Framework_MockObject_MockObject|\jumper423\decaptcha\core\DeCaptchaAbstract
      */
-    public function newInstance(){
+    public function newInstance() {
         $abstract = $this->getMockForAbstractClass(\jumper423\decaptcha\core\DeCaptchaAbstract::class);
         $abstract->errorLang = \jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU;
         return $abstract;
@@ -14,7 +14,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testGetBaseUrl()
     {
         $abstract = $this->newInstance();
-        $getBaseUrlCaller = function () {
+        $getBaseUrlCaller = function() {
             return $this->getBaseUrl();
         };
         $abstract->domain = 'domain';
@@ -26,16 +26,16 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     {
         $abstract = $this->newInstance();
         $abstract->setApiKey('123456val');
-        $apiKeyValCaller = function () {
+        $apiKeyValCaller = function() {
             return $this->apiKey;
         };
         $bound = $apiKeyValCaller->bindTo($abstract, $abstract);
         $this->assertEquals('123456val', $bound());
 
-        $abstract->setApiKey(function () {
+        $abstract->setApiKey(function() {
             return '123456' . 'fun';
         });
-        $apiKeyFunCaller = function () {
+        $apiKeyFunCaller = function() {
             return $this->apiKey;
         };
         $bound = $apiKeyFunCaller->bindTo($abstract, $abstract);
@@ -45,11 +45,11 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testGetActionUrl()
     {
         $abstract = $this->newInstance();
-        $getBaseUrlGetCodeCaller = function () {
+        $getBaseUrlGetCodeCaller = function() {
             $this->captchaId = 123;
             return $this->getActionUrl('get_code');
         };
-        $getBaseUrlGetBalanceCaller = function () {
+        $getBaseUrlGetBalanceCaller = function() {
             $this->captchaId = 234;
             return $this->getActionUrl('get_balance');
         };
@@ -64,7 +64,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testGetFilePath()
     {
         $abstract = $this->newInstance();
-        $getFilePathCaller = function ($val) {
+        $getFilePathCaller = function($val) {
             return $this->getFilePath($val);
         };
         $bound = $getFilePathCaller->bindTo($abstract, $abstract);
@@ -82,7 +82,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testGetFilePathErrorFileNotFound()
     {
         $abstract = $this->newInstance();
-        $getFilePathCaller = function ($val) {
+        $getFilePathCaller = function($val) {
             return $this->getFilePath($val);
         };
         $bound = $getFilePathCaller->bindTo($abstract, $abstract);
@@ -97,7 +97,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testGetFilePathErrorFileIsNotLoaded()
     {
         $abstract = $this->newInstance();
-        $getFilePathCaller = function ($val) {
+        $getFilePathCaller = function($val) {
             return $this->getFilePath($val);
         };
         $bound = $getFilePathCaller->bindTo($abstract, $abstract);
@@ -108,7 +108,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     {
         $abstract = $this->newInstance();
         $abstract->domain = 'echo.jsontest.com/aaa/bbb';
-        $getResponseCaller = function ($val) {
+        $getResponseCaller = function($val) {
             return $this->getResponse($val);
         };
         $bound = $getResponseCaller->bindTo($abstract, $abstract);
@@ -119,7 +119,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testExecutionDelayed()
     {
         $abstract = $this->newInstance();
-        $executionDelayedCaller = function ($second, $call = null) {
+        $executionDelayedCaller = function($second, $call = null) {
             return $this->executionDelayed($second, $call);
         };
         $bound = $executionDelayedCaller->bindTo($abstract, $abstract);
@@ -130,7 +130,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(abs($timePassed - 0.1) < 0.035);
 
         $start = microtime(true);
-        $bound(0.15, function () {
+        $bound(0.15, function() {
             sleep(0.2);
         });
         $bound(0.1);
@@ -154,7 +154,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testGetInUrl()
     {
         $abstract = $this->newInstance();
-        $getInUrlCaller = function () {
+        $getInUrlCaller = function() {
             return $this->getInUrl();
         };
         $abstract->domain = 'domain';
@@ -170,7 +170,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testIsError()
     {
         $abstract = $this->newInstance();
-        $isErrorCaller = function ($val) {
+        $isErrorCaller = function($val) {
             return $this->isError($val);
         };
         $bound = $isErrorCaller->bindTo($abstract, $abstract);
@@ -180,7 +180,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     public function testIsErrorNot()
     {
         $abstract = $this->newInstance();
-        $isErrorCaller = function ($val) {
+        $isErrorCaller = function($val) {
             return $this->isError($val);
         };
         $bound = $isErrorCaller->bindTo($abstract, $abstract);
@@ -196,7 +196,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     {
         $abstract = $this->newInstance();
         $abstract->domain = 'domain';
-        $getCurlResponseCaller = function ($val) {
+        $getCurlResponseCaller = function($val) {
             return $this->getCurlResponse($val);
         };
         $bound = $getCurlResponseCaller->bindTo($abstract, $abstract);
