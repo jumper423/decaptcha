@@ -138,14 +138,14 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(abs($timePassed - 0.25) < 0.035);
 
         $start = microtime(true);
-        $bound(0.15, function () {
+        $bound(0.15, function() {
             sleep(0.2);
         });
         $bound(0.3);
         $timePassed = microtime(true) - $start;
         $this->assertTrue(abs($timePassed - 0.45) < 0.035);
 
-        $this->assertEquals(2, $bound(0, function () {
+        $this->assertEquals(2, $bound(0, function() {
             return 2;
         }));
         $this->assertEquals(null, $bound(0));

@@ -63,9 +63,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function getFilePath($fileName) {
         if (strpos($fileName, 'http://') !== false || strpos($fileName, 'https://') !== false) {
-            try{
+            try {
                 $current = file_get_contents($fileName);
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_IS_NOT_LOADED, $fileName, $this->errorLang);
             }
             $path = tempnam(sys_get_temp_dir(), 'captcha');
