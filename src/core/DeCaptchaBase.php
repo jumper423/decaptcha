@@ -45,8 +45,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                     sleep($this->requestTimeout);
                 } else {
                     $ex = explode('|', $result);
-                    if (trim($ex[ 0 ]) == 'OK') {
-                        $this->result = trim($ex[ 1 ]);
+                    if (trim($ex[0]) == 'OK') {
+                        $this->result = trim($ex[1]);
 
                         return true;
                     }
