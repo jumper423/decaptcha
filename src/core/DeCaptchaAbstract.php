@@ -22,52 +22,6 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected $apiKey;
     /**
-     * false(commenting OFF), true(commenting ON)
-     * @var bool
-     */
-    public $isVerbose;
-    /**
-     * Таймаут проверки ответа
-     * @var int
-     */
-    public $requestTimeout;
-    /**
-     * Максимальное время ожидания ответа
-     * @var int
-     */
-    public $maxTimeout;
-    /**
-     * 0 OR 1 - капча из двух или более слов
-     * @var int
-     */
-    public $isPhrase;
-    /**
-     * 0 OR 1 - регистр ответа важен
-     * @var int
-     */
-    public $isRegSense;
-    /**
-     * 0 OR 1 OR 2 OR 3 - 0 = параметр не задействован (значение по умолчанию) 1 = капча состоит только из цифр 2 =
-     * Капча состоит только из букв 3 = Капча состоит либо только из цифр, либо только из букв.
-     * @var int
-     */
-    public $isNumeric;
-    /**
-     * 0 если не ограничено, иначе обозначает минимальную длину ответа
-     * @var int
-     */
-    public $minLen;
-    /**
-     * 0 если не ограничено, иначе обозначает минимальную длину ответа
-     * @var int
-     */
-    public $maxLen;
-    /**
-     * 0 OR 1 OR 2 0 = параметр не задействован (значение по умолчанию) 1 = капча на кириллице 2 = капча на латинице
-     * @var int
-     */
-    public $language;
-    /**
      * Ошибка
      * @var null|string
      */
