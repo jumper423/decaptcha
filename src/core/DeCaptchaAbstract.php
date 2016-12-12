@@ -5,29 +5,32 @@ namespace jumper423\decaptcha\core;
 use Exception;
 
 /**
- * Class DeCaptchaAbstract
- * @package jumper423
+ * Class DeCaptchaAbstract.
  */
 abstract class DeCaptchaAbstract implements DeCaptchaInterface
 {
     public $lang = 'en';
     /**
-     * Сервис на который будем загружать капчу
+     * Сервис на который будем загружать капчу.
+     *
      * @var string
      */
     public $domain;
     /**
-     * Ваш API key
+     * Ваш API key.
+     *
      * @var string
      */
     protected $apiKey;
     /**
-     * Ошибка
+     * Ошибка.
+     *
      * @var null|string
      */
     protected $error = null;
     /**
      * Результат
+     *
      * @var null|string
      */
     protected $result = null;
@@ -57,13 +60,16 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * Узнаём путь до файла
-     * Если передана ссылка, то скачиваем и кладём во временную директорию
+     * Если передана ссылка, то скачиваем и кладём во временную директорию.
      *
      * @param string $fileName
-     * @return string
+     *
      * @throws Exception
+     *
+     * @return string
      */
-    protected function getFilePath($fileName) {
+    protected function getFilePath($fileName)
+    {
         if (strpos($fileName, 'http://') !== false || strpos($fileName, 'https://') !== false) {
             try {
                 $current = file_get_contents($fileName);
@@ -78,43 +84,51 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         } elseif (!file_exists($fileName)) {
             throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_NOT_FOUND, $fileName, $this->errorLang);
         }
+
         return $fileName;
     }
 
     /**
      * @return string
      */
-    protected function getBaseUrl() {
+    protected function getBaseUrl()
+    {
         return "http://{$this->domain}/";
     }
 
     /**
      * @param string $action
+     *
      * @return string
      */
-    protected function getActionUrl($action) {
+    protected function getActionUrl($action)
+    {
         return "{$this->getBaseUrl()}res.php?key={$this->apiKey}&action={$action}&id={$this->captchaId}";
     }
 
     /**
      * @param string $action
+     *
      * @return string
      */
-    protected function getResponse($action) {
+    protected function getResponse($action)
+    {
         return file_get_contents($this->getActionUrl($action));
     }
 
     /**
      * @return string
      */
-    protected function getInUrl() {
-        return $this->getBaseUrl() . $this->inUrl;
+    protected function getInUrl()
+    {
+        return $this->getBaseUrl().$this->inUrl;
     }
 
     /**
-     * Проверка на то произошла ли ошибка
+     * Проверка на то произошла ли ошибка.
      *
      * @param $error
+     *
      * @throws DeCaptchaErrors
      */
     protected function isError($error)
@@ -127,28 +141,34 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     protected $lastRunTime = null;
 
     /**
-     * Задержка выполнения
+     * Задержка выполнения.
      *
-     * @param int $delay Количество секунд
+     * @param int           $delay    Количество секунд
      * @param \Closure|null $callback
+     *
      * @return mixed
      */
-    protected function executionDelayed($delay = 0, $callback = null) {
+    protected function executionDelayed($delay = 0, $callback = null)
+    {
         $time = microtime(true);
         $timePassed = $time - $this->lastRunTime;
         if ($timePassed < $delay) {
             usleep(($delay - $timePassed) * 1000000);
         }
         $this->lastRunTime = microtime(true);
+
         return $callback instanceof \Closure ? $callback($this) : $callback;
     }
 
     /**
      * @param $postData
-     * @return string
+     *
      * @throws Exception
+     *
+     * @return string
      */
-    protected function getCurlResponse($postData) {
+    protected function getCurlResponse($postData)
+    {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->getInUrl());
         if (version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {
@@ -163,6 +183,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_CURL, curl_error($ch), $this->errorLang);
         }
         curl_close($ch);
+
         return $result;
     }
 

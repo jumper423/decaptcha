@@ -5,10 +5,9 @@ namespace jumper423\decaptcha\core;
 use Exception;
 
 /**
- * Ошибки
+ * Ошибки.
  *
  * Class DeCaptchaErrors
- * @package jumper423
  */
 class DeCaptchaErrors extends Exception
 {
@@ -106,23 +105,27 @@ class DeCaptchaErrors extends Exception
 
     /**
      * @param string $name
+     *
      * @return null|int
      */
-    public function isThereSuch($name) {
+    public function isThereSuch($name)
+    {
         if (is_string($name) && defined("static::$name")) {
             return constant("static::$name");
         }
         if (is_int($name)) {
             return $name;
         }
+
         return null;
     }
 
     /**
      * DeCaptchaErrors constructor.
-     * @param string $alias
+     *
+     * @param string      $alias
      * @param null|string $additionalText
-     * @param int $lang
+     * @param int         $lang
      */
     public function __construct($alias, $additionalText = null, $lang = self::LANG_EN)
     {

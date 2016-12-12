@@ -3,13 +3,13 @@
 namespace jumper423\decaptcha\core;
 
 /**
- * Interface DeCaptchaInterface
- * @package jumper423\decaptcha
+ * Interface DeCaptchaInterface.
  */
 interface DeCaptchaInterface
 {
     /**
      * @param string $filePath
+     *
      * @return bool
      */
     public function recognize($filePath);
