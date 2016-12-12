@@ -43,6 +43,8 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     public $responseType = self::RESPONSE_TYPE_STRING;
 
+    protected $inUrl = 'in.php';
+
     public function setApiKey($apiKey)
     {
         $this->apiKey = is_callable($apiKey) ? $apiKey() : $apiKey;
@@ -106,7 +108,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      * @return string
      */
     protected function getInUrl() {
-        return "{$this->getBaseUrl()}in.php";
+        return $this->getBaseUrl() . $this->inUrl;
     }
 
     /**

@@ -192,7 +192,7 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
      * @expectedExceptionCode 17
      * @expectedExceptionMessage Ошибка CURL: Could
      */
-    public function testGetCurlResponse()
+    public function testGetCurlResponseError()
     {
         $abstract = $this->newInstance();
         $abstract->domain = 'domain';
@@ -201,5 +201,19 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
         };
         $bound = $getCurlResponseCaller->bindTo($abstract, $abstract);
         $bound(['protected' => 'value']);
+    }
+
+    public function testGetCurlResponse()
+    {
+        $abstract = $this->newInstance();
+        $abstract->domain = 'httpbin.org';
+        $getCurlResponseCaller = function ($val) {
+            $this->inUrl = 'post';
+            return $this->getCurlResponse($val);
+        };
+        $bound = $getCurlResponseCaller->bindTo($abstract, $abstract);
+        $data = $bound(['protected' => 'value']);
+        $data = json_decode($data, true);
+        $this->assertEquals(['protected' => 'value'], $data['form']);
     }
 }
