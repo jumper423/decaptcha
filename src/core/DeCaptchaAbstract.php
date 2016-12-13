@@ -66,9 +66,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                 throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_IS_NOT_LOADED, $fileName, $this->errorLang);
             }
             $path = tempnam(sys_get_temp_dir(), 'captcha');
-            if (!file_put_contents($path, $current)) {
-                throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_WRITE_ACCESS_FILE, null, $this->errorLang);
-            }
+            file_put_contents($path, $current);
 
             return $path;
         }
