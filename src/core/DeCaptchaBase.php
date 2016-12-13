@@ -35,16 +35,16 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_SPEC_FILE = 1;
 
     protected $paramsNames = [
-        self::PARAM_FIELD_METHOD => 'method',
-        self::PARAM_FIELD_KEY => 'key',
-        self::PARAM_FIELD_FILE => 'file',
-        self::PARAM_FIELD_PHRASE => 'phrase',
+        self::PARAM_FIELD_METHOD   => 'method',
+        self::PARAM_FIELD_KEY      => 'key',
+        self::PARAM_FIELD_FILE     => 'file',
+        self::PARAM_FIELD_PHRASE   => 'phrase',
         self::PARAM_FIELD_REGSENSE => 'regsense',
-        self::PARAM_FIELD_NUMERIC => 'numeric',
-        self::PARAM_FIELD_MIN_LEN => 'min_len',
-        self::PARAM_FIELD_MAX_LEN => 'max_len',
+        self::PARAM_FIELD_NUMERIC  => 'numeric',
+        self::PARAM_FIELD_MIN_LEN  => 'min_len',
+        self::PARAM_FIELD_MAX_LEN  => 'max_len',
         self::PARAM_FIELD_LANGUAGE => 'language',
-        self::PARAM_FIELD_SOFT_ID => 'soft_id',
+        self::PARAM_FIELD_SOFT_ID  => 'soft_id',
     ];
 
     protected $paramsSettings = [
@@ -93,35 +93,36 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     ];
 
     protected $paramsSpec = [
-        self::PARAM_SPEC_KEY => null,
+        self::PARAM_SPEC_KEY  => null,
         self::PARAM_SPEC_FILE => null,
     ];
 
     protected $params = [];
 
-    protected function getParams(){
+    protected function getParams()
+    {
         $params = [];
         foreach ($this->paramsSettings as $field => $settings) {
             $value = null;
             if (array_key_exists($field, $this->params) && (!array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) ^ (array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) && $settings[self::PARAM_SLUG_VARIABLE] === false))) {
                 $value = $this->params[$field];
             }
-            if(array_key_exists(self::PARAM_SLUG_DEFAULT, $settings)) {
+            if (array_key_exists(self::PARAM_SLUG_DEFAULT, $settings)) {
                 $value = $settings[self::PARAM_SLUG_DEFAULT];
             }
-            if(array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->paramsSpec)) {
+            if (array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->paramsSpec)) {
                 $value = $this->paramsSpec[$settings[self::PARAM_SLUG_SPEC]];
             }
-            if(array_key_exists(self::PARAM_SLUG_REQUIRE, $settings) && $settings[self::PARAM_SLUG_REQUIRE] === true && is_null($value)) {
+            if (array_key_exists(self::PARAM_SLUG_REQUIRE, $settings) && $settings[self::PARAM_SLUG_REQUIRE] === true && is_null($value)) {
                 throw new Exception('Нет данных');
             }
-            if(array_key_exists($field, $this->paramsNames)) {
+            if (array_key_exists($field, $this->paramsNames)) {
                 switch ($settings[self::PARAM_SLUG_TYPE]) {
                     case self::PARAM_FIELD_TYPE_INTEGER:
-                        $params[$this->paramsNames[$field]] = (int)$value;
+                        $params[$this->paramsNames[$field]] = (int) $value;
                         break;
                     case self::PARAM_FIELD_TYPE_STRING:
-                        $params[$this->paramsNames[$field]] = (string)$value;
+                        $params[$this->paramsNames[$field]] = (string) $value;
                         break;
                 }
             }
