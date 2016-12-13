@@ -31,6 +31,7 @@ class DeCaptchaErrors extends Exception
     const ERROR_FILE_IS_NOT_LOADED = 15;
     const ERROR_FILE_NOT_FOUND = 16;
     const ERROR_CURL = 17;
+    const ERROR_PARAM_REQUIRE = 18;
 
     public $errorsMessages = [
         self::ERROR_NO_SLOT_AVAILABLE => [
@@ -100,6 +101,10 @@ class DeCaptchaErrors extends Exception
         self::ERROR_CURL => [
             self::LANG_RU => 'Ошибка CURL',
             self::LANG_EN => 'Ошибка CURL',
+        ],
+        self::ERROR_PARAM_REQUIRE => [
+            self::LANG_RU => 'Обязательное поле не заполнено',
+            self::LANG_EN => 'Обязательное поле не заполнено',
         ],
     ];
 

@@ -17,11 +17,11 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      *
      * @var string
      */
-    public $domain;
+    protected $domain;
 
-    public $errorLang = DeCaptchaErrors::LANG_EN;
+    protected $errorLang = DeCaptchaErrors::LANG_EN;
 
-    public $responseType = self::RESPONSE_TYPE_STRING;
+    protected $responseType = self::RESPONSE_TYPE_STRING;
     /**
      * Ваш API key.
      *
@@ -34,15 +34,16 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     protected $captchaId;
 
     protected $inUrl = 'in.php';
+    protected $resUrl = 'res.php';
 
     /**
      * @return void
      */
     abstract public function notTrue();
 
-    public function setApiKey($apiKey)
+    public function setErrorLang($errorLang)
     {
-        $this->apiKey = is_callable($apiKey) ? $apiKey() : $apiKey;
+        $this->errorLang = $errorLang;
     }
 
     abstract protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING);
@@ -84,14 +85,103 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         return "http://{$this->domain}/";
     }
 
+    const PARAM_FIELD_TYPE_STRING = 0;
+    const PARAM_FIELD_TYPE_INTEGER = 1;
+
+    const PARAM_SLUG_DEFAULT = 0;
+    const PARAM_SLUG_TYPE = 1;
+    const PARAM_SLUG_REQUIRE = 2;
+    const PARAM_SLUG_SPEC = 3;
+    const PARAM_SLUG_VARIABLE = 4;
+
+    const PARAM_SPEC_KEY = 0;
+    const PARAM_SPEC_FILE = 1;
+    const PARAM_SPEC_CAPTCHA = 2;
+
+    protected $paramsNames = [];
+
+    protected $paramsSettings = [];
+
+    protected $paramsSpec = [];
+
+    protected $params = [];
+
+    public function setParams($params)
+    {
+        if (is_array($params)) {
+            foreach ($params as $param => $value) {
+                $this->params[$param] = $value;
+            }
+        }
+    }
+
+    public function setParamSpec($param, $value)
+    {
+        $this->paramsSpec[$param] = $value;
+    }
+
+    public function getParamSpec($param)
+    {
+        if (!array_key_exists($param, $this->paramsSpec) || is_null($this->paramsSpec[$param])) {
+            return null;
+        }
+        switch ($param) {
+            case static::PARAM_SPEC_FILE:
+                return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->paramsSpec[$param]) : '@' . $this->paramsSpec[$param];
+            case static::PARAM_SPEC_KEY:
+                return is_callable($this->paramsSpec[$param]) ? $this->paramsSpec[$param]() : $this->paramsSpec[$param];
+            case static::PARAM_SPEC_CAPTCHA:
+                return $this->paramsSpec[$param];
+        }
+        return null;
+    }
+
+    protected function getParams($action)
+    {
+        if (empty($this->paramsSettings[$action])) {
+            return [];
+        }
+        $params = [];
+        foreach ($this->paramsSettings[$action] as $field => $settings) {
+            $value = null;
+            if (array_key_exists($field, $this->params) && (!array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) ^ (array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) && $settings[self::PARAM_SLUG_VARIABLE] === false))) {
+                $value = $this->params[$field];
+            }
+            if (array_key_exists(self::PARAM_SLUG_DEFAULT, $settings)) {
+                $value = $settings[self::PARAM_SLUG_DEFAULT];
+            }
+            if (array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->paramsSpec)) {
+                $value = $this->getParamSpec($settings[self::PARAM_SLUG_SPEC]);
+            }
+            if (array_key_exists(self::PARAM_SLUG_REQUIRE, $settings) && $settings[self::PARAM_SLUG_REQUIRE] === true && is_null($value)) {
+                throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_PARAM_REQUIRE, array_key_exists($field, $this->paramsNames) ? $this->paramsNames[$field] : $field, $this->errorLang);
+            }
+            if (array_key_exists($field, $this->paramsNames)) {
+                switch ($settings[self::PARAM_SLUG_TYPE]) {
+                    case self::PARAM_FIELD_TYPE_INTEGER:
+                        $params[$this->paramsNames[$field]] = (int)$value;
+                        break;
+                    case self::PARAM_FIELD_TYPE_STRING:
+                        $params[$this->paramsNames[$field]] = (string)$value;
+                        break;
+                }
+            }
+        }
+        return $params;
+    }
+
     /**
-     * @param string $action
+     * @param array $data
      *
      * @return string
      */
-    protected function getActionUrl($action)
+    protected function getActionUrl($data)
     {
-        return "{$this->getBaseUrl()}res.php?key={$this->apiKey}&action={$action}&id={$this->captchaId}";
+        $uri = [];
+        foreach ($data as $key => $value) {
+            $uri[] = "$key=$value";
+        }
+        return "{$this->getBaseUrl()}{$this->resUrl}?" . implode('&', $uri);
     }
 
     /**
@@ -149,23 +239,22 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * @param $postData
-     *
-     * @throws Exception
-     *
-     * @return string
+     * @param $url
+     * @param $data
+     * @return mixed
+     * @throws DeCaptchaErrors
      */
-    protected function getCurlResponse($postData)
+    protected function getCurlResponse($url, $data)
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->getInUrl());
+        curl_setopt($ch, CURLOPT_URL, $url);
         if (version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {
             curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
         }
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 60);
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
             throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_CURL, curl_error($ch), $this->errorLang);
