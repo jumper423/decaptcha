@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class DeCaptchaAbstractTest
+ */
 class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 {
     /**
