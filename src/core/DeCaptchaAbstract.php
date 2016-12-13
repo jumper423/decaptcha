@@ -69,12 +69,12 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             if (!file_put_contents($path, $current)) {
                 throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_WRITE_ACCESS_FILE, null, $this->errorLang);
             }
-            $fileName = $path;
-        } elseif (!file_exists($fileName)) {
-            throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_NOT_FOUND, $fileName, $this->errorLang);
+            return $path;
         }
-
-        return $fileName;
+        if (file_exists($fileName)) {
+            return $fileName;
+        }
+        throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_NOT_FOUND, $fileName, $this->errorLang);
     }
 
     /**
@@ -110,7 +110,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function getInUrl()
     {
-        return $this->getBaseUrl().$this->inUrl;
+        return $this->getBaseUrl() . $this->inUrl;
     }
 
     /**
@@ -132,7 +132,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * Задержка выполнения.
      *
-     * @param int           $delay    Количество секунд
+     * @param int $delay Количество секунд
      * @param \Closure|null $callback
      *
      * @return mixed
