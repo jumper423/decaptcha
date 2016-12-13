@@ -11,16 +11,16 @@ use Exception;
  */
 class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 {
-    const PARAM_FIELD_METHOD = 'method';
-    const PARAM_FIELD_KEY = 'key';
-    const PARAM_FIELD_FILE = 'file';
-    const PARAM_FIELD_PHRASE = 'phrase';
-    const PARAM_FIELD_REGSENSE = 'regsense';
-    const PARAM_FIELD_NUMERIC = 'numeric';
-    const PARAM_FIELD_MIN_LEN = 'min_len';
-    const PARAM_FIELD_MAX_LEN = 'max_len';
-    const PARAM_FIELD_LANGUAGE = 'language';
-    const PARAM_FIELD_SOFT_ID = 'soft_id';
+    const PARAM_FIELD_METHOD = 0;
+    const PARAM_FIELD_KEY = 1;
+    const PARAM_FIELD_FILE = 2;
+    const PARAM_FIELD_PHRASE = 3;
+    const PARAM_FIELD_REGSENSE = 4;
+    const PARAM_FIELD_NUMERIC = 5;
+    const PARAM_FIELD_MIN_LEN = 6;
+    const PARAM_FIELD_MAX_LEN = 7;
+    const PARAM_FIELD_LANGUAGE = 8;
+    const PARAM_FIELD_SOFT_ID = 9;
 
     const PARAM_FIELD_TYPE_STRING = 0;
     const PARAM_FIELD_TYPE_INTEGER = 1;
@@ -34,7 +34,20 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_SPEC_KEY = 0;
     const PARAM_SPEC_FILE = 1;
 
-    protected $params = [
+    protected $paramsNames = [
+        self::PARAM_FIELD_METHOD => 'method',
+        self::PARAM_FIELD_KEY => 'key',
+        self::PARAM_FIELD_FILE => 'file',
+        self::PARAM_FIELD_PHRASE => 'phrase',
+        self::PARAM_FIELD_REGSENSE => 'regsense',
+        self::PARAM_FIELD_NUMERIC => 'numeric',
+        self::PARAM_FIELD_MIN_LEN => 'min_len',
+        self::PARAM_FIELD_MAX_LEN => 'max_len',
+        self::PARAM_FIELD_LANGUAGE => 'language',
+        self::PARAM_FIELD_SOFT_ID => 'soft_id',
+    ];
+
+    protected $paramsSettings = [
         self::PARAM_FIELD_METHOD => [
             self::PARAM_SLUG_DEFAULT => 'post',
             self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
@@ -78,6 +91,42 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
         ],
     ];
+
+    protected $paramsSpec = [
+        self::PARAM_SPEC_KEY => null,
+        self::PARAM_SPEC_FILE => null,
+    ];
+
+    protected $params = [];
+
+    protected function getParams(){
+        $params = [];
+        foreach ($this->paramsSettings as $field => $settings) {
+            $value = null;
+            if (array_key_exists($field, $this->params) && (!array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) ^ (array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) && $settings[self::PARAM_SLUG_VARIABLE] === false))) {
+                $value = $this->params[$field];
+            }
+            if(array_key_exists(self::PARAM_SLUG_DEFAULT, $settings)) {
+                $value = $settings[self::PARAM_SLUG_DEFAULT];
+            }
+            if(array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->paramsSpec)) {
+                $value = $this->paramsSpec[$settings[self::PARAM_SLUG_SPEC]];
+            }
+            if(array_key_exists(self::PARAM_SLUG_REQUIRE, $settings) && $settings[self::PARAM_SLUG_REQUIRE] === true && is_null($value)) {
+                throw new Exception('Нет данных');
+            }
+            if(array_key_exists($field, $this->paramsNames)) {
+                switch ($settings[self::PARAM_SLUG_TYPE]) {
+                    case self::PARAM_FIELD_TYPE_INTEGER:
+                        $params[$this->paramsNames[$field]] = (int)$value;
+                        break;
+                    case self::PARAM_FIELD_TYPE_STRING:
+                        $params[$this->paramsNames[$field]] = (string)$value;
+                        break;
+                }
+            }
+        }
+    }
 
     public function recognize($filePath)
     {
