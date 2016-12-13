@@ -29,90 +29,90 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_UNIVERSAL_WITH_CAPTCHA = 2;
 
     protected $paramsNames = [
-        self::PARAM_FIELD_METHOD => 'method',
-        self::PARAM_FIELD_KEY => 'key',
-        self::PARAM_FIELD_FILE => 'file',
-        self::PARAM_FIELD_PHRASE => 'phrase',
-        self::PARAM_FIELD_REGSENSE => 'regsense',
-        self::PARAM_FIELD_NUMERIC => 'numeric',
-        self::PARAM_FIELD_MIN_LEN => 'min_len',
-        self::PARAM_FIELD_MAX_LEN => 'max_len',
-        self::PARAM_FIELD_LANGUAGE => 'language',
-        self::PARAM_FIELD_SOFT_ID => 'soft_id',
+        self::PARAM_FIELD_METHOD     => 'method',
+        self::PARAM_FIELD_KEY        => 'key',
+        self::PARAM_FIELD_FILE       => 'file',
+        self::PARAM_FIELD_PHRASE     => 'phrase',
+        self::PARAM_FIELD_REGSENSE   => 'regsense',
+        self::PARAM_FIELD_NUMERIC    => 'numeric',
+        self::PARAM_FIELD_MIN_LEN    => 'min_len',
+        self::PARAM_FIELD_MAX_LEN    => 'max_len',
+        self::PARAM_FIELD_LANGUAGE   => 'language',
+        self::PARAM_FIELD_SOFT_ID    => 'soft_id',
         self::PARAM_FIELD_CAPTCHA_ID => 'id',
-        self::PARAM_FIELD_ACTION => 'action',
+        self::PARAM_FIELD_ACTION     => 'action',
     ];
 
     protected $paramsSettings = [
         self::ACTION_RECOGNIZE => [
             self::PARAM_FIELD_METHOD => [
                 self::PARAM_SLUG_DEFAULT => 'post',
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
             ],
             self::PARAM_FIELD_KEY => [
                 self::PARAM_SLUG_REQUIRE => true,
-                self::PARAM_SLUG_SPEC => self::PARAM_SPEC_KEY,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
             ],
             self::PARAM_FIELD_FILE => [
                 self::PARAM_SLUG_REQUIRE => true,
-                self::PARAM_SLUG_SPEC => self::PARAM_SPEC_FILE,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_FILE,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
             ],
             self::PARAM_FIELD_PHRASE => [
                 self::PARAM_SLUG_DEFAULT => 0,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
             ],
             self::PARAM_FIELD_REGSENSE => [
                 self::PARAM_SLUG_DEFAULT => 0,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
             ],
             self::PARAM_FIELD_NUMERIC => [
                 self::PARAM_SLUG_DEFAULT => 0,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
             ],
             self::PARAM_FIELD_MIN_LEN => [
                 self::PARAM_SLUG_DEFAULT => 0,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
             ],
             self::PARAM_FIELD_MAX_LEN => [
                 self::PARAM_SLUG_DEFAULT => 0,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
             ],
             self::PARAM_FIELD_LANGUAGE => [
                 self::PARAM_SLUG_DEFAULT => 0,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
             ],
             self::PARAM_FIELD_SOFT_ID => [
                 self::PARAM_SLUG_VARIABLE => false,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                self::PARAM_SLUG_TYPE     => self::PARAM_FIELD_TYPE_INTEGER,
             ],
         ],
         self::ACTION_UNIVERSAL => [
             self::PARAM_FIELD_KEY => [
                 self::PARAM_SLUG_REQUIRE => true,
-                self::PARAM_SLUG_SPEC => self::PARAM_SPEC_KEY,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
             ],
             self::PARAM_FIELD_ACTION => [
                 self::PARAM_SLUG_REQUIRE => true,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
             ],
         ],
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => [
             self::PARAM_FIELD_KEY => [
                 self::PARAM_SLUG_REQUIRE => true,
-                self::PARAM_SLUG_SPEC => self::PARAM_SPEC_KEY,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
             ],
             self::PARAM_FIELD_CAPTCHA_ID => [
                 self::PARAM_SLUG_REQUIRE => true,
-                self::PARAM_SLUG_SPEC => self::PARAM_SPEC_CAPTCHA,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_CAPTCHA,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
             ],
             self::PARAM_FIELD_ACTION => [
                 self::PARAM_SLUG_REQUIRE => true,
-                self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
             ],
         ],
     ];
