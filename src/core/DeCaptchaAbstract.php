@@ -9,13 +9,19 @@ use Exception;
  */
 abstract class DeCaptchaAbstract implements DeCaptchaInterface
 {
-    public $lang = 'en';
+    const RESPONSE_TYPE_STRING = 0;
+    const RESPONSE_TYPE_JSON = 1;
+
     /**
      * Сервис на который будем загружать капчу.
      *
      * @var string
      */
     public $domain;
+
+    public $errorLang = DeCaptchaErrors::LANG_EN;
+
+    public $responseType = self::RESPONSE_TYPE_STRING;
     /**
      * Ваш API key.
      *
@@ -23,40 +29,23 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected $apiKey;
     /**
-     * Ошибка.
-     *
-     * @var null|string
-     */
-    protected $error = null;
-    /**
-     * Результат
-     *
-     * @var null|string
-     */
-    protected $result = null;
-    /**
      * @var int
      */
     protected $captchaId;
 
-    const RESPONSE_TYPE_STRING = 0;
-    const RESPONSE_TYPE_JSON = 1;
-
-    public $errorLang = DeCaptchaErrors::LANG_EN;
-
-    public $responseType = self::RESPONSE_TYPE_STRING;
-
     protected $inUrl = 'in.php';
+
+    /**
+     * @return void
+     */
+    abstract public function notTrue();
 
     public function setApiKey($apiKey)
     {
         $this->apiKey = is_callable($apiKey) ? $apiKey() : $apiKey;
     }
 
-    /**
-     * @return void
-     */
-    abstract public function notTrue();
+    abstract protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING);
 
     /**
      * Узнаём путь до файла
@@ -186,6 +175,4 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
         return $result;
     }
-
-    abstract protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING);
 }
