@@ -3,7 +3,7 @@
 use \jumper423\decaptcha\core\DeCaptchaErrors;
 
 /**
- * Class DeCaptchaErrorsTest
+ * Class DeCaptchaErrorsTest.
  */
 class DeCaptchaErrorsTest extends PHPUnit_Framework_TestCase
 {
