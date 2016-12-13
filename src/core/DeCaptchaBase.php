@@ -37,45 +37,45 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     protected $params = [
         self::PARAM_FIELD_METHOD => [
             self::PARAM_SLUG_DEFAULT => 'post',
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+            self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
         ],
         self::PARAM_FIELD_KEY => [
             self::PARAM_SLUG_REQUIRE => true,
-            self::PARAM_SLUG_SPEC => self::PARAM_SPEC_KEY,
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+            self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+            self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
         ],
         self::PARAM_FIELD_FILE => [
             self::PARAM_SLUG_REQUIRE => true,
-            self::PARAM_SLUG_SPEC => self::PARAM_SPEC_FILE,
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+            self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_FILE,
+            self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
         ],
         self::PARAM_FIELD_PHRASE => [
             self::PARAM_SLUG_DEFAULT => 0,
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+            self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
         ],
         self::PARAM_FIELD_REGSENSE => [
             self::PARAM_SLUG_DEFAULT => 0,
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+            self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
         ],
         self::PARAM_FIELD_NUMERIC => [
             self::PARAM_SLUG_DEFAULT => 0,
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+            self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
         ],
         self::PARAM_FIELD_MIN_LEN => [
             self::PARAM_SLUG_DEFAULT => 0,
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+            self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
         ],
         self::PARAM_FIELD_MAX_LEN => [
             self::PARAM_SLUG_DEFAULT => 0,
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+            self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
         ],
         self::PARAM_FIELD_LANGUAGE => [
             self::PARAM_SLUG_DEFAULT => 0,
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+            self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
         ],
         self::PARAM_FIELD_SOFT_ID => [
             self::PARAM_SLUG_VARIABLE => false,
-            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+            self::PARAM_SLUG_TYPE     => self::PARAM_FIELD_TYPE_INTEGER,
         ],
     ];
 
