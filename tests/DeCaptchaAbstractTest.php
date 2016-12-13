@@ -111,6 +111,23 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
         $bound('https://upload.wikimedia.org/wikipedia/commons/6/69/Captcha46.jpg123');
     }
 
+    /**
+     * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
+     * @expectedExceptionMessage Файл не загрузился: https://upload.wikimedia.org/wikipedia/commons/6/69/Captcha46.jpg123
+     * @expectedExceptionCode 14
+     */
+    public function testGetFilePathErrorFileIsNotWriteAccessFile()
+    {
+        $abstract = $this->newInstance();
+        $getFilePathCaller = function ($val) {
+            return $this->getFilePath($val);
+        };
+        $bound = $getFilePathCaller->bindTo($abstract, $abstract);
+        $path = tempnam(sys_get_temp_dir(), 'WRITE_ACCESS_FILE');
+        chmod($path, 0000);
+        $bound($path);
+    }
+
     public function testGetResponse()
     {
         $abstract = $this->newInstance();
