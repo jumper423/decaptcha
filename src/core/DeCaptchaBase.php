@@ -11,16 +11,73 @@ use Exception;
  */
 class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 {
-    public $domain = 'rucaptcha.com';
-    public $isVerbose = true;
-    public $requestTimeout = 5;
-    public $maxTimeout = 120;
-    public $isPhrase = 0;
-    public $isRegSense = 0;
-    public $isNumeric = 0;
-    public $minLen = 0;
-    public $maxLen = 0;
-    public $language = 0;
+    const PARAM_FIELD_METHOD = 'method';
+    const PARAM_FIELD_KEY = 'key';
+    const PARAM_FIELD_FILE = 'file';
+    const PARAM_FIELD_PHRASE = 'phrase';
+    const PARAM_FIELD_REGSENSE = 'regsense';
+    const PARAM_FIELD_NUMERIC = 'numeric';
+    const PARAM_FIELD_MIN_LEN = 'min_len';
+    const PARAM_FIELD_MAX_LEN = 'max_len';
+    const PARAM_FIELD_LANGUAGE = 'language';
+    const PARAM_FIELD_SOFT_ID = 'soft_id';
+
+    const PARAM_FIELD_TYPE_STRING = 0;
+    const PARAM_FIELD_TYPE_INTEGER = 1;
+
+    const PARAM_SLUG_DEFAULT = 0;
+    const PARAM_SLUG_TYPE = 1;
+    const PARAM_SLUG_REQUIRE = 2;
+    const PARAM_SLUG_SPEC = 3;
+    const PARAM_SLUG_VARIABLE = 4;
+
+    const PARAM_SPEC_KEY = 0;
+    const PARAM_SPEC_FILE = 1;
+
+    protected $params = [
+        self::PARAM_FIELD_METHOD => [
+            self::PARAM_SLUG_DEFAULT => 'post',
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+        ],
+        self::PARAM_FIELD_KEY => [
+            self::PARAM_SLUG_REQUIRE => true,
+            self::PARAM_SLUG_SPEC => self::PARAM_SPEC_KEY,
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+        ],
+        self::PARAM_FIELD_FILE => [
+            self::PARAM_SLUG_REQUIRE => true,
+            self::PARAM_SLUG_SPEC => self::PARAM_SPEC_FILE,
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+        ],
+        self::PARAM_FIELD_PHRASE => [
+            self::PARAM_SLUG_DEFAULT => 0,
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+        ],
+        self::PARAM_FIELD_REGSENSE => [
+            self::PARAM_SLUG_DEFAULT => 0,
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+        ],
+        self::PARAM_FIELD_NUMERIC => [
+            self::PARAM_SLUG_DEFAULT => 0,
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+        ],
+        self::PARAM_FIELD_MIN_LEN => [
+            self::PARAM_SLUG_DEFAULT => 0,
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+        ],
+        self::PARAM_FIELD_MAX_LEN => [
+            self::PARAM_SLUG_DEFAULT => 0,
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+        ],
+        self::PARAM_FIELD_LANGUAGE => [
+            self::PARAM_SLUG_DEFAULT => 0,
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+        ],
+        self::PARAM_FIELD_SOFT_ID => [
+            self::PARAM_SLUG_VARIABLE => false,
+            self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+        ],
+    ];
 
     public function recognize($filePath)
     {
