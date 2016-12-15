@@ -190,6 +190,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         ];
         switch ($this->responseType) {
             case self::RESPONSE_TYPE_STRING:
+
                 if ($type) {
                     $array = explode('|', $this->responseType);
                 }
