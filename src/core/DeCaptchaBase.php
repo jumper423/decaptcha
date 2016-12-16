@@ -23,6 +23,11 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_FIELD_SOFT_ID = 9;
     const PARAM_FIELD_CAPTCHA_ID = 10;
     const PARAM_FIELD_ACTION = 11;
+    const PARAM_FIELD_QUESTION = 12;
+    const PARAM_FIELD_CALC = 13;
+    const PARAM_FIELD_HEADER_ACAO = 14;
+    const PARAM_FIELD_TEXTINSTRUCTIONS = 15;
+    const PARAM_FIELD_PINGBACK = 16;
 
     const ACTION_RECOGNIZE = 0;
     const ACTION_UNIVERSAL = 1;
@@ -41,6 +46,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         self::PARAM_FIELD_SOFT_ID    => 'soft_id',
         self::PARAM_FIELD_CAPTCHA_ID => 'id',
         self::PARAM_FIELD_ACTION     => 'action',
+        self::PARAM_FIELD_QUESTION     => 'question',
+        self::PARAM_FIELD_HEADER_ACAO     => 'header_acao',
+        self::PARAM_FIELD_TEXTINSTRUCTIONS     => 'textinstructions',
+        self::PARAM_FIELD_PINGBACK     => 'pingback',
     ];
 
     protected $paramsSettings = [
@@ -83,6 +92,24 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                 self::PARAM_SLUG_DEFAULT => 0,
                 self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
             ],
+            self::PARAM_FIELD_QUESTION => [
+                self::PARAM_SLUG_DEFAULT => 0,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
+            ],
+            self::PARAM_FIELD_CALC => [
+                self::PARAM_SLUG_DEFAULT => 0,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
+            ],
+            self::PARAM_FIELD_HEADER_ACAO => [
+                self::PARAM_SLUG_DEFAULT => 0,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
+            ],
+            self::PARAM_FIELD_TEXTINSTRUCTIONS => [
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
+            ],
+            self::PARAM_FIELD_PINGBACK => [
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
+            ],
             self::PARAM_FIELD_SOFT_ID => [
                 self::PARAM_SLUG_VARIABLE => false,
                 self::PARAM_SLUG_TYPE     => self::PARAM_FIELD_TYPE_INTEGER,
@@ -97,6 +124,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             self::PARAM_FIELD_ACTION => [
                 self::PARAM_SLUG_REQUIRE => true,
                 self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
+            ],
+            self::PARAM_FIELD_HEADER_ACAO => [
+                self::PARAM_SLUG_DEFAULT => 0,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
             ],
         ],
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => [
@@ -114,6 +145,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                 self::PARAM_SLUG_REQUIRE => true,
                 self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
             ],
+            self::PARAM_FIELD_HEADER_ACAO => [
+                self::PARAM_SLUG_DEFAULT => 0,
+                self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
+            ],
         ],
     ];
 
@@ -121,7 +156,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     {
         try {
             $this->setParamSpec(static::PARAM_SPEC_FILE, $this->getFilePath($filePath));
-            $result = $this->getCurlResponse($this->getInUrl(), $this->getParams(static::ACTION_RECOGNIZE));
+            $response = $this->getCurlResponse($this->getInUrl(), $this->getParams(static::ACTION_RECOGNIZE));
+            $data = $this->decodeResponse(static::DECODE_ACTION_RECOGNIZE, $response);
+
             $this->setError($result);
             list(, $this->captchaId) = explode('|', $result);
             $waitTime = 0;
