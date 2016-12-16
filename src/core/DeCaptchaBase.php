@@ -171,6 +171,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     {
         try {
             $this->clearLimit();
+            $this->executionDelayed(5);
             $this->setParamSpec(static::PARAM_SPEC_FILE, $this->getFilePath($filePath));
             $response = $this->getCurlResponse($this->getInUrl(), $this->getParams(static::ACTION_RECOGNIZE));
             $data = $this->decodeResponse(static::DECODE_ACTION_RECOGNIZE, $response);
@@ -183,7 +184,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                 }
                 throw new DeCaptchaErrors($data[static::DECODE_PARAM_RESPONSE]);
             }
+            $this->executionDelayed(5);
             while ($this->limit[static::ACTION_UNIVERSAL_WITH_CAPTCHA] > 0) {
+                $this->executionDelayed(2);
                 $response = $this->getResponse(static::ACTION_UNIVERSAL_WITH_CAPTCHA);
                 $data = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
                 if ($data[static::DECODE_PARAM_RESPONSE] === 'OK' && !empty($data[static::DECODE_PARAM_CODE])) {
