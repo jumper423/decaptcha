@@ -152,14 +152,20 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         ],
     ];
 
-    public function recognize($filePath)
+    public function recognize($filePath, $limit = 3)
     {
         try {
             $this->setParamSpec(static::PARAM_SPEC_FILE, $this->getFilePath($filePath));
             $response = $this->getCurlResponse($this->getInUrl(), $this->getParams(static::ACTION_RECOGNIZE));
             $data = $this->decodeResponse(static::DECODE_ACTION_RECOGNIZE, $response);
-
-            $this->setError($result);
+            if ($data[static::DECODE_PARAM_RESPONSE] === 'OK' && !empty($data[static::DECODE_PARAM_CODE])) {
+                $this->setParamSpec(static::PARAM_SPEC_CAPTCHA, $data[static::DECODE_PARAM_CAPTCHA]);
+            } else {
+                if ($data[static::DECODE_PARAM_RESPONSE] === 'ERROR_NO_SLOT_AVAILABLE' && $limit > 0) {
+                    return $this->recognize($filePath, $limit--);
+                }
+                throw new DeCaptchaErrors($data[static::DECODE_PARAM_RESPONSE]);
+            }
             list(, $this->captchaId) = explode('|', $result);
             $waitTime = 0;
             sleep($this->requestTimeout);
@@ -226,14 +232,27 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const DECODE_PARAM_SETTING_MARKER = 4;
 
     const DECODE_ACTION_RECOGNIZE = 0;
+    const DECODE_ACTION_GET = 1;
 
     const DECODE_PARAM_RESPONSE = 0;
-    const DECODE_PARAM_CODE = 1;
+    const DECODE_PARAM_CAPTCHA = 1;
+    const DECODE_PARAM_CODE = 2;
 
     protected $decodeSettings = [
         self::DECODE_FORMAT => self::RESPONSE_TYPE_STRING,
         self::DECODE_ACTION => [
             self::DECODE_ACTION_RECOGNIZE => [
+                self::DECODE_SEPARATOR => '|',
+                self::DECODE_PARAMS    => [
+                    self::DECODE_PARAM_RESPONSE => [
+                        self::DECODE_PARAM_SETTING_MARKER => 0,
+                    ],
+                    self::DECODE_PARAM_CAPTCHA => [
+                        self::DECODE_PARAM_SETTING_MARKER => 1,
+                    ],
+                ],
+            ],
+            self::DECODE_ACTION_GET => [
                 self::DECODE_SEPARATOR => '|',
                 self::DECODE_PARAMS    => [
                     self::DECODE_PARAM_RESPONSE => [

@@ -33,6 +33,7 @@ class DeCaptchaErrors extends Exception
     const ERROR_CURL = 17;
     const ERROR_PARAM_REQUIRE = 18;
     const ERROR_CAPTCHAIMAGE_BLOCKED = 19;
+    const IP_BANNED = 20;
 
     public $errorsMessages = [
         self::ERROR_NO_SLOT_AVAILABLE => [
@@ -110,6 +111,10 @@ class DeCaptchaErrors extends Exception
         self::ERROR_CAPTCHAIMAGE_BLOCKED => [
             self::LANG_RU => 'Вы прислали картинку, которую невозможно распознать и которая сохранена у нас в базе, как нераспознаваемая картинка.',
             self::LANG_EN => 'Вы прислали картинку, которую невозможно распознать и которая сохранена у нас в базе, как нераспознаваемая картинка.',
+        ],
+        self::IP_BANNED => [
+            self::LANG_RU => 'IP-адрес, с которого пришёл запрос заблокирован из-за частых обращений с различными неверными ключами.',
+            self::LANG_EN => 'IP-адрес, с которого пришёл запрос заблокирован из-за частых обращений с различными неверными ключами.',
         ],
     ];
 
