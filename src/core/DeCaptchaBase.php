@@ -34,22 +34,22 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_UNIVERSAL_WITH_CAPTCHA = 2;
 
     protected $paramsNames = [
-        self::PARAM_FIELD_METHOD     => 'method',
-        self::PARAM_FIELD_KEY        => 'key',
-        self::PARAM_FIELD_FILE       => 'file',
-        self::PARAM_FIELD_PHRASE     => 'phrase',
-        self::PARAM_FIELD_REGSENSE   => 'regsense',
-        self::PARAM_FIELD_NUMERIC    => 'numeric',
-        self::PARAM_FIELD_MIN_LEN    => 'min_len',
-        self::PARAM_FIELD_MAX_LEN    => 'max_len',
-        self::PARAM_FIELD_LANGUAGE   => 'language',
-        self::PARAM_FIELD_SOFT_ID    => 'soft_id',
-        self::PARAM_FIELD_CAPTCHA_ID => 'id',
-        self::PARAM_FIELD_ACTION     => 'action',
-        self::PARAM_FIELD_QUESTION     => 'question',
-        self::PARAM_FIELD_HEADER_ACAO     => 'header_acao',
+        self::PARAM_FIELD_METHOD               => 'method',
+        self::PARAM_FIELD_KEY                  => 'key',
+        self::PARAM_FIELD_FILE                 => 'file',
+        self::PARAM_FIELD_PHRASE               => 'phrase',
+        self::PARAM_FIELD_REGSENSE             => 'regsense',
+        self::PARAM_FIELD_NUMERIC              => 'numeric',
+        self::PARAM_FIELD_MIN_LEN              => 'min_len',
+        self::PARAM_FIELD_MAX_LEN              => 'max_len',
+        self::PARAM_FIELD_LANGUAGE             => 'language',
+        self::PARAM_FIELD_SOFT_ID              => 'soft_id',
+        self::PARAM_FIELD_CAPTCHA_ID           => 'id',
+        self::PARAM_FIELD_ACTION               => 'action',
+        self::PARAM_FIELD_QUESTION             => 'question',
+        self::PARAM_FIELD_HEADER_ACAO          => 'header_acao',
         self::PARAM_FIELD_TEXTINSTRUCTIONS     => 'textinstructions',
-        self::PARAM_FIELD_PINGBACK     => 'pingback',
+        self::PARAM_FIELD_PINGBACK             => 'pingback',
     ];
 
     protected $paramsSettings = [
