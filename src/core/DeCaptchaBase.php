@@ -155,13 +155,14 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     protected $code;
 
     protected $limitSettings = [
-        self::ACTION_RECOGNIZE => 3,
+        self::ACTION_RECOGNIZE              => 3,
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => 20,
     ];
 
     protected $limit = [];
 
-    protected function clearLimit(){
+    protected function clearLimit()
+    {
         foreach ($this->limitSettings as $action => $value) {
             $this->limit[$action] = $value;
         }
@@ -179,6 +180,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             } else {
                 if ($data[static::DECODE_PARAM_RESPONSE] === 'ERROR_NO_SLOT_AVAILABLE' && $this->limit[static::ACTION_RECOGNIZE] > 0) {
                     $this->limit[static::ACTION_RECOGNIZE]--;
+
                     return $this->recognize($filePath);
                 }
                 throw new DeCaptchaErrors($data[static::DECODE_PARAM_RESPONSE]);
@@ -188,6 +190,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                 $data = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
                 if ($data[static::DECODE_PARAM_RESPONSE] === 'OK' && !empty($data[static::DECODE_PARAM_CODE])) {
                     $this->code = $data[static::DECODE_PARAM_CODE];
+
                     return true;
                 } else {
                     $this->limit[static::ACTION_UNIVERSAL_WITH_CAPTCHA]--;
@@ -202,6 +205,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
             return false;
         }
+
         return false;
     }
 
