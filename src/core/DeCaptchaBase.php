@@ -183,34 +183,54 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     const DECODE_FORMAT = 0;
-    const DECODE_TYPES = 1;
+    const DECODE_ACTION = 1;
     const DECODE_SEPARATOR = 2;
+    const DECODE_PARAMS = 3;
+    const DECODE_PARAM_SETTING_MARKER = 4;
 
-    const DECODE_TYPE_RECOGNIZE = 0;
+    const DECODE_ACTION_RECOGNIZE = 0;
+
+    const DECODE_PARAM_RESPONSE = 0;
+    const DECODE_PARAM_CODE = 1;
 
     protected $decodeSettings = [
         self::DECODE_FORMAT => self::RESPONSE_TYPE_STRING,
-        self::DECODE_TYPES => [
-            self::DECODE_TYPE_RECOGNIZE => [
+        self::DECODE_ACTION => [
+            self::DECODE_ACTION_RECOGNIZE => [
                 self::DECODE_SEPARATOR => '|',
+                self::DECODE_PARAMS => [
+                    self::DECODE_PARAM_RESPONSE => [
+                        self::DECODE_PARAM_SETTING_MARKER => 0,
+                    ],
+                    self::DECODE_PARAM_CODE => [
+                        self::DECODE_PARAM_SETTING_MARKER => 1,
+                    ],
+                ],
             ],
         ],
     ];
 
-    protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING)
+    protected function decodeResponse($action, $data)
     {
-        $result = [
-            'type' => null,
-            'data' => null,
-        ];
-        switch ($this->responseType) {
-            case self::RESPONSE_TYPE_STRING:
-
-                if ($type) {
-                    $array = explode('|', $this->responseType);
+        if (!array_key_exists($action, $this->decodeSettings[static::DECODE_ACTION])) {
+            throw new DeCaptchaErrors('нет action');
+        }
+        $decodeSetting = $this->decodeSettings[static::DECODE_ACTION][$action];
+        $decodeFormat = array_key_exists(static::DECODE_FORMAT, $decodeSetting) ?
+            $decodeSetting[static::DECODE_FORMAT] :
+            $this->decodeSettings[static::DECODE_FORMAT];
+        $values = [];
+        switch ($decodeFormat) {
+            case static::RESPONSE_TYPE_STRING:
+                foreach (explode($decodeFormat[static::DECODE_SEPARATOR], $data) as $key => $value) {
+                    foreach ($decodeFormat[static::DECODE_PARAMS] as $param => $paramKey) {
+                        if ($key === $paramKey) {
+                            $values[$param] = $value;
+                        }
+                    }
                 }
-
                 break;
         }
+        return $values;
     }
 }

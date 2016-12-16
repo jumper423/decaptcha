@@ -46,7 +46,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         $this->errorLang = $errorLang;
     }
 
-    abstract protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING);
+    abstract protected function decodeResponse($data, $type);
 
     /**
      * Узнаём путь до файла
