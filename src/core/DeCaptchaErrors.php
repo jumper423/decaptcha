@@ -32,6 +32,7 @@ class DeCaptchaErrors extends Exception
     const ERROR_FILE_NOT_FOUND = 16;
     const ERROR_CURL = 17;
     const ERROR_PARAM_REQUIRE = 18;
+    const ERROR_CAPTCHAIMAGE_BLOCKED = 19;
 
     public $errorsMessages = [
         self::ERROR_NO_SLOT_AVAILABLE => [
@@ -105,6 +106,10 @@ class DeCaptchaErrors extends Exception
         self::ERROR_PARAM_REQUIRE => [
             self::LANG_RU => 'Обязательное поле не заполнено',
             self::LANG_EN => 'Обязательное поле не заполнено',
+        ],
+        self::ERROR_CAPTCHAIMAGE_BLOCKED => [
+            self::LANG_RU => 'Вы прислали картинку, которую невозможно распознать и которая сохранена у нас в базе, как нераспознаваемая картинка.',
+            self::LANG_EN => 'Вы прислали картинку, которую невозможно распознать и которая сохранена у нас в базе, как нераспознаваемая картинка.',
         ],
     ];
 
