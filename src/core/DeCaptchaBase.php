@@ -182,6 +182,21 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         $this->getResponse('reportbad');
     }
 
+    const DECODE_FORMAT = 0;
+    const DECODE_TYPES = 1;
+    const DECODE_SEPARATOR = 2;
+
+    const DECODE_TYPE_RECOGNIZE = 0;
+
+    protected $decodeSettings = [
+        self::DECODE_FORMAT => self::RESPONSE_TYPE_STRING,
+        self::DECODE_TYPES => [
+            self::DECODE_TYPE_RECOGNIZE => [
+                self::DECODE_SEPARATOR => '|',
+            ],
+        ],
+    ];
+
     protected function decodeResponse($data, $type, $format = self::RESPONSE_TYPE_STRING)
     {
         $result = [
