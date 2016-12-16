@@ -190,7 +190,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
     protected $decodeSettings = [
         self::DECODE_FORMAT => self::RESPONSE_TYPE_STRING,
-        self::DECODE_TYPES => [
+        self::DECODE_TYPES  => [
             self::DECODE_TYPE_RECOGNIZE => [
                 self::DECODE_SEPARATOR => '|',
             ],
