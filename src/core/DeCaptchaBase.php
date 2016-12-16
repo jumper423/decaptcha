@@ -198,7 +198,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         self::DECODE_ACTION => [
             self::DECODE_ACTION_RECOGNIZE => [
                 self::DECODE_SEPARATOR => '|',
-                self::DECODE_PARAMS => [
+                self::DECODE_PARAMS    => [
                     self::DECODE_PARAM_RESPONSE => [
                         self::DECODE_PARAM_SETTING_MARKER => 0,
                     ],
@@ -231,6 +231,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                 }
                 break;
         }
+
         return $values;
     }
 }
