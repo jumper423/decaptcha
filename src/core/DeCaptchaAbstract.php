@@ -194,7 +194,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function getResponse($action)
     {
-        return file_get_contents($this->getActionUrl($action));
+        return file_get_contents($this->getActionUrl($this->getParams($action)));
     }
 
     /**

@@ -34,6 +34,8 @@ class DeCaptchaErrors extends Exception
     const ERROR_PARAM_REQUIRE = 18;
     const ERROR_CAPTCHAIMAGE_BLOCKED = 19;
     const IP_BANNED = 20;
+    const ERROR_WRONG_CAPTCHA_ID = 21;
+    const REPORT_NOT_RECORDED = 22;
 
     public $errorsMessages = [
         self::ERROR_NO_SLOT_AVAILABLE => [
@@ -115,6 +117,14 @@ class DeCaptchaErrors extends Exception
         self::IP_BANNED => [
             self::LANG_RU => 'IP-адрес, с которого пришёл запрос заблокирован из-за частых обращений с различными неверными ключами.',
             self::LANG_EN => 'IP-адрес, с которого пришёл запрос заблокирован из-за частых обращений с различными неверными ключами.',
+        ],
+        self::ERROR_WRONG_CAPTCHA_ID => [
+            self::LANG_RU => 'Вы пытаетесь получить ответ на капчу или пожаловаться на капчу, которая была загружена более 15 минут назад',
+            self::LANG_EN => 'Вы пытаетесь получить ответ на капчу или пожаловаться на капчу, которая была загружена более 15 минут назад',
+        ],
+        self::REPORT_NOT_RECORDED => [
+            self::LANG_RU => 'Такой ответ сервер может отдать на жалобу (reportbad), если до этого вы пожаловались на большое количество верных распознаний',
+            self::LANG_EN => 'Такой ответ сервер может отдать на жалобу (reportbad), если до этого вы пожаловались на большое количество верных распознаний',
         ],
     ];
 

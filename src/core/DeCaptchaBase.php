@@ -152,47 +152,57 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         ],
     ];
 
-    public function recognize($filePath, $limit = 3)
+    protected $code;
+
+    protected $limitSettings = [
+        self::ACTION_RECOGNIZE => 3,
+        self::ACTION_UNIVERSAL_WITH_CAPTCHA => 20,
+    ];
+
+    protected $limit = [];
+
+    protected function clearLimit(){
+        foreach ($this->limitSettings as $action => $value) {
+            $this->limit[$action] = $value;
+        }
+    }
+
+    public function recognize($filePath)
     {
         try {
+            $this->clearLimit();
             $this->setParamSpec(static::PARAM_SPEC_FILE, $this->getFilePath($filePath));
             $response = $this->getCurlResponse($this->getInUrl(), $this->getParams(static::ACTION_RECOGNIZE));
             $data = $this->decodeResponse(static::DECODE_ACTION_RECOGNIZE, $response);
-            if ($data[static::DECODE_PARAM_RESPONSE] === 'OK' && !empty($data[static::DECODE_PARAM_CODE])) {
+            if ($data[static::DECODE_PARAM_RESPONSE] === 'OK' && !empty($data[static::DECODE_PARAM_CAPTCHA])) {
                 $this->setParamSpec(static::PARAM_SPEC_CAPTCHA, $data[static::DECODE_PARAM_CAPTCHA]);
             } else {
-                if ($data[static::DECODE_PARAM_RESPONSE] === 'ERROR_NO_SLOT_AVAILABLE' && $limit > 0) {
-                    return $this->recognize($filePath, $limit--);
+                if ($data[static::DECODE_PARAM_RESPONSE] === 'ERROR_NO_SLOT_AVAILABLE' && $this->limit[static::ACTION_RECOGNIZE] > 0) {
+                    $this->limit[static::ACTION_RECOGNIZE]--;
+                    return $this->recognize($filePath);
                 }
                 throw new DeCaptchaErrors($data[static::DECODE_PARAM_RESPONSE]);
             }
-            list(, $this->captchaId) = explode('|', $result);
-            $waitTime = 0;
-            sleep($this->requestTimeout);
-            while (true) {
-                $result = $this->getResponse('get');
-                $this->setError($result);
-                if ($result == 'CAPCHA_NOT_READY') {
-                    $waitTime += $this->requestTimeout;
-                    if ($waitTime > $this->maxTimeout) {
-                        break;
-                    }
-                    sleep($this->requestTimeout);
+            while ($this->limit[static::ACTION_UNIVERSAL_WITH_CAPTCHA] > 0) {
+                $response = $this->getResponse(static::ACTION_UNIVERSAL_WITH_CAPTCHA);
+                $data = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
+                if ($data[static::DECODE_PARAM_RESPONSE] === 'OK' && !empty($data[static::DECODE_PARAM_CODE])) {
+                    $this->code = $data[static::DECODE_PARAM_CODE];
+                    return true;
                 } else {
-                    $ex = explode('|', $result);
-                    if (trim($ex[0]) == 'OK') {
-                        $this->result = trim($ex[1]);
-
-                        return true;
+                    $this->limit[static::ACTION_UNIVERSAL_WITH_CAPTCHA]--;
+                    if ($data[static::DECODE_PARAM_RESPONSE] === 'CAPCHA_NOT_READY' && $this->limit[static::ACTION_UNIVERSAL_WITH_CAPTCHA] > 0) {
+                        continue;
                     }
+                    throw new DeCaptchaErrors($data[static::DECODE_PARAM_RESPONSE]);
                 }
             }
-            throw new Exception('Лимит времени превышен');
         } catch (Exception $e) {
             $this->error = $e->getMessage();
 
             return false;
         }
+        return false;
     }
 
     public function getCode()
