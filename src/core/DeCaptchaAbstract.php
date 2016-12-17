@@ -97,6 +97,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_SPEC_KEY = 0;
     const PARAM_SPEC_FILE = 1;
     const PARAM_SPEC_CAPTCHA = 2;
+    const PARAM_SPEC_CODE = 3;
 
     protected $paramsNames = [];
 
@@ -131,6 +132,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             case static::PARAM_SPEC_KEY:
                 return is_callable($this->paramsSpec[$param]) ? $this->paramsSpec[$param]() : $this->paramsSpec[$param];
             case static::PARAM_SPEC_CAPTCHA:
+            case static::PARAM_SPEC_CODE:
                 return $this->paramsSpec[$param];
         }
 

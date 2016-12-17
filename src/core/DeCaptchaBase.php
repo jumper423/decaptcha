@@ -180,6 +180,12 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const SLEEP_GET = 2;
     const SLEEP_BETWEEN = 5;
 
+    /**
+     * @var DeCaptchaErrors
+     */
+    protected $error;
+    protected $causeAnError = false;
+
     public function recognize($filePath)
     {
         try {
@@ -188,8 +194,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
             return $this->requestRecognize() && $this->requestCode();
         } catch (DeCaptchaErrors $e) {
-            $this->error = $e->getMessage();
-
+            if ($this->causeAnError) {
+                throw $e;
+            }
+            $this->error = $e;
             return false;
         }
     }
@@ -220,8 +228,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             $response = $this->getResponse(static::ACTION_UNIVERSAL_WITH_CAPTCHA);
             $dataGet = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
             if ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_OK && !empty($dataGet[static::DECODE_PARAM_CODE])) {
-                $this->code = $dataGet[static::DECODE_PARAM_CODE];
-
+                $this->setParamSpec(static::PARAM_SPEC_CODE, $dataGet[static::DECODE_PARAM_CODE]);
                 return true;
             } elseif ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_REPEAT) {
                 continue;
@@ -233,10 +240,12 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
     public function getCode()
     {
+        return $this->getParamSpec(static::PARAM_SPEC_CODE);
     }
 
     public function getError()
     {
+        return $this->error->getMessage();
     }
 
     /**
