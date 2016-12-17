@@ -198,6 +198,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                 throw $e;
             }
             $this->error = $e;
+
             return false;
         }
     }
@@ -229,6 +230,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             $dataGet = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
             if ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_OK && !empty($dataGet[static::DECODE_PARAM_CODE])) {
                 $this->setParamSpec(static::PARAM_SPEC_CODE, $dataGet[static::DECODE_PARAM_CODE]);
+
                 return true;
             } elseif ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_REPEAT) {
                 continue;
