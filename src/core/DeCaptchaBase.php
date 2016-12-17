@@ -185,13 +185,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         try {
             $this->resetLimits();
             $this->setParamSpec(static::PARAM_SPEC_FILE, $this->getFilePath($filePath));
-            if ($this->requestRecognize()) {
-                return $this->requestCode();
-            }
-            throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
+            return $this->requestRecognize() && $this->requestCode();
         } catch (DeCaptchaErrors $e) {
             $this->error = $e->getMessage();
-
             return false;
         }
     }
