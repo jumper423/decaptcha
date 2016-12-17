@@ -2,8 +2,6 @@
 
 namespace jumper423\decaptcha\core;
 
-use Exception;
-
 /**
  * Распознавание капчи.
  *
@@ -193,6 +191,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
         } catch (DeCaptchaErrors $e) {
             $this->error = $e->getMessage();
+
             return false;
         }
     }
@@ -206,6 +205,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             if ($dataRecognize[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_RECOGNIZE_OK && !empty($dataRecognize[static::DECODE_PARAM_CAPTCHA])) {
                 $this->setParamSpec(static::PARAM_SPEC_CAPTCHA, $dataRecognize[static::DECODE_PARAM_CAPTCHA]);
                 $this->executionDelayed(static::SLEEP_BETWEEN);
+
                 return true;
             } elseif ($dataRecognize[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_RECOGNIZE_REPEAT) {
                 continue;
@@ -223,6 +223,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             $dataGet = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
             if ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_OK && !empty($dataGet[static::DECODE_PARAM_CODE])) {
                 $this->code = $dataGet[static::DECODE_PARAM_CODE];
+
                 return true;
             } elseif ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_REPEAT) {
                 continue;
