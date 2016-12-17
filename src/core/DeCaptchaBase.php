@@ -161,55 +161,75 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
     protected $limit = [];
 
-    protected function clearLimit()
+    protected function resetLimits()
     {
         foreach ($this->limitSettings as $action => $value) {
             $this->limit[$action] = $value;
         }
     }
 
+    protected function limitHasNotYetEnded($action)
+    {
+        return $this->limit[$action]-- > 0;
+    }
+
+    const RESPONSE_RECOGNIZE_OK = 'OK';
+    const RESPONSE_RECOGNIZE_REPEAT = 'ERROR_NO_SLOT_AVAILABLE';
+    const RESPONSE_GET_OK = 'OK';
+    const RESPONSE_GET_REPEAT = 'CAPCHA_NOT_READY';
+
+    const SLEEP_RECOGNIZE = 5;
+    const SLEEP_GET = 2;
+    const SLEEP_BETWEEN = 5;
+
     public function recognize($filePath)
     {
         try {
-            $this->clearLimit();
-            $this->executionDelayed(5);
+            $this->resetLimits();
             $this->setParamSpec(static::PARAM_SPEC_FILE, $this->getFilePath($filePath));
-            $response = $this->getCurlResponse($this->getInUrl(), $this->getParams(static::ACTION_RECOGNIZE));
-            $data = $this->decodeResponse(static::DECODE_ACTION_RECOGNIZE, $response);
-            if ($data[static::DECODE_PARAM_RESPONSE] === 'OK' && !empty($data[static::DECODE_PARAM_CAPTCHA])) {
-                $this->setParamSpec(static::PARAM_SPEC_CAPTCHA, $data[static::DECODE_PARAM_CAPTCHA]);
-            } else {
-                if ($data[static::DECODE_PARAM_RESPONSE] === 'ERROR_NO_SLOT_AVAILABLE' && $this->limit[static::ACTION_RECOGNIZE] > 0) {
-                    $this->limit[static::ACTION_RECOGNIZE]--;
-
-                    return $this->recognize($filePath);
-                }
-                throw new DeCaptchaErrors($data[static::DECODE_PARAM_RESPONSE]);
+            if ($this->requestRecognize()) {
+                return $this->requestCode();
             }
-            $this->executionDelayed(5);
-            while ($this->limit[static::ACTION_UNIVERSAL_WITH_CAPTCHA] > 0) {
-                $this->executionDelayed(2);
-                $response = $this->getResponse(static::ACTION_UNIVERSAL_WITH_CAPTCHA);
-                $data = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
-                if ($data[static::DECODE_PARAM_RESPONSE] === 'OK' && !empty($data[static::DECODE_PARAM_CODE])) {
-                    $this->code = $data[static::DECODE_PARAM_CODE];
-
-                    return true;
-                } else {
-                    $this->limit[static::ACTION_UNIVERSAL_WITH_CAPTCHA]--;
-                    if ($data[static::DECODE_PARAM_RESPONSE] === 'CAPCHA_NOT_READY' && $this->limit[static::ACTION_UNIVERSAL_WITH_CAPTCHA] > 0) {
-                        continue;
-                    }
-                    throw new DeCaptchaErrors($data[static::DECODE_PARAM_RESPONSE]);
-                }
-            }
-        } catch (Exception $e) {
+            throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
+        } catch (DeCaptchaErrors $e) {
             $this->error = $e->getMessage();
-
             return false;
         }
+    }
 
-        return false;
+    protected function requestRecognize()
+    {
+        while ($this->limitHasNotYetEnded(static::ACTION_RECOGNIZE)) {
+            $this->executionDelayed(static::SLEEP_RECOGNIZE);
+            $response = $this->getCurlResponse($this->getInUrl(), $this->getParams(static::ACTION_RECOGNIZE));
+            $dataRecognize = $this->decodeResponse(static::DECODE_ACTION_RECOGNIZE, $response);
+            if ($dataRecognize[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_RECOGNIZE_OK && !empty($dataRecognize[static::DECODE_PARAM_CAPTCHA])) {
+                $this->setParamSpec(static::PARAM_SPEC_CAPTCHA, $dataRecognize[static::DECODE_PARAM_CAPTCHA]);
+                $this->executionDelayed(static::SLEEP_BETWEEN);
+                return true;
+            } elseif ($dataRecognize[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_RECOGNIZE_REPEAT) {
+                continue;
+            }
+            throw new DeCaptchaErrors($dataRecognize[static::DECODE_PARAM_RESPONSE]);
+        }
+        throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
+    }
+
+    protected function requestCode()
+    {
+        while ($this->limitHasNotYetEnded(static::ACTION_UNIVERSAL_WITH_CAPTCHA)) {
+            $this->executionDelayed(static::SLEEP_GET);
+            $response = $this->getResponse(static::ACTION_UNIVERSAL_WITH_CAPTCHA);
+            $dataGet = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
+            if ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_OK && !empty($dataGet[static::DECODE_PARAM_CODE])) {
+                $this->code = $dataGet[static::DECODE_PARAM_CODE];
+                return true;
+            } elseif ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_REPEAT) {
+                continue;
+            }
+            throw new DeCaptchaErrors($dataGet[static::DECODE_PARAM_RESPONSE]);
+        }
+        throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
     }
 
     public function getCode()

@@ -36,6 +36,7 @@ class DeCaptchaErrors extends Exception
     const IP_BANNED = 20;
     const ERROR_WRONG_CAPTCHA_ID = 21;
     const REPORT_NOT_RECORDED = 22;
+    const ERROR_LIMIT = 23;
 
     public $errorsMessages = [
         self::ERROR_NO_SLOT_AVAILABLE => [
@@ -125,6 +126,10 @@ class DeCaptchaErrors extends Exception
         self::REPORT_NOT_RECORDED => [
             self::LANG_RU => 'Такой ответ сервер может отдать на жалобу (reportbad), если до этого вы пожаловались на большое количество верных распознаний',
             self::LANG_EN => 'Такой ответ сервер может отдать на жалобу (reportbad), если до этого вы пожаловались на большое количество верных распознаний',
+        ],
+        self::ERROR_LIMIT => [
+            self::LANG_RU => 'Программные лимиты закончились',
+            self::LANG_EN => 'Программные лимиты закончились',
         ],
     ];
 
