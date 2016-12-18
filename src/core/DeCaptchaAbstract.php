@@ -159,7 +159,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function getActionUrl($action)
     {
-        return $this->getBaseUrl() . $this->actions[$action][static::ACTION_URI];
+        return $this->getBaseUrl().$this->actions[$action][static::ACTION_URI];
     }
 
     /**
@@ -191,7 +191,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         }
         switch ($param) {
             case static::PARAM_SPEC_FILE:
-                return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->paramsSpec[$param]) : '@' . $this->paramsSpec[$param];
+                return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->paramsSpec[$param]) : '@'.$this->paramsSpec[$param];
             case static::PARAM_SPEC_KEY:
                 return is_callable($this->paramsSpec[$param]) ? $this->paramsSpec[$param]() : $this->paramsSpec[$param];
             case static::PARAM_SPEC_CAPTCHA:
@@ -225,10 +225,10 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             if (array_key_exists($field, $this->paramsNames)) {
                 switch ($settings[self::PARAM_SLUG_TYPE]) {
                     case self::PARAM_FIELD_TYPE_INTEGER:
-                        $params[$this->paramsNames[$field]] = (int)$value;
+                        $params[$this->paramsNames[$field]] = (int) $value;
                         break;
                     case self::PARAM_FIELD_TYPE_STRING:
-                        $params[$this->paramsNames[$field]] = (string)$value;
+                        $params[$this->paramsNames[$field]] = (string) $value;
                         break;
                 }
             }
@@ -250,7 +250,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * Задержка выполнения.
      *
-     * @param int $delay Количество секунд
+     * @param int           $delay    Количество секунд
      * @param \Closure|null $callback
      *
      * @return mixed
@@ -286,7 +286,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             foreach ($data as $key => $value) {
                 $uri[] = "$key=$value";
             }
-            $url .= '?' . implode('&', $uri);
+            $url .= '?'.implode('&', $uri);
         }
         curl_setopt($ch, CURLOPT_URL, $url);
         if (version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {

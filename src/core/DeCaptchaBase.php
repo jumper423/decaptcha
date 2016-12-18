@@ -48,78 +48,78 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const DECODE_PARAM_CODE = 2;
 
     protected $paramsNames = [
-        self::ACTION_FIELD_METHOD => 'method',
-        self::ACTION_FIELD_KEY => 'key',
-        self::ACTION_FIELD_FILE => 'file',
-        self::ACTION_FIELD_PHRASE => 'phrase',
-        self::ACTION_FIELD_REGSENSE => 'regsense',
-        self::ACTION_FIELD_NUMERIC => 'numeric',
-        self::ACTION_FIELD_MIN_LEN => 'min_len',
-        self::ACTION_FIELD_MAX_LEN => 'max_len',
-        self::ACTION_FIELD_LANGUAGE => 'language',
-        self::ACTION_FIELD_SOFT_ID => 'soft_id',
-        self::ACTION_FIELD_CAPTCHA_ID => 'id',
-        self::ACTION_FIELD_ACTION => 'action',
-        self::ACTION_FIELD_QUESTION => 'question',
-        self::ACTION_FIELD_HEADER_ACAO => 'header_acao',
+        self::ACTION_FIELD_METHOD           => 'method',
+        self::ACTION_FIELD_KEY              => 'key',
+        self::ACTION_FIELD_FILE             => 'file',
+        self::ACTION_FIELD_PHRASE           => 'phrase',
+        self::ACTION_FIELD_REGSENSE         => 'regsense',
+        self::ACTION_FIELD_NUMERIC          => 'numeric',
+        self::ACTION_FIELD_MIN_LEN          => 'min_len',
+        self::ACTION_FIELD_MAX_LEN          => 'max_len',
+        self::ACTION_FIELD_LANGUAGE         => 'language',
+        self::ACTION_FIELD_SOFT_ID          => 'soft_id',
+        self::ACTION_FIELD_CAPTCHA_ID       => 'id',
+        self::ACTION_FIELD_ACTION           => 'action',
+        self::ACTION_FIELD_QUESTION         => 'question',
+        self::ACTION_FIELD_HEADER_ACAO      => 'header_acao',
         self::ACTION_FIELD_TEXTINSTRUCTIONS => 'textinstructions',
-        self::ACTION_FIELD_PINGBACK => 'pingback',
+        self::ACTION_FIELD_PINGBACK         => 'pingback',
     ];
 
     protected $actions = [
         self::ACTION_RECOGNIZE => [
-            self::ACTION_URI => 'in.php',
+            self::ACTION_URI    => 'in.php',
             self::ACTION_METHOD => self::ACTION_METHOD_POST,
             self::ACTION_FIELDS => [
                 self::ACTION_FIELD_METHOD => [
                     self::PARAM_SLUG_DEFAULT => 'post',
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_KEY => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_SPEC => self::PARAM_SPEC_KEY,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_FILE => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_SPEC => self::PARAM_SPEC_FILE,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_FILE,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_PHRASE => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_REGSENSE => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_NUMERIC => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_MIN_LEN => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_MAX_LEN => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_LANGUAGE => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_QUESTION => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_CALC => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_HEADER_ACAO => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_TEXTINSTRUCTIONS => [
                     self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
@@ -129,50 +129,50 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                 ],
                 self::ACTION_FIELD_SOFT_ID => [
                     self::PARAM_SLUG_VARIABLE => false,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE     => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
             ],
         ],
         self::ACTION_UNIVERSAL => [
-            self::ACTION_URI => 'res.php',
+            self::ACTION_URI    => 'res.php',
             self::ACTION_METHOD => self::ACTION_METHOD_GET,
             self::ACTION_FIELDS => [
                 self::ACTION_FIELD_KEY => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_SPEC => self::PARAM_SPEC_KEY,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_ACTION => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_HEADER_ACAO => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
             ],
         ],
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => [
-            self::ACTION_URI => 'res.php',
+            self::ACTION_URI    => 'res.php',
             self::ACTION_METHOD => self::ACTION_METHOD_GET,
             self::ACTION_FIELDS => [
                 self::ACTION_FIELD_KEY => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_SPEC => self::PARAM_SPEC_KEY,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_CAPTCHA_ID => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_SPEC => self::PARAM_SPEC_CAPTCHA,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_CAPTCHA,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 self::ACTION_FIELD_ACTION => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_STRING,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_HEADER_ACAO => [
                     self::PARAM_SLUG_DEFAULT => 0,
-                    self::PARAM_SLUG_TYPE => self::PARAM_FIELD_TYPE_INTEGER,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_INTEGER,
                 ],
             ],
         ],
@@ -183,7 +183,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         self::DECODE_ACTION => [
             self::DECODE_ACTION_RECOGNIZE => [
                 self::DECODE_SEPARATOR => '|',
-                self::DECODE_PARAMS => [
+                self::DECODE_PARAMS    => [
                     self::DECODE_PARAM_RESPONSE => [
                         self::DECODE_PARAM_SETTING_MARKER => 0,
                     ],
@@ -194,7 +194,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             ],
             self::DECODE_ACTION_GET => [
                 self::DECODE_SEPARATOR => '|',
-                self::DECODE_PARAMS => [
+                self::DECODE_PARAMS    => [
                     self::DECODE_PARAM_RESPONSE => [
                         self::DECODE_PARAM_SETTING_MARKER => 0,
                     ],
@@ -207,7 +207,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     ];
 
     protected $limitSettings = [
-        self::ACTION_RECOGNIZE => 3,
+        self::ACTION_RECOGNIZE              => 3,
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => 20,
     ];
 
@@ -223,6 +223,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                 throw $e;
             }
             $this->errorObject = $e;
+
             return false;
         }
     }
@@ -254,6 +255,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             $dataGet = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
             if ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_OK && !empty($dataGet[static::DECODE_PARAM_CODE])) {
                 $this->setParamSpec(static::PARAM_SPEC_CODE, $dataGet[static::DECODE_PARAM_CODE]);
+
                 return true;
             } elseif ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_REPEAT) {
                 continue;
