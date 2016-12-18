@@ -26,7 +26,7 @@ class Rucaptcha extends DeCaptchaBase
     public function run($filename)
     {
         $this->result = null;
-        $this->error = null;
+        $this->errorObject = null;
         try {
             $filePath = $this->getFilePath($filename);
             $postData = [
@@ -66,7 +66,7 @@ class Rucaptcha extends DeCaptchaBase
             }
             throw new Exception('Лимит времени превышен');
         } catch (Exception $e) {
-            $this->error = $e->getMessage();
+            $this->errorObject = $e->getMessage();
 
             return false;
         }
