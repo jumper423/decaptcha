@@ -1,6 +1,5 @@
 <?php
 
-use \jumper423\decaptcha\core\DeCaptchaErrors;
 
 /**
  * Class RucaptchaTest.
