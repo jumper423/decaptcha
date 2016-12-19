@@ -8,13 +8,6 @@ namespace jumper423\decaptcha\core;
 interface DeCaptchaInterface
 {
     /**
-     * @param string $filePath
-     *
-     * @return bool
-     */
-    public function recognize($filePath);
-
-    /**
      * @return string
      */
     public function getCode();

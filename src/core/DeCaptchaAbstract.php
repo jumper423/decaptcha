@@ -72,20 +72,6 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * Запуск распознавания капчи.
-     *
-     * @deprecated
-     *
-     * @param string $filePath Путь до файла или ссылка на него
-     *
-     * @return bool
-     */
-    public function run($filePath)
-    {
-        return $this->recognize($filePath);
-    }
-
-    /**
      * Не верно распознана.
      */
     public function notTrue()
@@ -303,8 +289,6 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
         return $result;
     }
-
-    abstract public function recognize($filePath);
 
     abstract public function getCode();
 

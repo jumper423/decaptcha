@@ -211,7 +211,12 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => 20,
     ];
 
-    public function recognize($filePath, $rr)
+    public function __construct($params)
+    {
+        $this->setParams($params);
+    }
+
+    public function recognize($filePath)
     {
         try {
             $this->resetLimits();
@@ -226,6 +231,20 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
             return false;
         }
+    }
+
+    /**
+     * Запуск распознавания капчи.
+     *
+     * @deprecated
+     *
+     * @param string $filePath Путь до файла или ссылка на него
+     *
+     * @return bool
+     */
+    public function run($filePath)
+    {
+        return $this->recognize($filePath);
     }
 
     protected function requestRecognize()
