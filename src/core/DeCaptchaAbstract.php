@@ -68,6 +68,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param $action
+     *
      * @return bool
      */
     protected function limitHasNotYetEnded($action)
@@ -86,8 +87,10 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * @param $action
      * @param $data
-     * @return array
+     *
      * @throws DeCaptchaErrors
+     *
+     * @return array
      */
     protected function decodeResponse($action, $data)
     {
@@ -192,6 +195,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param $param
+     *
      * @return \CURLFile|mixed|null|string
      */
     public function getParamSpec($param)
@@ -214,8 +218,10 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param $action
-     * @return array
+     *
      * @throws DeCaptchaErrors
+     *
+     * @return array
      */
     protected function getParams($action)
     {

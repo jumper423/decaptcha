@@ -213,6 +213,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * DeCaptchaBase constructor.
+     *
      * @param $params
      */
     public function __construct($params)
@@ -222,8 +223,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param $filePath
-     * @return bool
+     *
      * @throws DeCaptchaErrors
+     *
+     * @return bool
      */
     public function recognize($filePath)
     {
@@ -257,8 +260,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * @return bool
      * @throws DeCaptchaErrors
+     *
+     * @return bool
      */
     protected function requestRecognize()
     {
@@ -280,8 +284,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * @return bool
      * @throws DeCaptchaErrors
+     *
+     * @return bool
      */
     protected function requestCode()
     {
