@@ -34,10 +34,10 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_SLUG_SPEC = 3;
     const PARAM_SLUG_VARIABLE = 4;
 
-    const PARAM_SPEC_KEY = 0;
-    const PARAM_SPEC_FILE = 1;
-    const PARAM_SPEC_CAPTCHA = 2;
-    const PARAM_SPEC_CODE = 3;
+    const PARAM_SPEC_KEY = -1;
+    const PARAM_SPEC_FILE = -2;
+    const PARAM_SPEC_CAPTCHA = -3;
+    const PARAM_SPEC_CODE = -4;
 
     /**
      * Сервис на который будем загружать капчу.
