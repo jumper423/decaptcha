@@ -151,29 +151,29 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 //        $this->assertEquals('http://domain/in.php', $bound());
 //    }
 
-    /**
-     * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
-     * @expectedExceptionCode 4
-     */
-    public function testIsError()
-    {
-        $abstract = $this->newInstance();
-        $isErrorCaller = function ($val) {
-            return $this->isError($val);
-        };
-        $bound = $isErrorCaller->bindTo($abstract, $abstract);
-        $bound('ERROR_IP_NOT_ALLOWED');
-    }
+//    /**
+//     * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
+//     * @expectedExceptionCode 4
+//     */
+//    public function testIsError()
+//    {
+//        $abstract = $this->newInstance();
+//        $isErrorCaller = function ($val) {
+//            return $this->isError($val);
+//        };
+//        $bound = $isErrorCaller->bindTo($abstract, $abstract);
+//        $bound('ERROR_IP_NOT_ALLOWED');
+//    }
 
-    public function testIsErrorNot()
-    {
-        $abstract = $this->newInstance();
-        $isErrorCaller = function ($val) {
-            return $this->isError($val);
-        };
-        $bound = $isErrorCaller->bindTo($abstract, $abstract);
-        $this->assertNull($bound('BALANCE:56'));
-    }
+//    public function testIsErrorNot()
+//    {
+//        $abstract = $this->newInstance();
+//        $isErrorCaller = function ($val) {
+//            return $this->isError($val);
+//        };
+//        $bound = $isErrorCaller->bindTo($abstract, $abstract);
+//        $this->assertNull($bound('BALANCE:56'));
+//    }
 
     /**
      * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
