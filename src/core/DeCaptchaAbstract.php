@@ -106,8 +106,8 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         switch ($decodeFormat) {
             case static::RESPONSE_TYPE_STRING:
                 foreach (explode($decodeSetting[static::DECODE_SEPARATOR], $data) as $key => $value) {
-                    foreach ($decodeFormat[static::DECODE_PARAMS] as $param => $paramKey) {
-                        if ($key === $paramKey) {
+                    foreach ($decodeSetting[static::DECODE_PARAMS] as $param => $paramSetting) {
+                        if ($key === $paramSetting[static::DECODE_PARAM_SETTING_MARKER]) {
                             $values[$param] = $value;
                         }
                     }
