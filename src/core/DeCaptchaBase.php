@@ -77,13 +77,13 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
                 ],
                 self::ACTION_FIELD_KEY => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_API_KEY,
                     self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_FILE => [
                     self::PARAM_SLUG_REQUIRE => true,
                     self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_FILE,
-                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
+                    self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_MIX,
                 ],
                 self::ACTION_FIELD_PHRASE => [
                     self::PARAM_SLUG_DEFAULT => 0,
@@ -139,7 +139,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             self::ACTION_FIELDS => [
                 self::ACTION_FIELD_KEY => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_API_KEY,
                     self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_ACTION => [
@@ -158,7 +158,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             self::ACTION_FIELDS => [
                 self::ACTION_FIELD_KEY => [
                     self::PARAM_SLUG_REQUIRE => true,
-                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_KEY,
+                    self::PARAM_SLUG_SPEC    => self::PARAM_SPEC_API_KEY,
                     self::PARAM_SLUG_TYPE    => self::PARAM_FIELD_TYPE_STRING,
                 ],
                 self::ACTION_FIELD_CAPTCHA_ID => [

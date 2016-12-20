@@ -27,6 +27,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     const PARAM_FIELD_TYPE_STRING = 0;
     const PARAM_FIELD_TYPE_INTEGER = 1;
+    const PARAM_FIELD_TYPE_MIX = 2;
 
     const PARAM_SLUG_DEFAULT = 0;
     const PARAM_SLUG_TYPE = 1;
@@ -34,7 +35,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_SLUG_SPEC = 3;
     const PARAM_SLUG_VARIABLE = 4;
 
-    const PARAM_SPEC_KEY = -1;
+    const PARAM_SPEC_API_KEY = -1;
     const PARAM_SPEC_FILE = -2;
     const PARAM_SPEC_CAPTCHA = -3;
     const PARAM_SPEC_CODE = -4;
@@ -206,7 +207,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         switch ($param) {
             case static::PARAM_SPEC_FILE:
                 return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->params[$param]) : '@'.$this->params[$param];
-            case static::PARAM_SPEC_KEY:
+            case static::PARAM_SPEC_API_KEY:
                 return is_callable($this->params[$param]) ? $this->params[$param]() : $this->params[$param];
             case static::PARAM_SPEC_CAPTCHA:
             case static::PARAM_SPEC_CODE:
@@ -250,6 +251,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                         break;
                     case self::PARAM_FIELD_TYPE_STRING:
                         $params[$this->paramsNames[$field]] = (string) $value;
+                        break;
+                    case self::PARAM_FIELD_TYPE_MIX:
+                        $params[$this->paramsNames[$field]] = $value;
                         break;
                 }
             }
