@@ -175,30 +175,30 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 //        $this->assertNull($bound('BALANCE:56'));
 //    }
 
-    /**
-     * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
-     * @expectedExceptionCode 17
-     * @expectedExceptionMessage Ошибка CURL: Could
-     */
-    public function testGetCurlResponseError()
-    {
-        $abstract = $this->newInstance();
-        $getCurlResponseCaller = function ($url, $val) {
-            return $this->getCurlResponse($url, $val);
-        };
-        $bound = $getCurlResponseCaller->bindTo($abstract, $abstract);
-        $bound('http://domain', ['protected' => 'value']);
-    }
-
-    public function testGetCurlResponse()
-    {
-        $abstract = $this->newInstance();
-        $getCurlResponseCaller = function ($url, $val) {
-            return $this->getCurlResponse($url, $val);
-        };
-        $bound = $getCurlResponseCaller->bindTo($abstract, $abstract);
-        $data = $bound('http://httpbin.org/post', ['protected' => 'value']);
-        $data = json_decode($data, true);
-        $this->assertEquals(['protected' => 'value'], $data['form']);
-    }
+//    /**
+//     * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
+//     * @expectedExceptionCode 17
+//     * @expectedExceptionMessage Ошибка CURL: Could
+//     */
+//    public function testGetCurlResponseError()
+//    {
+//        $abstract = $this->newInstance();
+//        $getCurlResponseCaller = function ($url, $val) {
+//            return $this->getCurlResponse($url, $val);
+//        };
+//        $bound = $getCurlResponseCaller->bindTo($abstract, $abstract);
+//        $bound('http://domain', ['protected' => 'value']);
+//    }
+//
+//    public function testGetCurlResponse()
+//    {
+//        $abstract = $this->newInstance();
+//        $getCurlResponseCaller = function ($url, $val) {
+//            return $this->getCurlResponse($url, $val);
+//        };
+//        $bound = $getCurlResponseCaller->bindTo($abstract, $abstract);
+//        $data = $bound('http://httpbin.org/post', ['protected' => 'value']);
+//        $data = json_decode($data, true);
+//        $this->assertEquals(['protected' => 'value'], $data['form']);
+//    }
 }
