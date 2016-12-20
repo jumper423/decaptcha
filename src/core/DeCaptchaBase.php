@@ -211,11 +211,20 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => 20,
     ];
 
+    /**
+     * DeCaptchaBase constructor.
+     * @param $params
+     */
     public function __construct($params)
     {
         $this->setParams($params);
     }
 
+    /**
+     * @param $filePath
+     * @return bool
+     * @throws DeCaptchaErrors
+     */
     public function recognize($filePath)
     {
         try {
@@ -247,6 +256,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         return $this->recognize($filePath);
     }
 
+    /**
+     * @return bool
+     * @throws DeCaptchaErrors
+     */
     protected function requestRecognize()
     {
         while ($this->limitHasNotYetEnded(static::ACTION_RECOGNIZE)) {
@@ -266,6 +279,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
     }
 
+    /**
+     * @return bool
+     * @throws DeCaptchaErrors
+     */
     protected function requestCode()
     {
         while ($this->limitHasNotYetEnded(static::ACTION_UNIVERSAL_WITH_CAPTCHA)) {
@@ -284,11 +301,17 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
     }
 
+    /**
+     * @return \CURLFile|mixed|null|string
+     */
     public function getCode()
     {
         return $this->getParamSpec(static::PARAM_SPEC_CODE);
     }
 
+    /**
+     * @return string
+     */
     public function getError()
     {
         return $this->errorObject->getMessage();

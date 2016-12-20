@@ -66,6 +66,10 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         }
     }
 
+    /**
+     * @param $action
+     * @return bool
+     */
     protected function limitHasNotYetEnded($action)
     {
         return $this->limit[$action]-- > 0;
@@ -79,6 +83,12 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         $this->getResponse('reportbad');
     }
 
+    /**
+     * @param $action
+     * @param $data
+     * @return array
+     * @throws DeCaptchaErrors
+     */
     protected function decodeResponse($action, $data)
     {
         if (!array_key_exists($action, $this->decodeSettings[static::DECODE_ACTION])) {
@@ -104,6 +114,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         return $values;
     }
 
+    /**
+     * @param $errorLang
+     */
     public function setErrorLang($errorLang)
     {
         $this->errorLang = $errorLang;
@@ -156,6 +169,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         return "http://{$this->domain}/";
     }
 
+    /**
+     * @param $params
+     */
     public function setParams($params)
     {
         if (is_array($params)) {
@@ -165,29 +181,42 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         }
     }
 
+    /**
+     * @param $param
+     * @param $value
+     */
     public function setParamSpec($param, $value)
     {
-        $this->paramsSpec[$param] = $value;
+        $this->params[$param] = $value;
     }
 
+    /**
+     * @param $param
+     * @return \CURLFile|mixed|null|string
+     */
     public function getParamSpec($param)
     {
-        if (!array_key_exists($param, $this->paramsSpec) || is_null($this->paramsSpec[$param])) {
+        if (!array_key_exists($param, $this->params) || is_null($this->params[$param])) {
             return null;
         }
         switch ($param) {
             case static::PARAM_SPEC_FILE:
-                return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->paramsSpec[$param]) : '@'.$this->paramsSpec[$param];
+                return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->params[$param]) : '@'.$this->params[$param];
             case static::PARAM_SPEC_KEY:
-                return is_callable($this->paramsSpec[$param]) ? $this->paramsSpec[$param]() : $this->paramsSpec[$param];
+                return is_callable($this->params[$param]) ? $this->params[$param]() : $this->params[$param];
             case static::PARAM_SPEC_CAPTCHA:
             case static::PARAM_SPEC_CODE:
-                return $this->paramsSpec[$param];
+                return $this->params[$param];
         }
 
         return null;
     }
 
+    /**
+     * @param $action
+     * @return array
+     * @throws DeCaptchaErrors
+     */
     protected function getParams($action)
     {
         if (empty($this->actions[$action])) {
@@ -202,7 +231,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             if (array_key_exists(self::PARAM_SLUG_DEFAULT, $settings)) {
                 $value = $settings[self::PARAM_SLUG_DEFAULT];
             }
-            if (array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->paramsSpec)) {
+            if (array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->params)) {
                 $value = $this->getParamSpec($settings[self::PARAM_SLUG_SPEC]);
             }
             if (array_key_exists(self::PARAM_SLUG_REQUIRE, $settings) && $settings[self::PARAM_SLUG_REQUIRE] === true && is_null($value)) {
