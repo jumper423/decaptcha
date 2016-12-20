@@ -15,17 +15,5 @@ class RucaptchaTest extends PHPUnit_Framework_TestCase
         } else {
             $this->assertEquals('22222222222222', $re->getError());
         }
-
-        $post_data_1 = ['file' => new CURLFile('file.txt')];
-        $curl_1 = curl_init();
-        curl_setopt($curl_1, CURLOPT_POSTFIELDS, $post_data_1);
-        echo "OK\n";
-
-// exactly the same as above + added a reference to 'file' element
-        $post_data_2 = ['file' => new CURLFile('file.txt')];
-        $ref = &$post_data_2['file']; // ***
-        $curl_2 = curl_init();
-        curl_setopt($curl_2, CURLOPT_POSTFIELDS, $post_data_2);
-        echo "OK\n";
     }
 }
