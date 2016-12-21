@@ -5,7 +5,7 @@ namespace jumper423\decaptcha\services;
 use jumper423\decaptcha\core\DeCaptchaBase;
 
 /**
- * Распознавание капчи RuCaptcha.
+ * Р Р°СЃРїРѕР·РЅР°РІР°РЅРёРµ РєР°РїС‡Рё RuCaptcha.
  *
  * Class RuCaptcha
  *
