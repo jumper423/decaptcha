@@ -241,8 +241,11 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             if (array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->params)) {
                 $value = $this->getParamSpec($settings[self::PARAM_SLUG_SPEC]);
             }
-            if (array_key_exists(self::PARAM_SLUG_REQUIRE, $settings) && $settings[self::PARAM_SLUG_REQUIRE] === true && is_null($value)) {
-                throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_PARAM_REQUIRE, array_key_exists($field, $this->paramsNames) ? $this->paramsNames[$field] : $field, $this->errorLang);
+            if (is_null($value)) {
+                if (array_key_exists(self::PARAM_SLUG_REQUIRE, $settings) && $settings[self::PARAM_SLUG_REQUIRE] === true) {
+                    throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_PARAM_REQUIRE, array_key_exists($field, $this->paramsNames) ? $this->paramsNames[$field] : $field, $this->errorLang);
+                }
+                continue;
             }
             if (array_key_exists($field, $this->paramsNames)) {
                 switch ($settings[self::PARAM_SLUG_TYPE]) {
@@ -305,6 +308,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     {
         $ch = curl_init();
         if ($isPost) {
+            print_r($data);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         } else {
             $uri = [];
@@ -313,6 +317,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             }
             $url .= '?'.implode('&', $uri);
         }
+        echo $url;
         curl_setopt($ch, CURLOPT_URL, $url);
         if (version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {
             curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
