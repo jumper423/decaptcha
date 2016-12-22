@@ -189,7 +189,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      * @param $param
      * @param $value
      */
-    public function setParamSpec($param, $value)
+    public function setParam($param, $value)
     {
         $this->params[$param] = $value;
     }
@@ -307,17 +307,13 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     protected function getCurlResponse($url, $data, $isPost = true)
     {
         $ch = curl_init();
-        if ($isPost) {
-            print_r($data);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        } else {
+        if (!$isPost) {
             $uri = [];
             foreach ($data as $key => $value) {
                 $uri[] = "$key=$value";
             }
             $url .= '?'.implode('&', $uri);
         }
-        echo $url;
         curl_setopt($ch, CURLOPT_URL, $url);
         if (version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {
             curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
@@ -325,6 +321,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 60);
         curl_setopt($ch, CURLOPT_POST, $isPost);
+        if ($isPost) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        }
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
             throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_CURL, curl_error($ch), $this->errorLang);

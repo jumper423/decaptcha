@@ -2,8 +2,6 @@
 
 namespace jumper423\decaptcha\services;
 
-use jumper423\decaptcha\core\DeCaptchaBase;
-
 /**
  * Распознавание капчи TwoCaptcha.
  *
@@ -11,7 +9,7 @@ use jumper423\decaptcha\core\DeCaptchaBase;
  *
  * @link http://infoblog1.ru/goto/rucaptcha
  */
-class TwoCaptcha extends DeCaptchaBase
+class TwoCaptcha extends RuCaptcha
 {
     public $domain = '2captcha.com';
 }
