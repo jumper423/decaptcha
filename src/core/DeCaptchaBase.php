@@ -340,7 +340,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * @param bool $causeAnError
      */
-    public function setCauseAnError($causeAnError) {
+    public function setCauseAnError($causeAnError)
+    {
         $this->causeAnError = $causeAnError;
     }
 }
