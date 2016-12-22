@@ -232,7 +232,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         $this->init();
     }
 
-    public function init(){}
+    public function init()
+    {
+    }
 
     /**
      * @param $filePath
@@ -338,7 +340,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * @param bool $causeAnError
      */
-    public function setCauseAnError(bool $causeAnError) {
+    public function setCauseAnError(bool $causeAnError)
+    {
         $this->causeAnError = $causeAnError;
     }
 }

@@ -17,7 +17,7 @@ class TwoCaptchaTest extends PHPUnit_Framework_TestCase
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
         $captcha->setCauseAnError(true);
-        $captcha->recognize(__DIR__ . '/data/Captcha.jpg');
+        $captcha->recognize(__DIR__.'/data/Captcha.jpg');
     }
 
     public function testRecognizeBalanceError2()
@@ -26,7 +26,7 @@ class TwoCaptchaTest extends PHPUnit_Framework_TestCase
             \jumper423\decaptcha\services\TwoCaptcha::PARAM_SPEC_API_KEY => '200a1ed2b6ca001d8171c655658086ed',
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
-        if ($captcha->recognize(__DIR__ . '/data/Captcha.jpg')) {
+        if ($captcha->recognize(__DIR__.'/data/Captcha.jpg')) {
             $this->assertEquals('11111111111111', $captcha->getCode());
         } else {
             $this->assertEquals('Нулевой либо отрицательный баланс', $captcha->getError());
