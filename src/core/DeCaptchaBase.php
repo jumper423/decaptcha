@@ -232,7 +232,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         $this->init();
     }
 
-    public function init(){}
+    public function init()
+    {
+    }
 
     /**
      * @param $filePath
