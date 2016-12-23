@@ -41,4 +41,13 @@ class TwoCaptchaTest extends PHPUnit_Framework_TestCase
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
         $this->assertEquals(0, (int)$captcha->getBalance());
     }
+
+    public function testNotTrue()
+    {
+        $captcha = new \jumper423\decaptcha\services\TwoCaptcha([
+            \jumper423\decaptcha\services\TwoCaptcha::PARAM_SPEC_API_KEY => '200a1ed2b6ca001d8171c655658086ed',
+        ]);
+        $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
+        $this->assertEquals(false, $captcha->notTrue());
+    }
 }

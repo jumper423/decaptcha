@@ -78,14 +78,6 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * Не верно распознана.
-     */
-    public function notTrue()
-    {
-        $this->getResponse('reportbad');
-    }
-
-    /**
      * @param $action
      * @param $data
      *

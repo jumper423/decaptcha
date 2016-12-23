@@ -42,7 +42,6 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
     const DECODE_ACTION_RECOGNIZE = 0;
     const DECODE_ACTION_GET = 1;
-    const DECODE_ACTION_BALANCE = 2;
 
     const DECODE_PARAM_RESPONSE = 0;
     const DECODE_PARAM_CAPTCHA = 1;
@@ -59,7 +58,6 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         self::DECODE_ACTION => [
             self::DECODE_ACTION_RECOGNIZE => [],
             self::DECODE_ACTION_GET       => [],
-            self::DECODE_ACTION_BALANCE   => [],
         ],
     ];
 

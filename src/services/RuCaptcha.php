@@ -15,6 +15,10 @@ class RuCaptcha extends DeCaptchaBase
 {
     public $domain = 'rucaptcha.com';
 
+    const DECODE_ACTION_UNIVERSAL = 2;
+
+    const RESPONSE_REPORTBAD_OK = 'OK_REPORT_RECORDED';
+
     protected $paramsNames = [
         self::ACTION_FIELD_METHOD           => 'method',
         self::ACTION_FIELD_KEY              => 'key',
@@ -122,6 +126,10 @@ class RuCaptcha extends DeCaptchaBase
                     static::PARAM_SLUG_DEFAULT => 0,
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
                 ],
+                static::ACTION_FIELD_CAPTCHA_ID => [
+                    static::PARAM_SLUG_SPEC    => static::PARAM_SPEC_CAPTCHA,
+                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+                ],
             ],
         ];
         $this->actions[static::ACTION_UNIVERSAL_WITH_CAPTCHA] = [
@@ -142,6 +150,7 @@ class RuCaptcha extends DeCaptchaBase
                     static::PARAM_SLUG_REQUIRE => true,
                     static::PARAM_SLUG_DEFAULT => 'get',
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+                    static::PARAM_SLUG_VARIABLE => false,
                 ],
                 static::ACTION_FIELD_HEADER_ACAO => [
                     static::PARAM_SLUG_DEFAULT => 0,
@@ -172,7 +181,7 @@ class RuCaptcha extends DeCaptchaBase
                 ],
             ],
         ];
-        $this->decodeSettings[static::DECODE_ACTION][static::DECODE_ACTION_BALANCE] = [
+        $this->decodeSettings[static::DECODE_ACTION][static::DECODE_ACTION_UNIVERSAL] = [
             static::DECODE_SEPARATOR => '|',
             static::DECODE_PARAMS    => [
                 static::DECODE_PARAM_RESPONSE => [
@@ -186,8 +195,20 @@ class RuCaptcha extends DeCaptchaBase
     {
         $this->setParam(static::ACTION_FIELD_ACTION, 'getbalance');
         $response = $this->getResponse(static::ACTION_UNIVERSAL);
-        $dataGet = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
+        $dataGet = $this->decodeResponse(static::DECODE_ACTION_UNIVERSAL, $response);
 
         return $dataGet[static::DECODE_PARAM_RESPONSE];
+    }
+
+    /**
+     * Не верно распознана.
+     */
+    public function notTrue()
+    {
+        $this->setParam(static::ACTION_FIELD_ACTION, 'reportbad');
+        $response = $this->getResponse(static::ACTION_UNIVERSAL);
+        $dataGet = $this->decodeResponse(static::DECODE_ACTION_UNIVERSAL, $response);
+
+        return $dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_REPORTBAD_OK;
     }
 }
