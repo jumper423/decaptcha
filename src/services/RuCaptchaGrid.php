@@ -3,8 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class RuCaptchaGrid
- * @package jumper423\decaptcha\services
+ * Class RuCaptchaGrid.
  */
 class RuCaptchaGrid extends RuCaptcha
 {
@@ -29,6 +28,7 @@ class RuCaptchaGrid extends RuCaptcha
     {
         $code = parent::getCode();
         $code = explode(':', $code)[1];
+
         return explode('/', $code);
     }
 }
