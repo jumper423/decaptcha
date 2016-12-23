@@ -155,15 +155,17 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * Универсальная отправка
+     * Универсальная отправка.
      *
      * @param string $action
+     *
      * @return array
      */
     protected function requestUniversal($action)
     {
         $this->setParam(static::ACTION_FIELD_ACTION, $action);
         $response = $this->getResponse(static::ACTION_UNIVERSAL);
+
         return $this->decodeResponse(static::DECODE_ACTION_UNIVERSAL, $response);
     }
 

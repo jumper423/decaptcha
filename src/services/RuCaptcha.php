@@ -196,7 +196,7 @@ class RuCaptcha extends DeCaptchaBase
      */
     public function getBalance()
     {
-        return (float)$this->requestUniversal('getbalance')[static::DECODE_PARAM_RESPONSE];
+        return (float) $this->requestUniversal('getbalance')[static::DECODE_PARAM_RESPONSE];
     }
 
     /**
