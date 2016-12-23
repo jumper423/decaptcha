@@ -122,7 +122,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * Универсальная отправка повторяющихся запросов
+     * Универсальная отправка повторяющихся запросов.
+     *
      * @param $action
      * @param $decodeAction
      * @param $setParam
@@ -130,10 +131,13 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
      * @param $ok
      * @param $sleep
      * @param $repeat
-     * @return bool
+     *
      * @throws DeCaptchaErrors
+     *
+     * @return bool
      */
-    protected function requestRepeat($action, $decodeAction, $setParam, $decodeSerParam, $ok, $sleep, $repeat){
+    protected function requestRepeat($action, $decodeAction, $setParam, $decodeSerParam, $ok, $sleep, $repeat)
+    {
         while ($this->limitHasNotYetEnded($action)) {
             $this->executionDelayed($sleep);
             $response = $this->getResponse($action);
