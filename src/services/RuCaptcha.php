@@ -191,13 +191,18 @@ class RuCaptcha extends DeCaptchaBase
         ];
     }
 
+    /**
+     * Баланс
+     *
+     * @return float
+     */
     public function getBalance()
     {
         $this->setParam(static::ACTION_FIELD_ACTION, 'getbalance');
         $response = $this->getResponse(static::ACTION_UNIVERSAL);
         $dataGet = $this->decodeResponse(static::DECODE_ACTION_UNIVERSAL, $response);
 
-        return $dataGet[static::DECODE_PARAM_RESPONSE];
+        return (float)$dataGet[static::DECODE_PARAM_RESPONSE];
     }
 
     /**
