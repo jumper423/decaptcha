@@ -202,7 +202,7 @@ class RuCaptcha extends DeCaptchaBase
         $response = $this->getResponse(static::ACTION_UNIVERSAL);
         $dataGet = $this->decodeResponse(static::DECODE_ACTION_UNIVERSAL, $response);
 
-        return (float)$dataGet[static::DECODE_PARAM_RESPONSE];
+        return (float) $dataGet[static::DECODE_PARAM_RESPONSE];
     }
 
     /**
