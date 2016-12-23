@@ -108,7 +108,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * Запуск распознавания капчи.
+     * Запуск распознавания капчи
      *
      * @deprecated
      *
