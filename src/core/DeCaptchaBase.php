@@ -122,22 +122,28 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * @throws DeCaptchaErrors
-     *
+     * Универсальная отправка повторяющихся запросов
+     * @param $action
+     * @param $decodeAction
+     * @param $setParam
+     * @param $decodeSerParam
+     * @param $ok
+     * @param $sleep
+     * @param $repeat
      * @return bool
+     * @throws DeCaptchaErrors
      */
-    protected function requestRecognize()
-    {
-        while ($this->limitHasNotYetEnded(static::ACTION_RECOGNIZE)) {
-            $this->executionDelayed(static::SLEEP_RECOGNIZE);
-            $response = $this->getResponse(static::ACTION_RECOGNIZE);
-            $dataRecognize = $this->decodeResponse(static::DECODE_ACTION_RECOGNIZE, $response);
-            if ($dataRecognize[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_RECOGNIZE_OK && !empty($dataRecognize[static::DECODE_PARAM_CAPTCHA])) {
-                $this->setParam(static::PARAM_SPEC_CAPTCHA, $dataRecognize[static::DECODE_PARAM_CAPTCHA]);
+    protected function requestRepeat($action, $decodeAction, $setParam, $decodeSerParam, $ok, $sleep, $repeat){
+        while ($this->limitHasNotYetEnded($action)) {
+            $this->executionDelayed($sleep);
+            $response = $this->getResponse($action);
+            $dataRecognize = $this->decodeResponse($decodeAction, $response);
+            if ($dataRecognize[static::DECODE_PARAM_RESPONSE] === $ok && !empty($dataRecognize[$decodeSerParam])) {
+                $this->setParam($setParam, $dataRecognize[$decodeSerParam]);
                 $this->executionDelayed(static::SLEEP_BETWEEN);
 
                 return true;
-            } elseif ($dataRecognize[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_RECOGNIZE_REPEAT) {
+            } elseif ($dataRecognize[static::DECODE_PARAM_RESPONSE] === $repeat) {
                 continue;
             }
             throw new DeCaptchaErrors($dataRecognize[static::DECODE_PARAM_RESPONSE]);
@@ -150,22 +156,19 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
      *
      * @return bool
      */
+    protected function requestRecognize()
+    {
+        return $this->requestRepeat(static::ACTION_RECOGNIZE, static::DECODE_ACTION_RECOGNIZE, static::PARAM_SPEC_CAPTCHA, static::DECODE_PARAM_CAPTCHA, static::RESPONSE_RECOGNIZE_OK, static::SLEEP_RECOGNIZE, static::RESPONSE_RECOGNIZE_REPEAT);
+    }
+
+    /**
+     * @throws DeCaptchaErrors
+     *
+     * @return bool
+     */
     protected function requestCode()
     {
-        while ($this->limitHasNotYetEnded(static::ACTION_UNIVERSAL_WITH_CAPTCHA)) {
-            $this->executionDelayed(static::SLEEP_GET);
-            $response = $this->getResponse(static::ACTION_UNIVERSAL_WITH_CAPTCHA);
-            $dataGet = $this->decodeResponse(static::DECODE_ACTION_GET, $response);
-            if ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_OK && !empty($dataGet[static::DECODE_PARAM_CODE])) {
-                $this->setParam(static::PARAM_SPEC_CODE, $dataGet[static::DECODE_PARAM_CODE]);
-
-                return true;
-            } elseif ($dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_GET_REPEAT) {
-                continue;
-            }
-            throw new DeCaptchaErrors($dataGet[static::DECODE_PARAM_RESPONSE]);
-        }
-        throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
+        return $this->requestRepeat(static::ACTION_UNIVERSAL_WITH_CAPTCHA, static::DECODE_ACTION_GET, static::PARAM_SPEC_CODE, static::DECODE_PARAM_CODE, static::RESPONSE_GET_OK, static::SLEEP_GET, static::RESPONSE_GET_REPEAT);
     }
 
     /**
