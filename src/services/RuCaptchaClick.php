@@ -3,8 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class RuCaptchaGrid
- * @package jumper423\decaptcha\services
+ * Class RuCaptchaGrid.
  */
 class RuCaptchaClick extends RuCaptcha
 {
@@ -38,6 +37,7 @@ class RuCaptchaClick extends RuCaptcha
             }
             $result[] = $rowCoord;
         }
+
         return $result;
     }
 }
