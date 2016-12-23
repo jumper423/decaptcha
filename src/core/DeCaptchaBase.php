@@ -49,8 +49,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const DECODE_PARAM_CODE = 2;
 
     protected $actions = [
-        self::ACTION_RECOGNIZE => [],
-        self::ACTION_UNIVERSAL => [],
+        self::ACTION_RECOGNIZE              => [],
+        self::ACTION_UNIVERSAL              => [],
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => [],
     ];
 
@@ -58,8 +58,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         self::DECODE_FORMAT => self::RESPONSE_TYPE_STRING,
         self::DECODE_ACTION => [
             self::DECODE_ACTION_RECOGNIZE => [],
-            self::DECODE_ACTION_GET => [],
-            self::DECODE_ACTION_BALANCE => [],
+            self::DECODE_ACTION_GET       => [],
+            self::DECODE_ACTION_BALANCE   => [],
         ],
     ];
 
