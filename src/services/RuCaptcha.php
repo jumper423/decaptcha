@@ -15,8 +15,6 @@ class RuCaptcha extends DeCaptchaBase
 {
     public $domain = 'rucaptcha.com';
 
-    const DECODE_ACTION_UNIVERSAL = 2;
-
     const RESPONSE_REPORTBAD_OK = 'OK_REPORT_RECORDED';
 
     protected $paramsNames = [
@@ -198,22 +196,16 @@ class RuCaptcha extends DeCaptchaBase
      */
     public function getBalance()
     {
-        $this->setParam(static::ACTION_FIELD_ACTION, 'getbalance');
-        $response = $this->getResponse(static::ACTION_UNIVERSAL);
-        $dataGet = $this->decodeResponse(static::DECODE_ACTION_UNIVERSAL, $response);
-
-        return (float)$dataGet[static::DECODE_PARAM_RESPONSE];
+        return (float)$this->requestUniversal('getbalance')[static::DECODE_PARAM_RESPONSE];
     }
 
     /**
      * Не верно распознана.
+     *
+     * @return bool
      */
     public function notTrue()
     {
-        $this->setParam(static::ACTION_FIELD_ACTION, 'reportbad');
-        $response = $this->getResponse(static::ACTION_UNIVERSAL);
-        $dataGet = $this->decodeResponse(static::DECODE_ACTION_UNIVERSAL, $response);
-
-        return $dataGet[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_REPORTBAD_OK;
+        return $this->requestUniversal('reportbad')[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_REPORTBAD_OK;
     }
 }

@@ -42,6 +42,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
     const DECODE_ACTION_RECOGNIZE = 0;
     const DECODE_ACTION_GET = 1;
+    const DECODE_ACTION_UNIVERSAL = 2;
 
     const DECODE_PARAM_RESPONSE = 0;
     const DECODE_PARAM_CAPTCHA = 1;
@@ -151,6 +152,19 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             throw new DeCaptchaErrors($dataRecognize[static::DECODE_PARAM_RESPONSE]);
         }
         throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
+    }
+
+    /**
+     * Универсальная отправка
+     *
+     * @param string $action
+     * @return array
+     */
+    protected function requestUniversal($action)
+    {
+        $this->setParam(static::ACTION_FIELD_ACTION, $action);
+        $response = $this->getResponse(static::ACTION_UNIVERSAL);
+        return $this->decodeResponse(static::DECODE_ACTION_UNIVERSAL, $response);
     }
 
     /**
