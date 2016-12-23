@@ -124,7 +124,7 @@ class RuCaptcha extends DeCaptchaBase
                 ],
             ],
         ];
-        $this->actions[static::ACTION_UNIVERSAL] = [
+        $this->actions[static::ACTION_UNIVERSAL_WITH_CAPTCHA] = [
             static::ACTION_URI    => 'res.php',
             static::ACTION_METHOD => static::ACTION_METHOD_GET,
             static::ACTION_FIELDS => [
