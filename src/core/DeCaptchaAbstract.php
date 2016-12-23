@@ -202,9 +202,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             case static::PARAM_SPEC_API_KEY:
                 return is_callable($this->params[$param]) ? $this->params[$param]() : $this->params[$param];
             case static::PARAM_SPEC_CAPTCHA:
-                return (int)$this->params[$param];
+                return (int) $this->params[$param];
             case static::PARAM_SPEC_CODE:
-                return (string)$this->params[$param];
+                return (string) $this->params[$param];
         }
 
         return null;
