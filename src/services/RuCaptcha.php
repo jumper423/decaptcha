@@ -147,9 +147,9 @@ class RuCaptcha extends DeCaptchaBase
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
                 ],
                 static::ACTION_FIELD_ACTION => [
-                    static::PARAM_SLUG_REQUIRE => true,
-                    static::PARAM_SLUG_DEFAULT => 'get',
-                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+                    static::PARAM_SLUG_REQUIRE  => true,
+                    static::PARAM_SLUG_DEFAULT  => 'get',
+                    static::PARAM_SLUG_TYPE     => static::PARAM_FIELD_TYPE_STRING,
                     static::PARAM_SLUG_VARIABLE => false,
                 ],
                 static::ACTION_FIELD_HEADER_ACAO => [
