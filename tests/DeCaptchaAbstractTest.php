@@ -104,40 +104,40 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
 //        $this->assertEquals('{"res.php":"","aaa":"bbb"}', str_replace("\n", '', str_replace(' ', '', $res)));
 //    }
 
-//    public function testExecutionDelayed()
-//    {
-//        $abstract = $this->newInstance();
-//        $executionDelayedCaller = function ($second, $call = null) {
-//            return $this->executionDelayed($second, $call);
-//        };
-//        $bound = $executionDelayedCaller->bindTo($abstract, $abstract);
-//        $start = microtime(true);
-//        $bound(0);
-//        $bound(0.1);
-//        $timePassed = microtime(true) - $start;
-//        $this->assertTrue(abs($timePassed - 0.1) < 0.035);
-//
-//        $start = microtime(true);
-//        $bound(0.15, function () {
-//            sleep(0.2);
-//        });
-//        $bound(0.1);
-//        $timePassed = microtime(true) - $start;
-//        $this->assertTrue(abs($timePassed - 0.25) < 0.035);
-//
-//        $start = microtime(true);
-//        $bound(0.15, function () {
-//            sleep(0.2);
-//        });
-//        $bound(0.3);
-//        $timePassed = microtime(true) - $start;
-//        $this->assertTrue(abs($timePassed - 0.45) < 0.035);
-//
-//        $this->assertEquals(2, $bound(0, function () {
-//            return 2;
-//        }));
-//        $this->assertEquals(null, $bound(0));
-//    }
+    public function testExecutionDelayed()
+    {
+        $abstract = $this->newInstance();
+        $executionDelayedCaller = function ($second, $call = null) {
+            return $this->executionDelayed($second, $call);
+        };
+        $bound = $executionDelayedCaller->bindTo($abstract, $abstract);
+        $start = microtime(true);
+        $bound(0);
+        $bound(0.1);
+        $timePassed = microtime(true) - $start;
+        $this->assertTrue(abs($timePassed - 0.1) < 0.035);
+
+        $start = microtime(true);
+        $bound(0.15, function () {
+            sleep(0.2);
+        });
+        $bound(0.1);
+        $timePassed = microtime(true) - $start;
+        $this->assertTrue(abs($timePassed - 0.25) < 0.035);
+
+        $start = microtime(true);
+        $bound(0.15, function () {
+            sleep(0.2);
+        });
+        $bound(0.3);
+        $timePassed = microtime(true) - $start;
+        $this->assertTrue(abs($timePassed - 0.45) < 0.035);
+
+        $this->assertEquals(2, $bound(0, function () {
+            return 2;
+        }));
+        $this->assertEquals(null, $bound(0));
+    }
 
 //    public function testGetInUrl()
 //    {
