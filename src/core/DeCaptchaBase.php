@@ -85,8 +85,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * @param $filePath
      * @param array $additionally
-     * @return bool
+     *
      * @throws DeCaptchaErrors
+     *
+     * @return bool
      */
     public function recognize($filePath, $additionally = [])
     {
