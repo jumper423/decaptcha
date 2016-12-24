@@ -5,7 +5,7 @@ namespace jumper423\decaptcha\services;
 /**
  * Class RuCaptchaGrid.
  */
-class RuCaptchaClick extends RuCaptcha
+class RuCaptchaClick extends RuCaptchaInstruction
 {
     const ACTION_FIELD_COORDINATESCAPTCHA = 18;
 

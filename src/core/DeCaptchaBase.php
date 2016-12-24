@@ -84,16 +84,16 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param $filePath
-     *
-     * @throws DeCaptchaErrors
-     *
+     * @param array $additionally
      * @return bool
+     * @throws DeCaptchaErrors
      */
-    public function recognize($filePath)
+    public function recognize($filePath, $additionally = [])
     {
         try {
             $this->resetLimits();
             $this->setParam(static::PARAM_SPEC_FILE, $this->getFilePath($filePath));
+            $this->setParams($additionally);
 
             return $this->requestRecognize() && $this->requestCode();
         } catch (DeCaptchaErrors $e) {

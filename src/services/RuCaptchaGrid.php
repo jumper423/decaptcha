@@ -5,7 +5,7 @@ namespace jumper423\decaptcha\services;
 /**
  * Class RuCaptchaGrid.
  */
-class RuCaptchaGrid extends RuCaptcha
+class RuCaptchaGrid extends RuCaptchaInstruction
 {
     const ACTION_FIELD_RECAPTCHA = 17;
 
