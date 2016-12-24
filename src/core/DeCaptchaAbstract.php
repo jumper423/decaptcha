@@ -5,7 +5,7 @@ namespace jumper423\decaptcha\core;
 use Exception;
 
 /**
- * Class DeCaptchaAbstract.
+ * Class DeCaptchaAbstract
  */
 abstract class DeCaptchaAbstract implements DeCaptchaInterface
 {
