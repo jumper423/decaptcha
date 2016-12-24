@@ -36,5 +36,11 @@ class RuCaptchaReCaptcha extends RuCaptcha
             static::PARAM_SLUG_REQUIRE => true,
             static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_FILE][static::PARAM_SLUG_REQUIRE] = false;
+    }
+
+    public function recognize($additionally = [], $null = null)
+    {
+        return parent::recognize(null, $additionally);
     }
 }

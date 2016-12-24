@@ -198,7 +198,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         }
         switch ($param) {
             case static::PARAM_SPEC_FILE:
-                return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->params[$param]) : '@'.$this->params[$param];
+                return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->getFilePath($this->params[$param])) : '@' . $this->getFilePath($this->params[$param]);
             case static::PARAM_SPEC_API_KEY:
                 return is_callable($this->params[$param]) ? $this->params[$param]() : $this->params[$param];
             case static::PARAM_SPEC_CAPTCHA:
