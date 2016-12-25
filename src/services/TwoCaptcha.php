@@ -3,8 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class TwoCaptcha
- * @package jumper423\decaptcha\services
+ * Class TwoCaptcha.
  */
 class TwoCaptcha extends RuCaptcha
 {

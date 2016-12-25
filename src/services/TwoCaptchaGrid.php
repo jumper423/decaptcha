@@ -3,8 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class TwoCaptchaGrid
- * @package jumper423\decaptcha\services
+ * Class TwoCaptchaGrid.
  */
 class TwoCaptchaGrid extends RuCaptchaGrid
 {

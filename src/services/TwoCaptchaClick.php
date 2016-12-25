@@ -3,8 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class TwoCaptchaClick
- * @package jumper423\decaptcha\services
+ * Class TwoCaptchaClick.
  */
 class TwoCaptchaClick extends RuCaptchaClick
 {
