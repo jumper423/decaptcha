@@ -3,8 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class Pixodrom
- * @package jumper423\decaptcha\services
+ * Class Pixodrom.
  */
 class Pixodrom extends RuCaptcha
 {
@@ -30,7 +29,7 @@ class Pixodrom extends RuCaptcha
         $this->paramsNames[self::ACTION_FIELD_IS_RUSSIAN] = 'is_russian';
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_IS_RUSSIAN] = [
             static::PARAM_SLUG_DEFAULT => 0,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LABEL] = [
             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,

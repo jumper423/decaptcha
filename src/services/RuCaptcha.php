@@ -34,7 +34,7 @@ class RuCaptcha extends DeCaptchaBase
         self::ACTION_FIELD_HEADER_ACAO      => 'header_acao',
         self::ACTION_FIELD_TEXTINSTRUCTIONS => 'textinstructions',
         self::ACTION_FIELD_PINGBACK         => 'pingback',
-        self::ACTION_FIELD_CALC => 'calc',
+        self::ACTION_FIELD_CALC             => 'calc',
     ];
 
     public function init()
