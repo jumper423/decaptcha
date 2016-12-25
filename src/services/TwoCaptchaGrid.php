@@ -3,10 +3,10 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class TwoCaptcha
+ * Class TwoCaptchaGrid
  * @package jumper423\decaptcha\services
  */
-class TwoCaptcha extends RuCaptcha
+class TwoCaptchaGrid extends RuCaptchaGrid
 {
     public $domain = '2captcha.com';
 }
