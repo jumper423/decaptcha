@@ -5,7 +5,6 @@
  */
 class TwoCaptchaReCaptchaTest extends PHPUnit_Framework_TestCase
 {
-
     public function testRecaptcha()
     {
         $captcha = new \jumper423\decaptcha\services\RuCaptchaReCaptcha([
