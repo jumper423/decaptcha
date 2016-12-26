@@ -11,11 +11,20 @@ class Anticaptcha extends DeCaptchaBase
 {
     public $domain = 'api.anti-captcha.com';
 
-    const RESPONSE_REPORTBAD_OK = 'OK_REPORT_RECORDED';
+    const RESPONSE_RECOGNIZE_OK = 0;
+    const RESPONSE_RECOGNIZE_REPEAT = 2;
+    const RESPONSE_GET_OK = 'ready';
+    const RESPONSE_GET_REPEAT = 'processing';
+
+    const DECODE_PARAM_ERROR = 3;
+    const DECODE_PARAM_BALANCE = 4;
 
     const ACTION_FIELD_TASK = 17;
     const PARAM_FIELD_TYPE_OBJECT = 3;
     const PARAM_FIELD_TYPE_BOOLEAN = 4;
+
+    const ACTION_BALANCE = 3;
+    const DECODE_ACTION_BALANCE = 3;
 
     protected $paramsNames = [
         self::ACTION_FIELD_KEY      => 'clientKey',
@@ -30,15 +39,7 @@ class Anticaptcha extends DeCaptchaBase
         self::ACTION_FIELD_CALC     => 'math',
         self::ACTION_FIELD_MIN_LEN  => 'minLength',
         self::ACTION_FIELD_MAX_LEN  => 'maxLength',
-
-//        self::ACTION_FIELD_METHOD           => 'method',
-//        self::ACTION_FIELD_LANGUAGE         => 'language',
-//        self::ACTION_FIELD_CAPTCHA_ID       => 'id',
-//        self::ACTION_FIELD_ACTION           => 'action',
-//        self::ACTION_FIELD_QUESTION         => 'question',
-//        self::ACTION_FIELD_HEADER_ACAO      => 'header_acao',
-//        self::ACTION_FIELD_TEXTINSTRUCTIONS => 'textinstructions',
-//        self::ACTION_FIELD_PINGBACK         => 'pingback',
+        self::ACTION_FIELD_CAPTCHA_ID => 'taskId',
     ];
 
     public function init()
@@ -97,49 +98,11 @@ class Anticaptcha extends DeCaptchaBase
                         ],
                     ],
                 ],
-
-//                static::ACTION_FIELD_QUESTION => [
-//                    static::PARAM_SLUG_DEFAULT => 0,
-//                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
-//                ],
-//                static::ACTION_FIELD_HEADER_ACAO => [
-//                    static::PARAM_SLUG_DEFAULT => 0,
-//                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
-//                ],
-//                static::ACTION_FIELD_TEXTINSTRUCTIONS => [
-//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
-//                ],
-//                static::ACTION_FIELD_PINGBACK => [
-//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
-//                ],
             ],
         ];
-//        $this->actions[static::ACTION_UNIVERSAL] = [
-//            static::ACTION_URI => 'getTaskResult',
-//            static::ACTION_METHOD => static::ACTION_METHOD_GET,
-//            static::ACTION_FIELDS => [
-//                static::ACTION_FIELD_KEY => [
-//                    static::PARAM_SLUG_REQUIRE => true,
-//                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_API_KEY,
-//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
-//                ],
-//                static::ACTION_FIELD_ACTION => [
-//                    static::PARAM_SLUG_REQUIRE => true,
-//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
-//                ],
-//                static::ACTION_FIELD_HEADER_ACAO => [
-//                    static::PARAM_SLUG_DEFAULT => 0,
-//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
-//                ],
-//                static::ACTION_FIELD_CAPTCHA_ID => [
-//                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_CAPTCHA,
-//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
-//                ],
-//            ],
-//        ];
         $this->actions[static::ACTION_UNIVERSAL_WITH_CAPTCHA] = [
             static::ACTION_URI    => 'getTaskResult',
-            static::ACTION_METHOD => static::ACTION_METHOD_GET,
+            static::ACTION_METHOD => static::ACTION_METHOD_POST,
             static::ACTION_FIELDS => [
                 static::ACTION_FIELD_KEY => [
                     static::PARAM_SLUG_REQUIRE => true,
@@ -153,34 +116,57 @@ class Anticaptcha extends DeCaptchaBase
                 ],
             ],
         ];
+        $this->actions[static::ACTION_BALANCE] = [
+            static::ACTION_URI => 'getBalance',
+            static::ACTION_METHOD => static::ACTION_METHOD_POST,
+            static::ACTION_FIELDS => [
+                static::ACTION_FIELD_KEY => [
+                    static::PARAM_SLUG_REQUIRE => true,
+                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_API_KEY,
+                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+                ],
+            ],
+        ];
 
         $this->decodeSettings[static::DECODE_ACTION][static::DECODE_ACTION_RECOGNIZE] = [
-            static::DECODE_SEPARATOR => '|',
+            static::DECODE_FORMAT => static::RESPONSE_TYPE_JSON,
             static::DECODE_PARAMS    => [
                 static::DECODE_PARAM_RESPONSE => [
-                    static::DECODE_PARAM_SETTING_MARKER => 0,
+                    static::DECODE_PARAM_SETTING_MARKER => 'errorId',
                 ],
                 static::DECODE_PARAM_CAPTCHA => [
-                    static::DECODE_PARAM_SETTING_MARKER => 1,
+                    static::DECODE_PARAM_SETTING_MARKER => 'taskId',
+                ],
+                static::DECODE_PARAM_ERROR => [
+                    static::DECODE_PARAM_SETTING_MARKER => 'errorCode',
                 ],
             ],
         ];
         $this->decodeSettings[static::DECODE_ACTION][static::DECODE_ACTION_GET] = [
-            static::DECODE_SEPARATOR => '|',
+            static::DECODE_FORMAT => static::RESPONSE_TYPE_JSON,
             static::DECODE_PARAMS    => [
                 static::DECODE_PARAM_RESPONSE => [
-                    static::DECODE_PARAM_SETTING_MARKER => 0,
+                    static::DECODE_PARAM_SETTING_MARKER => 'status',
                 ],
                 static::DECODE_PARAM_CODE => [
-                    static::DECODE_PARAM_SETTING_MARKER => 1,
+                    static::DECODE_PARAM_SETTING_MARKER => 'solution.text',
+                ],
+                static::DECODE_PARAM_ERROR => [
+                    static::DECODE_PARAM_SETTING_MARKER => 'errorCode',
                 ],
             ],
         ];
-        $this->decodeSettings[static::DECODE_ACTION][static::DECODE_ACTION_UNIVERSAL] = [
-            static::DECODE_SEPARATOR => '|',
+        $this->decodeSettings[static::DECODE_ACTION][static::DECODE_ACTION_BALANCE] = [
+            static::DECODE_FORMAT => static::RESPONSE_TYPE_JSON,
             static::DECODE_PARAMS    => [
                 static::DECODE_PARAM_RESPONSE => [
-                    static::DECODE_PARAM_SETTING_MARKER => 0,
+                    static::DECODE_PARAM_SETTING_MARKER => 'errorId',
+                ],
+                static::DECODE_PARAM_BALANCE => [
+                    static::DECODE_PARAM_SETTING_MARKER => 'balance',
+                ],
+                static::DECODE_PARAM_ERROR => [
+                    static::DECODE_PARAM_SETTING_MARKER => 'errorCode',
                 ],
             ],
         ];
