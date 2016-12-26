@@ -313,9 +313,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param string $url
-     * @param array $data
-     * @param bool $isPost
-     * @param bool $isJson
+     * @param array  $data
+     * @param bool   $isPost
+     * @param bool   $isJson
      *
      * @throws DeCaptchaErrors
      *

@@ -50,7 +50,7 @@ class Anticaptcha extends DeCaptchaBase
         $this->actions[static::ACTION_RECOGNIZE] = [
             static::ACTION_URI    => 'createTask',
             static::ACTION_METHOD => static::ACTION_METHOD_POST,
-            static::ACTION_JSON => true,
+            static::ACTION_JSON   => true,
             static::ACTION_FIELDS => [
                 static::ACTION_FIELD_KEY => [
                     static::PARAM_SLUG_REQUIRE => true,
@@ -105,7 +105,7 @@ class Anticaptcha extends DeCaptchaBase
         $this->actions[static::ACTION_UNIVERSAL_WITH_CAPTCHA] = [
             static::ACTION_URI    => 'getTaskResult',
             static::ACTION_METHOD => static::ACTION_METHOD_POST,
-            static::ACTION_JSON => true,
+            static::ACTION_JSON   => true,
             static::ACTION_FIELDS => [
                 static::ACTION_FIELD_KEY => [
                     static::PARAM_SLUG_REQUIRE => true,
@@ -122,7 +122,7 @@ class Anticaptcha extends DeCaptchaBase
         $this->actions[static::ACTION_BALANCE] = [
             static::ACTION_URI    => 'getBalance',
             static::ACTION_METHOD => static::ACTION_METHOD_POST,
-            static::ACTION_JSON => true,
+            static::ACTION_JSON   => true,
             static::ACTION_FIELDS => [
                 static::ACTION_FIELD_KEY => [
                     static::PARAM_SLUG_REQUIRE => true,
