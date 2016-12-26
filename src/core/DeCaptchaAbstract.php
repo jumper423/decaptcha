@@ -292,16 +292,19 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * @param string $url
      * @param $data
-     * @param $isPost
+     * @param bool $isPost
+     * @param bool $isJson
      *
      * @throws DeCaptchaErrors
      *
      * @return mixed
      */
-    protected function getCurlResponse($url, $data, $isPost = true)
+    protected function getCurlResponse($url, $data, $isPost = true, $isJson = false)
     {
         $ch = curl_init();
-        if (!$isPost) {
+        if ($isJson) {
+            $data = json_encode($data);
+        } elseif (!$isPost) {
             $uri = [];
             foreach ($data as $key => $value) {
                 $uri[] = "$key=$value";
@@ -309,14 +312,23 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             $url .= '?'.implode('&', $uri);
         }
         curl_setopt($ch, CURLOPT_URL, $url);
-        if (version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {
+        if (!$isJson && version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {
             curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
         }
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+        curl_setopt($ch, CURLOPT_ENCODING, "gzip,deflate");
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($ch, CURLOPT_POST, $isPost);
         if ($isPost) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        }
+        if ($isJson) {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Content-Type: application/json; charset=utf-8',
+                'Accept: application/json',
+                'Content-Length: ' . strlen($data)
+            ]);
         }
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
