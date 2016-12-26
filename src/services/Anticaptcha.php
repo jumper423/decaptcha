@@ -183,16 +183,10 @@ class Anticaptcha extends DeCaptchaBase
      */
     public function getBalance()
     {
-        return (float) $this->requestUniversal('getbalance')[static::DECODE_PARAM_RESPONSE];
-    }
-
-    /**
-     * Не верно распознана.
-     *
-     * @return bool
-     */
-    public function notTrue()
-    {
-        return $this->requestUniversal('reportbad')[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_REPORTBAD_OK;
+        $result = $this->requestUniversal('getbalance');
+        if ($result[static::DECODE_PARAM_RESPONSE] != 0) {
+            return 0;
+        }
+        return (float)$result[static::DECODE_PARAM_BALANCE];
     }
 }
