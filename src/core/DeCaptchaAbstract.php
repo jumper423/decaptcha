@@ -15,6 +15,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_FIELDS = 0;
     const ACTION_URI = 1;
     const ACTION_METHOD = 2;
+    const ACTION_JSON = 3;
 
     const ACTION_METHOD_POST = 0;
     const ACTION_METHOD_GET = 1;
@@ -100,6 +101,22 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             case static::RESPONSE_TYPE_STRING:
                 foreach (explode($decodeSetting[static::DECODE_SEPARATOR], $data) as $key => $value) {
                     foreach ($decodeSetting[static::DECODE_PARAMS] as $param => $paramSetting) {
+                        if ($key === $paramSetting[static::DECODE_PARAM_SETTING_MARKER]) {
+                            $values[$param] = $value;
+                        }
+                    }
+                }
+                break;
+            case static::RESPONSE_TYPE_JSON:
+                foreach (json_decode($data, true) as $key => $value) {
+                    foreach ($decodeSetting[static::DECODE_PARAMS] as $param => $paramSetting) {
+                        if (count(explode('.', $paramSetting[static::DECODE_PARAM_SETTING_MARKER])) > 1) {
+                            if ($key === explode('.', $paramSetting[static::DECODE_PARAM_SETTING_MARKER])[0]) {
+                                if (array_key_exists(explode('.', $paramSetting[static::DECODE_PARAM_SETTING_MARKER])[1], $value)) {
+                                    $values[$param] = $value[explode('.', $paramSetting[static::DECODE_PARAM_SETTING_MARKER])[1]];
+                                }
+                            }
+                        }
                         if ($key === $paramSetting[static::DECODE_PARAM_SETTING_MARKER]) {
                             $values[$param] = $value;
                         }
@@ -266,7 +283,12 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function getResponse($action)
     {
-        return $this->getCurlResponse($this->getActionUrl($action), $this->getParams($action), $this->actions[$action][static::ACTION_METHOD] === static::ACTION_METHOD_POST);
+        return $this->getCurlResponse(
+            $this->getActionUrl($action),
+            $this->getParams($action),
+            array_key_exists(static::ACTION_METHOD, $this->actions[$action]) && $this->actions[$action][static::ACTION_METHOD] === static::ACTION_METHOD_POST,
+            array_key_exists(static::ACTION_JSON, $this->actions[$action]) && $this->actions[$action][static::ACTION_JSON] === true
+        );
     }
 
     /**
@@ -291,13 +313,13 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param string $url
-     * @param $data
+     * @param array $data
      * @param bool $isPost
      * @param bool $isJson
      *
      * @throws DeCaptchaErrors
      *
-     * @return mixed
+     * @return string
      */
     protected function getCurlResponse($url, $data, $isPost = true, $isJson = false)
     {
