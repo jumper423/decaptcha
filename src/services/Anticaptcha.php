@@ -9,7 +9,8 @@ use jumper423\decaptcha\core\DeCaptchaBase;
  */
 class Anticaptcha extends DeCaptchaBase
 {
-    public $domain = 'api.anti-captcha.com';
+    protected $host = 'api.anti-captcha.com';
+    protected $scheme = 'https';
 
     const RESPONSE_RECOGNIZE_OK = 0;
     const RESPONSE_RECOGNIZE_REPEAT = 2;

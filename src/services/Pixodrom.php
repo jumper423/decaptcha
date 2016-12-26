@@ -7,7 +7,7 @@ namespace jumper423\decaptcha\services;
  */
 class Pixodrom extends RuCaptcha
 {
-    public $domain = 'pixodrom.com';
+    protected $host = 'pixodrom.com';
 
     const ACTION_FIELD_IS_RUSSIAN = 17;
     const ACTION_FIELD_LABEL = 18;

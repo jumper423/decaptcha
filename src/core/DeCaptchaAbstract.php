@@ -45,7 +45,8 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      *
      * @var string
      */
-    protected $domain;
+    protected $host;
+    protected $scheme = 'http';
     protected $errorLang = DeCaptchaErrors::LANG_EN;
     protected $lastRunTime = null;
     /** @var DeCaptchaErrors */
@@ -162,7 +163,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function getBaseUrl()
     {
-        return "http://{$this->domain}/";
+        return "{$this->scheme}://{$this->host}/";
     }
 
     /**

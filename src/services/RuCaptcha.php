@@ -13,7 +13,7 @@ use jumper423\decaptcha\core\DeCaptchaBase;
  */
 class RuCaptcha extends DeCaptchaBase
 {
-    public $domain = 'rucaptcha.com';
+    protected $host = 'rucaptcha.com';
 
     const RESPONSE_REPORTBAD_OK = 'OK_REPORT_RECORDED';
 

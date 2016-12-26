@@ -7,7 +7,7 @@ namespace jumper423\decaptcha\services;
  */
 class Captcha24 extends RuCaptcha
 {
-    public $domain = 'captcha24.com';
+    protected $host = 'captcha24.com';
 
     public function init()
     {
