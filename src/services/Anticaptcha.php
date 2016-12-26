@@ -187,6 +187,7 @@ class Anticaptcha extends DeCaptchaBase
         if ($result[static::DECODE_PARAM_RESPONSE] != 0) {
             return 0;
         }
-        return (float)$result[static::DECODE_PARAM_BALANCE];
+
+        return (float) $result[static::DECODE_PARAM_BALANCE];
     }
 }
