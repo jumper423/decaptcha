@@ -117,31 +117,31 @@ class Anticaptcha extends DeCaptchaBase
 //                ],
             ],
         ];
-        $this->actions[static::ACTION_UNIVERSAL] = [
-            static::ACTION_URI => 'res.php',
-            static::ACTION_METHOD => static::ACTION_METHOD_GET,
-            static::ACTION_FIELDS => [
-                static::ACTION_FIELD_KEY => [
-                    static::PARAM_SLUG_REQUIRE => true,
-                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_API_KEY,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
-                ],
-                static::ACTION_FIELD_ACTION => [
-                    static::PARAM_SLUG_REQUIRE => true,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
-                ],
-                static::ACTION_FIELD_HEADER_ACAO => [
-                    static::PARAM_SLUG_DEFAULT => 0,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
-                ],
-                static::ACTION_FIELD_CAPTCHA_ID => [
-                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_CAPTCHA,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
-                ],
-            ],
-        ];
+//        $this->actions[static::ACTION_UNIVERSAL] = [
+//            static::ACTION_URI => 'getTaskResult',
+//            static::ACTION_METHOD => static::ACTION_METHOD_GET,
+//            static::ACTION_FIELDS => [
+//                static::ACTION_FIELD_KEY => [
+//                    static::PARAM_SLUG_REQUIRE => true,
+//                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_API_KEY,
+//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+//                ],
+//                static::ACTION_FIELD_ACTION => [
+//                    static::PARAM_SLUG_REQUIRE => true,
+//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+//                ],
+//                static::ACTION_FIELD_HEADER_ACAO => [
+//                    static::PARAM_SLUG_DEFAULT => 0,
+//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
+//                ],
+//                static::ACTION_FIELD_CAPTCHA_ID => [
+//                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_CAPTCHA,
+//                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
+//                ],
+//            ],
+//        ];
         $this->actions[static::ACTION_UNIVERSAL_WITH_CAPTCHA] = [
-            static::ACTION_URI => 'res.php',
+            static::ACTION_URI => 'getTaskResult',
             static::ACTION_METHOD => static::ACTION_METHOD_GET,
             static::ACTION_FIELDS => [
                 static::ACTION_FIELD_KEY => [
@@ -152,16 +152,6 @@ class Anticaptcha extends DeCaptchaBase
                 static::ACTION_FIELD_CAPTCHA_ID => [
                     static::PARAM_SLUG_REQUIRE => true,
                     static::PARAM_SLUG_SPEC => static::PARAM_SPEC_CAPTCHA,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
-                ],
-                static::ACTION_FIELD_ACTION => [
-                    static::PARAM_SLUG_REQUIRE => true,
-                    static::PARAM_SLUG_DEFAULT => 'get',
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
-                    static::PARAM_SLUG_VARIABLE => false,
-                ],
-                static::ACTION_FIELD_HEADER_ACAO => [
-                    static::PARAM_SLUG_DEFAULT => 0,
                     static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
                 ],
             ],
