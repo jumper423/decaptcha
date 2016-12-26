@@ -316,7 +316,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
         }
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_ENCODING, "gzip,deflate");
+        curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($ch, CURLOPT_POST, $isPost);
@@ -327,7 +327,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
                 'Content-Type: application/json; charset=utf-8',
                 'Accept: application/json',
-                'Content-Length: ' . strlen($data)
+                'Content-Length: '.strlen($data),
             ]);
         }
         $result = curl_exec($ch);
