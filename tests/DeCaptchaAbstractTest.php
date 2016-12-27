@@ -20,12 +20,22 @@ class DeCaptchaAbstractTest extends PHPUnit_Framework_TestCase
     {
         $abstract = $this->newInstance();
         $getBaseUrlCaller = function () {
-            $this->domain = 'domain';
+            $this->host = 'domain';
 
             return $this->getBaseUrl();
         };
         $bound = $getBaseUrlCaller->bindTo($abstract, $abstract);
         $this->assertEquals('http://domain/', $bound());
+
+        $abstract = $this->newInstance();
+        $getBaseUrlCaller = function () {
+            $this->host = 'domain';
+            $this->scheme = 'https';
+
+            return $this->getBaseUrl();
+        };
+        $bound = $getBaseUrlCaller->bindTo($abstract, $abstract);
+        $this->assertEquals('https://domain/', $bound());
     }
 
 //    public function testGetActionUrl()

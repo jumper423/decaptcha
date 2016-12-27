@@ -5,7 +5,7 @@
  */
 class AnticaptchaTest extends PHPUnit_Framework_TestCase
 {
-    public function testRecoznixe()
+    public function testRecognize()
     {
         $captcha = new \jumper423\decaptcha\services\Anticaptcha([
             \jumper423\decaptcha\services\Anticaptcha::PARAM_SPEC_API_KEY => '5464654645646',
@@ -14,7 +14,7 @@ class AnticaptchaTest extends PHPUnit_Framework_TestCase
         if ($captcha->recognize(__DIR__ . '/data/Captcha.jpg')) {
             $this->assertEquals('11111111111111', $captcha->getCode());
         } else {
-            $this->assertEquals('Нулевой либо отрицательный баланс', $captcha->getError());
+            $this->assertEquals('Использован несуществующий key', $captcha->getError());
         }
     }
 }
