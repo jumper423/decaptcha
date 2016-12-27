@@ -20,34 +20,34 @@ class AnticaptchaReCaptcha extends AnticaptchaReCaptchaProxeless
         $this->paramsNames[static::ACTION_FIELD_COOKIES] = 'cookies';
 
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][static::ACTION_FIELD_METHOD] = [
-                static::PARAM_SLUG_DEFAULT => 'NoCaptchaTaskProxyless',
-                static::PARAM_SLUG_REQUIRE => true,
-                static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_DEFAULT => 'NoCaptchaTaskProxyless',
+            static::PARAM_SLUG_REQUIRE => true,
+            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][static::ACTION_FIELD_PROXYTYPE] = [
-                static::PARAM_SLUG_REQUIRE => true,
-                static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_REQUIRE => true,
+            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][static::ACTION_FIELD_PROXY] = [
-                static::PARAM_SLUG_REQUIRE => true,
-                static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_REQUIRE => true,
+            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][static::ACTION_FIELD_PROXYPORT] = [
-                static::PARAM_SLUG_REQUIRE => true,
-                static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+            static::PARAM_SLUG_REQUIRE => true,
+            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][static::ACTION_FIELD_PROXYLOGIN] = [
-                static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][static::ACTION_FIELD_PROXYPASS] = [
-                static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][static::ACTION_FIELD_USERAGENT] = [
-                static::PARAM_SLUG_REQUIRE => true,
-                static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_REQUIRE => true,
+            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][static::ACTION_FIELD_COOKIES] = [
-                static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
         ];
     }
 }
