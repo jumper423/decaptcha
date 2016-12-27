@@ -28,6 +28,15 @@ class Pixodrom extends RuCaptcha
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_IS_RUSSIAN] = [
             static::PARAM_SLUG_DEFAULT => 0,
             static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+            static::PARAM_SLUG_ENUM => [
+                0,
+                1,
+            ],
+        ];
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_NUMERIC][static::PARAM_SLUG_ENUM] = [
+            0,
+            1,
+            2,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LABEL] = [
             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,

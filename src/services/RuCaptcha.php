@@ -63,14 +63,28 @@ class RuCaptcha extends DeCaptchaBase
                 static::ACTION_FIELD_PHRASE => [
                     static::PARAM_SLUG_DEFAULT => 0,
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_ENUM => [
+                        0,
+                        1,
+                    ],
                 ],
                 static::ACTION_FIELD_REGSENSE => [
                     static::PARAM_SLUG_DEFAULT => 0,
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_ENUM => [
+                        0,
+                        1,
+                    ],
                 ],
                 static::ACTION_FIELD_NUMERIC => [
                     static::PARAM_SLUG_DEFAULT => 0,
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_ENUM => [
+                        0,
+                        1,
+                        2,
+                        3,
+                    ],
                 ],
                 static::ACTION_FIELD_MIN_LEN => [
                     static::PARAM_SLUG_DEFAULT => 0,
@@ -83,18 +97,35 @@ class RuCaptcha extends DeCaptchaBase
                 static::ACTION_FIELD_LANGUAGE => [
                     static::PARAM_SLUG_DEFAULT => 0,
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_ENUM => [
+                        0,
+                        1,
+                        2,
+                    ],
                 ],
                 static::ACTION_FIELD_QUESTION => [
                     static::PARAM_SLUG_DEFAULT => 0,
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_ENUM => [
+                        0,
+                        1,
+                    ],
                 ],
                 static::ACTION_FIELD_CALC => [
                     static::PARAM_SLUG_DEFAULT => 0,
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_ENUM => [
+                        0,
+                        1,
+                    ],
                 ],
                 static::ACTION_FIELD_HEADER_ACAO => [
                     static::PARAM_SLUG_DEFAULT => 0,
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_ENUM => [
+                        0,
+                        1,
+                    ],
                 ],
                 static::ACTION_FIELD_TEXTINSTRUCTIONS => [
                     static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,

@@ -82,6 +82,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => 20,
     ];
 
+    public $wiki = [];
+
     /**
      * DeCaptchaBase constructor.
      *

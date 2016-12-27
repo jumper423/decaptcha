@@ -14,13 +14,21 @@ class Captcha24 extends RuCaptcha
         parent::init();
 
         unset(
-            $this->paramsNames[self::ACTION_FIELD_QUESTION],
-            $this->paramsNames[self::ACTION_FIELD_TEXTINSTRUCTIONS],
-            $this->paramsNames[self::ACTION_FIELD_PINGBACK],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_QUESTION],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_TEXTINSTRUCTIONS],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_PINGBACK]
+            $this->paramsNames[static::ACTION_FIELD_QUESTION],
+            $this->paramsNames[static::ACTION_FIELD_TEXTINSTRUCTIONS],
+            $this->paramsNames[static::ACTION_FIELD_PINGBACK],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_QUESTION],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_TEXTINSTRUCTIONS],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PINGBACK]
         );
-        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_SOFT_ID][self::PARAM_SLUG_DEFAULT] = 0;
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_NUMERIC][static::PARAM_SLUG_ENUM] = [
+            0,
+            1,
+        ];
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LANGUAGE][static::PARAM_SLUG_ENUM] = [
+            0,
+            1,
+        ];
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SOFT_ID][static::PARAM_SLUG_DEFAULT] = 0;
     }
 }

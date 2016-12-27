@@ -62,6 +62,10 @@ class Anticaptcha extends DeCaptchaBase
                 static::ACTION_FIELD_LANGUAGE => [
                     static::PARAM_SLUG_DEFAULT => 'en',
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+                    static::PARAM_SLUG_ENUM => [
+                        'en',
+                        'rn',
+                    ],
                 ],
                 static::ACTION_FIELD_TASK => [
                     static::PARAM_SLUG_REQUIRE => true,
@@ -81,15 +85,32 @@ class Anticaptcha extends DeCaptchaBase
                         ],
                         static::ACTION_FIELD_PHRASE => [
                             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_BOOLEAN,
+                            static::PARAM_SLUG_ENUM => [
+                                true,
+                                false,
+                            ],
                         ],
                         static::ACTION_FIELD_REGSENSE => [
                             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_BOOLEAN,
+                            static::PARAM_SLUG_ENUM => [
+                                true,
+                                false,
+                            ],
                         ],
                         static::ACTION_FIELD_NUMERIC => [
                             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
+                            static::PARAM_SLUG_ENUM => [
+                                0,
+                                1,
+                                2,
+                            ],
                         ],
                         static::ACTION_FIELD_CALC => [
                             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_BOOLEAN,
+                            static::PARAM_SLUG_ENUM => [
+                                true,
+                                false,
+                            ],
                         ],
                         static::ACTION_FIELD_MIN_LEN => [
                             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
