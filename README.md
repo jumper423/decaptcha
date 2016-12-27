@@ -77,17 +77,17 @@ vendor/bin/phpunit
 
 Название | Код | Тип | Обязательное значение | Значение по умолчания | Возможные значения | Описание 
  --- | --- | --- | --- | --- | ---| --- 
- ACTION_FIELD_KEY | ACTION_FIELD_KEY | STRING | + |  | | 
- ACTION_FIELD_FILE | ACTION_FIELD_FILE | MIX | + |  | | 
- ACTION_FIELD_PHRASE | ACTION_FIELD_PHRASE | INTEGER | - | 0 | | 
- ACTION_FIELD_REGSENSE | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | | 
- ACTION_FIELD_NUMERIC | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | | 
- ACTION_FIELD_MIN_LEN | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 | | 
- ACTION_FIELD_MAX_LEN | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 | | 
- ACTION_FIELD_LANGUAGE | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | | 
- ACTION_FIELD_QUESTION | ACTION_FIELD_QUESTION | INTEGER | - | 0 | | 
- ACTION_FIELD_CALC | ACTION_FIELD_CALC | INTEGER | - | 0 | | 
- ACTION_FIELD_HEADER_ACAO | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | | 
- ACTION_FIELD_TEXTINSTRUCTIONS | ACTION_FIELD_TEXTINSTRUCTIONS | STRING | - |  | | 
- ACTION_FIELD_PINGBACK | ACTION_FIELD_PINGBACK | STRING | - |  | | 
+ Ключ | ACTION_FIELD_KEY | STRING | + |  | | Ключ от учетной записи 
+ Картинка | ACTION_FIELD_FILE | MIX | + |  | | Путь на файл с картинкой или ссылка на него 
+ Несколько слов | ACTION_FIELD_PHRASE | INTEGER | - | 0 | | Работник должен ввести текст с одним или несколькими пробелами 
+ Регистр | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | | Работник должен ввсести ответ с учетом регистра 
+ Символы | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | | Какие символы используется в капче 
+ Длина min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 | | Минимальная длина капчи 
+ Длина max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 | | Максимальная длина капчи 
+ Язык | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | | Символы какого языка размещенны на капче 
+ Вопрос | ACTION_FIELD_QUESTION | INTEGER | - | 0 | | На изображении задан вопрос, работник должен написать ответ 
+ Вычисление | ACTION_FIELD_CALC | INTEGER | - | 0 | | На капче изображенно математичекая выражение и её необходимо решить 
+ Кросс-доменный | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | | Необходимо для кросс-доменных AJAX запросов в браузерных приложениях. 
+ Инструкция | ACTION_FIELD_TEXTINSTRUCTIONS | STRING | - |  | | Текстовая капча или инструкция для прохождения капчи. 
+ Ответ на | ACTION_FIELD_PINGBACK | STRING | - |  | | Указание для сервера, что после распознания изображения, нужно отправить ответ на указанный адрес. 
 
