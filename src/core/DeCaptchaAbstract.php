@@ -262,11 +262,11 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         $params = [];
         foreach ($fields as $field => $settings) {
             $value = null;
-            if (array_key_exists($field, $this->params) && (!array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) ^ (array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) && $settings[self::PARAM_SLUG_VARIABLE] === false))) {
-                $value = $this->params[$field];
-            }
             if (array_key_exists(self::PARAM_SLUG_DEFAULT, $settings)) {
                 $value = $settings[self::PARAM_SLUG_DEFAULT];
+            }
+            if (array_key_exists($field, $this->params) && (!array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) ^ (array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) && $settings[self::PARAM_SLUG_VARIABLE] === false))) {
+                $value = $this->params[$field];
             }
             if (array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->params)) {
                 $value = $this->getParamSpec($settings[self::PARAM_SLUG_SPEC], array_key_exists(self::PARAM_SLUG_CODING, $settings) ? $settings[self::PARAM_SLUG_CODING] : null);
@@ -280,21 +280,25 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             if (array_key_exists($field, $this->paramsNames)) {
                 switch ($settings[self::PARAM_SLUG_TYPE]) {
                     case self::PARAM_FIELD_TYPE_INTEGER:
-                        $params[$this->paramsNames[$field]] = (int) $value;
+                        $value = (int)$value;
                         break;
                     case self::PARAM_FIELD_TYPE_STRING:
-                        $params[$this->paramsNames[$field]] = (string) $value;
+                        $value = (string)$value;
                         break;
                     case self::PARAM_FIELD_TYPE_BOOLEAN:
-                        $params[$this->paramsNames[$field]] = (bool) $value;
+                        $value = (bool)$value;
                         break;
                     case self::PARAM_FIELD_TYPE_MIX:
-                        $params[$this->paramsNames[$field]] = $value;
+//                        $value = $value;
                         break;
                     case self::PARAM_FIELD_TYPE_OBJECT:
-                        $params[$this->paramsNames[$field]] = $this->getParams($action, $field);
+                        $value = $this->getParams($action, $field);
                         break;
                 }
+                if (array_key_exists(self::PARAM_SLUG_ENUM, $settings) && !in_array($value, $settings[static::PARAM_SLUG_ENUM])) {
+                    throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_PARAM_ENUM, (array_key_exists($field, $this->paramsNames) ? $this->paramsNames[$field] : $field) . ' = ' . $value, $this->errorLang);
+                }
+                $params[$this->paramsNames[$field]] = $value;
             }
         }
 

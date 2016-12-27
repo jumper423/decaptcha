@@ -53,6 +53,7 @@ class DeCaptchaErrors extends Exception
     const ERROR_RECAPTCHA_INVALID_DOMAIN = 37;
     const ERROR_RECAPTCHA_OLD_BROWSER = 38;
     const ERROR_RECAPTCHA_STOKEN_EXPIRED = 39;
+    const ERROR_PARAM_ENUM = 40;
 
     public $errorsMessages = [
         self::ERROR_RECAPTCHA_STOKEN_EXPIRED => [
@@ -210,6 +211,10 @@ class DeCaptchaErrors extends Exception
         self::ERROR_PROXY_BANNED => [
             self::LANG_RU => 'Прокси забанен на целевом сервисе капчи',
             self::LANG_EN => 'Прокси забанен на целевом сервисе капчи',
+        ],
+        self::ERROR_PARAM_ENUM => [
+            self::LANG_RU => 'Нет в допустимых значиниях поля',
+            self::LANG_EN => 'Нет в допустимых значиниях поля',
         ],
     ];
 
