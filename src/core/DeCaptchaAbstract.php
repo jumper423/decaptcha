@@ -280,13 +280,13 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             if (array_key_exists($field, $this->paramsNames)) {
                 switch ($settings[self::PARAM_SLUG_TYPE]) {
                     case self::PARAM_FIELD_TYPE_INTEGER:
-                        $value = (int)$value;
+                        $value = (int) $value;
                         break;
                     case self::PARAM_FIELD_TYPE_STRING:
-                        $value = (string)$value;
+                        $value = (string) $value;
                         break;
                     case self::PARAM_FIELD_TYPE_BOOLEAN:
-                        $value = (bool)$value;
+                        $value = (bool) $value;
                         break;
                     case self::PARAM_FIELD_TYPE_MIX:
 //                        $value = $value;
@@ -296,7 +296,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                         break;
                 }
                 if (array_key_exists(self::PARAM_SLUG_ENUM, $settings) && !in_array($value, $settings[static::PARAM_SLUG_ENUM])) {
-                    throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_PARAM_ENUM, (array_key_exists($field, $this->paramsNames) ? $this->paramsNames[$field] : $field) . ' = ' . $value, $this->errorLang);
+                    throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_PARAM_ENUM, (array_key_exists($field, $this->paramsNames) ? $this->paramsNames[$field] : $field).' = '.$value, $this->errorLang);
                 }
                 $params[$this->paramsNames[$field]] = $value;
             }
