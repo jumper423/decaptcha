@@ -46,8 +46,8 @@ class RuCaptcha extends DeCaptchaBase
             static::ACTION_METHOD => static::ACTION_METHOD_POST,
             static::ACTION_FIELDS => [
                 static::ACTION_FIELD_METHOD => [
-                    static::PARAM_SLUG_DEFAULT => 'post',
-                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+                    static::PARAM_SLUG_DEFAULT    => 'post',
+                    static::PARAM_SLUG_TYPE       => static::PARAM_FIELD_TYPE_STRING,
                     static::PARAM_SLUG_NOTWIKI    => true,
                 ],
                 static::ACTION_FIELD_KEY => [
@@ -103,9 +103,9 @@ class RuCaptcha extends DeCaptchaBase
                     static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
                 ],
                 static::ACTION_FIELD_SOFT_ID => [
-                    static::PARAM_SLUG_VARIABLE => false,
-                    static::PARAM_SLUG_DEFAULT  => 882,
-                    static::PARAM_SLUG_TYPE     => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_VARIABLE   => false,
+                    static::PARAM_SLUG_DEFAULT    => 882,
+                    static::PARAM_SLUG_TYPE       => static::PARAM_FIELD_TYPE_INTEGER,
                     static::PARAM_SLUG_NOTWIKI    => true,
                 ],
             ],
