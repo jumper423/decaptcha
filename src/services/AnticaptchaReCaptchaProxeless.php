@@ -55,4 +55,9 @@ class AnticaptchaReCaptchaProxeless extends Anticaptcha
 
         $this->decodeSettings[static::DECODE_ACTION][static::DECODE_ACTION_GET][static::DECODE_PARAMS][static::DECODE_PARAM_CODE][static::DECODE_PARAM_SETTING_MARKER] = 'solution.gRecaptchaResponse';
     }
+
+    public function recognize($additionally = [], $null = null)
+    {
+        return parent::recognize(null, $additionally);
+    }
 }
