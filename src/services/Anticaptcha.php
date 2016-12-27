@@ -21,7 +21,6 @@ class Anticaptcha extends DeCaptchaBase
     const DECODE_PARAM_BALANCE = 4;
 
     const ACTION_FIELD_TASK = 17;
-    const PARAM_FIELD_TYPE_OBJECT = 3;
     const PARAM_FIELD_TYPE_BOOLEAN = 4;
 
     const ACTION_BALANCE = 3;
@@ -68,6 +67,7 @@ class Anticaptcha extends DeCaptchaBase
                 ],
                 static::ACTION_FIELD_TASK => [
                     static::PARAM_SLUG_REQUIRE => true,
+                    static::PARAM_SLUG_DEFAULT => [],
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_OBJECT,
                     static::ACTION_FIELDS      => [
                         static::ACTION_FIELD_METHOD => [

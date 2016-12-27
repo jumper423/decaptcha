@@ -29,6 +29,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_FIELD_TYPE_STRING = 0;
     const PARAM_FIELD_TYPE_INTEGER = 1;
     const PARAM_FIELD_TYPE_MIX = 2;
+    const PARAM_FIELD_TYPE_OBJECT = 3;
 
     const PARAM_SLUG_DEFAULT = 0;
     const PARAM_SLUG_TYPE = 1;
@@ -239,18 +240,24 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param $action
+     * @param $field
      *
      * @throws DeCaptchaErrors
      *
      * @return array
      */
-    protected function getParams($action)
+    protected function getParams($action, $field = null)
     {
         if (empty($this->actions[$action])) {
             return [];
         }
+        if (!is_null($field)) {
+            $fields = $this->actions[$action][static::ACTION_FIELDS][$field][static::ACTION_FIELDS];
+        } else {
+            $fields = $this->actions[$action][static::ACTION_FIELDS];
+        }
         $params = [];
-        foreach ($this->actions[$action][static::ACTION_FIELDS] as $field => $settings) {
+        foreach ($fields as $field => $settings) {
             $value = null;
             if (array_key_exists($field, $this->params) && (!array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) ^ (array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) && $settings[self::PARAM_SLUG_VARIABLE] === false))) {
                 $value = $this->params[$field];
@@ -277,6 +284,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                         break;
                     case self::PARAM_FIELD_TYPE_MIX:
                         $params[$this->paramsNames[$field]] = $value;
+                        break;
+                    case self::PARAM_FIELD_TYPE_OBJECT:
+                        $params[$this->paramsNames[$field]] = $this->getParams($action, $field);
                         break;
                 }
             }
