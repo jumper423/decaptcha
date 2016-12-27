@@ -19,15 +19,15 @@ class AnticaptchaReCaptchaProxeless extends Anticaptcha
             static::ACTION_FIELD_METHOD => [
                 static::PARAM_SLUG_DEFAULT => 'NoCaptchaTask',
                 static::PARAM_SLUG_REQUIRE => true,
-                static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+                static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
             ],
             static::ACTION_FIELD_PAGEURL => [
                 static::PARAM_SLUG_REQUIRE => true,
-                static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+                static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
             ],
             static::ACTION_FIELD_GOOGLEKEY => [
                 static::PARAM_SLUG_REQUIRE => true,
-                static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+                static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
             ],
             static::ACTION_FIELD_GOOGLETOKEN => [
                 static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
