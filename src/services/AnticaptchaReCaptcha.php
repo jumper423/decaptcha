@@ -27,7 +27,7 @@ class AnticaptchaReCaptcha extends AnticaptchaReCaptchaProxeless
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][static::ACTION_FIELD_PROXYTYPE] = [
             static::PARAM_SLUG_REQUIRE => true,
             static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
-            static::PARAM_SLUG_ENUM => [
+            static::PARAM_SLUG_ENUM    => [
                 'http',
                 'socks4',
                 'socks5',
