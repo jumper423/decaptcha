@@ -35,6 +35,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_SLUG_REQUIRE = 2;
     const PARAM_SLUG_SPEC = 3;
     const PARAM_SLUG_VARIABLE = 4;
+    const PARAM_SLUG_CODING = 5;
+
+    const PARAM_SLUG_CODING_BASE64 = 0;
 
     const PARAM_SPEC_API_KEY = -1;
     const PARAM_SPEC_FILE = -2;
@@ -206,16 +209,21 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param $param
+     * @param $coding
      *
      * @return \CURLFile|mixed|null|string
      */
-    public function getParamSpec($param)
+    public function getParamSpec($param, $coding = null)
     {
         if (!array_key_exists($param, $this->params) || is_null($this->params[$param])) {
             return null;
         }
         switch ($param) {
             case static::PARAM_SPEC_FILE:
+                switch ($coding) {
+                    case static::PARAM_SLUG_CODING_BASE64:
+                        return base64_encode(file_get_contents($this->params[$param]));
+                }
                 return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->getFilePath($this->params[$param])) : '@'.$this->getFilePath($this->params[$param]);
             case static::PARAM_SPEC_API_KEY:
                 return is_callable($this->params[$param]) ? $this->params[$param]() : $this->params[$param];
@@ -250,7 +258,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                 $value = $settings[self::PARAM_SLUG_DEFAULT];
             }
             if (array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->params)) {
-                $value = $this->getParamSpec($settings[self::PARAM_SLUG_SPEC]);
+                $value = $this->getParamSpec($settings[self::PARAM_SLUG_SPEC], array_key_exists(self::PARAM_SLUG_CODING, $settings) ? $settings[self::PARAM_SLUG_CODING] : null);
             }
             if (is_null($value)) {
                 if (array_key_exists(self::PARAM_SLUG_REQUIRE, $settings) && $settings[self::PARAM_SLUG_REQUIRE] === true) {
