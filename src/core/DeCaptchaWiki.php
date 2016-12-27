@@ -253,7 +253,7 @@ data-stoken="urFaI2UjzL9Q4gf4a-aeCNAePAZUuq7nYbX40BVb69aXVq-apf_k-kZ7i-iXE2Wxkok
             if (isset($this->texts[$param])) {
                 echo " {$this->texts[$param]['name']['ru']} |";
             } else {
-                echo " |";
+                echo ' |';
             }
             echo " {$this->ggg($rr, 'ACTION_FIELD_', $param)} |";
             echo ' '.substr($this->ggg($rr, 'PARAM_FIELD_TYPE_', $setting[RuCaptcha::PARAM_SLUG_TYPE]), 17).' |';
@@ -263,7 +263,7 @@ data-stoken="urFaI2UjzL9Q4gf4a-aeCNAePAZUuq7nYbX40BVb69aXVq-apf_k-kZ7i-iXE2Wxkok
             if (isset($this->texts[$param])) {
                 echo " {$this->texts[$param]['desc']['ru']} ";
             } else {
-                echo " ";
+                echo ' ';
             }
             echo PHP_EOL;
 //            echo " --- | --- | --- | --- | ---| --- " . PHP_EOL;
