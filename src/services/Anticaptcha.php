@@ -62,7 +62,7 @@ class Anticaptcha extends DeCaptchaBase
                 static::ACTION_FIELD_LANGUAGE => [
                     static::PARAM_SLUG_DEFAULT => 'en',
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
-                    static::PARAM_SLUG_ENUM => [
+                    static::PARAM_SLUG_ENUM    => [
                         'en',
                         'rn',
                     ],
