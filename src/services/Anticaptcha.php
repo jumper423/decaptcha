@@ -76,10 +76,10 @@ class Anticaptcha extends DeCaptchaBase
                             static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
                         ],
                         static::ACTION_FIELD_FILE => [
-                            static::PARAM_SLUG_REQUIRE => true,
-                            static::PARAM_SLUG_SPEC    => static::PARAM_SPEC_FILE,
+                            static::PARAM_SLUG_REQUIRE   => true,
+                            static::PARAM_SLUG_SPEC      => static::PARAM_SPEC_FILE,
                             static::PARAM_SLUG_CODING    => static::PARAM_SLUG_CODING_BASE64,
-                            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+                            static::PARAM_SLUG_TYPE      => static::PARAM_FIELD_TYPE_STRING,
                         ],
                         static::ACTION_FIELD_PHRASE => [
                             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_BOOLEAN,

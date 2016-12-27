@@ -224,6 +224,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                     case static::PARAM_SLUG_CODING_BASE64:
                         return base64_encode(file_get_contents($this->params[$param]));
                 }
+
                 return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->getFilePath($this->params[$param])) : '@'.$this->getFilePath($this->params[$param]);
             case static::PARAM_SPEC_API_KEY:
                 return is_callable($this->params[$param]) ? $this->params[$param]() : $this->params[$param];
