@@ -12,6 +12,7 @@ class Captcha24 extends RuCaptcha
     public function init()
     {
         parent::init();
+
         unset(
             $this->paramsNames[self::ACTION_FIELD_QUESTION],
             $this->paramsNames[self::ACTION_FIELD_TEXTINSTRUCTIONS],
