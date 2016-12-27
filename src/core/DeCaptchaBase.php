@@ -125,13 +125,13 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     /**
      * Универсальная отправка повторяющихся запросов.
      *
-     * @param int $action
-     * @param int $decodeAction
-     * @param int $setParam
-     * @param int $decodeSerParam
-     * @param int $ok
-     * @param int $sleep
-     * @param int $repeat
+     * @param int      $action
+     * @param int      $decodeAction
+     * @param int      $setParam
+     * @param int      $decodeSerParam
+     * @param int      $ok
+     * @param int      $sleep
+     * @param int      $repeat
      * @param int|null $error
      *
      * @throws DeCaptchaErrors
