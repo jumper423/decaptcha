@@ -44,7 +44,6 @@ class Consts
     const PARAM_SPEC_CAPTCHA = -3;
     const PARAM_SPEC_CODE = -4;
 
-
     const ACTION_RECOGNIZE = 1;
     const ACTION_UNIVERSAL = 2;
     const ACTION_UNIVERSAL_WITH_CAPTCHA = 3;
@@ -98,9 +97,6 @@ class Consts
     const DECODE_PARAM_ERROR = 4;
     const DECODE_PARAM_BALANCE = 5;
 
-
-
     const LANG_RU = 1;
     const LANG_EN = 2;
-
 }
