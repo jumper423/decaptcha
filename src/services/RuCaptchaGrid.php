@@ -7,7 +7,7 @@ namespace jumper423\decaptcha\services;
  */
 class RuCaptchaGrid extends RuCaptchaInstruction
 {
-    const ACTION_FIELD_RECAPTCHA = 17;
+    const ACTION_FIELD_RECAPTCHA = 18;
 
     public function init()
     {

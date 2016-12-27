@@ -3,6 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 use jumper423\decaptcha\core\DeCaptchaBase;
+use jumper423\decaptcha\core\DeCaptchaErrors;
 
 /**
  * Class Anticaptcha.
@@ -17,14 +18,14 @@ class Anticaptcha extends DeCaptchaBase
     const RESPONSE_GET_OK = 'ready';
     const RESPONSE_GET_REPEAT = 'processing';
 
-    const DECODE_PARAM_ERROR = 3;
-    const DECODE_PARAM_BALANCE = 4;
+    const DECODE_PARAM_ERROR = 4;
+    const DECODE_PARAM_BALANCE = 5;
 
-    const ACTION_FIELD_TASK = 17;
-    const PARAM_FIELD_TYPE_BOOLEAN = 4;
+    const ACTION_FIELD_TASK = 18;
+    const PARAM_FIELD_TYPE_BOOLEAN = 5;
 
-    const ACTION_BALANCE = 3;
-    const DECODE_ACTION_BALANCE = 3;
+    const ACTION_BALANCE = 4;
+    const DECODE_ACTION_BALANCE = 4;
 
     protected $paramsNames = [
         self::ACTION_FIELD_KEY        => 'clientKey',
@@ -175,6 +176,26 @@ class Anticaptcha extends DeCaptchaBase
                 ],
             ],
         ];
+    }
+
+    /**
+     * @throws DeCaptchaErrors
+     *
+     * @return bool
+     */
+    protected function requestRecognize()
+    {
+        return $this->requestRepeat(static::ACTION_RECOGNIZE, static::DECODE_ACTION_RECOGNIZE, static::PARAM_SPEC_CAPTCHA, static::DECODE_PARAM_CAPTCHA, static::RESPONSE_RECOGNIZE_OK, static::SLEEP_RECOGNIZE, static::RESPONSE_RECOGNIZE_REPEAT, static::DECODE_PARAM_ERROR);
+    }
+
+    /**
+     * @throws DeCaptchaErrors
+     *
+     * @return bool
+     */
+    protected function requestCode()
+    {
+        return $this->requestRepeat(static::ACTION_UNIVERSAL_WITH_CAPTCHA, static::DECODE_ACTION_GET, static::PARAM_SPEC_CODE, static::DECODE_PARAM_CODE, static::RESPONSE_GET_OK, static::SLEEP_GET, static::RESPONSE_GET_REPEAT, static::DECODE_PARAM_ERROR);
     }
 
     /**

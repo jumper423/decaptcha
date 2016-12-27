@@ -9,36 +9,36 @@ use Exception;
  */
 abstract class DeCaptchaAbstract implements DeCaptchaInterface
 {
-    const RESPONSE_TYPE_STRING = 0;
-    const RESPONSE_TYPE_JSON = 1;
+    const RESPONSE_TYPE_STRING = 1;
+    const RESPONSE_TYPE_JSON = 2;
 
-    const ACTION_FIELDS = 0;
-    const ACTION_URI = 1;
-    const ACTION_METHOD = 2;
-    const ACTION_JSON = 3;
+    const ACTION_FIELDS = 1;
+    const ACTION_URI = 2;
+    const ACTION_METHOD = 3;
+    const ACTION_JSON = 4;
 
-    const ACTION_METHOD_POST = 0;
-    const ACTION_METHOD_GET = 1;
+    const ACTION_METHOD_POST = 1;
+    const ACTION_METHOD_GET = 2;
 
-    const DECODE_FORMAT = 0;
-    const DECODE_ACTION = 1;
-    const DECODE_SEPARATOR = 2;
-    const DECODE_PARAMS = 3;
-    const DECODE_PARAM_SETTING_MARKER = 4;
+    const DECODE_FORMAT = 1;
+    const DECODE_ACTION = 2;
+    const DECODE_SEPARATOR = 3;
+    const DECODE_PARAMS = 4;
+    const DECODE_PARAM_SETTING_MARKER = 5;
 
-    const PARAM_FIELD_TYPE_STRING = 0;
-    const PARAM_FIELD_TYPE_INTEGER = 1;
-    const PARAM_FIELD_TYPE_MIX = 2;
-    const PARAM_FIELD_TYPE_OBJECT = 3;
+    const PARAM_FIELD_TYPE_STRING = 1;
+    const PARAM_FIELD_TYPE_INTEGER = 2;
+    const PARAM_FIELD_TYPE_MIX = 3;
+    const PARAM_FIELD_TYPE_OBJECT = 4;
 
-    const PARAM_SLUG_DEFAULT = 0;
-    const PARAM_SLUG_TYPE = 1;
-    const PARAM_SLUG_REQUIRE = 2;
-    const PARAM_SLUG_SPEC = 3;
-    const PARAM_SLUG_VARIABLE = 4;
-    const PARAM_SLUG_CODING = 5;
+    const PARAM_SLUG_DEFAULT = 1;
+    const PARAM_SLUG_TYPE = 2;
+    const PARAM_SLUG_REQUIRE = 3;
+    const PARAM_SLUG_SPEC = 4;
+    const PARAM_SLUG_VARIABLE = 5;
+    const PARAM_SLUG_CODING = 6;
 
-    const PARAM_SLUG_CODING_BASE64 = 0;
+    const PARAM_SLUG_CODING_BASE64 = 1;
 
     const PARAM_SPEC_API_KEY = -1;
     const PARAM_SPEC_FILE = -2;

@@ -9,27 +9,27 @@ namespace jumper423\decaptcha\core;
  */
 class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
 {
-    const ACTION_RECOGNIZE = 0;
-    const ACTION_UNIVERSAL = 1;
-    const ACTION_UNIVERSAL_WITH_CAPTCHA = 2;
+    const ACTION_RECOGNIZE = 1;
+    const ACTION_UNIVERSAL = 2;
+    const ACTION_UNIVERSAL_WITH_CAPTCHA = 3;
 
-    const ACTION_FIELD_METHOD = 0;
-    const ACTION_FIELD_KEY = 1;
-    const ACTION_FIELD_FILE = 2;
-    const ACTION_FIELD_PHRASE = 3;
-    const ACTION_FIELD_REGSENSE = 4;
-    const ACTION_FIELD_NUMERIC = 5;
-    const ACTION_FIELD_MIN_LEN = 6;
-    const ACTION_FIELD_MAX_LEN = 7;
-    const ACTION_FIELD_LANGUAGE = 8;
-    const ACTION_FIELD_SOFT_ID = 9;
-    const ACTION_FIELD_CAPTCHA_ID = 10;
-    const ACTION_FIELD_ACTION = 11;
-    const ACTION_FIELD_QUESTION = 12;
-    const ACTION_FIELD_CALC = 13;
-    const ACTION_FIELD_HEADER_ACAO = 14;
-    const ACTION_FIELD_TEXTINSTRUCTIONS = 15;
-    const ACTION_FIELD_PINGBACK = 16;
+    const ACTION_FIELD_METHOD = 1;
+    const ACTION_FIELD_KEY = 2;
+    const ACTION_FIELD_FILE = 3;
+    const ACTION_FIELD_PHRASE = 4;
+    const ACTION_FIELD_REGSENSE = 5;
+    const ACTION_FIELD_NUMERIC = 6;
+    const ACTION_FIELD_MIN_LEN = 7;
+    const ACTION_FIELD_MAX_LEN = 8;
+    const ACTION_FIELD_LANGUAGE = 9;
+    const ACTION_FIELD_SOFT_ID = 10;
+    const ACTION_FIELD_CAPTCHA_ID = 11;
+    const ACTION_FIELD_ACTION = 12;
+    const ACTION_FIELD_QUESTION = 13;
+    const ACTION_FIELD_CALC = 14;
+    const ACTION_FIELD_HEADER_ACAO = 15;
+    const ACTION_FIELD_TEXTINSTRUCTIONS = 16;
+    const ACTION_FIELD_PINGBACK = 17;
 
     const RESPONSE_RECOGNIZE_OK = 'OK';
     const RESPONSE_RECOGNIZE_REPEAT = 'ERROR_NO_SLOT_AVAILABLE';
@@ -40,13 +40,13 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const SLEEP_GET = 2;
     const SLEEP_BETWEEN = 5;
 
-    const DECODE_ACTION_RECOGNIZE = 0;
-    const DECODE_ACTION_GET = 1;
-    const DECODE_ACTION_UNIVERSAL = 2;
+    const DECODE_ACTION_RECOGNIZE = 1;
+    const DECODE_ACTION_GET = 2;
+    const DECODE_ACTION_UNIVERSAL = 3;
 
-    const DECODE_PARAM_RESPONSE = 0;
-    const DECODE_PARAM_CAPTCHA = 1;
-    const DECODE_PARAM_CODE = 2;
+    const DECODE_PARAM_RESPONSE = 1;
+    const DECODE_PARAM_CAPTCHA = 2;
+    const DECODE_PARAM_CODE = 3;
 
     protected $actions = [
         self::ACTION_RECOGNIZE              => [],
@@ -132,13 +132,17 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
      * @param int $ok
      * @param int $sleep
      * @param int $repeat
+     * @param int|null $error
      *
      * @throws DeCaptchaErrors
      *
      * @return bool
      */
-    protected function requestRepeat($action, $decodeAction, $setParam, $decodeSerParam, $ok, $sleep, $repeat)
+    protected function requestRepeat($action, $decodeAction, $setParam, $decodeSerParam, $ok, $sleep, $repeat, $error = null)
     {
+        if (is_null($error)) {
+            $error = static::DECODE_PARAM_RESPONSE;
+        }
         while ($this->limitHasNotYetEnded($action)) {
             $this->executionDelayed($sleep);
             $response = $this->getResponse($action);
@@ -151,7 +155,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             } elseif ($dataRecognize[static::DECODE_PARAM_RESPONSE] === $repeat) {
                 continue;
             }
-            throw new DeCaptchaErrors($dataRecognize[static::DECODE_PARAM_RESPONSE]);
+            throw new DeCaptchaErrors($dataRecognize[$error]);
         }
         throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
     }
