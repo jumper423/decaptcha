@@ -39,6 +39,12 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_FIELD_PROXY = 22;
     const ACTION_FIELD_PROXYTYPE = 23;
     const ACTION_FIELD_PAGEURL = 24;
+    const ACTION_FIELD_GOOGLETOKEN = 25;
+    const ACTION_FIELD_PROXYLOGIN = 26;
+    const ACTION_FIELD_PROXYPASS = 27;
+    const ACTION_FIELD_USERAGENT = 28;
+    const ACTION_FIELD_COOKIES = 29;
+    const ACTION_FIELD_PROXYPORT = 30;
 
     const RESPONSE_RECOGNIZE_OK = 'OK';
     const RESPONSE_RECOGNIZE_REPEAT = 'ERROR_NO_SLOT_AVAILABLE';
