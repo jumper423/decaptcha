@@ -21,9 +21,6 @@ class Anticaptcha extends DeCaptchaBase
     const DECODE_PARAM_ERROR = 4;
     const DECODE_PARAM_BALANCE = 5;
 
-    const ACTION_FIELD_TASK = 18;
-    const PARAM_FIELD_TYPE_BOOLEAN = 5;
-
     const ACTION_BALANCE = 4;
     const DECODE_ACTION_BALANCE = 4;
 

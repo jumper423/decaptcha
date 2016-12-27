@@ -9,9 +9,6 @@ class Pixodrom extends RuCaptcha
 {
     protected $host = 'pixodrom.com';
 
-    const ACTION_FIELD_IS_RUSSIAN = 18;
-    const ACTION_FIELD_LABEL = 19;
-
     public function init()
     {
         parent::init();

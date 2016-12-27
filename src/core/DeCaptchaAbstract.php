@@ -30,6 +30,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_FIELD_TYPE_INTEGER = 2;
     const PARAM_FIELD_TYPE_MIX = 3;
     const PARAM_FIELD_TYPE_OBJECT = 4;
+    const PARAM_FIELD_TYPE_BOOLEAN = 5;
 
     const PARAM_SLUG_DEFAULT = 1;
     const PARAM_SLUG_TYPE = 2;
@@ -281,6 +282,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                         break;
                     case self::PARAM_FIELD_TYPE_STRING:
                         $params[$this->paramsNames[$field]] = (string) $value;
+                        break;
+                    case self::PARAM_FIELD_TYPE_BOOLEAN:
+                        $params[$this->paramsNames[$field]] = (bool)$value;
                         break;
                     case self::PARAM_FIELD_TYPE_MIX:
                         $params[$this->paramsNames[$field]] = $value;

@@ -7,11 +7,6 @@ namespace jumper423\decaptcha\services;
  */
 class RuCaptchaReCaptcha extends RuCaptcha
 {
-    const ACTION_FIELD_GOOGLEKEY = 20;
-    const ACTION_FIELD_PROXY = 21;
-    const ACTION_FIELD_PROXYTYPE = 22;
-    const ACTION_FIELD_PAGEURL = 23;
-
     public function init()
     {
         parent::init();
