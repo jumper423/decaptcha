@@ -240,8 +240,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         $this->causeAnError = $causeAnError;
     }
 
-    public function getWiki($lang = 'en'){
+    public function getWiki($lang = 'en')
+    {
         $this->wiki->setLang($lang);
+
         return $this->wiki;
     }
 }
