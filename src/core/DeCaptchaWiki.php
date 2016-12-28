@@ -262,7 +262,8 @@ class DeCaptchaWiki
 //        file_put_contents(__DIR__ . '/12331123', json_encode(get_defined_constants(true)));
     }
 
-    public function line($rr, $param, $setting){
+    public function line($rr, $param, $setting)
+    {
         if (isset($this->texts[$param])) {
             echo " {$this->texts[$param]['name']['ru']} |";
         } else {

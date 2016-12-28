@@ -55,9 +55,9 @@ class Anticaptcha extends DeCaptchaBase
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
                 ],
                 static::ACTION_FIELD_SOFT_ID => [
-                    static::PARAM_SLUG_VARIABLE => false,
-                    static::PARAM_SLUG_DEFAULT  => 882,
-                    static::PARAM_SLUG_TYPE     => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_VARIABLE   => false,
+                    static::PARAM_SLUG_DEFAULT    => 882,
+                    static::PARAM_SLUG_TYPE       => static::PARAM_FIELD_TYPE_INTEGER,
                     static::PARAM_SLUG_NOTWIKI    => true,
                 ],
                 static::ACTION_FIELD_LANGUAGE => [
@@ -69,15 +69,15 @@ class Anticaptcha extends DeCaptchaBase
                     ],
                 ],
                 static::ACTION_FIELD_TASK => [
-                    static::PARAM_SLUG_REQUIRE => true,
-                    static::PARAM_SLUG_DEFAULT => [],
-                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_OBJECT,
+                    static::PARAM_SLUG_REQUIRE    => true,
+                    static::PARAM_SLUG_DEFAULT    => [],
+                    static::PARAM_SLUG_TYPE       => static::PARAM_FIELD_TYPE_OBJECT,
                     static::PARAM_SLUG_NOTWIKI    => true,
-                    static::ACTION_FIELDS      => [
+                    static::ACTION_FIELDS         => [
                         static::ACTION_FIELD_METHOD => [
-                            static::PARAM_SLUG_DEFAULT => 'ImageToTextTask',
-                            static::PARAM_SLUG_REQUIRE => true,
-                            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+                            static::PARAM_SLUG_DEFAULT    => 'ImageToTextTask',
+                            static::PARAM_SLUG_REQUIRE    => true,
+                            static::PARAM_SLUG_TYPE       => static::PARAM_FIELD_TYPE_STRING,
                             static::PARAM_SLUG_NOTWIKI    => true,
                         ],
                         static::ACTION_FIELD_FILE => [
