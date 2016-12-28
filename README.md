@@ -91,3 +91,18 @@ vendor/bin/phpunit
  Инструкция | ACTION_FIELD_TEXTINSTRUCTIONS | STRING | - |  | | Текстовая капча или инструкция для прохождения капчи. 
  Ответ на | ACTION_FIELD_PINGBACK | STRING | - |  | | Указание для сервера, что после распознания изображения, нужно отправить ответ на указанный адрес. 
 
+
+Название | Код | Тип | Обязательное | По умолчания | Возможные значения | Описание 
+ --- | --- | --- | --- | --- | ---| --- 
+ Ключ | ACTION_FIELD_KEY | STRING | + |  | | Ключ от учетной записи 
+ Язык | ACTION_FIELD_LANGUAGE | STRING | - | en | | Символы какого языка размещенны на капче 
+ Адрес | ACTION_FIELD_PAGEURL | STRING | + |  | | Адрес страницы на которой решается капча. 
+ Google key | ACTION_FIELD_GOOGLEKEY | STRING | + |  | | Ключ-индентификатор рекапчи на целевой странице. <div class="g-recaptcha" data-sitekey="ВОТ_ЭТОТ"></div> 
+ Google token | ACTION_FIELD_GOOGLETOKEN | STRING | - |  | | Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется. Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так: <script type="text/javascript" src="...." data-type="normal"  data-ray="..." async data-sitekey="..." data-stoken="ВОТ_ЭТОТ"></script> Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его. 
+ Тип прокси | ACTION_FIELD_PROXYTYPE | STRING | + |  | | Тип прокси (http, socks4, ...) 
+ Адрес прокси | ACTION_FIELD_RECAPTCHA | STRING | + |  | | IP адрес прокси ipv4/ipv6. 
+ Порт прокси | ACTION_FIELD_PROXYPORT | INTEGER | + |  | | Порт прокси. 
+ Логин прокси | ACTION_FIELD_PROXYLOGIN | STRING | - |  | | Логин от прокси-сервера. 
+ Пароль прокси | ACTION_FIELD_PROXYPASS | STRING | - |  | | Пароль от прокси-сервера. 
+ User-Agent браузера | ACTION_FIELD_USERAGENT | STRING | + |  | | User-Agent браузера, используемый в эмуляции. Необходимо использовать подпись современного браузера, иначе Google будет возвращать ошибку, требуя обновить браузер. 
+ Куки | ACTION_FIELD_COOKIES | STRING | - |  | | Дополнительные cookies которые мы должны использовать во время взаимодействия с целевой страницей. 

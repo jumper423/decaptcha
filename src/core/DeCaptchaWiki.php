@@ -2,6 +2,7 @@
 
 namespace jumper423\decaptcha\core;
 
+use jumper423\decaptcha\services\AnticaptchaReCaptcha;
 use jumper423\decaptcha\services\RuCaptcha;
 
 /**
@@ -163,13 +164,7 @@ class DeCaptchaWiki
                     'ru' => 'Google token',
                 ],
                 'desc' => [
-                    'ru' => 'Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется.
- Подробнее
-Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так:
-```<script type="text/javascript" src="...." data-type="normal"  data-ray="2ef1e98c77332d9b" async
-data-sitekey="6LfOYgoTAAAAAInWDVTLSc8Yblab-c9DaLblabla"
-data-stoken="urFaI2UjzL9Q4gf4a-aeCNAePAZUuq7nYbX40BVb69aXVq-apf_k-kZ7i-iXE2WxkokWB9rZv-ofOJPjbEh4YN3SyoVrsIorNOpeGSWx2D0"></script>```
-Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его.',
+                    'ru' => 'Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется. Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так: <script type="text/javascript" src="...." data-type="normal"  data-ray="..." async data-sitekey="..." data-stoken="ВОТ_ЭТОТ"></script> Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его.',
                 ],
             ],
             DeCaptchaBase::ACTION_FIELD_PROXYTYPE => [
@@ -217,8 +212,7 @@ data-stoken="urFaI2UjzL9Q4gf4a-aeCNAePAZUuq7nYbX40BVb69aXVq-apf_k-kZ7i-iXE2Wxkok
                     'ru' => 'User-Agent браузера',
                 ],
                 'desc' => [
-                    'ru' => 'User-Agent браузера, используемый в эмуляции. Необходимо использовать подпись современного браузера, 
-иначе Google будет возвращать ошибку, требуя обновить браузер.',
+                    'ru' => 'User-Agent браузера, используемый в эмуляции. Необходимо использовать подпись современного браузера, иначе Google будет возвращать ошибку, требуя обновить браузер.',
                 ],
             ],
             DeCaptchaBase::ACTION_FIELD_COOKIES => [
@@ -234,7 +228,7 @@ data-stoken="urFaI2UjzL9Q4gf4a-aeCNAePAZUuq7nYbX40BVb69aXVq-apf_k-kZ7i-iXE2Wxkok
 
     public function view()
     {
-        $rucaptcha = new RuCaptcha([]);
+        $rucaptcha = new AnticaptchaReCaptcha([]);
         /*
          * Markdown | Less | Pretty
             --- | --- | ---
@@ -242,30 +236,23 @@ data-stoken="urFaI2UjzL9Q4gf4a-aeCNAePAZUuq7nYbX40BVb69aXVq-apf_k-kZ7i-iXE2Wxkok
             1 | 2 | 3
          *
          * */
-        echo ' Название | Код | Тип | Обязательное значение | Значение по умолчания | Возможные значения | Описание '.PHP_EOL;
+        echo ' Название | Код | Тип | Обязательное | По умолчания | Возможные значения | Описание '.PHP_EOL;
         echo ' --- | --- | --- | --- | --- | ---| --- '.PHP_EOL;
         $rr = (new \ReflectionClass($rucaptcha))->getConstants();
-//        print_r($rr);
+//        print_r($rucaptcha->actions);
         foreach ($rucaptcha->actions[RuCaptcha::ACTION_RECOGNIZE][RuCaptcha::ACTION_FIELDS] as $param => $setting) {
+            if (array_key_exists(RuCaptcha::ACTION_FIELDS, $setting) && is_array($setting[RuCaptcha::ACTION_FIELDS])) {
+                foreach ($setting[RuCaptcha::ACTION_FIELDS] as $param1 => $setting1) {
+                    if (array_key_exists(RuCaptcha::PARAM_SLUG_NOTWIKI, $setting1) && $setting1[RuCaptcha::PARAM_SLUG_NOTWIKI] === true) {
+                        continue;
+                    }
+                    $this->line($rr, $param1, $setting1);
+                }
+            }
             if (array_key_exists(RuCaptcha::PARAM_SLUG_NOTWIKI, $setting) && $setting[RuCaptcha::PARAM_SLUG_NOTWIKI] === true) {
                 continue;
             }
-            if (isset($this->texts[$param])) {
-                echo " {$this->texts[$param]['name']['ru']} |";
-            } else {
-                echo ' |';
-            }
-            echo " {$this->ggg($rr, 'ACTION_FIELD_', $param)} |";
-            echo ' '.substr($this->ggg($rr, 'PARAM_FIELD_TYPE_', $setting[RuCaptcha::PARAM_SLUG_TYPE]), 17).' |';
-            echo ' '.(array_key_exists(RuCaptcha::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
-            echo ' '.(array_key_exists(RuCaptcha::PARAM_SLUG_DEFAULT, $setting) ? $setting[RuCaptcha::PARAM_SLUG_DEFAULT] : '').' |';
-            echo ' |';
-            if (isset($this->texts[$param])) {
-                echo " {$this->texts[$param]['desc']['ru']} ";
-            } else {
-                echo ' ';
-            }
-            echo PHP_EOL;
+            $this->line($rr, $param, $setting);
 //            echo " --- | --- | --- | --- | ---| --- " . PHP_EOL;
 //            print_r($params);
         }
@@ -273,6 +260,25 @@ data-stoken="urFaI2UjzL9Q4gf4a-aeCNAePAZUuq7nYbX40BVb69aXVq-apf_k-kZ7i-iXE2Wxkok
 //        print_r(array_keys($rr));
 //        print_r($rr);
 //        file_put_contents(__DIR__ . '/12331123', json_encode(get_defined_constants(true)));
+    }
+
+    public function line($rr, $param, $setting){
+        if (isset($this->texts[$param])) {
+            echo " {$this->texts[$param]['name']['ru']} |";
+        } else {
+            echo ' |';
+        }
+        echo " {$this->ggg($rr, 'ACTION_FIELD_', $param)} |";
+        echo ' '.substr($this->ggg($rr, 'PARAM_FIELD_TYPE_', $setting[RuCaptcha::PARAM_SLUG_TYPE]), 17).' |';
+        echo ' '.(array_key_exists(RuCaptcha::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
+        echo ' '.(array_key_exists(RuCaptcha::PARAM_SLUG_DEFAULT, $setting) ? $setting[RuCaptcha::PARAM_SLUG_DEFAULT] : '').' |';
+        echo ' |';
+        if (isset($this->texts[$param])) {
+            echo " {$this->texts[$param]['desc']['ru']} ";
+        } else {
+            echo ' ';
+        }
+        echo PHP_EOL;
     }
 
     public function ggg($constants, $keyMask, $value)

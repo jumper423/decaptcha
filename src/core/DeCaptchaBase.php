@@ -33,9 +33,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_FIELD_TASK = 18;
     const ACTION_FIELD_IS_RUSSIAN = 19;
     const ACTION_FIELD_LABEL = 20;
-    const ACTION_FIELD_COORDINATESCAPTCHA = 21;
-    const ACTION_FIELD_RECAPTCHA = 22;
     const ACTION_FIELD_GOOGLEKEY = 21;
+    const ACTION_FIELD_RECAPTCHA = 22;
     const ACTION_FIELD_PROXY = 22;
     const ACTION_FIELD_PROXYTYPE = 23;
     const ACTION_FIELD_PAGEURL = 24;
@@ -45,6 +44,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_FIELD_USERAGENT = 28;
     const ACTION_FIELD_COOKIES = 29;
     const ACTION_FIELD_PROXYPORT = 30;
+    const ACTION_FIELD_COORDINATESCAPTCHA = 31;
 
     const RESPONSE_RECOGNIZE_OK = 'OK';
     const RESPONSE_RECOGNIZE_REPEAT = 'ERROR_NO_SLOT_AVAILABLE';

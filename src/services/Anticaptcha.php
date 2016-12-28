@@ -58,6 +58,7 @@ class Anticaptcha extends DeCaptchaBase
                     static::PARAM_SLUG_VARIABLE => false,
                     static::PARAM_SLUG_DEFAULT  => 882,
                     static::PARAM_SLUG_TYPE     => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_NOTWIKI    => true,
                 ],
                 static::ACTION_FIELD_LANGUAGE => [
                     static::PARAM_SLUG_DEFAULT => 'en',
@@ -71,11 +72,13 @@ class Anticaptcha extends DeCaptchaBase
                     static::PARAM_SLUG_REQUIRE => true,
                     static::PARAM_SLUG_DEFAULT => [],
                     static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_OBJECT,
+                    static::PARAM_SLUG_NOTWIKI    => true,
                     static::ACTION_FIELDS      => [
                         static::ACTION_FIELD_METHOD => [
                             static::PARAM_SLUG_DEFAULT => 'ImageToTextTask',
                             static::PARAM_SLUG_REQUIRE => true,
                             static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+                            static::PARAM_SLUG_NOTWIKI    => true,
                         ],
                         static::ACTION_FIELD_FILE => [
                             static::PARAM_SLUG_REQUIRE   => true,
