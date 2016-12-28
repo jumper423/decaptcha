@@ -40,6 +40,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_SLUG_CODING = 6;
     const PARAM_SLUG_NOTWIKI = 7;
     const PARAM_SLUG_ENUM = 8;
+    const PARAM_SLUG_WIKI = 9;
 
     const PARAM_SLUG_CODING_BASE64 = 1;
 

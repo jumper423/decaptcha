@@ -82,7 +82,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
         self::ACTION_UNIVERSAL_WITH_CAPTCHA => 20,
     ];
 
-    public $wiki = [];
+    /**
+     * @var DeCaptchaWiki
+     */
+    protected $wiki;
 
     /**
      * DeCaptchaBase constructor.
@@ -92,6 +95,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     public function __construct($params)
     {
         $this->setParams($params);
+        $this->wiki = new DeCaptchaWiki($this);
         $this->init();
     }
 
@@ -234,5 +238,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     public function setCauseAnError($causeAnError)
     {
         $this->causeAnError = $causeAnError;
+    }
+
+    public function getWiki($lang = 'en'){
+        $this->wiki->setLang($lang);
+        return $this->wiki;
     }
 }

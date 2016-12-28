@@ -2,283 +2,262 @@
 
 namespace jumper423\decaptcha\core;
 
-use jumper423\decaptcha\services\AnticaptchaReCaptcha;
-use jumper423\decaptcha\services\RuCaptcha;
-
 /**
  * Class DeCaptchaAbstract.
  */
 class DeCaptchaWiki
 {
     private $texts = [];
+    /**
+     * @var DeCaptchaBase
+     */
+    private $class;
+    private $lang = 'en';
 
-    public function __construct()
+    public function setLang($lang){
+        $this->lang = $lang;
+    }
+
+    public function __construct($class)
     {
+        $this->class = $class;
         $this->texts = [
-            DeCaptchaBase::ACTION_FIELD_KEY => [
-                'name' => [
-                    'ru' => 'Ключ',
-                ],
-                'desc' => [
-                    'ru' => 'Ключ от учетной записи',
-                ],
+            'constructor_data' => [
+                ($this->class)::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
             ],
-            DeCaptchaBase::ACTION_FIELD_LANGUAGE => [
-                'name' => [
-                    'ru' => 'Язык',
-                ],
-                'desc' => [
-                    'ru' => 'На каком языке текст на капче',
-                ],
+            'recognize_file' => true,
+            'recognize_data_file' => 'http://site.com/captcha.jpg',
+            'recognize_data' => [
+                ($this->class)::ACTION_FIELD_FILE => 'http://site.com/captcha.jpg',
             ],
-            DeCaptchaBase::ACTION_FIELD_FILE => [
-                'name' => [
-                    'ru' => 'Картинка',
-                ],
-                'desc' => [
-                    'ru' => 'Путь на файл с картинкой или ссылка на него',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_KEY => [
+                'ru' => 'Ключ',
             ],
-            DeCaptchaBase::ACTION_FIELD_PHRASE => [
-                'name' => [
-                    'ru' => 'Несколько слов',
-                ],
-                'desc' => [
-                    'ru' => 'Работник должен ввести текст с одним или несколькими пробелами',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_KEY => [
+                'ru' => 'Ключ от учетной записи',
             ],
-            DeCaptchaBase::ACTION_FIELD_REGSENSE => [
-                'name' => [
-                    'ru' => 'Регистр',
-                ],
-                'desc' => [
-                    'ru' => 'Работник должен ввсести ответ с учетом регистра',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_LANGUAGE => [
+                'ru' => 'Язык',
             ],
-            DeCaptchaBase::ACTION_FIELD_NUMERIC => [
-                'name' => [
-                    'ru' => 'Символы',
-                ],
-                'desc' => [
-                    'ru' => 'Какие символы используется в капче',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_LANGUAGE => [
+                'ru' => 'На каком языке текст на капче',
             ],
-            DeCaptchaBase::ACTION_FIELD_CALC => [
-                'name' => [
-                    'ru' => 'Вычисление',
-                ],
-                'desc' => [
-                    'ru' => 'На капче изображенно математичекая выражение и её необходимо решить',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_FILE => [
+                'ru' => 'Картинка',
             ],
-            DeCaptchaBase::ACTION_FIELD_MIN_LEN => [
-                'name' => [
-                    'ru' => 'Длина min',
-                ],
-                'desc' => [
-                    'ru' => 'Минимальная длина капчи',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_FILE => [
+                'ru' => 'Путь на файл с картинкой или ссылка на него',
             ],
-            DeCaptchaBase::ACTION_FIELD_MAX_LEN => [
-                'name' => [
-                    'ru' => 'Длина max',
-                ],
-                'desc' => [
-                    'ru' => 'Максимальная длина капчи',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_PHRASE => [
+                'ru' => 'Несколько слов',
             ],
-            DeCaptchaBase::ACTION_FIELD_QUESTION => [
-                'name' => [
-                    'ru' => 'Вопрос',
-                ],
-                'desc' => [
-                    'ru' => 'На изображении задан вопрос, работник должен написать ответ',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_PHRASE => [
+                'ru' => 'Работник должен ввести текст с одним или несколькими пробелами',
             ],
-            DeCaptchaBase::ACTION_FIELD_IS_RUSSIAN => [
-                'name' => [
-                    'ru' => 'Кириллица',
-                ],
-                'desc' => [
-                    'ru' => 'На изображении присутствуют русские символы',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_REGSENSE => [
+                'ru' => 'Регистр',
             ],
-            DeCaptchaBase::ACTION_FIELD_LANGUAGE => [
-                'name' => [
-                    'ru' => 'Язык',
-                ],
-                'desc' => [
-                    'ru' => 'Символы какого языка размещенны на капче',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_REGSENSE => [
+                'ru' => 'Работник должен ввсести ответ с учетом регистра',
             ],
-            DeCaptchaBase::ACTION_FIELD_HEADER_ACAO => [
-                'name' => [
-                    'ru' => 'Кросс-доменный',
-                ],
-                'desc' => [
-                    'ru' => 'Необходимо для кросс-доменных AJAX запросов в браузерных приложениях.',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_NUMERIC => [
+                'ru' => 'Символы',
             ],
-            DeCaptchaBase::ACTION_FIELD_INSTRUCTIONS => [
-                'name' => [
-                    'ru' => 'Инструкция',
-                ],
-                'desc' => [
-                    'ru' => 'Текстовая капча или инструкция для прохождения капчи.',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_NUMERIC => [
+                'ru' => 'Какие символы используется в капче',
             ],
-            DeCaptchaBase::ACTION_FIELD_PINGBACK => [
-                'name' => [
-                    'ru' => 'Ответ на',
-                ],
-                'desc' => [
-                    'ru' => 'Указание для сервера, что после распознания изображения, нужно отправить ответ на указанный адрес.',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_CALC => [
+                'ru' => 'Вычисление',
             ],
-            DeCaptchaBase::ACTION_FIELD_LABEL => [
-                'name' => [
-                    'ru' => 'От куда',
-                ],
-                'desc' => [
-                    'ru' => 'Пояснение от куда пришла капча ("vk", "google", "recaptcha", "yandex", "mailru", "yahoo" и т.д.).',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_CALC => [
+                'ru' => 'На капче изображенно математичекая выражение и её необходимо решить',
             ],
-            DeCaptchaBase::ACTION_FIELD_PAGEURL => [
-                'name' => [
-                    'ru' => 'Адрес',
-                ],
-                'desc' => [
-                    'ru' => 'Адрес страницы на которой решается капча.',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_MIN_LEN => [
+                'ru' => 'Длина min',
             ],
-            DeCaptchaBase::ACTION_FIELD_GOOGLEKEY => [
-                'name' => [
-                    'ru' => 'Google key',
-                ],
-                'desc' => [
-                    'ru' => 'Ключ-индентификатор рекапчи на целевой странице. <div class="g-recaptcha" data-sitekey="ВОТ_ЭТОТ"></div>',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_MIN_LEN => [
+                'ru' => 'Минимальная длина капчи',
             ],
-            DeCaptchaBase::ACTION_FIELD_GOOGLETOKEN => [
-                'name' => [
-                    'ru' => 'Google token',
-                ],
-                'desc' => [
-                    'ru' => 'Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется. Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так: <script type="text/javascript" src="...." data-type="normal"  data-ray="..." async data-sitekey="..." data-stoken="ВОТ_ЭТОТ"></script> Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его.',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_MAX_LEN => [
+                'ru' => 'Длина max',
             ],
-            DeCaptchaBase::ACTION_FIELD_PROXYTYPE => [
-                'name' => [
-                    'ru' => 'Тип прокси',
-                ],
-                'desc' => [
-                    'ru' => 'Тип прокси (http, socks4, ...)',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_MAX_LEN => [
+                'ru' => 'Максимальная длина капчи',
             ],
-            DeCaptchaBase::ACTION_FIELD_PROXY => [
-                'name' => [
-                    'ru' => 'Адрес прокси',
-                ],
-                'desc' => [
-                    'ru' => 'IP адрес прокси ipv4/ipv6.',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_QUESTION => [
+                'ru' => 'Вопрос',
             ],
-            DeCaptchaBase::ACTION_FIELD_PROXYPORT => [
-                'name' => [
-                    'ru' => 'Порт прокси',
-                ],
-                'desc' => [
-                    'ru' => 'Порт прокси.',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_QUESTION => [
+                'ru' => 'На изображении задан вопрос, работник должен написать ответ',
             ],
-            DeCaptchaBase::ACTION_FIELD_PROXYLOGIN => [
-                'name' => [
-                    'ru' => 'Логин прокси',
-                ],
-                'desc' => [
-                    'ru' => 'Логин от прокси-сервера.',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_IS_RUSSIAN => [
+                'ru' => 'Кириллица',
             ],
-            DeCaptchaBase::ACTION_FIELD_PROXYPASS => [
-                'name' => [
-                    'ru' => 'Пароль прокси',
-                ],
-                'desc' => [
-                    'ru' => 'Пароль от прокси-сервера.',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_IS_RUSSIAN => [
+                'ru' => 'На изображении присутствуют русские символы',
             ],
-            DeCaptchaBase::ACTION_FIELD_USERAGENT => [
-                'name' => [
-                    'ru' => 'User-Agent браузера',
-                ],
-                'desc' => [
-                    'ru' => 'User-Agent браузера, используемый в эмуляции. Необходимо использовать подпись современного браузера, иначе Google будет возвращать ошибку, требуя обновить браузер.',
-                ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_LANGUAGE => [
+                'ru' => 'Язык',
             ],
-            DeCaptchaBase::ACTION_FIELD_COOKIES => [
-                'name' => [
-                    'ru' => 'Куки',
-                ],
-                'desc' => [
-                    'ru' => 'Дополнительные cookies которые мы должны использовать во время взаимодействия с целевой страницей.',
-                ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_LANGUAGE => [
+                'ru' => 'Символы какого языка размещенны на капче',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_HEADER_ACAO => [
+                'ru' => 'Кросс-доменный',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_HEADER_ACAO => [
+                'ru' => 'Необходимо для кросс-доменных AJAX запросов в браузерных приложениях.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_INSTRUCTIONS => [
+                'ru' => 'Инструкция',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_INSTRUCTIONS => [
+                'ru' => 'Текстовая капча или инструкция для прохождения капчи.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_PINGBACK => [
+                'ru' => 'Ответ на',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_PINGBACK => [
+                'ru' => 'Указание для сервера, что после распознания изображения, нужно отправить ответ на указанный адрес.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_LABEL => [
+                'ru' => 'От куда',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_LABEL => [
+                'ru' => 'Пояснение от куда пришла капча ("vk", "google", "recaptcha", "yandex", "mailru", "yahoo" и т.д.).',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_PAGEURL => [
+                'ru' => 'Адрес',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_PAGEURL => [
+                'ru' => 'Адрес страницы на которой решается капча.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_GOOGLEKEY => [
+                'ru' => 'Google key',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_GOOGLEKEY => [
+                'ru' => 'Ключ-индентификатор рекапчи на целевой странице. <div class="g-recaptcha" data-sitekey="ВОТ_ЭТОТ"></div>',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_GOOGLETOKEN => [
+                'ru' => 'Google token',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_GOOGLETOKEN => [
+                'ru' => 'Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется. Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так: <script type="text/javascript" src="...." data-type="normal"  data-ray="..." async data-sitekey="..." data-stoken="ВОТ_ЭТОТ"></script> Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_PROXYTYPE => [
+                'ru' => 'Тип прокси',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_PROXYTYPE => [
+                'ru' => 'Тип прокси (http, socks4, ...)',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_PROXY => [
+                'ru' => 'Адрес прокси',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_PROXY => [
+                'ru' => 'IP адрес прокси ipv4/ipv6.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_PROXYPORT => [
+                'ru' => 'Порт прокси',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_PROXYPORT => [
+                'ru' => 'Порт прокси.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_PROXYLOGIN => [
+                'ru' => 'Логин прокси',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_PROXYLOGIN => [
+                'ru' => 'Логин от прокси-сервера.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_PROXYPASS => [
+                'ru' => 'Пароль прокси',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_PROXYPASS => [
+                'ru' => 'Пароль от прокси-сервера.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_USERAGENT => [
+                'ru' => 'User-Agent браузера',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_USERAGENT => [
+                'ru' => 'User-Agent браузера, используемый в эмуляции. Необходимо использовать подпись современного браузера, иначе Google будет возвращать ошибку, требуя обновить браузер.',
+            ],
+            'field_main_name_' . ($this->class)::ACTION_FIELD_COOKIES => [
+                'ru' => 'Куки',
+            ],
+            'field_main_desc_' . ($this->class)::ACTION_FIELD_COOKIES => [
+                'ru' => 'Дополнительные cookies которые мы должны использовать во время взаимодействия с целевой страницей.',
             ],
         ];
     }
 
-    public function view()
+    /**
+     * @param string|array $name
+     * @param string|array $value
+     */
+    public function setText($name, $value) {
+        if (is_array($name)) {
+            $name = implode('_', $name);
+        }
+        $this->texts[$name] = $value;
+    }
+
+    /**
+     * @param string|array $name
+     * @param string $separator
+     * @return string
+     */
+    public function getText($name, $separator = '; ') {
+        $getResult = function ($name, $texts) {
+            if (is_array($name)) {
+                $name = implode('_', $name);
+            }
+            if (!isset($texts[$name])) {
+                return null;
+            }
+            if (is_array($texts[$name])) {
+                if (isset($texts[$name][$this->lang])) {
+                    return $texts[$name][$this->lang];
+                }
+                return array_values($texts[$name])[0];
+            }
+            return $texts[$name];
+        };
+        $result = $getResult($name, $this->texts);
+        if (is_array($result)) {
+            $result = implode($separator, $result);
+        }
+        return $result;
+    }
+
+    public function viewFields()
     {
-        $rucaptcha = new AnticaptchaReCaptcha([]);
-        /*
-         * Markdown | Less | Pretty
-            --- | --- | ---
-            *Still* | `renders` | **nicely**
-            1 | 2 | 3
-         *
-         * */
         echo ' Название | Код | Тип | Обязательное | По умолчания | Возможные значения | Описание '.PHP_EOL;
         echo ' --- | --- | --- | --- | --- | ---| --- '.PHP_EOL;
-        $rr = (new \ReflectionClass($rucaptcha))->getConstants();
-//        print_r($rucaptcha->actions);
-        foreach ($rucaptcha->actions[RuCaptcha::ACTION_RECOGNIZE][RuCaptcha::ACTION_FIELDS] as $param => $setting) {
-            if (array_key_exists(RuCaptcha::ACTION_FIELDS, $setting) && is_array($setting[RuCaptcha::ACTION_FIELDS])) {
-                foreach ($setting[RuCaptcha::ACTION_FIELDS] as $param1 => $setting1) {
-                    if (array_key_exists(RuCaptcha::PARAM_SLUG_NOTWIKI, $setting1) && $setting1[RuCaptcha::PARAM_SLUG_NOTWIKI] === true) {
+        $rr = (new \ReflectionClass($this->class))->getConstants();
+        foreach ($this->class->actions[($this->class)::ACTION_RECOGNIZE][($this->class)::ACTION_FIELDS] as $param => $setting) {
+            if (array_key_exists(($this->class)::ACTION_FIELDS, $setting) && is_array($setting[($this->class)::ACTION_FIELDS])) {
+                foreach ($setting[($this->class)::ACTION_FIELDS] as $param1 => $setting1) {
+                    if (array_key_exists(($this->class)::PARAM_SLUG_NOTWIKI, $setting1) && $setting1[($this->class)::PARAM_SLUG_NOTWIKI] === true) {
                         continue;
                     }
                     $this->line($rr, $param1, $setting1);
                 }
             }
-            if (array_key_exists(RuCaptcha::PARAM_SLUG_NOTWIKI, $setting) && $setting[RuCaptcha::PARAM_SLUG_NOTWIKI] === true) {
+            if (array_key_exists(($this->class)::PARAM_SLUG_NOTWIKI, $setting) && $setting[($this->class)::PARAM_SLUG_NOTWIKI] === true) {
                 continue;
             }
             $this->line($rr, $param, $setting);
-//            echo " --- | --- | --- | --- | ---| --- " . PHP_EOL;
-//            print_r($params);
         }
-//        $rr = get_defined_constants(true);
-//        print_r(array_keys($rr));
-//        print_r($rr);
-//        file_put_contents(__DIR__ . '/12331123', json_encode(get_defined_constants(true)));
     }
 
     public function line($rr, $param, $setting)
     {
-        if (isset($this->texts[$param])) {
-            echo " {$this->texts[$param]['name']['ru']} |";
-        } else {
-            echo ' |';
-        }
+        echo " {$this->getText(['field', 'main','name',$param])} |";
         echo " {$this->ggg($rr, 'ACTION_FIELD_', $param)} |";
-        echo ' '.substr($this->ggg($rr, 'PARAM_FIELD_TYPE_', $setting[RuCaptcha::PARAM_SLUG_TYPE]), 17).' |';
-        echo ' '.(array_key_exists(RuCaptcha::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
-        echo ' '.(array_key_exists(RuCaptcha::PARAM_SLUG_DEFAULT, $setting) ? $setting[RuCaptcha::PARAM_SLUG_DEFAULT] : '').' |';
-        echo ' |';
-        if (isset($this->texts[$param])) {
-            echo " {$this->texts[$param]['desc']['ru']} ";
-        } else {
-            echo ' ';
-        }
+        echo ' '.substr($this->ggg($rr, 'PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17).' |';
+        echo ' '.(array_key_exists(($this->class)::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
+        echo ' '.(array_key_exists(($this->class)::PARAM_SLUG_DEFAULT, $setting) ? $setting[($this->class)::PARAM_SLUG_DEFAULT] : '').' |';
+        echo " {$this->getText(['field', 'slug', ($this->class)::PARAM_SLUG_ENUM,$param])} |";
+        echo " {$this->getText(['field', 'main','desc',$param])} |";
         echo PHP_EOL;
     }
 

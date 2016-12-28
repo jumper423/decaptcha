@@ -10,5 +10,6 @@ include_once __DIR__.'/../src/services/AnticaptchaReCaptchaProxeless.php';
 include_once __DIR__.'/../src/services/AnticaptchaReCaptcha.php';
 include_once __DIR__.'/../src/core/DeCaptchaWiki.php';
 
-$rr = new \jumper423\decaptcha\core\DeCaptchaWiki();
-$rr->view();
+$rr = new \jumper423\decaptcha\services\RuCaptcha([]);
+$tt = $rr->getWiki('en');
+$tt->viewFields();
