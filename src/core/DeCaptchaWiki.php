@@ -267,18 +267,18 @@ class DeCaptchaWiki
                     if (array_key_exists(($this->class)::PARAM_SLUG_NOTWIKI, $setting1) && $setting1[($this->class)::PARAM_SLUG_NOTWIKI] === true) {
                         continue;
                     }
-                    $str .= $this->line($rr, $param1, $setting1);
+                    $str .= $this->viewFieldLine($rr, $param1, $setting1);
                 }
             }
             if (array_key_exists(($this->class)::PARAM_SLUG_NOTWIKI, $setting) && $setting[($this->class)::PARAM_SLUG_NOTWIKI] === true) {
                 continue;
             }
-            $str .= $this->line($rr, $param, $setting);
+            $str .= $this->viewFieldLine($rr, $param, $setting);
         }
         return $str;
     }
 
-    public function line($rr, $param, $setting)
+    public function viewFieldLine($rr, $param, $setting)
     {
         $str = " {$this->getText(['field', 'main','name',$param])} |";
         $str .=" {$this->ggg($rr, 'ACTION_FIELD_', $param)} |";
