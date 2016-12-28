@@ -31,8 +31,8 @@ class RuCaptchaGrid extends RuCaptchaInstruction
         $this->paramsNames[static::ACTION_FIELD_RECAPTCHA] = 'recaptcha';
 
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_RECAPTCHA] = [
-            static::PARAM_SLUG_DEFAULT => 1,
-            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+            static::PARAM_SLUG_DEFAULT    => 1,
+            static::PARAM_SLUG_TYPE       => static::PARAM_FIELD_TYPE_INTEGER,
             static::PARAM_SLUG_NOTWIKI    => true,
         ];
     }
