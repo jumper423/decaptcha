@@ -23,7 +23,7 @@ class Ripcaptcha extends RuCaptcha
             $this->paramsNames[self::ACTION_FIELD_HEADER_ACAO],
             $this->paramsNames[self::ACTION_FIELD_CALC],
             $this->paramsNames[self::ACTION_FIELD_QUESTION],
-            $this->paramsNames[self::ACTION_FIELD_TEXTINSTRUCTIONS],
+            $this->paramsNames[self::ACTION_FIELD_INSTRUCTIONS],
             $this->paramsNames[self::ACTION_FIELD_PINGBACK],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_PHRASE],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_REGSENSE],
@@ -34,7 +34,7 @@ class Ripcaptcha extends RuCaptcha
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_HEADER_ACAO],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_CALC],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_QUESTION],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_TEXTINSTRUCTIONS],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_INSTRUCTIONS],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_PINGBACK]
         );
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_SOFT_ID][self::PARAM_SLUG_DEFAULT] = 0;

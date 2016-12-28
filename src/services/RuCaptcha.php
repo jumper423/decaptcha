@@ -32,7 +32,7 @@ class RuCaptcha extends DeCaptchaBase
         self::ACTION_FIELD_ACTION           => 'action',
         self::ACTION_FIELD_QUESTION         => 'question',
         self::ACTION_FIELD_HEADER_ACAO      => 'header_acao',
-        self::ACTION_FIELD_TEXTINSTRUCTIONS => 'textinstructions',
+        self::ACTION_FIELD_INSTRUCTIONS => 'textinstructions',
         self::ACTION_FIELD_PINGBACK         => 'pingback',
         self::ACTION_FIELD_CALC             => 'calc',
     ];
@@ -127,7 +127,7 @@ class RuCaptcha extends DeCaptchaBase
                         1,
                     ],
                 ],
-                static::ACTION_FIELD_TEXTINSTRUCTIONS => [
+                static::ACTION_FIELD_INSTRUCTIONS => [
                     static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
                 ],
                 static::ACTION_FIELD_PINGBACK => [

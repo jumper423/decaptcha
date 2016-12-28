@@ -15,10 +15,10 @@ class Captcha24 extends RuCaptcha
 
         unset(
             $this->paramsNames[static::ACTION_FIELD_QUESTION],
-            $this->paramsNames[static::ACTION_FIELD_TEXTINSTRUCTIONS],
+            $this->paramsNames[static::ACTION_FIELD_INSTRUCTIONS],
             $this->paramsNames[static::ACTION_FIELD_PINGBACK],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_QUESTION],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_TEXTINSTRUCTIONS],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_INSTRUCTIONS],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PINGBACK]
         );
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_NUMERIC][static::PARAM_SLUG_ENUM] = [

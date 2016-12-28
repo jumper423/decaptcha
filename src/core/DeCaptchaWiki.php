@@ -119,7 +119,7 @@ class DeCaptchaWiki
                     'ru' => 'Необходимо для кросс-доменных AJAX запросов в браузерных приложениях.',
                 ],
             ],
-            DeCaptchaBase::ACTION_FIELD_TEXTINSTRUCTIONS => [
+            DeCaptchaBase::ACTION_FIELD_INSTRUCTIONS => [
                 'name' => [
                     'ru' => 'Инструкция',
                 ],

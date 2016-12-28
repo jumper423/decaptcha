@@ -20,7 +20,6 @@ class AnticaptchaReCaptchaProxeless extends Anticaptcha
             $this->paramsNames[static::ACTION_FIELD_CALC],
             $this->paramsNames[static::ACTION_FIELD_MIN_LEN],
             $this->paramsNames[static::ACTION_FIELD_MAX_LEN],
-            $this->paramsNames[static::ACTION_FIELD_LANGUAGE],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][self::ACTION_FIELD_FILE],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][self::ACTION_FIELD_PHRASE],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_TASK][static::ACTION_FIELDS][self::ACTION_FIELD_PINGBACK],

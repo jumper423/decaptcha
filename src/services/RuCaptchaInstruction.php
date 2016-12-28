@@ -11,6 +11,6 @@ class RuCaptchaInstruction extends RuCaptcha
     {
         parent::init();
 
-        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_TEXTINSTRUCTIONS][static::PARAM_SLUG_REQUIRE] = true;
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_INSTRUCTIONS][static::PARAM_SLUG_REQUIRE] = true;
     }
 }
