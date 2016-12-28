@@ -319,19 +319,21 @@ class DeCaptchaWiki
         return null;
     }
 
-    public function view(){
-        $str = $this->getText(['service','name']). PHP_EOL;
-        $str .= '=============='. PHP_EOL;
-        $str .= "###{$this->getText(['slug','link'])}". PHP_EOL;
-        $str .= "[{$this->getText(['slug','link','to_service'])} {$this->getText(['service','name'])}]({$this->getText(['service','href'])})". PHP_EOL. PHP_EOL;
-        $str .= "###{$this->getText(['slug','service','desc'])}". PHP_EOL;
-        $str .= "{$this->getText(['service','desc'])}". PHP_EOL. PHP_EOL;
-        $str .= "###{$this->getText(['slug','price'])}". PHP_EOL;
-        $str .= "{$this->getText(['recognize','price'])}". PHP_EOL. PHP_EOL;
-        $str .= "###{$this->getText(['slug','recognize','desc'])}". PHP_EOL;
-        $str .= "{$this->getText(['recognize','desc'])}". PHP_EOL. PHP_EOL;
-        $str .= "###{$this->getText(['slug','fields','desc'])}". PHP_EOL;
-        $str .= $this->viewFields(). PHP_EOL;
+    public function view()
+    {
+        $str = $this->getText(['service', 'name']).PHP_EOL;
+        $str .= '=============='.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'link'])}".PHP_EOL;
+        $str .= "[{$this->getText(['slug', 'link', 'to_service'])} {$this->getText(['service', 'name'])}]({$this->getText(['service', 'href'])})".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'service', 'desc'])}".PHP_EOL;
+        $str .= "{$this->getText(['service', 'desc'])}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'price'])}".PHP_EOL;
+        $str .= "{$this->getText(['recognize', 'price'])}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'recognize', 'desc'])}".PHP_EOL;
+        $str .= "{$this->getText(['recognize', 'desc'])}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'fields', 'desc'])}".PHP_EOL;
+        $str .= $this->viewFields().PHP_EOL;
+
         return $str;
     }
 }
