@@ -187,6 +187,27 @@ class DeCaptchaWiki
             'field_main_desc_'.($this->class)::ACTION_FIELD_COOKIES => [
                 'ru' => 'Дополнительные cookies которые мы должны использовать во время взаимодействия с целевой страницей.',
             ],
+            'table_th_name' => [
+                'ru' => 'Название',
+            ],
+            'table_th_code' => [
+                'ru' => 'Код',
+            ],
+            'table_th_type' => [
+                'ru' => 'Тип',
+            ],
+            'table_th_req' => [
+                'ru' => 'Обязательное',
+            ],
+            'table_th_def' => [
+                'ru' => 'По умолчания',
+            ],
+            'table_th_enum' => [
+                'ru' => 'Возможные значения',
+            ],
+            'table_th_desc' => [
+                'ru' => 'Описание',
+            ],
         ];
     }
 
@@ -237,8 +258,8 @@ class DeCaptchaWiki
 
     public function viewFields()
     {
-        echo ' Название | Код | Тип | Обязательное | По умолчания | Возможные значения | Описание '.PHP_EOL;
-        echo ' --- | --- | --- | --- | --- | ---| --- '.PHP_EOL;
+        $str = " {$this->getText(['table','th','name'])} | {$this->getText(['table','th','code'])} | {$this->getText(['table','th','type'])} | {$this->getText(['table','th','req'])} | {$this->getText(['table','th','def'])} | {$this->getText(['table','th','enum'])} | {$this->getText(['table','th','desc'])} ".PHP_EOL;
+        $str .= ' --- | --- | --- | --- | --- | ---| --- '.PHP_EOL;
         $rr = (new \ReflectionClass($this->class))->getConstants();
         foreach ($this->class->actions[($this->class)::ACTION_RECOGNIZE][($this->class)::ACTION_FIELDS] as $param => $setting) {
             if (array_key_exists(($this->class)::ACTION_FIELDS, $setting) && is_array($setting[($this->class)::ACTION_FIELDS])) {
@@ -246,26 +267,28 @@ class DeCaptchaWiki
                     if (array_key_exists(($this->class)::PARAM_SLUG_NOTWIKI, $setting1) && $setting1[($this->class)::PARAM_SLUG_NOTWIKI] === true) {
                         continue;
                     }
-                    $this->line($rr, $param1, $setting1);
+                    $str .= $this->line($rr, $param1, $setting1);
                 }
             }
             if (array_key_exists(($this->class)::PARAM_SLUG_NOTWIKI, $setting) && $setting[($this->class)::PARAM_SLUG_NOTWIKI] === true) {
                 continue;
             }
-            $this->line($rr, $param, $setting);
+            $str .= $this->line($rr, $param, $setting);
         }
+        return $str;
     }
 
     public function line($rr, $param, $setting)
     {
-        echo " {$this->getText(['field', 'main', 'name', $param])} |";
-        echo " {$this->ggg($rr, 'ACTION_FIELD_', $param)} |";
-        echo ' '.substr($this->ggg($rr, 'PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17).' |';
-        echo ' '.(array_key_exists(($this->class)::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
-        echo ' '.(array_key_exists(($this->class)::PARAM_SLUG_DEFAULT, $setting) ? $setting[($this->class)::PARAM_SLUG_DEFAULT] : '').' |';
-        echo " {$this->getText(['field', 'slug', ($this->class)::PARAM_SLUG_ENUM, $param])} |";
-        echo " {$this->getText(['field', 'main', 'desc', $param])} |";
-        echo PHP_EOL;
+        $str = " {$this->getText(['field', 'main','name',$param])} |";
+        $str .=" {$this->ggg($rr, 'ACTION_FIELD_', $param)} |";
+        $str .=' '.substr($this->ggg($rr, 'PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17).' |';
+        $str .=' '.(array_key_exists(($this->class)::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
+        $str .=' '.(array_key_exists(($this->class)::PARAM_SLUG_DEFAULT, $setting) ? $setting[($this->class)::PARAM_SLUG_DEFAULT] : '').' |';
+        $str .=" {$this->getText(['field', 'slug', ($this->class)::PARAM_SLUG_ENUM,$param])} |";
+        $str .=" {$this->getText(['field', 'main','desc',$param])} |";
+        $str .=PHP_EOL;
+        return $str;
     }
 
     public function ggg($constants, $keyMask, $value)
