@@ -222,9 +222,9 @@ class RuCaptcha extends DeCaptchaBase
             ],
         ];
 
-        $this->wiki->setText('service_name', 'RuCaptcha');
-        $this->wiki->setText('service_href', 'http://rucaptcha.ru');
-        $this->wiki->setText('service_desc', [
+        $this->wiki->setText(['service','name'], 'RuCaptcha');
+        $this->wiki->setText(['service','href'], 'http://rucaptcha.ru');
+        $this->wiki->setText(['service','desc'], [
             'ru' => 'Описание сервиса',
         ]);
         $this->wiki->setText(['recognize', 'price'], [

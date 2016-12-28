@@ -12,4 +12,4 @@ include_once __DIR__.'/../src/core/DeCaptchaWiki.php';
 
 $rr = new \jumper423\decaptcha\services\RuCaptcha([]);
 $tt = $rr->getWiki('en');
-echo $tt->viewFields();
+echo $tt->view();

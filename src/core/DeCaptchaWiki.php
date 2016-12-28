@@ -208,6 +208,21 @@ class DeCaptchaWiki
             'table_th_desc' => [
                 'ru' => 'Описание',
             ],
+            'slug_link' => [
+                'ru' => 'Ссылка',
+            ],
+            'slug_price' => [
+                'ru' => 'Цены',
+            ],
+            'slug_service_desc' => [
+                'ru' => 'Описание сервиса',
+            ],
+            'slug_recognize_desc' => [
+                'ru' => 'Описание распознания',
+            ],
+            'slug_fields_desc' => [
+                'ru' => 'Описание полей',
+            ],
         ];
     }
 
@@ -259,7 +274,7 @@ class DeCaptchaWiki
     public function viewFields()
     {
         $str = " {$this->getText(['table', 'th', 'name'])} | {$this->getText(['table', 'th', 'code'])} | {$this->getText(['table', 'th', 'type'])} | {$this->getText(['table', 'th', 'req'])} | {$this->getText(['table', 'th', 'def'])} | {$this->getText(['table', 'th', 'enum'])} | {$this->getText(['table', 'th', 'desc'])} ".PHP_EOL;
-        $str .= ' --- | --- | --- | --- | --- | ---| --- '.PHP_EOL;
+        $str .= ' --- | --- | --- | --- | --- | --- | --- '.PHP_EOL;
         $rr = (new \ReflectionClass($this->class))->getConstants();
         foreach ($this->class->actions[($this->class)::ACTION_RECOGNIZE][($this->class)::ACTION_FIELDS] as $param => $setting) {
             if (array_key_exists(($this->class)::ACTION_FIELDS, $setting) && is_array($setting[($this->class)::ACTION_FIELDS])) {
@@ -282,8 +297,8 @@ class DeCaptchaWiki
     public function viewFieldLine($rr, $param, $setting)
     {
         $str = " {$this->getText(['field', 'main', 'name', $param])} |";
-        $str .= " {$this->ggg($rr, 'ACTION_FIELD_', $param)} |";
-        $str .= ' '.substr($this->ggg($rr, 'PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17).' |';
+        $str .= " {$this->getNameConst($rr, 'ACTION_FIELD_', $param)} |";
+        $str .= ' '.substr($this->getNameConst($rr, 'PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17).' |';
         $str .= ' '.(array_key_exists(($this->class)::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
         $str .= ' '.(array_key_exists(($this->class)::PARAM_SLUG_DEFAULT, $setting) ? $setting[($this->class)::PARAM_SLUG_DEFAULT] : '').' |';
         $str .= " {$this->getText(['field', 'slug', ($this->class)::PARAM_SLUG_ENUM, $param])} |";
@@ -293,7 +308,7 @@ class DeCaptchaWiki
         return $str;
     }
 
-    public function ggg($constants, $keyMask, $value)
+    public function getNameConst($constants, $keyMask, $value)
     {
         foreach ($constants as $key => $val) {
             if (stripos($key, $keyMask) !== false && $val === $value) {
@@ -302,5 +317,21 @@ class DeCaptchaWiki
         }
 
         return null;
+    }
+
+    public function view(){
+        $str = $this->getText(['service','name']). PHP_EOL;
+        $str .= '=============='. PHP_EOL;
+        $str .= "###{$this->getText(['slug','link'])}". PHP_EOL;
+        $str .= "[{$this->getText(['slug','link','to_service'])} {$this->getText(['service','name'])}]({$this->getText(['service','href'])})". PHP_EOL. PHP_EOL;
+        $str .= "###{$this->getText(['slug','service','desc'])}". PHP_EOL;
+        $str .= "{$this->getText(['service','desc'])}". PHP_EOL. PHP_EOL;
+        $str .= "###{$this->getText(['slug','price'])}". PHP_EOL;
+        $str .= "{$this->getText(['recognize','price'])}". PHP_EOL. PHP_EOL;
+        $str .= "###{$this->getText(['slug','recognize','desc'])}". PHP_EOL;
+        $str .= "{$this->getText(['recognize','desc'])}". PHP_EOL. PHP_EOL;
+        $str .= "###{$this->getText(['slug','fields','desc'])}". PHP_EOL;
+        $str .= $this->viewFields(). PHP_EOL;
+        return $str;
     }
 }
