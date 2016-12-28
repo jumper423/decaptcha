@@ -38,11 +38,11 @@ class AnticaptchaReCaptchaProxeless extends Anticaptcha
         $task[static::ACTION_FIELD_METHOD][static::PARAM_SLUG_DEFAULT] = 'NoCaptchaTask';
         $task[static::ACTION_FIELD_PAGEURL] = [
             static::PARAM_SLUG_REQUIRE => true,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
         $task[static::ACTION_FIELD_GOOGLEKEY] = [
             static::PARAM_SLUG_REQUIRE => true,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
         $task[static::ACTION_FIELD_GOOGLETOKEN] = [
             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
