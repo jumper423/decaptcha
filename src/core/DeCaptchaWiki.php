@@ -294,50 +294,50 @@ class DeCaptchaWiki
         $rc = (new \ReflectionClass($this->class));
 
         $str = "#####{$this->getText(['example', 'initialization'])}".PHP_EOL;
-        $str.= "```".PHP_EOL;
-        $str.= "use {$rc->getName()};".PHP_EOL;
-        $str.= "".PHP_EOL;
-        $str.= '$captcha = new '.$rc->getShortName().'(['.PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= "use {$rc->getName()};".PHP_EOL;
+        $str .= ''.PHP_EOL;
+        $str .= '$captcha = new '.$rc->getShortName().'(['.PHP_EOL;
         foreach ($this->texts['constructor_data'] as $key => $val) {
-            $str.= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
+            $str .= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
             if (is_string($val)) {
-                $str.= "'{$val}'";
+                $str .= "'{$val}'";
             } else {
-                $str.= "{$val}";
+                $str .= "{$val}";
             }
-            $str.= ",".PHP_EOL;
+            $str .= ','.PHP_EOL;
         }
-        $str.= "]);".PHP_EOL;
-        $str.= "```".PHP_EOL;
+        $str .= ']);'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
 
-        $str.= "#####{$this->getText(['example', 'recognize'])}".PHP_EOL;
-        $str.= "```".PHP_EOL;
+        $str .= "#####{$this->getText(['example', 'recognize'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
         $str .= 'if ($captcha->recognize(';
         if ($this->texts['recognize_file']) {
             $str .= "'{$this->getText(['recognize', 'data', 'file'])}'";
         }
         if ($this->texts['recognize_data']) {
             if ($this->texts['recognize_file']) {
-                $str.= ", ";
+                $str .= ', ';
             }
-            $str.= "[".PHP_EOL;
+            $str .= '['.PHP_EOL;
             foreach ($this->texts['recognize_data'] as $key => $val) {
-                $str.= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
+                $str .= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
                 if (is_string($val)) {
-                    $str.= "'{$val}'";
+                    $str .= "'{$val}'";
                 } else {
-                    $str.= "{$val}";
+                    $str .= "{$val}";
                 }
-                $str.= ",".PHP_EOL;
+                $str .= ','.PHP_EOL;
             }
-            $str.= "]";
+            $str .= ']';
         }
-        $str.= ")) {".PHP_EOL;
-        $str.= '    $code = $captcha->getCode();'.PHP_EOL;
-        $str.= "} else {".PHP_EOL;
-        $str.= '    $error = $captcha->getError());'.PHP_EOL;
-        $str.= "}".PHP_EOL;
-        $str.= "```".PHP_EOL;
+        $str .= ')) {'.PHP_EOL;
+        $str .= '    $code = $captcha->getCode();'.PHP_EOL;
+        $str .= '} else {'.PHP_EOL;
+        $str .= '    $error = $captcha->getError());'.PHP_EOL;
+        $str .= '}'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
 
         /*  constructor_data
         use jumper423\decaptcha\services\Anticaptcha;
