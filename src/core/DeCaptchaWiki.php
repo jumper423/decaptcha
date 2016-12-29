@@ -235,6 +235,25 @@ class DeCaptchaWiki
             'example_recognize' => [
                 'ru' => 'Распознавание',
             ],
+            'example_nottrue' => [
+                'ru' => 'Не верно распознано',
+            ],
+            'example_nottrue_desc' => [
+                'ru' => 'Если Вы сможете понять что ответ которые пришёл не верные. Обязательно добавьте ниже написанный код. Это Вам съекономит деньги.',
+            ],
+            'example_balance' => [
+                'ru' => 'Баланс',
+            ],
+            'example_error_lang_if' => [
+                'ru' => true,
+                'en' => false,
+            ],
+            'example_error_lang' => [
+                'ru' => 'Язык ошибки',
+            ],
+            'example_error_lang_desc' => [
+                'ru' => 'По умолчанию ошибки на англиском языке, если необходимо переоперелить, сделайте следующее',
+            ],
         ];
     }
 
@@ -338,6 +357,25 @@ class DeCaptchaWiki
         $str .= '    $error = $captcha->getError());'.PHP_EOL;
         $str .= '}'.PHP_EOL;
         $str .= '```'.PHP_EOL;
+
+        $str .= "#####{$this->getText(['example', 'nottrue'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'nottrue','desc'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= '$captcha->notTrue();'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
+
+        $str .= "#####{$this->getText(['example', 'balance'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= '$balance = $captcha->getBalance();'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
+
+        if ($this->getText(['example', 'error','lang','if'])) {
+            $str .= "#####{$this->getText(['example', 'error','lang'])}" . PHP_EOL;
+            $str .= "{$this->getText(['example', 'error','lang','desc'])}".PHP_EOL;
+            $str .= '```' . PHP_EOL;
+            $str .= '$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);'.PHP_EOL;
+            $str .= '```' . PHP_EOL;
+        }
 
         /*  constructor_data
         use jumper423\decaptcha\services\Anticaptcha;

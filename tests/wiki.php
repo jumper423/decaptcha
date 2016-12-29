@@ -11,5 +11,5 @@ include_once __DIR__.'/../src/services/AnticaptchaReCaptcha.php';
 include_once __DIR__.'/../src/core/DeCaptchaWiki.php';
 
 $rr = new \jumper423\decaptcha\services\RuCaptcha([]);
-$tt = $rr->getWiki('en');
+$tt = $rr->getWiki('ru');
 echo $tt->view();
