@@ -17,7 +17,11 @@ class TwoCaptchaTest extends PHPUnit_Framework_TestCase
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
         $captcha->setCauseAnError(true);
-        $captcha->recognize(__DIR__.'/data/Captcha.jpg');
+        try {
+            $captcha->recognize(__DIR__ . '/data/Captcha.jpg');
+        } catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {
+
+        }
     }
 
     public function testRecognizeBalanceError2()

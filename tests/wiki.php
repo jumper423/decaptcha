@@ -10,6 +10,12 @@ include_once __DIR__.'/../src/services/AnticaptchaReCaptchaProxeless.php';
 include_once __DIR__.'/../src/services/AnticaptchaReCaptcha.php';
 include_once __DIR__.'/../src/core/DeCaptchaWiki.php';
 
-$rr = new \jumper423\decaptcha\services\RuCaptcha([]);
-$tt = $rr->getWiki('ru');
-echo $tt->view();
+foreach (['ru', 'en'] as $lang) {
+    foreach ([
+                 new \jumper423\decaptcha\services\RuCaptcha([])
+             ] as $class) {
+        $tt = $class->getWiki($lang);
+        $tt->save();
+    }
+}
+

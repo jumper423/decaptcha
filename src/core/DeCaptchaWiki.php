@@ -232,8 +232,14 @@ class DeCaptchaWiki
             'example_initialization' => [
                 'ru' => 'Инициализация',
             ],
+            'example_initialization_desc' => [
+                'ru' => 'Указываем ключ, обязательные и дополнительные параметры. Старайтесь по максимуму их заполнить это способствует более быстрому распознанию капчи.',
+            ],
             'example_recognize' => [
                 'ru' => 'Распознавание',
+            ],
+            'example_recognize_desc' => [
+                'ru' => 'В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.',
             ],
             'example_nottrue' => [
                 'ru' => 'Не верно распознано',
@@ -253,6 +259,27 @@ class DeCaptchaWiki
             ],
             'example_error_lang_desc' => [
                 'ru' => 'По умолчанию ошибки на англиском языке, если необходимо переоперелить, сделайте следующее',
+            ],
+            'example_error_interception' => [
+                'ru' => 'Перехват ошибки',
+            ],
+            'example_error_interception_desc' => [
+                'ru' => 'При желании Вы можете перехватывать ошибку, но для этого надо вызвать setCauseAnError',
+            ],
+            'install' => [
+                'ru' => 'Установка',
+            ],
+            'install_preferred' => [
+                'ru' => 'Предпочтительный способ установить это расширение через',
+            ],
+            'install_start' => [
+                'ru' => 'Либо запустить',
+            ],
+            'install_add' => [
+                'ru' => 'или добавить',
+            ],
+            'install_add_file' => [
+                'ru' => 'в файл',
             ],
         ];
     }
@@ -306,6 +333,18 @@ class DeCaptchaWiki
 
     private function viewInstall()
     {
+        $str = "{$this->getText(['install','preferred'])} [composer](http://getcomposer.org/download/).".PHP_EOL;
+        $str .= PHP_EOL;
+        $str .= "{$this->getText(['install','start'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= 'php composer.phar require --prefer-dist jumper423/decaptcha "*"'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= "{$this->getText(['install','add'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= '"jumper423/decaptcha": "*"'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= "{$this->getText(['install','add', 'file'])} `composer.json`.".PHP_EOL;
+        return $str;
     }
 
     private function viewExamples()
@@ -313,6 +352,7 @@ class DeCaptchaWiki
         $rc = (new \ReflectionClass($this->class));
 
         $str = "#####{$this->getText(['example', 'initialization'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'initialization','desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= "use {$rc->getName()};".PHP_EOL;
         $str .= ''.PHP_EOL;
@@ -330,6 +370,7 @@ class DeCaptchaWiki
         $str .= '```'.PHP_EOL;
 
         $str .= "#####{$this->getText(['example', 'recognize'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'recognize','desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= 'if ($captcha->recognize(';
         if ($this->texts['recognize_file']) {
@@ -358,16 +399,20 @@ class DeCaptchaWiki
         $str .= '}'.PHP_EOL;
         $str .= '```'.PHP_EOL;
 
-        $str .= "#####{$this->getText(['example', 'nottrue'])}".PHP_EOL;
-        $str .= "{$this->getText(['example', 'nottrue','desc'])}".PHP_EOL;
-        $str .= '```'.PHP_EOL;
-        $str .= '$captcha->notTrue();'.PHP_EOL;
-        $str .= '```'.PHP_EOL;
+        if (in_array('notTrue', get_class_methods($this->class))) {
+            $str .= "#####{$this->getText(['example', 'nottrue'])}" . PHP_EOL;
+            $str .= "{$this->getText(['example', 'nottrue','desc'])}" . PHP_EOL;
+            $str .= '```' . PHP_EOL;
+            $str .= '$captcha->notTrue();' . PHP_EOL;
+            $str .= '```' . PHP_EOL;
+        }
 
-        $str .= "#####{$this->getText(['example', 'balance'])}".PHP_EOL;
-        $str .= '```'.PHP_EOL;
-        $str .= '$balance = $captcha->getBalance();'.PHP_EOL;
-        $str .= '```'.PHP_EOL;
+        if (in_array('getBalance', get_class_methods($this->class))) {
+            $str .= "#####{$this->getText(['example', 'balance'])}" . PHP_EOL;
+            $str .= '```' . PHP_EOL;
+            $str .= '$balance = $captcha->getBalance();' . PHP_EOL;
+            $str .= '```' . PHP_EOL;
+        }
 
         if ($this->getText(['example', 'error','lang','if'])) {
             $str .= "#####{$this->getText(['example', 'error','lang'])}" . PHP_EOL;
@@ -377,25 +422,38 @@ class DeCaptchaWiki
             $str .= '```' . PHP_EOL;
         }
 
-        /*  constructor_data
-        use jumper423\decaptcha\services\Anticaptcha;
-
-$captcha = new Anticaptcha([
-    Anticaptcha::PARAM_SPEC_API_KEY => '5464654645646',
-]);
-$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
-$captcha->setCauseAnError(true);
-
-if ($captcha->recognize(__DIR__.'/data/Captcha.jpg')) {
-    $code = $captcha->getCode();
-} else {
-    $error = $captcha->getError());
-}
-
-$balance = $captcha->getBalance();
-
-$captcha->notTrue();
-        */
+        $str .= "#####{$this->getText(['example', 'error','interception'])}" . PHP_EOL;
+        $str .= "{$this->getText(['example', 'error','interception','desc'])}".PHP_EOL;
+        $str .= '```' . PHP_EOL;
+        $str .= '$captcha->setCauseAnError(true);'.PHP_EOL;
+        $str .= PHP_EOL;
+        $str .= 'try {'.PHP_EOL;
+        $str .= '    $captcha->recognize(';
+        if ($this->texts['recognize_file']) {
+            $str .= "'{$this->getText(['recognize', 'data', 'file'])}'";
+        }
+        if ($this->texts['recognize_data']) {
+            if ($this->texts['recognize_file']) {
+                $str .= ', ';
+            }
+            $str .= '['.PHP_EOL;
+            foreach ($this->texts['recognize_data'] as $key => $val) {
+                $str .= "       {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
+                if (is_string($val)) {
+                    $str .= "'{$val}'";
+                } else {
+                    $str .= "{$val}";
+                }
+                $str .= ','.PHP_EOL;
+            }
+            $str .= '    ]';
+        }
+        $str .= ');'.PHP_EOL;
+        $str .= '    $code = $captcha->getCode();'.PHP_EOL;
+        $str .= '} catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {'.PHP_EOL;
+        $str .= '    ...'.PHP_EOL;
+        $str .= '}'.PHP_EOL;
+        $str .= '```' . PHP_EOL;
         return $str;
     }
 
@@ -459,11 +517,21 @@ $captcha->notTrue();
         $str .= "{$this->getText(['recognize', 'price'])}".PHP_EOL.PHP_EOL;
         $str .= "###{$this->getText(['slug', 'recognize', 'desc'])}".PHP_EOL;
         $str .= "{$this->getText(['recognize', 'desc'])}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['install'])}".PHP_EOL;
+        $str .= "{$this->viewInstall()}".PHP_EOL.PHP_EOL;
         $str .= "###{$this->getText(['example'])}".PHP_EOL;
         $str .= "{$this->viewExamples()}".PHP_EOL.PHP_EOL;
         $str .= "###{$this->getText(['slug', 'fields', 'desc'])}".PHP_EOL;
         $str .= $this->viewFields().PHP_EOL;
 
         return $str;
+    }
+
+    public function getFileName(){
+        return (new \ReflectionClass($this->class))->getShortName();
+    }
+
+    public function save(){
+        file_put_contents(__DIR__ . '/../../docs/' . $this->getFileName() . '-'.$this->lang.'.md', $this->view());
     }
 }
