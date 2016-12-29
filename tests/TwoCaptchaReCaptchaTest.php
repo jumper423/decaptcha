@@ -8,7 +8,7 @@ class TwoCaptchaReCaptchaTest extends PHPUnit_Framework_TestCase
     public function testRecaptcha()
     {
         $captcha = new \jumper423\decaptcha\services\RuCaptchaReCaptcha([
-            \jumper423\decaptcha\services\RuCaptchaReCaptcha::PARAM_SPEC_API_KEY => '200a1ed2b6ca001d8171c655658086ed',
+            \jumper423\decaptcha\services\RuCaptchaReCaptcha::ACTION_FIELD_KEY => '200a1ed2b6ca001d8171c655658086ed',
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
 //        if ($captcha->recognize([

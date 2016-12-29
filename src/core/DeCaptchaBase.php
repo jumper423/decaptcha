@@ -115,7 +115,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     {
         try {
             $this->resetLimits();
-            $additionally[static::PARAM_SPEC_FILE] = $filePath;
+            if ($filePath) {
+                $additionally[static::ACTION_FIELD_FILE] = $filePath;
+            }
             $this->setParams($additionally);
 
             return $this->requestRecognize() && $this->requestCode();

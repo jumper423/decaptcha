@@ -13,7 +13,7 @@ class TwoCaptchaTest extends PHPUnit_Framework_TestCase
     public function testRecognizeBalanceError1()
     {
         $captcha = new \jumper423\decaptcha\services\TwoCaptcha([
-            \jumper423\decaptcha\services\TwoCaptcha::PARAM_SPEC_API_KEY => '200a1ed2b6ca001d8171c655658086ed',
+            \jumper423\decaptcha\services\TwoCaptcha::ACTION_FIELD_KEY => '200a1ed2b6ca001d8171c655658086ed',
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
         $captcha->setCauseAnError(true);
@@ -23,7 +23,7 @@ class TwoCaptchaTest extends PHPUnit_Framework_TestCase
     public function testRecognizeBalanceError2()
     {
         $captcha = new \jumper423\decaptcha\services\TwoCaptcha([
-            \jumper423\decaptcha\services\TwoCaptcha::PARAM_SPEC_API_KEY => '200a1ed2b6ca001d8171c655658086ed',
+            \jumper423\decaptcha\services\TwoCaptcha::ACTION_FIELD_KEY => '200a1ed2b6ca001d8171c655658086ed',
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
         if ($captcha->recognize(__DIR__.'/data/Captcha.jpg')) {
@@ -36,7 +36,7 @@ class TwoCaptchaTest extends PHPUnit_Framework_TestCase
     public function testGetBalance()
     {
         $captcha = new \jumper423\decaptcha\services\TwoCaptcha([
-            \jumper423\decaptcha\services\TwoCaptcha::PARAM_SPEC_API_KEY => '200a1ed2b6ca001d8171c655658086ed',
+            \jumper423\decaptcha\services\TwoCaptcha::ACTION_FIELD_KEY => '200a1ed2b6ca001d8171c655658086ed',
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
         $this->assertEquals(0, (int) $captcha->getBalance());
@@ -45,7 +45,7 @@ class TwoCaptchaTest extends PHPUnit_Framework_TestCase
     public function testNotTrue()
     {
         $captcha = new \jumper423\decaptcha\services\TwoCaptcha([
-            \jumper423\decaptcha\services\TwoCaptcha::PARAM_SPEC_API_KEY => '200a1ed2b6ca001d8171c655658086ed',
+            \jumper423\decaptcha\services\TwoCaptcha::ACTION_FIELD_KEY => '200a1ed2b6ca001d8171c655658086ed',
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
         $this->assertEquals(false, $captcha->notTrue());

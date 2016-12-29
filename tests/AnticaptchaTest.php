@@ -1,5 +1,7 @@
 <?php
 
+use jumper423\decaptcha\services\Anticaptcha;
+
 /**
  * Class AnticaptchaTest.
  */
@@ -7,8 +9,8 @@ class AnticaptchaTest extends PHPUnit_Framework_TestCase
 {
     public function testRecognize()
     {
-        $captcha = new \jumper423\decaptcha\services\Anticaptcha([
-            \jumper423\decaptcha\services\Anticaptcha::PARAM_SPEC_API_KEY => '5464654645646',
+        $captcha = new Anticaptcha([
+            \jumper423\decaptcha\services\Anticaptcha::ACTION_FIELD_KEY => '5464654645646',
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
         if ($captcha->recognize(__DIR__.'/data/Captcha.jpg')) {
@@ -21,7 +23,7 @@ class AnticaptchaTest extends PHPUnit_Framework_TestCase
     public function testEnum()
     {
         $captcha = new \jumper423\decaptcha\services\Anticaptcha([
-            \jumper423\decaptcha\services\Anticaptcha::PARAM_SPEC_API_KEY    => '5464654645646',
+            \jumper423\decaptcha\services\Anticaptcha::ACTION_FIELD_KEY    => '5464654645646',
             \jumper423\decaptcha\services\Anticaptcha::ACTION_FIELD_LANGUAGE => 'ru',
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);

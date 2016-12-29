@@ -77,6 +77,26 @@ vendor/bin/phpunit
 
 RuCaptcha
 ==============
+
+```
+use jumper423\decaptcha\services\Anticaptcha;
+
+$captcha = new Anticaptcha([
+    Anticaptcha::PARAM_SPEC_API_KEY => '5464654645646',
+]);
+$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
+
+if ($captcha->recognize(__DIR__.'/data/Captcha.jpg')) {
+    $code = $captcha->getCode();
+} else {
+    $error = $captcha->getError());
+}
+
+$balance = $captcha->getBalance();
+
+$captcha->notTrue();
+```
+
 ###Ссылка
 [ RuCaptcha](http://rucaptcha.ru)
 

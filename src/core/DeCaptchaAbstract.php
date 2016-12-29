@@ -214,16 +214,20 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
 
     /**
      * @param $param
+     * @param $spec
      * @param $coding
      *
      * @return \CURLFile|mixed|null|string
      */
-    public function getParamSpec($param, $coding = null)
+    public function getParamSpec($param, $spec = null, $coding = null)
     {
+        if (is_null($spec)) {
+            $spec = $param;
+        }
         if (!array_key_exists($param, $this->params) || is_null($this->params[$param])) {
             return null;
         }
-        switch ($param) {
+        switch ($spec) {
             case static::PARAM_SPEC_FILE:
                 switch ($coding) {
                     case static::PARAM_SLUG_CODING_BASE64:
@@ -270,7 +274,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                 $value = $this->params[$field];
             }
             if (array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->params)) {
-                $value = $this->getParamSpec($settings[self::PARAM_SLUG_SPEC], array_key_exists(self::PARAM_SLUG_CODING, $settings) ? $settings[self::PARAM_SLUG_CODING] : null);
+                $value = $this->getParamSpec($field, $settings[self::PARAM_SLUG_SPEC], array_key_exists(self::PARAM_SLUG_CODING, $settings) ? $settings[self::PARAM_SLUG_CODING] : null);
             }
             if (is_null($value)) {
                 if (array_key_exists(self::PARAM_SLUG_REQUIRE, $settings) && $settings[self::PARAM_SLUG_REQUIRE] === true) {
