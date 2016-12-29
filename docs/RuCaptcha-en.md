@@ -43,12 +43,10 @@ $captcha = new RuCaptcha([
 #####Распознавание
 В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.
 ```
-if ($captcha->recognize('http://site.com/captcha.jpg', [
-    RuCaptcha::ACTION_FIELD_FILE => 'http://site.com/captcha.jpg',
-])) {
+if ($captcha->recognize('http://site.com/captcha.jpg')) {
     $code = $captcha->getCode();
 } else {
-    $error = $captcha->getError());
+    $error = $captcha->getError();
 }
 ```
 #####Не верно распознано
@@ -66,9 +64,7 @@ $balance = $captcha->getBalance();
 $captcha->setCauseAnError(true);
 
 try {
-    $captcha->recognize('http://site.com/captcha.jpg', [
-       RuCaptcha::ACTION_FIELD_FILE => 'http://site.com/captcha.jpg',
-    ]);
+    $captcha->recognize('http://site.com/captcha.jpg');
     $code = $captcha->getCode();
 } catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {
     ...

@@ -28,9 +28,7 @@ class DeCaptchaWiki
             ],
             'recognize_file'      => true,
             'recognize_data_file' => 'http://site.com/captcha.jpg',
-            'recognize_data'      => [
-                ($this->class)::ACTION_FIELD_FILE => 'http://site.com/captcha.jpg',
-            ],
+            'recognize_data'      => [],
             'field_main_name_'.($this->class)::ACTION_FIELD_KEY => [
                 'ru' => 'Ключ',
             ],
@@ -396,7 +394,7 @@ class DeCaptchaWiki
         $str .= ')) {'.PHP_EOL;
         $str .= '    $code = $captcha->getCode();'.PHP_EOL;
         $str .= '} else {'.PHP_EOL;
-        $str .= '    $error = $captcha->getError());'.PHP_EOL;
+        $str .= '    $error = $captcha->getError();'.PHP_EOL;
         $str .= '}'.PHP_EOL;
         $str .= '```'.PHP_EOL;
 
@@ -485,9 +483,13 @@ class DeCaptchaWiki
     {
         $str = " {$this->getText(['field', 'main', 'name', $param])} |";
         $str .= " {$this->getNameConst('ACTION_FIELD_', $param)} |";
-        $str .= ' '.substr($this->getNameConst('PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17).' |';
-        $str .= ' '.(array_key_exists(($this->class)::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
-        $str .= ' '.(array_key_exists(($this->class)::PARAM_SLUG_DEFAULT, $setting) ? $setting[($this->class)::PARAM_SLUG_DEFAULT] : '').' |';
+//        if (isset($setting[($this->class)::PARAM_SLUG_TYPE])) {
+            $str .= ' ' . substr($this->getNameConst('PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17) . ' |';
+//        } else {
+//            $str .= ' |';
+//        }
+        $str .= ' ' . (array_key_exists(($this->class)::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-') . ' |';
+        $str .= ' ' . (array_key_exists(($this->class)::PARAM_SLUG_DEFAULT, $setting) ? $setting[($this->class)::PARAM_SLUG_DEFAULT] : '') . ' |';
         $str .= " {$this->getText(['field', 'slug', ($this->class)::PARAM_SLUG_ENUM, $param])} |";
         $str .= " {$this->getText(['field', 'main', 'desc', $param])} |";
         $str .= PHP_EOL;
