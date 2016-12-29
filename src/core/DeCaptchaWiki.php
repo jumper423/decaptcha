@@ -333,17 +333,18 @@ class DeCaptchaWiki
 
     private function viewInstall()
     {
-        $str = "{$this->getText(['install','preferred'])} [composer](http://getcomposer.org/download/).".PHP_EOL;
+        $str = "{$this->getText(['install', 'preferred'])} [composer](http://getcomposer.org/download/).".PHP_EOL;
         $str .= PHP_EOL;
-        $str .= "{$this->getText(['install','start'])}".PHP_EOL;
+        $str .= "{$this->getText(['install', 'start'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= 'php composer.phar require --prefer-dist jumper423/decaptcha "*"'.PHP_EOL;
         $str .= '```'.PHP_EOL;
-        $str .= "{$this->getText(['install','add'])}".PHP_EOL;
+        $str .= "{$this->getText(['install', 'add'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= '"jumper423/decaptcha": "*"'.PHP_EOL;
         $str .= '```'.PHP_EOL;
-        $str .= "{$this->getText(['install','add', 'file'])} `composer.json`.".PHP_EOL;
+        $str .= "{$this->getText(['install', 'add', 'file'])} `composer.json`.".PHP_EOL;
+
         return $str;
     }
 
@@ -352,7 +353,7 @@ class DeCaptchaWiki
         $rc = (new \ReflectionClass($this->class));
 
         $str = "#####{$this->getText(['example', 'initialization'])}".PHP_EOL;
-        $str .= "{$this->getText(['example', 'initialization','desc'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'initialization', 'desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= "use {$rc->getName()};".PHP_EOL;
         $str .= ''.PHP_EOL;
@@ -370,7 +371,7 @@ class DeCaptchaWiki
         $str .= '```'.PHP_EOL;
 
         $str .= "#####{$this->getText(['example', 'recognize'])}".PHP_EOL;
-        $str .= "{$this->getText(['example', 'recognize','desc'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'recognize', 'desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= 'if ($captcha->recognize(';
         if ($this->texts['recognize_file']) {
@@ -400,18 +401,18 @@ class DeCaptchaWiki
         $str .= '```'.PHP_EOL;
 
         if (in_array('notTrue', get_class_methods($this->class))) {
-            $str .= "#####{$this->getText(['example', 'nottrue'])}" . PHP_EOL;
-            $str .= "{$this->getText(['example', 'nottrue','desc'])}" . PHP_EOL;
-            $str .= '```' . PHP_EOL;
-            $str .= '$captcha->notTrue();' . PHP_EOL;
-            $str .= '```' . PHP_EOL;
+            $str .= "#####{$this->getText(['example', 'nottrue'])}".PHP_EOL;
+            $str .= "{$this->getText(['example', 'nottrue', 'desc'])}".PHP_EOL;
+            $str .= '```'.PHP_EOL;
+            $str .= '$captcha->notTrue();'.PHP_EOL;
+            $str .= '```'.PHP_EOL;
         }
 
         if (in_array('getBalance', get_class_methods($this->class))) {
-            $str .= "#####{$this->getText(['example', 'balance'])}" . PHP_EOL;
-            $str .= '```' . PHP_EOL;
-            $str .= '$balance = $captcha->getBalance();' . PHP_EOL;
-            $str .= '```' . PHP_EOL;
+            $str .= "#####{$this->getText(['example', 'balance'])}".PHP_EOL;
+            $str .= '```'.PHP_EOL;
+            $str .= '$balance = $captcha->getBalance();'.PHP_EOL;
+            $str .= '```'.PHP_EOL;
         }
 
         if ($this->getText(['example', 'error', 'lang', 'if'])) {
@@ -422,9 +423,9 @@ class DeCaptchaWiki
             $str .= '```'.PHP_EOL;
         }
 
-        $str .= "#####{$this->getText(['example', 'error','interception'])}" . PHP_EOL;
-        $str .= "{$this->getText(['example', 'error','interception','desc'])}".PHP_EOL;
-        $str .= '```' . PHP_EOL;
+        $str .= "#####{$this->getText(['example', 'error', 'interception'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'error', 'interception', 'desc'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
         $str .= '$captcha->setCauseAnError(true);'.PHP_EOL;
         $str .= PHP_EOL;
         $str .= 'try {'.PHP_EOL;
@@ -453,7 +454,8 @@ class DeCaptchaWiki
         $str .= '} catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {'.PHP_EOL;
         $str .= '    ...'.PHP_EOL;
         $str .= '}'.PHP_EOL;
-        $str .= '```' . PHP_EOL;
+        $str .= '```'.PHP_EOL;
+
         return $str;
     }
 
@@ -527,11 +529,13 @@ class DeCaptchaWiki
         return $str;
     }
 
-    public function getFileName(){
+    public function getFileName()
+    {
         return (new \ReflectionClass($this->class))->getShortName();
     }
 
-    public function save(){
-        file_put_contents(__DIR__ . '/../../docs/' . $this->getFileName() . '-'.$this->lang.'.md', $this->view());
+    public function save()
+    {
+        file_put_contents(__DIR__.'/../../docs/'.$this->getFileName().'-'.$this->lang.'.md', $this->view());
     }
 }
