@@ -211,6 +211,9 @@ class DeCaptchaWiki
             'slug_link' => [
                 'ru' => 'Ссылка',
             ],
+            'slug_link_to_service' => [
+                'ru' => 'Ссылка на сервис',
+            ],
             'slug_price' => [
                 'ru' => 'Цены',
             ],
@@ -222,6 +225,15 @@ class DeCaptchaWiki
             ],
             'slug_fields_desc' => [
                 'ru' => 'Описание полей',
+            ],
+            'example' => [
+                'ru' => 'Примеры',
+            ],
+            'example_initialization' => [
+                'ru' => 'Инициализация',
+            ],
+            'example_recognize' => [
+                'ru' => 'Распознавание',
             ],
         ];
     }
@@ -242,7 +254,7 @@ class DeCaptchaWiki
      * @param string|array $name
      * @param string       $separator
      *
-     * @return string
+     * @return string|array
      */
     public function getText($name, $separator = '; ')
     {
@@ -265,44 +277,117 @@ class DeCaptchaWiki
         };
         $result = $getResult($name, $this->texts);
         if (is_array($result)) {
-            $result = implode($separator, $result);
+            if ($separator) {
+                $result = implode($separator, $result);
+            }
         }
 
         return $result;
     }
 
-    public function viewExamples()
+    private function viewInstall()
     {
     }
 
-    public function viewFields()
+    private function viewExamples()
+    {
+        $rc = (new \ReflectionClass($this->class));
+
+        $str = "#####{$this->getText(['example', 'initialization'])}".PHP_EOL;
+        $str.= "```".PHP_EOL;
+        $str.= "use {$rc->getName()};".PHP_EOL;
+        $str.= "".PHP_EOL;
+        $str.= '$captcha = new '.$rc->getShortName().'(['.PHP_EOL;
+        foreach ($this->texts['constructor_data'] as $key => $val) {
+            $str.= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
+            if (is_string($val)) {
+                $str.= "'{$val}'";
+            } else {
+                $str.= "{$val}";
+            }
+            $str.= ",".PHP_EOL;
+        }
+        $str.= "]);".PHP_EOL;
+        $str.= "```".PHP_EOL;
+
+        $str.= "#####{$this->getText(['example', 'recognize'])}".PHP_EOL;
+        $str.= "```".PHP_EOL;
+        $str .= 'if ($captcha->recognize(';
+        if ($this->texts['recognize_file']) {
+            $str .= "'{$this->getText(['recognize', 'data', 'file'])}'";
+        }
+        if ($this->texts['recognize_data']) {
+            if ($this->texts['recognize_file']) {
+                $str.= ", ";
+            }
+            $str.= "[".PHP_EOL;
+            foreach ($this->texts['recognize_data'] as $key => $val) {
+                $str.= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
+                if (is_string($val)) {
+                    $str.= "'{$val}'";
+                } else {
+                    $str.= "{$val}";
+                }
+                $str.= ",".PHP_EOL;
+            }
+            $str.= "]";
+        }
+        $str.= ")) {".PHP_EOL;
+        $str.= '    $code = $captcha->getCode();'.PHP_EOL;
+        $str.= "} else {".PHP_EOL;
+        $str.= '    $error = $captcha->getError());'.PHP_EOL;
+        $str.= "}".PHP_EOL;
+        $str.= "```".PHP_EOL;
+
+        /*  constructor_data
+        use jumper423\decaptcha\services\Anticaptcha;
+
+$captcha = new Anticaptcha([
+    Anticaptcha::PARAM_SPEC_API_KEY => '5464654645646',
+]);
+$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
+$captcha->setCauseAnError(true);
+
+if ($captcha->recognize(__DIR__.'/data/Captcha.jpg')) {
+    $code = $captcha->getCode();
+} else {
+    $error = $captcha->getError());
+}
+
+$balance = $captcha->getBalance();
+
+$captcha->notTrue();
+        */
+        return $str;
+    }
+
+    private function viewFields()
     {
         $str = " {$this->getText(['table', 'th', 'name'])} | {$this->getText(['table', 'th', 'code'])} | {$this->getText(['table', 'th', 'type'])} | {$this->getText(['table', 'th', 'req'])} | {$this->getText(['table', 'th', 'def'])} | {$this->getText(['table', 'th', 'enum'])} | {$this->getText(['table', 'th', 'desc'])} ".PHP_EOL;
         $str .= ' --- | --- | --- | --- | --- | --- | --- '.PHP_EOL;
-        $rr = (new \ReflectionClass($this->class))->getConstants();
         foreach ($this->class->actions[($this->class)::ACTION_RECOGNIZE][($this->class)::ACTION_FIELDS] as $param => $setting) {
             if (array_key_exists(($this->class)::ACTION_FIELDS, $setting) && is_array($setting[($this->class)::ACTION_FIELDS])) {
                 foreach ($setting[($this->class)::ACTION_FIELDS] as $param1 => $setting1) {
                     if (array_key_exists(($this->class)::PARAM_SLUG_NOTWIKI, $setting1) && $setting1[($this->class)::PARAM_SLUG_NOTWIKI] === true) {
                         continue;
                     }
-                    $str .= $this->viewFieldLine($rr, $param1, $setting1);
+                    $str .= $this->viewFieldLine($param1, $setting1);
                 }
             }
             if (array_key_exists(($this->class)::PARAM_SLUG_NOTWIKI, $setting) && $setting[($this->class)::PARAM_SLUG_NOTWIKI] === true) {
                 continue;
             }
-            $str .= $this->viewFieldLine($rr, $param, $setting);
+            $str .= $this->viewFieldLine($param, $setting);
         }
 
         return $str;
     }
 
-    public function viewFieldLine($rr, $param, $setting)
+    private function viewFieldLine($param, $setting)
     {
         $str = " {$this->getText(['field', 'main', 'name', $param])} |";
-        $str .= " {$this->getNameConst($rr, 'ACTION_FIELD_', $param)} |";
-        $str .= ' '.substr($this->getNameConst($rr, 'PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17).' |';
+        $str .= " {$this->getNameConst('ACTION_FIELD_', $param)} |";
+        $str .= ' '.substr($this->getNameConst('PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17).' |';
         $str .= ' '.(array_key_exists(($this->class)::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
         $str .= ' '.(array_key_exists(($this->class)::PARAM_SLUG_DEFAULT, $setting) ? $setting[($this->class)::PARAM_SLUG_DEFAULT] : '').' |';
         $str .= " {$this->getText(['field', 'slug', ($this->class)::PARAM_SLUG_ENUM, $param])} |";
@@ -312,8 +397,9 @@ class DeCaptchaWiki
         return $str;
     }
 
-    public function getNameConst($constants, $keyMask, $value)
+    private function getNameConst($keyMask, $value)
     {
+        $constants = (new \ReflectionClass($this->class))->getConstants();
         foreach ($constants as $key => $val) {
             if (stripos($key, $keyMask) !== false && $val === $value) {
                 return $key;
@@ -335,6 +421,8 @@ class DeCaptchaWiki
         $str .= "{$this->getText(['recognize', 'price'])}".PHP_EOL.PHP_EOL;
         $str .= "###{$this->getText(['slug', 'recognize', 'desc'])}".PHP_EOL;
         $str .= "{$this->getText(['recognize', 'desc'])}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['example'])}".PHP_EOL;
+        $str .= "{$this->viewExamples()}".PHP_EOL.PHP_EOL;
         $str .= "###{$this->getText(['slug', 'fields', 'desc'])}".PHP_EOL;
         $str .= $this->viewFields().PHP_EOL;
 

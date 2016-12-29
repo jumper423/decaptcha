@@ -85,6 +85,7 @@ $captcha = new Anticaptcha([
     Anticaptcha::PARAM_SPEC_API_KEY => '5464654645646',
 ]);
 $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
+$captcha->setCauseAnError(true);
 
 if ($captcha->recognize(__DIR__.'/data/Captcha.jpg')) {
     $code = $captcha->getCode();
