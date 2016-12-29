@@ -44,7 +44,7 @@ class RuCaptchaClick extends RuCaptchaInstruction
         $this->wiki->setText(['recognize', 'desc'], [
             'ru' => 'Распознание любой ClickCaptcha (в том числе и ReCaptcha 2.0). В ответ приходит массив координат, от верхнего левого угла.',
         ]);
-        $this->wiki->setText(['recognize','data'], [
+        $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_INSTRUCTIONS => 'Where\'s the cat?',
         ]);
     }

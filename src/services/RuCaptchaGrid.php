@@ -50,7 +50,7 @@ class RuCaptchaGrid extends RuCaptchaInstruction
 
 Обратите внимание, что необходимо засылать саму картинку рекапчи, а не делать её скриншот.',
         ]);
-        $this->wiki->setText(['recognize','data'], [
+        $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_INSTRUCTIONS => 'Where\'s the cat?',
         ]);
     }
