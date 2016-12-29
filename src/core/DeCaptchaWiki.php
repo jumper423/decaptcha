@@ -359,7 +359,7 @@ class DeCaptchaWiki
         $str .= '```'.PHP_EOL;
 
         $str .= "#####{$this->getText(['example', 'nottrue'])}".PHP_EOL;
-        $str .= "{$this->getText(['example', 'nottrue','desc'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'nottrue', 'desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= '$captcha->notTrue();'.PHP_EOL;
         $str .= '```'.PHP_EOL;
@@ -369,12 +369,12 @@ class DeCaptchaWiki
         $str .= '$balance = $captcha->getBalance();'.PHP_EOL;
         $str .= '```'.PHP_EOL;
 
-        if ($this->getText(['example', 'error','lang','if'])) {
-            $str .= "#####{$this->getText(['example', 'error','lang'])}" . PHP_EOL;
-            $str .= "{$this->getText(['example', 'error','lang','desc'])}".PHP_EOL;
-            $str .= '```' . PHP_EOL;
+        if ($this->getText(['example', 'error', 'lang', 'if'])) {
+            $str .= "#####{$this->getText(['example', 'error', 'lang'])}".PHP_EOL;
+            $str .= "{$this->getText(['example', 'error', 'lang', 'desc'])}".PHP_EOL;
+            $str .= '```'.PHP_EOL;
             $str .= '$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);'.PHP_EOL;
-            $str .= '```' . PHP_EOL;
+            $str .= '```'.PHP_EOL;
         }
 
         /*  constructor_data
