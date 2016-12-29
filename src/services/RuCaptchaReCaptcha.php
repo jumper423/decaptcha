@@ -73,11 +73,11 @@ data-sitekey=
 ```<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; "></textarea>```
 Сюда вам нужно будет вставить ответ от нас.',
         ]);
-        $this->wiki->setText(['recognize','data'], [
+        $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',
-            static::ACTION_FIELD_PAGEURL => 'http://site.com/recaptcha-ex',
+            static::ACTION_FIELD_PAGEURL   => 'http://site.com/recaptcha-ex',
         ]);
-        $this->wiki->setText(['recognize','file'], false);
+        $this->wiki->setText(['recognize', 'file'], false);
     }
 
     public function recognize($additionally = [], $null = null)

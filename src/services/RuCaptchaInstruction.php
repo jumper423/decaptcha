@@ -19,7 +19,7 @@ class RuCaptchaInstruction extends RuCaptcha
         $this->wiki->setText(['recognize', 'desc'], [
             'ru' => 'Распознание что написанно на картинке с пояснительной инструкцией',
         ]);
-        $this->wiki->setText(['recognize','data'], [
+        $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_INSTRUCTIONS => 'What\'s in the picture?',
         ]);
     }

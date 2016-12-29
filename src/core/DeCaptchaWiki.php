@@ -26,9 +26,9 @@ class DeCaptchaWiki
             'constructor_data' => [
                 ($this->class)::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
             ],
-            'recognize_file'      => true,
-            'recognize_data_file' => 'http://site.com/captcha.jpg',
-            'recognize_data'      => [],
+            'recognize_file'                                    => true,
+            'recognize_data_file'                               => 'http://site.com/captcha.jpg',
+            'recognize_data'                                    => [],
             'field_main_name_'.($this->class)::ACTION_FIELD_KEY => [
                 'ru' => 'Ключ',
             ],
@@ -484,12 +484,12 @@ class DeCaptchaWiki
         $str = " {$this->getText(['field', 'main', 'name', $param])} |";
         $str .= " {$this->getNameConst('ACTION_FIELD_', $param)} |";
 //        if (isset($setting[($this->class)::PARAM_SLUG_TYPE])) {
-            $str .= ' ' . substr($this->getNameConst('PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17) . ' |';
+            $str .= ' '.substr($this->getNameConst('PARAM_FIELD_TYPE_', $setting[($this->class)::PARAM_SLUG_TYPE]), 17).' |';
 //        } else {
 //            $str .= ' |';
 //        }
-        $str .= ' ' . (array_key_exists(($this->class)::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-') . ' |';
-        $str .= ' ' . (array_key_exists(($this->class)::PARAM_SLUG_DEFAULT, $setting) ? $setting[($this->class)::PARAM_SLUG_DEFAULT] : '') . ' |';
+        $str .= ' '.(array_key_exists(($this->class)::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
+        $str .= ' '.(array_key_exists(($this->class)::PARAM_SLUG_DEFAULT, $setting) ? $setting[($this->class)::PARAM_SLUG_DEFAULT] : '').' |';
         $str .= " {$this->getText(['field', 'slug', ($this->class)::PARAM_SLUG_ENUM, $param])} |";
         $str .= " {$this->getText(['field', 'main', 'desc', $param])} |";
         $str .= PHP_EOL;
