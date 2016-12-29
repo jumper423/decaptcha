@@ -23,7 +23,7 @@ class AnticaptchaTest extends PHPUnit_Framework_TestCase
     public function testEnum()
     {
         $captcha = new \jumper423\decaptcha\services\Anticaptcha([
-            \jumper423\decaptcha\services\Anticaptcha::ACTION_FIELD_KEY    => '5464654645646',
+            \jumper423\decaptcha\services\Anticaptcha::ACTION_FIELD_KEY      => '5464654645646',
             \jumper423\decaptcha\services\Anticaptcha::ACTION_FIELD_LANGUAGE => 'ru',
         ]);
         $captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
