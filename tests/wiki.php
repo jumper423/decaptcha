@@ -12,10 +12,9 @@ include_once __DIR__.'/../src/core/DeCaptchaWiki.php';
 
 foreach (['ru', 'en'] as $lang) {
     foreach ([
-                 new \jumper423\decaptcha\services\RuCaptcha([])
+                 new \jumper423\decaptcha\services\RuCaptcha([]),
              ] as $class) {
         $tt = $class->getWiki($lang);
         $tt->save();
     }
 }
-
