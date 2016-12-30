@@ -53,5 +53,6 @@ class Captcha24 extends RuCaptcha
                 '1 - на капче только кириллические буквы',
             ],
         ]);
+        $this->wiki->setText(['menu', 'from_service'], null);
     }
 }

@@ -11,11 +11,6 @@ Captcha24
   + [Установка](#Установка)
   + [Примеры](#Примеры)
   + [Описание полей](#Описание-полей)
-+ Другой функционал от сервиса
-  + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
-  + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-ru.md)
-  + [RuCaptcha Сетка (ReCaptcha v2)](../docs/RuCaptchaGrid-ru.md)
-  + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
 
 
 ###Ссылка

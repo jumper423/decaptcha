@@ -11,11 +11,6 @@ R.I.P. Captcha
   + [Установка](#Установка)
   + [Примеры](#Примеры)
   + [Описание полей](#Описание-полей)
-+ Другой функционал от сервиса
-  + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-en.md)
-  + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
-  + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
-  + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-en.md)
 
 
 ###Ссылка

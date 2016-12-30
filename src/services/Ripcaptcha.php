@@ -46,5 +46,6 @@ class Ripcaptcha extends RuCaptcha
                 '1 - капча состоит только из цифр',
             ],
         ]);
+        $this->wiki->setText(['menu', 'from_service'], null);
     }
 }

@@ -64,5 +64,6 @@ class Pixodrom extends RuCaptcha
                 '1 - на изображении присутствуют русские символы',
             ],
         ]);
+        $this->wiki->setText(['menu', 'from_service'], null);
     }
 }

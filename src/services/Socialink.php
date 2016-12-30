@@ -39,5 +39,7 @@ class Socialink extends RuCaptcha
             2,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_SOFT_ID][self::PARAM_SLUG_DEFAULT] = 0;
+
+        $this->wiki->setText(['menu', 'from_service'], null);
     }
 }
