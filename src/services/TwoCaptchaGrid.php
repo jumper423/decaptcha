@@ -18,7 +18,7 @@ class TwoCaptchaGrid extends RuCaptchaGrid
             'en' => '2Captcha Grid (ReCaptcha v2)',
         ]);
         $this->wiki->setText(['service', 'href'], 'http://infoblog1.ru/goto/2captcha');
-        $this->wiki->setText(['menu','from_service'], [
+        $this->wiki->setText(['menu', 'from_service'], [
             TwoCaptcha::class,
             TwoCaptchaInstruction::class,
             TwoCaptchaClick::class,

@@ -81,7 +81,7 @@ class AnticaptchaReCaptcha extends AnticaptchaReCaptchaProxeless
             static::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',
             static::ACTION_FIELD_PAGEURL   => 'http://site.com/recaptcha-ex',
         ]);
-        $this->wiki->setText(['menu','from_service'], [
+        $this->wiki->setText(['menu', 'from_service'], [
             Anticaptcha::class,
             AnticaptchaReCaptchaProxeless::class,
         ]);

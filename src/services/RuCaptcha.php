@@ -282,7 +282,7 @@ Cервис антикапчи RuCaptcha.com не только поддержи�
                 '1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа',
             ],
         ]);
-        $this->wiki->setText(['menu','from_service'], [
+        $this->wiki->setText(['menu', 'from_service'], [
             RuCaptchaInstruction::class,
             RuCaptchaClick::class,
             RuCaptchaGrid::class,

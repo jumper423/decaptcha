@@ -515,9 +515,9 @@ class DeCaptchaWiki
 
     private function viewMenu()
     {
-        $str = "+ [{$this->getText(['slug','menu','main'])}](../blob/master/docs/README-{$this->lang}.md)".PHP_EOL;
-        $str .= "+ [{$this->getText(['slug','menu','another'])}](../blob/master/docs/" . $this->getFileName($this->lang == 'ru' ? 'en' : 'ru') . ')'.PHP_EOL;
-        $str .= "+ {$this->getText(['slug','menu','anchor'])}".PHP_EOL;
+        $str = "+ [{$this->getText(['slug', 'menu', 'main'])}](../blob/master/docs/README-{$this->lang}.md)".PHP_EOL;
+        $str .= "+ [{$this->getText(['slug', 'menu', 'another'])}](../blob/master/docs/".$this->getFileName($this->lang == 'ru' ? 'en' : 'ru').')'.PHP_EOL;
+        $str .= "+ {$this->getText(['slug', 'menu', 'anchor'])}".PHP_EOL;
         foreach ([
                      ['slug', 'link'],
                      ['slug', 'service', 'desc'],
@@ -525,16 +525,16 @@ class DeCaptchaWiki
                      ['slug', 'recognize', 'desc'],
                      ['install'],
                      ['example'],
-                     ['slug', 'fields', 'desc']
+                     ['slug', 'fields', 'desc'],
                  ] as $anchor) {
-            $str .= "  + [{$this->getText($anchor)}](#".implode('-', explode(' ', $this->getText($anchor))).")".PHP_EOL;
+            $str .= "  + [{$this->getText($anchor)}](#".implode('-', explode(' ', $this->getText($anchor))).')'.PHP_EOL;
         }
-        if ($this->getText(['menu','from_service'])) {
-            $str .= "+ {$this->getText(['slug','menu','from_service'])}" . PHP_EOL;
+        if ($this->getText(['menu', 'from_service'])) {
+            $str .= "+ {$this->getText(['slug', 'menu', 'from_service'])}".PHP_EOL;
             foreach ($this->texts['menu_from_service'] as $fromServiceClass) {
                 $fromServiceObject = new $fromServiceClass([]);
                 $fromServiceObjectWiki = $fromServiceObject->getWiki($this->lang);
-                $str .= "  + [{$fromServiceObjectWiki->getText(['service', 'name'])}](../blob/master/docs/{$fromServiceObjectWiki->getFileName()})" . PHP_EOL;
+                $str .= "  + [{$fromServiceObjectWiki->getText(['service', 'name'])}](../blob/master/docs/{$fromServiceObjectWiki->getFileName()})".PHP_EOL;
             }
         }
 
