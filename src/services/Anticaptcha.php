@@ -244,7 +244,7 @@ class Anticaptcha extends DeCaptchaBase
                 'rn - группа стран Россия, Украина, Беларусь, Казахстан',
             ],
         ]);
-        $this->wiki->setText(['field','main','desc', static::ACTION_FIELD_LANGUAGE], [
+        $this->wiki->setText(['field', 'main', 'desc', static::ACTION_FIELD_LANGUAGE], [
             'ru' => 'Определяет язык очереди, в которую должна попасть капча.',
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_LANGUAGE], [
