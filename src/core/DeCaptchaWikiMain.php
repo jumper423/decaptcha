@@ -141,7 +141,7 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
             }
             $tt[$class->getWiki($this->lang)->getFileName()] = true;
             $fromServiceObjectWiki = $class->getWiki($this->lang);
-            $str .= "+ [{$fromServiceObjectWiki->getText(['service', 'name'])}](../docs/{$fromServiceObjectWiki->getFileName()})" . PHP_EOL;
+            $str .= "+ [{$fromServiceObjectWiki->getText(['service', 'name'])}](../master/docs/{$fromServiceObjectWiki->getFileName()})" . PHP_EOL;
         }
         return $str;
     }
