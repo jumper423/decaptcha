@@ -42,5 +42,27 @@ class Pixodrom extends RuCaptcha
             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_SOFT_ID][self::PARAM_SLUG_DEFAULT] = 0;
+
+        $this->wiki->setText(['service', 'name'], 'Pixodrom');
+        $this->wiki->setText(['service', 'href'], 'http://pixodrom.com/');
+        $this->wiki->setText(['service', 'desc'], [
+            'ru' => ' ... ',
+        ]);
+        $this->wiki->setText(['recognize', 'price'], [
+            'ru' => ' ... ',
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_NUMERIC], [
+            'ru' => [
+                '0 - параметр не задействован',
+                '1 - капча состоит только из цифр',
+                '2 - в капче нет цифр',
+            ],
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_IS_RUSSIAN], [
+            'ru' => [
+                '0 - параметр не задействован',
+                '1 - на изображении присутствуют русские символы',
+            ],
+        ]);
     }
 }
