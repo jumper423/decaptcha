@@ -31,6 +31,9 @@ foreach (['ru', 'en'] as $lang) {
                  new \jumper423\decaptcha\services\TwoCaptchaInstruction([]),
                  new \jumper423\decaptcha\services\TwoCaptchaGrid([]),
                  new \jumper423\decaptcha\services\TwoCaptchaClick([]),
+                 new \jumper423\decaptcha\services\Anticaptcha([]),
+                 new \jumper423\decaptcha\services\AnticaptchaReCaptcha([]),
+                 new \jumper423\decaptcha\services\AnticaptchaReCaptchaProxeless([]),
              ] as $class) {
         $tt = $class->getWiki($lang);
         $tt->save();

@@ -49,6 +49,29 @@ class AnticaptchaReCaptchaProxeless extends Anticaptcha
         ];
 
         $this->decodeSettings[static::DECODE_ACTION][static::DECODE_ACTION_GET][static::DECODE_PARAMS][static::DECODE_PARAM_CODE][static::DECODE_PARAM_SETTING_MARKER] = 'solution.gRecaptchaResponse';
+
+        $this->wiki->setText(['service', 'name'], [
+            'ru' => 'AntiCaptcha ReCaptcha v2 без браузера',
+        ]);
+        $this->wiki->setText(['recognize', 'price'], [
+            'ru' => 'Стоимость Рекапчи: от 2 USD за 1000 решений.',
+        ]);
+        $this->wiki->setText(['recognize', 'desc'], [
+            'ru' => 'Вам не нужно эмулировать браузер и запускать яваскрипты.
+            
+Вы присылаете нам значение "sitekey".
+
+Мы передаем вам "g-recaptcha-response" и вы просто делаете сабмит формы с этим параметром.
+
+Объект содержит данные о задаче на решение рекапчи гугла в браузере на компьютере работника. 
+Такая задача будет выполняться нашим сервисом с использованием наших собственных прокси-серверов и/или с IP адресов работников. 
+Стоимость решения такой задачи на 10% выше, чем у AnticaptchaReCaptcha, так как на нас ложится проблема обхода лимитов на количество решений рекапч с 1 IP адреса.',
+        ]);
+        $this->wiki->setText(['recognize', 'data'], [
+            static::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',
+            static::ACTION_FIELD_PAGEURL   => 'http://site.com/recaptcha-ex',
+        ]);
+        $this->wiki->setText(['recognize', 'file'], false);
     }
 
     public function recognize($additionally = [], $null = null)

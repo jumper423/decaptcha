@@ -197,6 +197,62 @@ class Anticaptcha extends DeCaptchaBase
                 ],
             ],
         ];
+
+        $this->wiki->setText(['service', 'name'], 'Anti Captcha');
+        $this->wiki->setText(['service', 'href'], 'https://anti-captcha.com/');
+        $this->wiki->setText(['service', 'desc'], [
+            'ru' => 'Сервис AntiCaptcha, ранее белее известный как Antigate.
+
+100% капч распознаются нашими работниками со всего мира. Именно поэтому используя наш сервис вы одновременно помогаете тысячам людей по всему миру обеспечивать себя и своих близких.
+
+Деньги, которые наши работники зарабатывают у нас считаются хорошей зарплатой в таких странах как Индия, Пакистан или Вьетнам. С вашей помощью теперь у них есть выбор между работой на грязном производстве и работой за компьютером.',
+        ]);
+        $this->wiki->setText(['recognize', 'price'], [
+            'ru' => 'От 0.7 USD за каждые 1000 капч, в зависимости от ваших объемов',
+        ]);
+        $this->wiki->setText(['recognize', 'desc'], [
+            'ru' => 'Решение обычной капчи с текстом.',
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_PHRASE], [
+            'ru' => [
+                'false - нет требований',
+                'true - работник должен ввести текст с одним или несколькими пробелами',
+            ],
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_REGSENSE], [
+            'ru' => [
+                'false - нет требований',
+                'true - работник увидит специальный сигнал что ответ необходимо вводить с учетом регистра',
+            ],
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_NUMERIC], [
+            'ru' => [
+                '0 - нет требований',
+                '1 - можно вводить только цифры',
+                '2 - вводить можно любые символы кроме цифр',
+            ],
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_CALC], [
+            'ru' => [
+                'false - нет требований',
+                'true - работник увидит специальный сигнал что на капче изображено математическое выражение и необходимо ввести на него ответ',
+            ],
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_LANGUAGE], [
+            'ru' => [
+                'en - англоязычная очередь',
+                'rn - группа стран Россия, Украина, Беларусь, Казахстан',
+            ],
+        ]);
+        $this->wiki->setText(['field','main','desc', static::ACTION_FIELD_LANGUAGE], [
+            'ru' => 'Определяет язык очереди, в которую должна попасть капча.',
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_LANGUAGE], [
+            'ru' => [
+                'en - англоязычная очередь',
+                'rn - группа стран Россия, Украина, Беларусь, Казахстан',
+            ],
+        ]);
     }
 
     /**
