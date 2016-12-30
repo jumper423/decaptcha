@@ -29,7 +29,7 @@ class DeCaptchaWiki
             'recognize_file'                                    => true,
             'recognize_data_file'                               => 'http://site.com/captcha.jpg',
             'recognize_data'                                    => [],
-            'field_main_name_'.$class::ACTION_FIELD_KEY => [
+            'field_main_name_'.$class::ACTION_FIELD_KEY         => [
                 'ru' => 'Ключ',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_KEY => [
@@ -539,6 +539,7 @@ class DeCaptchaWiki
     public function getFileName()
     {
         $class = $this->class;
+
         return (new \ReflectionClass($class))->getShortName();
     }
 
