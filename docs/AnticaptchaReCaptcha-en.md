@@ -59,7 +59,7 @@ php composer.phar require --prefer-dist jumper423/decaptcha "*"
 
 
 ###Примеры
-#####Инициализация
+####Инициализация
 Указываем ключ, обязательные и дополнительные параметры. Старайтесь по максимуму их заполнить это способствует более быстрому распознанию капчи.
 ```
 use jumper423\decaptcha\services\AnticaptchaReCaptcha;
@@ -72,7 +72,7 @@ $captcha = new AnticaptchaReCaptcha([
     AnticaptchaReCaptcha::ACTION_FIELD_USERAGENT => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
 ]);
 ```
-#####Распознавание
+####Распознавание
 В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.
 ```
 if ($captcha->recognize([
@@ -84,11 +84,11 @@ if ($captcha->recognize([
     $error = $captcha->getError();
 }
 ```
-#####Баланс
+####Баланс
 ```
 $balance = $captcha->getBalance();
 ```
-#####Перехват ошибки
+####Перехват ошибки
 При желании Вы можете перехватывать ошибку, но для этого надо вызвать setCauseAnError
 ```
 $captcha->setCauseAnError(true);
