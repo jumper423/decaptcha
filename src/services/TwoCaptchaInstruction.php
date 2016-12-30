@@ -17,5 +17,11 @@ class TwoCaptchaInstruction extends RuCaptchaInstruction
             'ru' => '2Captcha Инструкция',
         ]);
         $this->wiki->setText(['service', 'href'], 'http://infoblog1.ru/goto/2captcha');
+        $this->wiki->setText(['menu','from_service'], [
+            TwoCaptcha::class,
+            TwoCaptchaClick::class,
+            TwoCaptchaGrid::class,
+            TwoCaptchaReCaptcha::class,
+        ]);
     }
 }

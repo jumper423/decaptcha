@@ -47,6 +47,12 @@ class RuCaptchaClick extends RuCaptchaInstruction
         $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_INSTRUCTIONS => 'Where\'s the cat?',
         ]);
+        $this->wiki->setText(['menu','from_service'], [
+            RuCaptcha::class,
+            RuCaptchaInstruction::class,
+            RuCaptchaGrid::class,
+            RuCaptchaReCaptcha::class,
+        ]);
     }
 
     /**

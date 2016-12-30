@@ -1,5 +1,23 @@
 2Captcha Инструкция
 ==============
+###Menu
++ [Главная](../blob/master/docs/README-en.md)
++ [Документация на русском языке](../blob/master/docs/TwoCaptchaInstruction-ru.md)
++ Якоря
+  + [Ссылка](#Ссылка)
+  + [Описание сервиса](#Описание-сервиса)
+  + [Цены](#Цены)
+  + [Описание распознания](#Описание-распознания)
+  + [Установка](#Установка)
+  + [Примеры](#Примеры)
+  + [Описание полей](#Описание-полей)
++ Другой функционал от сервиса
+  + [2Captcha](../blob/master/docs/TwoCaptcha-en.md)
+  + [2Captcha ClickCaptcha](../blob/master/docs/TwoCaptchaClick-en.md)
+  + [2Captcha Grid (ReCaptcha v2)](../blob/master/docs/TwoCaptchaGrid-en.md)
+  + [2Captcha ReCaptcha v2 без браузера](../blob/master/docs/TwoCaptchaReCaptcha-en.md)
+
+
 ###Ссылка
 [Ссылка на сервис 2Captcha Инструкция](http://infoblog1.ru/goto/2captcha)
 

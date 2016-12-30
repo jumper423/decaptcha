@@ -1,5 +1,23 @@
 RuCaptcha
 ==============
+###Menu
++ [Главная](../blob/master/docs/README-en.md)
++ [Документация на русском языке](../blob/master/docs/RuCaptcha-ru.md)
++ Якоря
+  + [Ссылка](#Ссылка)
+  + [Описание сервиса](#Описание-сервиса)
+  + [Цены](#Цены)
+  + [Описание распознания](#Описание-распознания)
+  + [Установка](#Установка)
+  + [Примеры](#Примеры)
+  + [Описание полей](#Описание-полей)
++ Другой функционал от сервиса
+  + [RuCaptcha Инструкция](../blob/master/docs/RuCaptchaInstruction-en.md)
+  + [RuCaptcha ClickCaptcha](../blob/master/docs/RuCaptchaClick-en.md)
+  + [RuCaptcha Grid (ReCaptcha v2)](../blob/master/docs/RuCaptchaGrid-en.md)
+  + [RuCaptcha ReCaptcha v2 без браузера](../blob/master/docs/RuCaptchaReCaptcha-en.md)
+
+
 ###Ссылка
 [Ссылка на сервис RuCaptcha](http://infoblog1.ru/goto/rucaptcha)
 

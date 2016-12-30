@@ -72,6 +72,10 @@ class AnticaptchaReCaptchaProxeless extends Anticaptcha
             static::ACTION_FIELD_PAGEURL   => 'http://site.com/recaptcha-ex',
         ]);
         $this->wiki->setText(['recognize', 'file'], false);
+        $this->wiki->setText(['menu','from_service'], [
+            Anticaptcha::class,
+            AnticaptchaReCaptcha::class,
+        ]);
     }
 
     public function recognize($additionally = [], $null = null)

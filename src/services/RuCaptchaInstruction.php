@@ -22,5 +22,11 @@ class RuCaptchaInstruction extends RuCaptcha
         $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_INSTRUCTIONS => 'What\'s in the picture?',
         ]);
+        $this->wiki->setText(['menu','from_service'], [
+            RuCaptcha::class,
+            RuCaptchaClick::class,
+            RuCaptchaGrid::class,
+            RuCaptchaReCaptcha::class,
+        ]);
     }
 }

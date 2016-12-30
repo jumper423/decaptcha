@@ -279,6 +279,23 @@ class DeCaptchaWiki
             'install_add_file' => [
                 'ru' => 'в файл',
             ],
+            'slug_menu' => [
+                'ru' => 'Меню',
+                'en' => 'Menu',
+            ],
+            'slug_menu_main' => [
+                'ru' => 'Главная',
+            ],
+            'slug_menu_another' => [
+                'ru' => 'Документация на англиском языке',
+                'en' => 'Документация на русском языке',
+            ],
+            'slug_menu_anchor' => [
+                'ru' => 'Якоря',
+            ],
+            'slug_menu_from_service' => [
+                'ru' => 'Другой функционал от сервиса',
+            ],
         ];
     }
 
@@ -496,6 +513,34 @@ class DeCaptchaWiki
         return $str;
     }
 
+    private function viewMenu()
+    {
+        $str = "+ [{$this->getText(['slug','menu','main'])}](../blob/master/docs/README-{$this->lang}.md)".PHP_EOL;
+        $str .= "+ [{$this->getText(['slug','menu','another'])}](../blob/master/docs/" . $this->getFileName($this->lang == 'ru' ? 'en' : 'ru') . ')'.PHP_EOL;
+        $str .= "+ {$this->getText(['slug','menu','anchor'])}".PHP_EOL;
+        foreach ([
+                     ['slug', 'link'],
+                     ['slug', 'service', 'desc'],
+                     ['slug', 'price'],
+                     ['slug', 'recognize', 'desc'],
+                     ['install'],
+                     ['example'],
+                     ['slug', 'fields', 'desc']
+                 ] as $anchor) {
+            $str .= "  + [{$this->getText($anchor)}](#".implode('-', explode(' ', $this->getText($anchor))).")".PHP_EOL;
+        }
+        if ($this->getText(['menu','from_service'])) {
+            $str .= "+ {$this->getText(['slug','menu','from_service'])}" . PHP_EOL;
+            foreach ($this->texts['menu_from_service'] as $fromServiceClass) {
+                $fromServiceObject = new $fromServiceClass([]);
+                $fromServiceObjectWiki = $fromServiceObject->getWiki($this->lang);
+                $str .= "  + [{$fromServiceObjectWiki->getText(['service', 'name'])}](../blob/master/docs/{$fromServiceObjectWiki->getFileName()})" . PHP_EOL;
+            }
+        }
+
+        return $str;
+    }
+
     private function getNameConst($keyMask, $value)
     {
         $class = $this->class;
@@ -513,6 +558,8 @@ class DeCaptchaWiki
     {
         $str = $this->getText(['service', 'name']).PHP_EOL;
         $str .= '=============='.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'menu'])}".PHP_EOL;
+        $str .= $this->viewMenu().PHP_EOL.PHP_EOL;
         $str .= "###{$this->getText(['slug', 'link'])}".PHP_EOL;
         $str .= "[{$this->getText(['slug', 'link', 'to_service'])} {$this->getText(['service', 'name'])}]({$this->getText(['service', 'href'])})".PHP_EOL.PHP_EOL;
         $str .= "###{$this->getText(['slug', 'service', 'desc'])}".PHP_EOL;
@@ -531,15 +578,18 @@ class DeCaptchaWiki
         return $str;
     }
 
-    public function getFileName()
+    public function getFileName($lang = null)
     {
+        if (is_null($lang)) {
+            $lang = $this->lang;
+        }
         $class = $this->class;
 
-        return (new \ReflectionClass($class))->getShortName();
+        return (new \ReflectionClass($class))->getShortName().'-'.$lang.'.md';
     }
 
     public function save()
     {
-        file_put_contents(__DIR__.'/../../docs/'.$this->getFileName().'-'.$this->lang.'.md', $this->view());
+        file_put_contents(__DIR__.'/../../docs/'.$this->getFileName(), $this->view());
     }
 }

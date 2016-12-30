@@ -78,6 +78,12 @@ data-sitekey=
             static::ACTION_FIELD_PAGEURL   => 'http://site.com/recaptcha-ex',
         ]);
         $this->wiki->setText(['recognize', 'file'], false);
+        $this->wiki->setText(['menu','from_service'], [
+            RuCaptcha::class,
+            RuCaptchaClick::class,
+            RuCaptchaInstruction::class,
+            RuCaptchaGrid::class,
+        ]);
     }
 
     public function recognize($additionally = [], $null = null)

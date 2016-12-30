@@ -1,5 +1,23 @@
 R.I.P. Captcha 
 ==============
+###Меню
++ [Главная](../blob/master/docs/README-ru.md)
++ [Документация на англиском языке](../blob/master/docs/Ripcaptcha-en.md)
++ Якоря
+  + [Ссылка](#Ссылка)
+  + [Описание сервиса](#Описание-сервиса)
+  + [Цены](#Цены)
+  + [Описание распознания](#Описание-распознания)
+  + [Установка](#Установка)
+  + [Примеры](#Примеры)
+  + [Описание полей](#Описание-полей)
++ Другой функционал от сервиса
+  + [RuCaptcha Инструкция](../blob/master/docs/RuCaptchaInstruction-ru.md)
+  + [RuCaptcha ClickCaptcha](../blob/master/docs/RuCaptchaClick-ru.md)
+  + [RuCaptcha Сетка (ReCaptcha v2)](../blob/master/docs/RuCaptchaGrid-ru.md)
+  + [RuCaptcha ReCaptcha v2 без браузера](../blob/master/docs/RuCaptchaReCaptcha-ru.md)
+
+
 ###Ссылка
 [Ссылка на сервис R.I.P. Captcha ](https://ripcaptcha.com/?loc=ru)
 
