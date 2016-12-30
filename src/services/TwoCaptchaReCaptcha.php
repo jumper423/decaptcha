@@ -17,7 +17,7 @@ class TwoCaptchaReCaptcha extends RuCaptchaReCaptcha
             'ru' => '2Captcha ReCaptcha v2 без браузера',
         ]);
         $this->wiki->setText(['service', 'href'], 'http://infoblog1.ru/goto/2captcha');
-        $this->wiki->setText(['menu','from_service'], [
+        $this->wiki->setText(['menu', 'from_service'], [
             TwoCaptcha::class,
             TwoCaptchaInstruction::class,
             TwoCaptchaClick::class,

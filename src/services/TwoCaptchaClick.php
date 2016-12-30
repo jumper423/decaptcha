@@ -15,7 +15,7 @@ class TwoCaptchaClick extends RuCaptchaClick
 
         $this->wiki->setText(['service', 'name'], '2Captcha ClickCaptcha');
         $this->wiki->setText(['service', 'href'], 'http://infoblog1.ru/goto/2captcha');
-        $this->wiki->setText(['menu','from_service'], [
+        $this->wiki->setText(['menu', 'from_service'], [
             TwoCaptcha::class,
             TwoCaptchaInstruction::class,
             TwoCaptchaGrid::class,

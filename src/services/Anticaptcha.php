@@ -253,7 +253,7 @@ class Anticaptcha extends DeCaptchaBase
                 'rn - группа стран Россия, Украина, Беларусь, Казахстан',
             ],
         ]);
-        $this->wiki->setText(['menu','from_service'], [
+        $this->wiki->setText(['menu', 'from_service'], [
             AnticaptchaReCaptchaProxeless::class,
             AnticaptchaReCaptcha::class,
         ]);
