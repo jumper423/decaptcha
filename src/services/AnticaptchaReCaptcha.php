@@ -71,9 +71,9 @@ class AnticaptchaReCaptcha extends AnticaptchaReCaptchaProxeless
 Капча может решаться довольно долго по сравнению с обычной капчей, но это компенсируется тем, что полученный g-captcha-response действует еще 120 секунд после того, как работник решил капчу.',
         ]);
         $this->wiki->setText(['constructor', 'data'], [
-            static::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
+            static::ACTION_FIELD_KEY         => '94f39af4bb295c40546fba5c932e0d32',
             static::ACTION_FIELD_PROXYTYPE   => 'http',
-            static::ACTION_FIELD_PROXY   => '88.45.12.43',
+            static::ACTION_FIELD_PROXY       => '88.45.12.43',
             static::ACTION_FIELD_PROXYPORT   => '8080',
             static::ACTION_FIELD_USERAGENT   => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
         ]);
