@@ -21,7 +21,7 @@ include_once __DIR__.'/../src/services/Captcha24.php';
 include_once __DIR__.'/../src/services/Pixodrom.php';
 include_once __DIR__.'/../src/services/Ripcaptcha.php';
 include_once __DIR__.'/../src/core/DeCaptchaWiki.php';
-include_once __DIR__ . '/../src/core/DeCaptchaWikiMain.php';
+include_once __DIR__.'/../src/core/DeCaptchaWikiMain.php';
 
 $mainWiki = new \jumper423\decaptcha\core\DeCaptchaWikiMain(new \jumper423\decaptcha\services\RuCaptcha([]));
 foreach (['ru', 'en'] as $lang) {
