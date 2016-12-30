@@ -368,7 +368,7 @@ class DeCaptchaWiki
         $class = $this->class;
         $rc = (new \ReflectionClass($class));
 
-        $str = "####{$this->getText(['example', 'initialization'])}" . PHP_EOL;
+        $str = "####{$this->getText(['example', 'initialization'])}".PHP_EOL;
         $str .= "{$this->getText(['example', 'initialization', 'desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= "use {$rc->getName()};".PHP_EOL;
@@ -386,7 +386,7 @@ class DeCaptchaWiki
         $str .= ']);'.PHP_EOL;
         $str .= '```'.PHP_EOL;
 
-        $str .= "####{$this->getText(['example', 'recognize'])}" . PHP_EOL;
+        $str .= "####{$this->getText(['example', 'recognize'])}".PHP_EOL;
         $str .= "{$this->getText(['example', 'recognize', 'desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= 'if ($captcha->recognize(';
@@ -417,7 +417,7 @@ class DeCaptchaWiki
         $str .= '```'.PHP_EOL;
 
         if (in_array('notTrue', get_class_methods($class))) {
-            $str .= "####{$this->getText(['example', 'nottrue'])}" . PHP_EOL;
+            $str .= "####{$this->getText(['example', 'nottrue'])}".PHP_EOL;
             $str .= "{$this->getText(['example', 'nottrue', 'desc'])}".PHP_EOL;
             $str .= '```'.PHP_EOL;
             $str .= '$captcha->notTrue();'.PHP_EOL;
@@ -425,21 +425,21 @@ class DeCaptchaWiki
         }
 
         if (in_array('getBalance', get_class_methods($class))) {
-            $str .= "####{$this->getText(['example', 'balance'])}" . PHP_EOL;
+            $str .= "####{$this->getText(['example', 'balance'])}".PHP_EOL;
             $str .= '```'.PHP_EOL;
             $str .= '$balance = $captcha->getBalance();'.PHP_EOL;
             $str .= '```'.PHP_EOL;
         }
 
         if ($this->getText(['example', 'error', 'lang', 'if'])) {
-            $str .= "####{$this->getText(['example', 'error', 'lang'])}" . PHP_EOL;
+            $str .= "####{$this->getText(['example', 'error', 'lang'])}".PHP_EOL;
             $str .= "{$this->getText(['example', 'error', 'lang', 'desc'])}".PHP_EOL;
             $str .= '```'.PHP_EOL;
             $str .= '$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);'.PHP_EOL;
             $str .= '```'.PHP_EOL;
         }
 
-        $str .= "####{$this->getText(['example', 'error', 'interception'])}" . PHP_EOL;
+        $str .= "####{$this->getText(['example', 'error', 'interception'])}".PHP_EOL;
         $str .= "{$this->getText(['example', 'error', 'interception', 'desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= '$captcha->setCauseAnError(true);'.PHP_EOL;
