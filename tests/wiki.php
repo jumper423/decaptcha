@@ -17,6 +17,7 @@ include_once __DIR__.'/../src/services/TwoCaptchaClick.php';
 include_once __DIR__.'/../src/services/Anticaptcha.php';
 include_once __DIR__.'/../src/services/AnticaptchaReCaptchaProxeless.php';
 include_once __DIR__.'/../src/services/AnticaptchaReCaptcha.php';
+include_once __DIR__.'/../src/services/Captcha24.php';
 include_once __DIR__.'/../src/core/DeCaptchaWiki.php';
 
 foreach (['ru', 'en'] as $lang) {
@@ -34,6 +35,7 @@ foreach (['ru', 'en'] as $lang) {
                  new \jumper423\decaptcha\services\Anticaptcha([]),
                  new \jumper423\decaptcha\services\AnticaptchaReCaptcha([]),
                  new \jumper423\decaptcha\services\AnticaptchaReCaptchaProxeless([]),
+                 new \jumper423\decaptcha\services\Captcha24([]),
              ] as $class) {
         $tt = $class->getWiki($lang);
         $tt->save();

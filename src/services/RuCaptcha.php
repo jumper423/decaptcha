@@ -239,8 +239,8 @@ Cервис антикапчи RuCaptcha.com не только поддержи�
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_PHRASE], [
             'ru' => [
-                '0 - регистр ответа не имеет значения',
-                '1 - регистр ответа имеет значение',
+                '0 - одно слово',
+                '1 - каптча имеет два слова',
             ],
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_REGSENSE], [
