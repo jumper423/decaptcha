@@ -14,22 +14,12 @@ class Ripcaptcha extends RuCaptcha
         parent::init();
 
         unset(
-            $this->paramsNames[self::ACTION_FIELD_PHRASE],
-            $this->paramsNames[self::ACTION_FIELD_REGSENSE],
-            $this->paramsNames[self::ACTION_FIELD_NUMERIC],
-            $this->paramsNames[self::ACTION_FIELD_MIN_LEN],
-            $this->paramsNames[self::ACTION_FIELD_MAX_LEN],
             $this->paramsNames[self::ACTION_FIELD_LANGUAGE],
             $this->paramsNames[self::ACTION_FIELD_HEADER_ACAO],
             $this->paramsNames[self::ACTION_FIELD_CALC],
             $this->paramsNames[self::ACTION_FIELD_QUESTION],
             $this->paramsNames[self::ACTION_FIELD_INSTRUCTIONS],
             $this->paramsNames[self::ACTION_FIELD_PINGBACK],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_PHRASE],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_REGSENSE],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_NUMERIC],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_MIN_LEN],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_MAX_LEN],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_LANGUAGE],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_HEADER_ACAO],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_CALC],
@@ -38,5 +28,23 @@ class Ripcaptcha extends RuCaptcha
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_PINGBACK]
         );
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_SOFT_ID][self::PARAM_SLUG_DEFAULT] = 0;
+
+        $this->wiki->setText(['service', 'name'], 'R.I.P. Captcha ');
+        $this->wiki->setText(['service', 'href'], [
+            'ru' => 'https://ripcaptcha.com/?loc=ru',
+            'en' => 'https://ripcaptcha.com/?loc=en',
+        ]);
+        $this->wiki->setText(['service', 'desc'], [
+            'ru' => 'Мы отлично разгадываем капчи.',
+        ]);
+        $this->wiki->setText(['recognize', 'price'], [
+            'ru' => 'Вы платите от $0.70 за 1000 капч',
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_NUMERIC], [
+            'ru' => [
+                '0 - параметр не задействован',
+                '1 - капча состоит только из цифр',
+            ],
+        ]);
     }
 }
