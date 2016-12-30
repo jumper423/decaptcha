@@ -486,11 +486,7 @@ class DeCaptchaWiki
         $class = $this->class;
         $str = " {$this->getText(['field', 'main', 'name', $param])} |";
         $str .= " {$this->getNameConst('ACTION_FIELD_', $param)} |";
-//        if (isset($setting[$class::PARAM_SLUG_TYPE])) {
-            $str .= ' '.substr($this->getNameConst('PARAM_FIELD_TYPE_', $setting[$class::PARAM_SLUG_TYPE]), 17).' |';
-//        } else {
-//            $str .= ' |';
-//        }
+        $str .= ' '.substr($this->getNameConst('PARAM_FIELD_TYPE_', $setting[$class::PARAM_SLUG_TYPE]), 17).' |';
         $str .= ' '.(array_key_exists($class::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
         $str .= ' '.(array_key_exists($class::PARAM_SLUG_DEFAULT, $setting) ? $setting[$class::PARAM_SLUG_DEFAULT] : '').' |';
         $str .= " {$this->getText(['field', 'slug', $class::PARAM_SLUG_ENUM, $param])} |";
