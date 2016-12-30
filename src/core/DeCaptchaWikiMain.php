@@ -115,9 +115,9 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
     }
 
 
-    protected function viewMenu()
+    protected function viewMenu($master = '')
     {
-        $str = "+ [{$this->getText(['slug', 'menu', 'another'])}](../docs/" . $this->getFileName($this->lang == 'ru' ? 'en' : 'ru') . ')' . PHP_EOL;
+        $str = "+ [{$this->getText(['slug', 'menu', 'another'])}](../{$master}docs/" . $this->getFileName($this->lang == 'ru' ? 'en' : 'ru') . ')' . PHP_EOL;
         foreach ([
                      ['slug', 'menu', 'desc'],
                      ['slug', 'menu', 'features'],
@@ -131,7 +131,7 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
         return $str;
     }
 
-    public function viewServices()
+    public function viewServices($master = '')
     {
         $str = '';
         $tt = [];
@@ -141,17 +141,17 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
             }
             $tt[$class->getWiki($this->lang)->getFileName()] = true;
             $fromServiceObjectWiki = $class->getWiki($this->lang);
-            $str .= "+ [{$fromServiceObjectWiki->getText(['service', 'name'])}](../master/docs/{$fromServiceObjectWiki->getFileName()})" . PHP_EOL;
+            $str .= "+ [{$fromServiceObjectWiki->getText(['service', 'name'])}](../{$master}docs/{$fromServiceObjectWiki->getFileName()})" . PHP_EOL;
         }
         return $str;
     }
 
-    public function view()
+    public function view($master = '')
     {
         $str = $this->viewHeader() . PHP_EOL;
 
         $str .= "###{$this->getText(['slug', 'menu'])}" . PHP_EOL;
-        $str .= $this->viewMenu() . PHP_EOL . PHP_EOL;
+        $str .= $this->viewMenu($master) . PHP_EOL . PHP_EOL;
 
         $str .= "###{$this->getText(['slug','menu','desc'])}" . PHP_EOL;
         $str .= $this->getText(['readme', 'main', 'desc']) . PHP_EOL . PHP_EOL;
@@ -161,7 +161,7 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
 
         $str .= "###{$this->getText(['slug','menu','services'])}" . PHP_EOL;
         $str .= "{$this->getText(['readme','main','services'])}" . PHP_EOL . PHP_EOL;
-        $str .= "{$this->viewServices()}" . PHP_EOL . PHP_EOL;
+        $str .= "{$this->viewServices($master)}" . PHP_EOL . PHP_EOL;
 
 
         $str .= "###{$this->getText(['install'])}" . PHP_EOL;
@@ -183,6 +183,6 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
     public function save()
     {
         file_put_contents(__DIR__ . '/../../docs/' . $this->getFileName(), $this->view());
-        file_put_contents(__DIR__ . '/../../README.md', $this->view());
+        file_put_contents(__DIR__ . '/../../README.md', $this->view('master/'));
     }
 }

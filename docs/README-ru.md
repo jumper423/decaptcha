@@ -41,22 +41,22 @@ DeCaptcha
 ###Сервисы
 Распознавание капч для всех популярных сервисов
 
-+ [RuCaptcha](../master/docs/RuCaptcha-ru.md)
-+ [RuCaptcha ReCaptcha v2 без браузера](../master/docs/RuCaptchaReCaptcha-ru.md)
-+ [RuCaptcha Инструкция](../master/docs/RuCaptchaInstruction-ru.md)
-+ [RuCaptcha Сетка (ReCaptcha v2)](../master/docs/RuCaptchaGrid-ru.md)
-+ [RuCaptcha ClickCaptcha](../master/docs/RuCaptchaClick-ru.md)
-+ [2Captcha](../master/docs/TwoCaptcha-ru.md)
-+ [2Captcha ReCaptcha v2 без браузера](../master/docs/TwoCaptchaReCaptcha-ru.md)
-+ [2Captcha Инструкция](../master/docs/TwoCaptchaInstruction-ru.md)
-+ [2Captcha Сетка (ReCaptcha v2)](../master/docs/TwoCaptchaGrid-ru.md)
-+ [2Captcha ClickCaptcha](../master/docs/TwoCaptchaClick-ru.md)
-+ [Anti Captcha](../master/docs/Anticaptcha-ru.md)
-+ [AntiCaptcha ReCaptcha v2 без браузера (с прокси)](../master/docs/AnticaptchaReCaptcha-ru.md)
-+ [AntiCaptcha ReCaptcha v2 без браузера](../master/docs/AnticaptchaReCaptchaProxeless-ru.md)
-+ [Captcha24](../master/docs/Captcha24-ru.md)
-+ [Pixodrom](../master/docs/Pixodrom-ru.md)
-+ [R.I.P. Captcha ](../master/docs/Ripcaptcha-ru.md)
++ [RuCaptcha](../docs/RuCaptcha-ru.md)
++ [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
++ [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
++ [RuCaptcha Сетка (ReCaptcha v2)](../docs/RuCaptchaGrid-ru.md)
++ [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-ru.md)
++ [2Captcha](../docs/TwoCaptcha-ru.md)
++ [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-ru.md)
++ [2Captcha Инструкция](../docs/TwoCaptchaInstruction-ru.md)
++ [2Captcha Сетка (ReCaptcha v2)](../docs/TwoCaptchaGrid-ru.md)
++ [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-ru.md)
++ [Anti Captcha](../docs/Anticaptcha-ru.md)
++ [AntiCaptcha ReCaptcha v2 без браузера (с прокси)](../docs/AnticaptchaReCaptcha-ru.md)
++ [AntiCaptcha ReCaptcha v2 без браузера](../docs/AnticaptchaReCaptchaProxeless-ru.md)
++ [Captcha24](../docs/Captcha24-ru.md)
++ [Pixodrom](../docs/Pixodrom-ru.md)
++ [R.I.P. Captcha ](../docs/Ripcaptcha-ru.md)
 
 
 ###Установка
