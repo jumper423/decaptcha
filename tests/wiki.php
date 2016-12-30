@@ -21,7 +21,9 @@ include_once __DIR__.'/../src/services/Captcha24.php';
 include_once __DIR__.'/../src/services/Pixodrom.php';
 include_once __DIR__.'/../src/services/Ripcaptcha.php';
 include_once __DIR__.'/../src/core/DeCaptchaWiki.php';
+include_once __DIR__ . '/../src/core/DeCaptchaWikiMain.php';
 
+$mainWiki = new \jumper423\decaptcha\core\DeCaptchaWikiMain(new \jumper423\decaptcha\services\RuCaptcha([]));
 foreach (['ru', 'en'] as $lang) {
     foreach ([
                  new \jumper423\decaptcha\services\RuCaptcha([]),
@@ -41,7 +43,9 @@ foreach (['ru', 'en'] as $lang) {
                  new \jumper423\decaptcha\services\Pixodrom([]),
                  new \jumper423\decaptcha\services\Ripcaptcha([]),
              ] as $class) {
-        $tt = $class->getWiki($lang);
-        $tt->save();
+        $mainWiki->addClass($class);
+        $class->getWiki($lang)->save();
     }
+    $mainWiki->setLang($lang);
+    $mainWiki->save();
 }

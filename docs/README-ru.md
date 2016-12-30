@@ -15,8 +15,8 @@ DeCaptcha
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/d485629c-1830-440d-82ab-a567bfa5ddc5/mini.png)](https://insight.sensiolabs.com/projects/d485629c-1830-440d-82ab-a567bfa5ddc5)
 [![StyleCI](https://styleci.io/repos/75013766/shield?branch=master)](https://styleci.io/repos/75013766)
 
-###Menu
-+ [Документация на русском языке](../docs/README-ru.md)
+###Меню
++ [Документация на англиском языке](../docs/README-en.md)
 + [Описание](#Описание)
 + [Особенности](#Особенности)
 + [Сервисы](#Сервисы)
@@ -41,22 +41,22 @@ DeCaptcha
 ###Сервисы
 Распознавание капч для всех популярных сервисов
 
-+ [RuCaptcha](../docs/RuCaptcha-en.md)
-+ [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-en.md)
-+ [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-en.md)
-+ [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
-+ [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
-+ [2Captcha](../docs/TwoCaptcha-en.md)
-+ [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-en.md)
-+ [2Captcha Инструкция](../docs/TwoCaptchaInstruction-en.md)
-+ [2Captcha Grid (ReCaptcha v2)](../docs/TwoCaptchaGrid-en.md)
-+ [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-en.md)
-+ [Anti Captcha](../docs/Anticaptcha-en.md)
-+ [AntiCaptcha ReCaptcha v2 без браузера (с прокси)](../docs/AnticaptchaReCaptcha-en.md)
-+ [AntiCaptcha ReCaptcha v2 без браузера](../docs/AnticaptchaReCaptchaProxeless-en.md)
-+ [Captcha24](../docs/Captcha24-en.md)
-+ [Pixodrom](../docs/Pixodrom-en.md)
-+ [R.I.P. Captcha ](../docs/Ripcaptcha-en.md)
++ [RuCaptcha](../docs/RuCaptcha-ru.md)
++ [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
++ [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
++ [RuCaptcha Сетка (ReCaptcha v2)](../docs/RuCaptchaGrid-ru.md)
++ [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-ru.md)
++ [2Captcha](../docs/TwoCaptcha-ru.md)
++ [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-ru.md)
++ [2Captcha Инструкция](../docs/TwoCaptchaInstruction-ru.md)
++ [2Captcha Сетка (ReCaptcha v2)](../docs/TwoCaptchaGrid-ru.md)
++ [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-ru.md)
++ [Anti Captcha](../docs/Anticaptcha-ru.md)
++ [AntiCaptcha ReCaptcha v2 без браузера (с прокси)](../docs/AnticaptchaReCaptcha-ru.md)
++ [AntiCaptcha ReCaptcha v2 без браузера](../docs/AnticaptchaReCaptchaProxeless-ru.md)
++ [Captcha24](../docs/Captcha24-ru.md)
++ [Pixodrom](../docs/Pixodrom-ru.md)
++ [R.I.P. Captcha ](../docs/Ripcaptcha-ru.md)
 
 
 ###Установка
@@ -100,6 +100,11 @@ $captcha->notTrue();
 #####Баланс
 ```
 $balance = $captcha->getBalance();
+```
+#####Язык ошибки
+По умолчанию ошибки на англиском языке, если необходимо переоперелить, сделайте следующее
+```
+$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
 ```
 #####Перехват ошибки
 При желании Вы можете перехватывать ошибку, но для этого надо вызвать setCauseAnError

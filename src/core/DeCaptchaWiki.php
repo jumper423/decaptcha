@@ -7,12 +7,12 @@ namespace jumper423\decaptcha\core;
  */
 class DeCaptchaWiki
 {
-    private $texts = [];
+    protected $texts = [];
     /**
      * @var DeCaptchaBase
      */
-    private $class;
-    private $lang = 'en';
+    protected $class;
+    protected $lang = 'en';
 
     public function setLang($lang)
     {
@@ -346,7 +346,7 @@ class DeCaptchaWiki
         return $result;
     }
 
-    private function viewInstall()
+    protected function viewInstall()
     {
         $str = "{$this->getText(['install', 'preferred'])} [composer](http://getcomposer.org/download/).".PHP_EOL;
         $str .= PHP_EOL;
@@ -363,7 +363,7 @@ class DeCaptchaWiki
         return $str;
     }
 
-    private function viewExamples()
+    protected function viewExamples()
     {
         $class = $this->class;
         $rc = (new \ReflectionClass($class));
@@ -475,7 +475,7 @@ class DeCaptchaWiki
         return $str;
     }
 
-    private function viewFields()
+    protected function viewFields()
     {
         $class = $this->class;
         $str = " {$this->getText(['table', 'th', 'name'])} | {$this->getText(['table', 'th', 'code'])} | {$this->getText(['table', 'th', 'type'])} | {$this->getText(['table', 'th', 'req'])} | {$this->getText(['table', 'th', 'def'])} | {$this->getText(['table', 'th', 'enum'])} | {$this->getText(['table', 'th', 'desc'])} ".PHP_EOL;
@@ -498,7 +498,7 @@ class DeCaptchaWiki
         return $str;
     }
 
-    private function viewFieldLine($param, $setting)
+    protected function viewFieldLine($param, $setting)
     {
         $class = $this->class;
         $str = " {$this->getText(['field', 'main', 'name', $param])} |";
@@ -513,7 +513,7 @@ class DeCaptchaWiki
         return $str;
     }
 
-    private function viewMenu()
+    protected function viewMenu()
     {
         $str = "+ [{$this->getText(['slug', 'menu', 'main'])}](../docs/README-{$this->lang}.md)".PHP_EOL;
         $str .= "+ [{$this->getText(['slug', 'menu', 'another'])}](../docs/".$this->getFileName($this->lang == 'ru' ? 'en' : 'ru').')'.PHP_EOL;
@@ -541,7 +541,7 @@ class DeCaptchaWiki
         return $str;
     }
 
-    private function getNameConst($keyMask, $value)
+    protected function getNameConst($keyMask, $value)
     {
         $class = $this->class;
         $constants = (new \ReflectionClass($class))->getConstants();
