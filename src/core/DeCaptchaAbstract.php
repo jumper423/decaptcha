@@ -293,9 +293,6 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                     case self::PARAM_FIELD_TYPE_BOOLEAN:
                         $value = (bool) $value;
                         break;
-                    case self::PARAM_FIELD_TYPE_MIX:
-//                        $value = $value;
-                        break;
                     case self::PARAM_FIELD_TYPE_OBJECT:
                         $value = $this->getParams($action, $field);
                         break;
