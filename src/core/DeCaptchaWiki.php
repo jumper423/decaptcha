@@ -331,7 +331,6 @@ class DeCaptchaWiki
 
     private function viewInstall()
     {
-        $class = $this->class;
         $str = "{$this->getText(['install', 'preferred'])} [composer](http://getcomposer.org/download/).".PHP_EOL;
         $str .= PHP_EOL;
         $str .= "{$this->getText(['install', 'start'])}".PHP_EOL;
