@@ -515,8 +515,8 @@ class DeCaptchaWiki
 
     private function viewMenu()
     {
-        $str = "+ [{$this->getText(['slug','menu','main'])}](../blob/master/docs/README-{$this->lang}.md)".PHP_EOL;
-        $str .= "+ [{$this->getText(['slug','menu','another'])}](../blob/master/docs/" . $this->getFileName($this->lang == 'ru' ? 'en' : 'ru') . ')'.PHP_EOL;
+        $str = "+ [{$this->getText(['slug','menu','main'])}](../docs/README-{$this->lang}.md)".PHP_EOL;
+        $str .= "+ [{$this->getText(['slug','menu','another'])}](../docs/" . $this->getFileName($this->lang == 'ru' ? 'en' : 'ru') . ')'.PHP_EOL;
         $str .= "+ {$this->getText(['slug','menu','anchor'])}".PHP_EOL;
         foreach ([
                      ['slug', 'link'],
@@ -534,7 +534,7 @@ class DeCaptchaWiki
             foreach ($this->texts['menu_from_service'] as $fromServiceClass) {
                 $fromServiceObject = new $fromServiceClass([]);
                 $fromServiceObjectWiki = $fromServiceObject->getWiki($this->lang);
-                $str .= "  + [{$fromServiceObjectWiki->getText(['service', 'name'])}](../blob/master/docs/{$fromServiceObjectWiki->getFileName()})" . PHP_EOL;
+                $str .= "  + [{$fromServiceObjectWiki->getText(['service', 'name'])}](../docs/{$fromServiceObjectWiki->getFileName()})" . PHP_EOL;
             }
         }
 

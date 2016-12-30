@@ -1,8 +1,8 @@
 RuCaptcha ReCaptcha v2 без браузера
 ==============
 ###Menu
-+ [Главная](../blob/master/docs/README-en.md)
-+ [Документация на русском языке](../blob/master/docs/RuCaptchaReCaptcha-ru.md)
++ [Главная](../docs/README-en.md)
++ [Документация на русском языке](../docs/RuCaptchaReCaptcha-ru.md)
 + Якоря
   + [Ссылка](#Ссылка)
   + [Описание сервиса](#Описание-сервиса)
@@ -12,10 +12,10 @@ RuCaptcha ReCaptcha v2 без браузера
   + [Примеры](#Примеры)
   + [Описание полей](#Описание-полей)
 + Другой функционал от сервиса
-  + [RuCaptcha](../blob/master/docs/RuCaptcha-en.md)
-  + [RuCaptcha ClickCaptcha](../blob/master/docs/RuCaptchaClick-en.md)
-  + [RuCaptcha Инструкция](../blob/master/docs/RuCaptchaInstruction-en.md)
-  + [RuCaptcha Grid (ReCaptcha v2)](../blob/master/docs/RuCaptchaGrid-en.md)
+  + [RuCaptcha](../docs/RuCaptcha-en.md)
+  + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
+  + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-en.md)
+  + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
 
 
 ###Ссылка

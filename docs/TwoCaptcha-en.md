@@ -1,8 +1,8 @@
 2Captcha
 ==============
 ###Menu
-+ [Главная](../blob/master/docs/README-en.md)
-+ [Документация на русском языке](../blob/master/docs/TwoCaptcha-ru.md)
++ [Главная](../docs/README-en.md)
++ [Документация на русском языке](../docs/TwoCaptcha-ru.md)
 + Якоря
   + [Ссылка](#Ссылка)
   + [Описание сервиса](#Описание-сервиса)
@@ -12,10 +12,10 @@
   + [Примеры](#Примеры)
   + [Описание полей](#Описание-полей)
 + Другой функционал от сервиса
-  + [2Captcha Инструкция](../blob/master/docs/TwoCaptchaInstruction-en.md)
-  + [2Captcha ClickCaptcha](../blob/master/docs/TwoCaptchaClick-en.md)
-  + [2Captcha Grid (ReCaptcha v2)](../blob/master/docs/TwoCaptchaGrid-en.md)
-  + [2Captcha ReCaptcha v2 без браузера](../blob/master/docs/TwoCaptchaReCaptcha-en.md)
+  + [2Captcha Инструкция](../docs/TwoCaptchaInstruction-en.md)
+  + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-en.md)
+  + [2Captcha Grid (ReCaptcha v2)](../docs/TwoCaptchaGrid-en.md)
+  + [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-en.md)
 
 
 ###Ссылка

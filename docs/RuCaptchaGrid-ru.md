@@ -1,8 +1,8 @@
 RuCaptcha Сетка (ReCaptcha v2)
 ==============
 ###Меню
-+ [Главная](../blob/master/docs/README-ru.md)
-+ [Документация на англиском языке](../blob/master/docs/RuCaptchaGrid-en.md)
++ [Главная](../docs/README-ru.md)
++ [Документация на англиском языке](../docs/RuCaptchaGrid-en.md)
 + Якоря
   + [Ссылка](#Ссылка)
   + [Описание сервиса](#Описание-сервиса)
@@ -12,10 +12,10 @@ RuCaptcha Сетка (ReCaptcha v2)
   + [Примеры](#Примеры)
   + [Описание полей](#Описание-полей)
 + Другой функционал от сервиса
-  + [RuCaptcha](../blob/master/docs/RuCaptcha-ru.md)
-  + [RuCaptcha Инструкция](../blob/master/docs/RuCaptchaInstruction-ru.md)
-  + [RuCaptcha ClickCaptcha](../blob/master/docs/RuCaptchaClick-ru.md)
-  + [RuCaptcha ReCaptcha v2 без браузера](../blob/master/docs/RuCaptchaReCaptcha-ru.md)
+  + [RuCaptcha](../docs/RuCaptcha-ru.md)
+  + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
+  + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-ru.md)
+  + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
 
 
 ###Ссылка

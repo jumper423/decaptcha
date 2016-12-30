@@ -1,8 +1,8 @@
 Anti Captcha
 ==============
 ###Menu
-+ [Главная](../blob/master/docs/README-en.md)
-+ [Документация на русском языке](../blob/master/docs/Anticaptcha-ru.md)
++ [Главная](../docs/README-en.md)
++ [Документация на русском языке](../docs/Anticaptcha-ru.md)
 + Якоря
   + [Ссылка](#Ссылка)
   + [Описание сервиса](#Описание-сервиса)
@@ -12,8 +12,8 @@ Anti Captcha
   + [Примеры](#Примеры)
   + [Описание полей](#Описание-полей)
 + Другой функционал от сервиса
-  + [AntiCaptcha ReCaptcha v2 без браузера](../blob/master/docs/AnticaptchaReCaptchaProxeless-en.md)
-  + [AntiCaptcha ReCaptcha v2 без браузера (с прокси)](../blob/master/docs/AnticaptchaReCaptcha-en.md)
+  + [AntiCaptcha ReCaptcha v2 без браузера](../docs/AnticaptchaReCaptchaProxeless-en.md)
+  + [AntiCaptcha ReCaptcha v2 без браузера (с прокси)](../docs/AnticaptchaReCaptcha-en.md)
 
 
 ###Ссылка

@@ -1,8 +1,8 @@
 AntiCaptcha ReCaptcha v2 без браузера (с прокси)
 ==============
 ###Меню
-+ [Главная](../blob/master/docs/README-ru.md)
-+ [Документация на англиском языке](../blob/master/docs/AnticaptchaReCaptcha-en.md)
++ [Главная](../docs/README-ru.md)
++ [Документация на англиском языке](../docs/AnticaptchaReCaptcha-en.md)
 + Якоря
   + [Ссылка](#Ссылка)
   + [Описание сервиса](#Описание-сервиса)
@@ -12,8 +12,8 @@ AntiCaptcha ReCaptcha v2 без браузера (с прокси)
   + [Примеры](#Примеры)
   + [Описание полей](#Описание-полей)
 + Другой функционал от сервиса
-  + [Anti Captcha](../blob/master/docs/Anticaptcha-ru.md)
-  + [AntiCaptcha ReCaptcha v2 без браузера](../blob/master/docs/AnticaptchaReCaptchaProxeless-ru.md)
+  + [Anti Captcha](../docs/Anticaptcha-ru.md)
+  + [AntiCaptcha ReCaptcha v2 без браузера](../docs/AnticaptchaReCaptchaProxeless-ru.md)
 
 
 ###Ссылка
