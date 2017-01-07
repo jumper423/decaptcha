@@ -225,7 +225,11 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             $spec = $param;
         }
         if (!array_key_exists($param, $this->params) || is_null($this->params[$param])) {
-            return null;
+            if (array_key_exists($spec, $this->params) && !is_null($this->params[$spec])) {
+                $param = $spec;
+            } else {
+                return null;
+            }
         }
         switch ($spec) {
             case static::PARAM_SPEC_FILE:
