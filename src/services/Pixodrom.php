@@ -57,11 +57,20 @@ class Pixodrom extends RuCaptcha
                 '1 - капча состоит только из цифр',
                 '2 - в капче нет цифр',
             ],
+            'en' => [
+                '0 - parameter not used',
+                '1 - captcha consists only of digits',
+                '2 - the captcha has no numbers',
+            ],
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_IS_RUSSIAN], [
             'ru' => [
                 '0 - параметр не задействован',
                 '1 - на изображении присутствуют русские символы',
+            ],
+            'en' => [
+                '0 - parameter not used',
+                '1 - in the image there are Russian characters',
             ],
         ]);
         $this->wiki->setText(['menu', 'from_service'], null);
