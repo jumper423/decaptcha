@@ -140,11 +140,7 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
                      ['install'],
                      ['example'],
                  ] as $anchor) {
-            if ($this->lang === 'en') {
-                $str .= "+ [{$this->getText($anchor)}](#".implode('-', explode(' ', mb_strtolower($this->getText($anchor)))).')'.PHP_EOL;
-            } else {
-                $str .= "+ [{$this->getText($anchor)}](#".implode('-', explode(' ', $this->getText($anchor))).')'.PHP_EOL;
-            }
+            $str .= "+ [{$this->getText($anchor)}](#".implode('-', explode(' ', ($this->lang === 'en' ? mb_strtolower($this->getText($anchor)) : $this->getText($anchor)))).')'.PHP_EOL;
         }
 
         return $str;
