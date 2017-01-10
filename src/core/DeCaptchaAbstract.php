@@ -318,7 +318,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function getResponse($action)
     {
-        return $this->getCurlResponse(
+        return $this->curlResponse(
             $this->getActionUrl($action),
             $this->getParams($action),
             array_key_exists(static::ACTION_METHOD, $this->actions[$action]) && $this->actions[$action][static::ACTION_METHOD] === static::ACTION_METHOD_POST,
@@ -356,7 +356,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      *
      * @return string
      */
-    protected function getCurlResponse($url, $data, $isPost = true, $isJson = false)
+    protected function curlResponse($url, $data, $isPost = true, $isJson = false)
     {
         $ch = curl_init();
         if ($isJson) {
