@@ -386,7 +386,7 @@ class DeCaptchaWiki
 
     /**
      * @param string|array $name
-     * @param string|array $value
+     * @param string|array|bool $value
      */
     public function setText($name, $value)
     {

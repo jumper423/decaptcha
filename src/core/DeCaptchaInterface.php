@@ -13,7 +13,7 @@ interface DeCaptchaInterface
     public function getCode();
 
     /**
-     * @return string
+     * @return string|array
      */
     public function getError();
 }
