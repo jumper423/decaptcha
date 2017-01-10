@@ -1,49 +1,49 @@
 Captcha24
 ==============
 ###Menu
-+ [Главная](../docs/README-en.md)
++ [Main](../docs/README-en.md)
 + [Документация на русском языке](../docs/Captcha24-ru.md)
-+ Якоря
-  + [Ссылка](#Ссылка)
-  + [Описание сервиса](#Описание-сервиса)
-  + [Цены](#Цены)
-  + [Описание распознания](#Описание-распознания)
-  + [Установка](#Установка)
-  + [Примеры](#Примеры)
-  + [Описание полей](#Описание-полей)
++ Anchor
+  + [Link](#Link)
+  + [The description of the service](#The-description-of-the-service)
+  + [Prices](#Prices)
+  + [Description recognition](#Description-recognition)
+  + [Installation](#Installation)
+  + [Examples](#Examples)
+  + [A description of the fields](#A-description-of-the-fields)
 
 
-###Ссылка
-[Ссылка на сервис Captcha24](http://captcha24.com/)
+###Link
+[The link to the service Captcha24](http://captcha24.com/)
 
-###Описание сервиса
+###The description of the service
 captcha24.com - сервис ручного распознавания графических изображений, здесь встречаются те, кому нужно в режиме реального времени разгадывать изображения ( сканы документов, каптчи, другое) и те, кто готов это делать за деньги.
 
 99% работников captcha24 знают русский язык, а потому распознавание документов на русском языке доходит до 95%.
 
-###Цены
+###Prices
  ... 
 
-###Описание распознания
+###Description recognition
 Расшифровка капч с картики. Необходимо указать файл с картинкой или ссылку на него.
 
-###Установка
-Предпочтительный способ установить это расширение через [composer](http://getcomposer.org/download/).
+###Installation
+The preferred way to install this extension via [composer](http://getcomposer.org/download/).
 
-Либо запустить
+Or you can run
 ```
 php composer.phar require --prefer-dist jumper423/decaptcha "*"
 ```
-или добавить
+or add
 ```
 "jumper423/decaptcha": "*"
 ```
-в файл `composer.json`.
+in file `composer.json`.
 
 
-###Примеры
-####Инициализация
-Указываем ключ, обязательные и дополнительные параметры. Старайтесь по максимуму их заполнить это способствует более быстрому распознанию капчи.
+###Examples
+####Initialization
+Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```
 use jumper423\decaptcha\services\Captcha24;
 
@@ -51,8 +51,8 @@ $captcha = new Captcha24([
     Captcha24::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
 ]);
 ```
-####Распознавание
-В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.
+####Recognition
+In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
 if ($captcha->recognize('http://site.com/captcha.jpg')) {
     $code = $captcha->getCode();
@@ -60,17 +60,17 @@ if ($captcha->recognize('http://site.com/captcha.jpg')) {
     $error = $captcha->getError();
 }
 ```
-####Не верно распознано
-Если Вы сможете понять что ответ которые пришёл не верные. Обязательно добавьте ниже написанный код. Это Вам съекономит деньги.
+####Not correctly recognized
+If You can understand that the answer which did not come true. Be sure to add below written code. It will save You money.
 ```
 $captcha->notTrue();
 ```
-####Баланс
+####Balance
 ```
 $balance = $captcha->getBalance();
 ```
-####Перехват ошибки
-При желании Вы можете перехватывать ошибку, но для этого надо вызвать setCauseAnError
+####Intercept errors
+If you wish, You can catch the error, but you need to call setCauseAnError
 ```
 $captcha->setCauseAnError(true);
 
@@ -83,17 +83,17 @@ try {
 ```
 
 
-###Описание полей
- Название | Код | Тип | Обяз. | По ум. | Возможные значения | Описание 
+###A description of the fields
+ Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
- Ключ | ACTION_FIELD_KEY | STRING | + |  |  | Ключ от учетной записи |
- Картинка | ACTION_FIELD_FILE | MIX | + |  |  | Путь на файл с картинкой или ссылка на него |
- Несколько слов | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - одно слово; 1 - каптча имеет два слова | Работник должен ввести текст с одним или несколькими пробелами |
- Регистр | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - регистр ответа не имеет значения; 1 - регистр ответа имеет значение | Работник должен ввсести ответ с учетом регистра |
- Символы | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - капча состоит только из цифр | Какие символы используется в капче |
- Длина min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | Минимальная длина капчи |
- Длина max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | Максимальная длина капчи |
- Язык | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы | Символы какого языка размещенны на капче |
- Вычисление | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работнику нужно совершить математическое действие с капчи | На капче изображенно математичекая выражение и её необходимо решить |
- Кросс-доменный | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Необходимо для кросс-доменных AJAX запросов в браузерных приложениях. |
+ Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
+ Picture | ACTION_FIELD_FILE | MIX | + |  |  | The path to the picture file or link to it |
+ A few words | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - одно слово; 1 - каптча имеет два слова | The worker must enter text with one or more spaces |
+ Register | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - регистр ответа не имеет значения; 1 - регистр ответа имеет значение | The worker must enter the answer case sensitive |
+ Characters | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - капча состоит только из цифр | What are the symbols used in captcha |
+ Length min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | The minimum length of captcha |
+ Length max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | The maximum length of the captcha |
+ Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы | The symbols of the language posted on the captcha |
+ Calculation | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работнику нужно совершить математическое действие с капчи | The captcha shows matematicheskaya expression and must be addressed |
+ Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Need for cross-domain AJAX requests in browser-based applications. |
 

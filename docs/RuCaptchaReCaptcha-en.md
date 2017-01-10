@@ -1,37 +1,37 @@
 RuCaptcha ReCaptcha v2 без браузера
 ==============
 ###Menu
-+ [Главная](../docs/README-en.md)
++ [Main](../docs/README-en.md)
 + [Документация на русском языке](../docs/RuCaptchaReCaptcha-ru.md)
-+ Якоря
-  + [Ссылка](#Ссылка)
-  + [Описание сервиса](#Описание-сервиса)
-  + [Цены](#Цены)
-  + [Описание распознания](#Описание-распознания)
-  + [Установка](#Установка)
-  + [Примеры](#Примеры)
-  + [Описание полей](#Описание-полей)
-+ Другой функционал от сервиса
++ Anchor
+  + [Link](#Link)
+  + [The description of the service](#The-description-of-the-service)
+  + [Prices](#Prices)
+  + [Description recognition](#Description-recognition)
+  + [Installation](#Installation)
+  + [Examples](#Examples)
+  + [A description of the fields](#A-description-of-the-fields)
++ Other functionality from the service
   + [RuCaptcha](../docs/RuCaptcha-en.md)
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
   + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-en.md)
   + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
 
 
-###Ссылка
-[Ссылка на сервис RuCaptcha ReCaptcha v2 без браузера](http://infoblog1.ru/goto/rucaptcha)
+###Link
+[The link to the service RuCaptcha ReCaptcha v2 без браузера](http://infoblog1.ru/goto/rucaptcha)
 
-###Описание сервиса
+###The description of the service
 RuCaptcha.com — антикапча-сервис ручного распознавания изображений, здесь встречаются те, кому нужно в режиме реального времени распознать текст с отсканированных документов, бланков, капч и те, кто хочет заработать на вводе текста с экрана. 
 
 В системе работают русскоязычные и англоязычные работники.
 
 Cервис антикапчи RuCaptcha.com не только поддерживает стандартное API на равне с сервисами pixodrom, antigate, anti-captcha и других, но и предоставляет расширенный фукнционал пополняющийся под каждый виток борьбы с автоматизацией. API RuCaptcha поддерживает решение ReCaptcha v2 (где нужно кликнуть по картинкам), ClickCaptcha (где нужно кликнуть в определённые точки) и Rotatecaptcha (FunCaptcha и другие капчи, которые нужно крутить).
 
-###Цены
+###Prices
 1000 решений стоят 160 рублей.
 
-###Описание распознания
+###Description recognition
 Данный способ позволяет пройти рекапчу без эмуляции браузера и отправки нам картинок, так же этот способ даёт 100%  прохождение капчи.
             
 Где какие данные брать и куда вставлять? 
@@ -45,23 +45,23 @@ data-sitekey=
 ```<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; "></textarea>```
 Сюда вам нужно будет вставить ответ от нас.
 
-###Установка
-Предпочтительный способ установить это расширение через [composer](http://getcomposer.org/download/).
+###Installation
+The preferred way to install this extension via [composer](http://getcomposer.org/download/).
 
-Либо запустить
+Or you can run
 ```
 php composer.phar require --prefer-dist jumper423/decaptcha "*"
 ```
-или добавить
+or add
 ```
 "jumper423/decaptcha": "*"
 ```
-в файл `composer.json`.
+in file `composer.json`.
 
 
-###Примеры
-####Инициализация
-Указываем ключ, обязательные и дополнительные параметры. Старайтесь по максимуму их заполнить это способствует более быстрому распознанию капчи.
+###Examples
+####Initialization
+Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```
 use jumper423\decaptcha\services\RuCaptchaReCaptcha;
 
@@ -69,8 +69,8 @@ $captcha = new RuCaptchaReCaptcha([
     RuCaptchaReCaptcha::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
 ]);
 ```
-####Распознавание
-В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.
+####Recognition
+In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
 if ($captcha->recognize([
     RuCaptchaReCaptcha::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',
@@ -81,17 +81,17 @@ if ($captcha->recognize([
     $error = $captcha->getError();
 }
 ```
-####Не верно распознано
-Если Вы сможете понять что ответ которые пришёл не верные. Обязательно добавьте ниже написанный код. Это Вам съекономит деньги.
+####Not correctly recognized
+If You can understand that the answer which did not come true. Be sure to add below written code. It will save You money.
 ```
 $captcha->notTrue();
 ```
-####Баланс
+####Balance
 ```
 $balance = $captcha->getBalance();
 ```
-####Перехват ошибки
-При желании Вы можете перехватывать ошибку, но для этого надо вызвать setCauseAnError
+####Intercept errors
+If you wish, You can catch the error, but you need to call setCauseAnError
 ```
 $captcha->setCauseAnError(true);
 
@@ -107,15 +107,15 @@ try {
 ```
 
 
-###Описание полей
- Название | Код | Тип | Обяз. | По ум. | Возможные значения | Описание 
+###A description of the fields
+ Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
- Ключ | ACTION_FIELD_KEY | STRING | + |  |  | Ключ от учетной записи |
- Язык | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы; 2 - на капче только латинские буквы | Символы какого языка размещенны на капче |
- Кросс-доменный | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Необходимо для кросс-доменных AJAX запросов в браузерных приложениях. |
- Инструкция | ACTION_FIELD_INSTRUCTIONS | STRING | - |  |  | Текстовая капча или инструкция для прохождения капчи. |
- Google key | ACTION_FIELD_GOOGLEKEY | STRING | + |  |  | Ключ-индентификатор рекапчи на целевой странице. <div class="g-recaptcha" data-sitekey="ВОТ_ЭТОТ"></div> |
- Адрес прокси | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP адрес прокси ipv4/ipv6. |
- Тип прокси | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | Тип прокси (http, socks4, ...) |
- Адрес | ACTION_FIELD_PAGEURL | STRING | + |  |  | Адрес страницы на которой решается капча. |
+ Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
+ Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы; 2 - на капче только латинские буквы | The symbols of the language posted on the captcha |
+ Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Need for cross-domain AJAX requests in browser-based applications. |
+ Manual | ACTION_FIELD_INSTRUCTIONS | STRING | - |  |  | Text captcha or manual to pass the captcha. |
+ Google key | ACTION_FIELD_GOOGLEKEY | STRING | + |  |  | Key-the identifier of the recaptcha on the landing page. <div class="g-recaptcha" data-sitekey="THIS"></div> |
+ The proxy address | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP address of the proxy ipv4/ipv6. |
+ The proxy type | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | The proxy type (http, socks4, ...) |
+ Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
 

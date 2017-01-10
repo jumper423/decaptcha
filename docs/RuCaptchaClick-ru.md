@@ -2,7 +2,7 @@ RuCaptcha ClickCaptcha
 ==============
 ###Меню
 + [Главная](../docs/README-ru.md)
-+ [Документация на англиском языке](../docs/RuCaptchaClick-en.md)
++ [Documentation in English language](../docs/RuCaptchaClick-en.md)
 + Якоря
   + [Ссылка](#Ссылка)
   + [Описание сервиса](#Описание-сервиса)

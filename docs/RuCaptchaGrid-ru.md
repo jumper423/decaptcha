@@ -2,7 +2,7 @@ RuCaptcha Сетка (ReCaptcha v2)
 ==============
 ###Меню
 + [Главная](../docs/README-ru.md)
-+ [Документация на англиском языке](../docs/RuCaptchaGrid-en.md)
++ [Documentation in English language](../docs/RuCaptchaGrid-en.md)
 + Якоря
   + [Ссылка](#Ссылка)
   + [Описание сервиса](#Описание-сервиса)

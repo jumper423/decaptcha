@@ -1,35 +1,35 @@
 AntiCaptcha ReCaptcha v2 без браузера (с прокси)
 ==============
 ###Menu
-+ [Главная](../docs/README-en.md)
++ [Main](../docs/README-en.md)
 + [Документация на русском языке](../docs/AnticaptchaReCaptcha-ru.md)
-+ Якоря
-  + [Ссылка](#Ссылка)
-  + [Описание сервиса](#Описание-сервиса)
-  + [Цены](#Цены)
-  + [Описание распознания](#Описание-распознания)
-  + [Установка](#Установка)
-  + [Примеры](#Примеры)
-  + [Описание полей](#Описание-полей)
-+ Другой функционал от сервиса
++ Anchor
+  + [Link](#Link)
+  + [The description of the service](#The-description-of-the-service)
+  + [Prices](#Prices)
+  + [Description recognition](#Description-recognition)
+  + [Installation](#Installation)
+  + [Examples](#Examples)
+  + [A description of the fields](#A-description-of-the-fields)
++ Other functionality from the service
   + [Anti Captcha](../docs/Anticaptcha-en.md)
   + [AntiCaptcha ReCaptcha v2 без браузера](../docs/AnticaptchaReCaptchaProxeless-en.md)
 
 
-###Ссылка
-[Ссылка на сервис AntiCaptcha ReCaptcha v2 без браузера (с прокси)](https://anti-captcha.com/)
+###Link
+[The link to the service AntiCaptcha ReCaptcha v2 без браузера (с прокси)](https://anti-captcha.com/)
 
-###Описание сервиса
+###The description of the service
 Сервис AntiCaptcha, ранее белее известный как Antigate.
 
 100% капч распознаются нашими работниками со всего мира. Именно поэтому используя наш сервис вы одновременно помогаете тысячам людей по всему миру обеспечивать себя и своих близких.
 
 Деньги, которые наши работники зарабатывают у нас считаются хорошей зарплатой в таких странах как Индия, Пакистан или Вьетнам. С вашей помощью теперь у них есть выбор между работой на грязном производстве и работой за компьютером.
 
-###Цены
+###Prices
 Стоимость Рекапчи: от 2 USD за 1000 решений.
 
-###Описание распознания
+###Description recognition
 Вам не нужно эмулировать браузер и запускать яваскрипты.
             
 Вы присылаете нам значение "sitekey".
@@ -44,23 +44,23 @@ AntiCaptcha ReCaptcha v2 без браузера (с прокси)
 
 Капча может решаться довольно долго по сравнению с обычной капчей, но это компенсируется тем, что полученный g-captcha-response действует еще 120 секунд после того, как работник решил капчу.
 
-###Установка
-Предпочтительный способ установить это расширение через [composer](http://getcomposer.org/download/).
+###Installation
+The preferred way to install this extension via [composer](http://getcomposer.org/download/).
 
-Либо запустить
+Or you can run
 ```
 php composer.phar require --prefer-dist jumper423/decaptcha "*"
 ```
-или добавить
+or add
 ```
 "jumper423/decaptcha": "*"
 ```
-в файл `composer.json`.
+in file `composer.json`.
 
 
-###Примеры
-####Инициализация
-Указываем ключ, обязательные и дополнительные параметры. Старайтесь по максимуму их заполнить это способствует более быстрому распознанию капчи.
+###Examples
+####Initialization
+Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```
 use jumper423\decaptcha\services\AnticaptchaReCaptcha;
 
@@ -72,8 +72,8 @@ $captcha = new AnticaptchaReCaptcha([
     AnticaptchaReCaptcha::ACTION_FIELD_USERAGENT => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
 ]);
 ```
-####Распознавание
-В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.
+####Recognition
+In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
 if ($captcha->recognize([
     AnticaptchaReCaptcha::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',
@@ -84,12 +84,12 @@ if ($captcha->recognize([
     $error = $captcha->getError();
 }
 ```
-####Баланс
+####Balance
 ```
 $balance = $captcha->getBalance();
 ```
-####Перехват ошибки
-При желании Вы можете перехватывать ошибку, но для этого надо вызвать setCauseAnError
+####Intercept errors
+If you wish, You can catch the error, but you need to call setCauseAnError
 ```
 $captcha->setCauseAnError(true);
 
@@ -105,19 +105,19 @@ try {
 ```
 
 
-###Описание полей
- Название | Код | Тип | Обяз. | По ум. | Возможные значения | Описание 
+###A description of the fields
+ Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
- Ключ | ACTION_FIELD_KEY | STRING | + |  |  | Ключ от учетной записи |
- Язык | ACTION_FIELD_LANGUAGE | STRING | - | en | en - англоязычная очередь; rn - группа стран Россия, Украина, Беларусь, Казахстан | Определяет язык очереди, в которую должна попасть капча. |
- Адрес | ACTION_FIELD_PAGEURL | STRING | + |  |  | Адрес страницы на которой решается капча. |
- Google key | ACTION_FIELD_GOOGLEKEY | STRING | + |  |  | Ключ-индентификатор рекапчи на целевой странице. <div class="g-recaptcha" data-sitekey="ВОТ_ЭТОТ"></div> |
- Google token | ACTION_FIELD_GOOGLETOKEN | STRING | - |  |  | Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется. Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так: <script type="text/javascript" src="...." data-type="normal"  data-ray="..." async data-sitekey="..." data-stoken="ВОТ_ЭТОТ"></script> Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его. |
- Тип прокси | ACTION_FIELD_PROXYTYPE | STRING | + |  |  | Тип прокси (http, socks4, ...) |
- Адрес прокси | ACTION_FIELD_RECAPTCHA | STRING | + |  |  | IP адрес прокси ipv4/ipv6. |
- Порт прокси | ACTION_FIELD_PROXYPORT | INTEGER | + |  |  | Порт прокси. |
- Логин прокси | ACTION_FIELD_PROXYLOGIN | STRING | - |  |  | Логин от прокси-сервера. |
- Пароль прокси | ACTION_FIELD_PROXYPASS | STRING | - |  |  | Пароль от прокси-сервера. |
- User-Agent браузера | ACTION_FIELD_USERAGENT | STRING | + |  |  | User-Agent браузера, используемый в эмуляции. Необходимо использовать подпись современного браузера, иначе Google будет возвращать ошибку, требуя обновить браузер. |
- Куки | ACTION_FIELD_COOKIES | STRING | - |  |  | Дополнительные cookies которые мы должны использовать во время взаимодействия с целевой страницей. |
+ Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
+ Language | ACTION_FIELD_LANGUAGE | STRING | - | en | en - англоязычная очередь; rn - группа стран Россия, Украина, Беларусь, Казахстан | Определяет язык очереди, в которую должна попасть капча. |
+ Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
+ Google key | ACTION_FIELD_GOOGLEKEY | STRING | + |  |  | Key-the identifier of the recaptcha on the landing page. <div class="g-recaptcha" data-sitekey="THIS"></div> |
+ Google token | ACTION_FIELD_GOOGLETOKEN | STRING | - |  |  | The secret token for the previous version of recaptcha. In most cases, sites use the new version and this token is not required. The secret token is generated on a Google server and inserted into the page in the attribute data-stoken. It looks like this: <script type="text/javascript" src="...." data-type="normal" data-ray="..." async data-sitekey="..." data-stoken="THIS"></script> the Token is valid a few minutes after generation, then you need to go back to the page and get it. |
+ The proxy type | ACTION_FIELD_PROXYTYPE | STRING | + |  |  | The proxy type (http, socks4, ...) |
+ The proxy address | ACTION_FIELD_RECAPTCHA | STRING | + |  |  | IP address of the proxy ipv4/ipv6. |
+ Proxy port | ACTION_FIELD_PROXYPORT | INTEGER | + |  |  | Proxy port. |
+ Login proxy | ACTION_FIELD_PROXYLOGIN | STRING | - |  |  | Login from proxy server. |
+ Password proxy | ACTION_FIELD_PROXYPASS | STRING | - |  |  | The password for the proxy server. |
+ User-Agent browser | ACTION_FIELD_USERAGENT | STRING | + |  |  | User-Agent browser used in emulation. You must use the signature modern browser, otherwise Google will return an error requiring you to upgrade your browser. |
+ Cookies | ACTION_FIELD_COOKIES | STRING | - |  |  | Additional cookies which we should use during the interaction with the target page. |
 

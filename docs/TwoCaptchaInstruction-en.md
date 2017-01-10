@@ -1,56 +1,56 @@
 2Captcha Инструкция
 ==============
 ###Menu
-+ [Главная](../docs/README-en.md)
++ [Main](../docs/README-en.md)
 + [Документация на русском языке](../docs/TwoCaptchaInstruction-ru.md)
-+ Якоря
-  + [Ссылка](#Ссылка)
-  + [Описание сервиса](#Описание-сервиса)
-  + [Цены](#Цены)
-  + [Описание распознания](#Описание-распознания)
-  + [Установка](#Установка)
-  + [Примеры](#Примеры)
-  + [Описание полей](#Описание-полей)
-+ Другой функционал от сервиса
++ Anchor
+  + [Link](#Link)
+  + [The description of the service](#The-description-of-the-service)
+  + [Prices](#Prices)
+  + [Description recognition](#Description-recognition)
+  + [Installation](#Installation)
+  + [Examples](#Examples)
+  + [A description of the fields](#A-description-of-the-fields)
++ Other functionality from the service
   + [2Captcha](../docs/TwoCaptcha-en.md)
   + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-en.md)
   + [2Captcha Grid (ReCaptcha v2)](../docs/TwoCaptchaGrid-en.md)
   + [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-en.md)
 
 
-###Ссылка
-[Ссылка на сервис 2Captcha Инструкция](http://infoblog1.ru/goto/2captcha)
+###Link
+[The link to the service 2Captcha Инструкция](http://infoblog1.ru/goto/2captcha)
 
-###Описание сервиса
+###The description of the service
 RuCaptcha.com — антикапча-сервис ручного распознавания изображений, здесь встречаются те, кому нужно в режиме реального времени распознать текст с отсканированных документов, бланков, капч и те, кто хочет заработать на вводе текста с экрана. 
 
 В системе работают русскоязычные и англоязычные работники.
 
 Cервис антикапчи RuCaptcha.com не только поддерживает стандартное API на равне с сервисами pixodrom, antigate, anti-captcha и других, но и предоставляет расширенный фукнционал пополняющийся под каждый виток борьбы с автоматизацией. API RuCaptcha поддерживает решение ReCaptcha v2 (где нужно кликнуть по картинкам), ClickCaptcha (где нужно кликнуть в определённые точки) и Rotatecaptcha (FunCaptcha и другие капчи, которые нужно крутить).
 
-###Цены
+###Prices
 От 18 до 44 руб. за 1000 капч в зависимости от нагрузки
 
-###Описание распознания
+###Description recognition
 Распознание что написанно на картинке с пояснительной инструкцией
 
-###Установка
-Предпочтительный способ установить это расширение через [composer](http://getcomposer.org/download/).
+###Installation
+The preferred way to install this extension via [composer](http://getcomposer.org/download/).
 
-Либо запустить
+Or you can run
 ```
 php composer.phar require --prefer-dist jumper423/decaptcha "*"
 ```
-или добавить
+or add
 ```
 "jumper423/decaptcha": "*"
 ```
-в файл `composer.json`.
+in file `composer.json`.
 
 
-###Примеры
-####Инициализация
-Указываем ключ, обязательные и дополнительные параметры. Старайтесь по максимуму их заполнить это способствует более быстрому распознанию капчи.
+###Examples
+####Initialization
+Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```
 use jumper423\decaptcha\services\TwoCaptchaInstruction;
 
@@ -58,8 +58,8 @@ $captcha = new TwoCaptchaInstruction([
     TwoCaptchaInstruction::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
 ]);
 ```
-####Распознавание
-В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.
+####Recognition
+In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
 if ($captcha->recognize('http://site.com/captcha.jpg', [
     TwoCaptchaInstruction::ACTION_FIELD_INSTRUCTIONS => 'What's in the picture?',
@@ -69,17 +69,17 @@ if ($captcha->recognize('http://site.com/captcha.jpg', [
     $error = $captcha->getError();
 }
 ```
-####Не верно распознано
-Если Вы сможете понять что ответ которые пришёл не верные. Обязательно добавьте ниже написанный код. Это Вам съекономит деньги.
+####Not correctly recognized
+If You can understand that the answer which did not come true. Be sure to add below written code. It will save You money.
 ```
 $captcha->notTrue();
 ```
-####Баланс
+####Balance
 ```
 $balance = $captcha->getBalance();
 ```
-####Перехват ошибки
-При желании Вы можете перехватывать ошибку, но для этого надо вызвать setCauseAnError
+####Intercept errors
+If you wish, You can catch the error, but you need to call setCauseAnError
 ```
 $captcha->setCauseAnError(true);
 
@@ -94,20 +94,20 @@ try {
 ```
 
 
-###Описание полей
- Название | Код | Тип | Обяз. | По ум. | Возможные значения | Описание 
+###A description of the fields
+ Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
- Ключ | ACTION_FIELD_KEY | STRING | + |  |  | Ключ от учетной записи |
- Картинка | ACTION_FIELD_FILE | MIX | + |  |  | Путь на файл с картинкой или ссылка на него |
- Несколько слов | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - одно слово; 1 - каптча имеет два слова | Работник должен ввести текст с одним или несколькими пробелами |
- Регистр | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - регистр ответа не имеет значения; 1 - регистр ответа имеет значение | Работник должен ввсести ответ с учетом регистра |
- Символы | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - капча состоит только из цифр; 2 - капча состоит только из букв; 3 - капча состоит либо только из цифр, либо только из букв | Какие символы используется в капче |
- Длина min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | Минимальная длина капчи |
- Длина max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | Максимальная длина капчи |
- Язык | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы; 2 - на капче только латинские буквы | Символы какого языка размещенны на капче |
- Вопрос | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работник должен написать ответ | На изображении задан вопрос, работник должен написать ответ |
- Вычисление | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работнику нужно совершить математическое действие с капчи | На капче изображенно математичекая выражение и её необходимо решить |
- Кросс-доменный | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Необходимо для кросс-доменных AJAX запросов в браузерных приложениях. |
- Инструкция | ACTION_FIELD_INSTRUCTIONS | STRING | + |  |  | Текстовая капча или инструкция для прохождения капчи. |
- Ответ на | ACTION_FIELD_PINGBACK | STRING | - |  |  | Указание для сервера, что после распознания изображения, нужно отправить ответ на указанный адрес. |
+ Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
+ Picture | ACTION_FIELD_FILE | MIX | + |  |  | The path to the picture file or link to it |
+ A few words | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - одно слово; 1 - каптча имеет два слова | The worker must enter text with one or more spaces |
+ Register | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - регистр ответа не имеет значения; 1 - регистр ответа имеет значение | The worker must enter the answer case sensitive |
+ Characters | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - капча состоит только из цифр; 2 - капча состоит только из букв; 3 - капча состоит либо только из цифр, либо только из букв | What are the symbols used in captcha |
+ Length min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | The minimum length of captcha |
+ Length max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | The maximum length of the captcha |
+ Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы; 2 - на капче только латинские буквы | The symbols of the language posted on the captcha |
+ Question | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работник должен написать ответ | The image asked, the employee must write the answer |
+ Calculation | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работнику нужно совершить математическое действие с капчи | The captcha shows matematicheskaya expression and must be addressed |
+ Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Need for cross-domain AJAX requests in browser-based applications. |
+ Manual | ACTION_FIELD_INSTRUCTIONS | STRING | + |  |  | Text captcha or manual to pass the captcha. |
+ Response to | ACTION_FIELD_PINGBACK | STRING | - |  |  | Note to server, after recognizing the image, you need to send a reply to the specified address. |
 

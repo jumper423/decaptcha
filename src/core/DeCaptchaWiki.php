@@ -31,222 +31,295 @@ class DeCaptchaWiki
             'recognize_data'                                    => [],
             'field_main_name_'.$class::ACTION_FIELD_KEY         => [
                 'ru' => 'Ключ',
+                'en' => 'Key',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_KEY => [
                 'ru' => 'Ключ от учетной записи',
+                'en' => 'Key account',
             ],
             'field_main_name_'.$class::ACTION_FIELD_LANGUAGE => [
                 'ru' => 'Язык',
+                'en' => 'Language',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_LANGUAGE => [
                 'ru' => 'На каком языке текст на капче',
+                'en' => 'What language the text on the captcha',
             ],
             'field_main_name_'.$class::ACTION_FIELD_FILE => [
                 'ru' => 'Картинка',
+                'en' => 'Picture',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_FILE => [
                 'ru' => 'Путь на файл с картинкой или ссылка на него',
+                'en' => 'The path to the picture file or link to it',
             ],
             'field_main_name_'.$class::ACTION_FIELD_PHRASE => [
                 'ru' => 'Несколько слов',
+                'en' => 'A few words',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_PHRASE => [
                 'ru' => 'Работник должен ввести текст с одним или несколькими пробелами',
+                'en' => 'The worker must enter text with one or more spaces',
             ],
             'field_main_name_'.$class::ACTION_FIELD_REGSENSE => [
                 'ru' => 'Регистр',
+                'en' => 'Register',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_REGSENSE => [
-                'ru' => 'Работник должен ввсести ответ с учетом регистра',
+                'ru' => 'Работник должен ввести ответ с учетом регистра',
+                'en' => 'The worker must enter the answer case sensitive',
             ],
             'field_main_name_'.$class::ACTION_FIELD_NUMERIC => [
                 'ru' => 'Символы',
+                'en' => 'Characters',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_NUMERIC => [
                 'ru' => 'Какие символы используется в капче',
+                'en' => 'What are the symbols used in captcha',
             ],
             'field_main_name_'.$class::ACTION_FIELD_CALC => [
                 'ru' => 'Вычисление',
+                'en' => 'Calculation',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_CALC => [
                 'ru' => 'На капче изображенно математичекая выражение и её необходимо решить',
+                'en' => 'The captcha shows matematicheskaya expression and must be addressed',
             ],
             'field_main_name_'.$class::ACTION_FIELD_MIN_LEN => [
                 'ru' => 'Длина min',
+                'en' => 'Length min',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_MIN_LEN => [
                 'ru' => 'Минимальная длина капчи',
+                'en' => 'The minimum length of captcha',
             ],
             'field_main_name_'.$class::ACTION_FIELD_MAX_LEN => [
                 'ru' => 'Длина max',
+                'en' => 'Length max',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_MAX_LEN => [
                 'ru' => 'Максимальная длина капчи',
+                'en' => 'The maximum length of the captcha',
             ],
             'field_main_name_'.$class::ACTION_FIELD_QUESTION => [
                 'ru' => 'Вопрос',
+                'en' => 'Question',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_QUESTION => [
                 'ru' => 'На изображении задан вопрос, работник должен написать ответ',
+                'en' => 'The image asked, the employee must write the answer',
             ],
             'field_main_name_'.$class::ACTION_FIELD_IS_RUSSIAN => [
                 'ru' => 'Кириллица',
+                'en' => 'Cyrillic',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_IS_RUSSIAN => [
                 'ru' => 'На изображении присутствуют русские символы',
+                'en' => 'In the image there are Russian characters',
             ],
             'field_main_name_'.$class::ACTION_FIELD_LANGUAGE => [
                 'ru' => 'Язык',
+                'en' => 'Language',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_LANGUAGE => [
                 'ru' => 'Символы какого языка размещенны на капче',
+                'en' => 'The symbols of the language posted on the captcha',
             ],
             'field_main_name_'.$class::ACTION_FIELD_HEADER_ACAO => [
                 'ru' => 'Кросс-доменный',
+                'en' => 'Cross-domain',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_HEADER_ACAO => [
                 'ru' => 'Необходимо для кросс-доменных AJAX запросов в браузерных приложениях.',
+                'en' => 'Need for cross-domain AJAX requests in browser-based applications.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_INSTRUCTIONS => [
                 'ru' => 'Инструкция',
+                'en' => 'Manual',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_INSTRUCTIONS => [
                 'ru' => 'Текстовая капча или инструкция для прохождения капчи.',
+                'en' => 'Text captcha or manual to pass the captcha.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_PINGBACK => [
                 'ru' => 'Ответ на',
+                'en' => 'Response to',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_PINGBACK => [
                 'ru' => 'Указание для сервера, что после распознания изображения, нужно отправить ответ на указанный адрес.',
+                'en' => 'Note to server, after recognizing the image, you need to send a reply to the specified address.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_LABEL => [
                 'ru' => 'От куда',
+                'en' => 'From where',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_LABEL => [
                 'ru' => 'Пояснение от куда пришла капча ("vk", "google", "recaptcha", "yandex", "mailru", "yahoo" и т.д.).',
+                'en' => 'Clarification from where came the captcha ("vk", "google", "recaptcha", "yandex", "Google", "yahoo", etc.).',
             ],
             'field_main_name_'.$class::ACTION_FIELD_PAGEURL => [
                 'ru' => 'Адрес',
+                'en' => 'Link',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_PAGEURL => [
                 'ru' => 'Адрес страницы на которой решается капча.',
+                'en' => 'The address of the page where the captcha is solved.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_GOOGLEKEY => [
                 'ru' => 'Google key',
+                'en' => 'Google key',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_GOOGLEKEY => [
                 'ru' => 'Ключ-индентификатор рекапчи на целевой странице. <div class="g-recaptcha" data-sitekey="ВОТ_ЭТОТ"></div>',
+                'en' => 'Key-the identifier of the recaptcha on the landing page. <div class="g-recaptcha" data-sitekey="THIS"></div>',
             ],
             'field_main_name_'.$class::ACTION_FIELD_GOOGLETOKEN => [
                 'ru' => 'Google token',
+                'en' => 'Google token',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_GOOGLETOKEN => [
                 'ru' => 'Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется. Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так: <script type="text/javascript" src="...." data-type="normal"  data-ray="..." async data-sitekey="..." data-stoken="ВОТ_ЭТОТ"></script> Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его.',
+                'en' => 'The secret token for the previous version of recaptcha. In most cases, sites use the new version and this token is not required. The secret token is generated on a Google server and inserted into the page in the attribute data-stoken. It looks like this: <script type="text/javascript" src="...." data-type="normal" data-ray="..." async data-sitekey="..." data-stoken="THIS"></script> the Token is valid a few minutes after generation, then you need to go back to the page and get it.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_PROXYTYPE => [
                 'ru' => 'Тип прокси',
+                'en' => 'The proxy type',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_PROXYTYPE => [
                 'ru' => 'Тип прокси (http, socks4, ...)',
+                'en' => 'The proxy type (http, socks4, ...)',
             ],
             'field_main_name_'.$class::ACTION_FIELD_PROXY => [
                 'ru' => 'Адрес прокси',
+                'en' => 'The proxy address',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_PROXY => [
                 'ru' => 'IP адрес прокси ipv4/ipv6.',
+                'en' => 'IP address of the proxy ipv4/ipv6.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_PROXYPORT => [
                 'ru' => 'Порт прокси',
+                'en' => 'Proxy port',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_PROXYPORT => [
                 'ru' => 'Порт прокси.',
+                'en' => 'Proxy port.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_PROXYLOGIN => [
                 'ru' => 'Логин прокси',
+                'en' => 'Login proxy',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_PROXYLOGIN => [
                 'ru' => 'Логин от прокси-сервера.',
+                'en' => 'Login from proxy server.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_PROXYPASS => [
                 'ru' => 'Пароль прокси',
+                'en' => 'Password proxy',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_PROXYPASS => [
                 'ru' => 'Пароль от прокси-сервера.',
+                'en' => 'The password for the proxy server.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_USERAGENT => [
                 'ru' => 'User-Agent браузера',
+                'en' => 'User-Agent browser',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_USERAGENT => [
                 'ru' => 'User-Agent браузера, используемый в эмуляции. Необходимо использовать подпись современного браузера, иначе Google будет возвращать ошибку, требуя обновить браузер.',
+                'en' => 'User-Agent browser used in emulation. You must use the signature modern browser, otherwise Google will return an error requiring you to upgrade your browser.',
             ],
             'field_main_name_'.$class::ACTION_FIELD_COOKIES => [
                 'ru' => 'Куки',
+                'en' => 'Cookies',
             ],
             'field_main_desc_'.$class::ACTION_FIELD_COOKIES => [
                 'ru' => 'Дополнительные cookies которые мы должны использовать во время взаимодействия с целевой страницей.',
+                'en' => 'Additional cookies which we should use during the interaction with the target page.',
             ],
             'table_th_name' => [
                 'ru' => 'Название',
+                'en' => 'Name',
             ],
             'table_th_code' => [
                 'ru' => 'Код',
+                'en' => 'Code',
             ],
             'table_th_type' => [
                 'ru' => 'Тип',
+                'en' => 'Type',
             ],
             'table_th_req' => [
                 'ru' => 'Обяз.', //Обязательное
+                'en' => 'Req.', //Required
             ],
             'table_th_def' => [
                 'ru' => 'По ум.', //По умолчания
+                'en' => 'By def.', //By default
             ],
             'table_th_enum' => [
                 'ru' => 'Возможные значения',
+                'en' => 'Possible values',
             ],
             'table_th_desc' => [
                 'ru' => 'Описание',
+                'en' => 'Description',
             ],
             'slug_link' => [
                 'ru' => 'Ссылка',
+                'en' => 'Link',
             ],
             'slug_link_to_service' => [
                 'ru' => 'Ссылка на сервис',
+                'en' => 'The link to the service',
             ],
             'slug_price' => [
                 'ru' => 'Цены',
+                'en' => 'Prices',
             ],
             'slug_service_desc' => [
                 'ru' => 'Описание сервиса',
+                'en' => 'The description of the service',
             ],
             'slug_recognize_desc' => [
                 'ru' => 'Описание распознания',
+                'en' => 'Description recognition',
             ],
             'slug_fields_desc' => [
                 'ru' => 'Описание полей',
+                'en' => 'A description of the fields',
             ],
             'example' => [
                 'ru' => 'Примеры',
+                'en' => 'Examples',
             ],
             'example_initialization' => [
                 'ru' => 'Инициализация',
+                'en' => 'Initialization',
             ],
             'example_initialization_desc' => [
                 'ru' => 'Указываем ключ, обязательные и дополнительные параметры. Старайтесь по максимуму их заполнить это способствует более быстрому распознанию капчи.',
+                'en' => 'Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.',
             ],
             'example_recognize' => [
                 'ru' => 'Распознавание',
+                'en' => 'Recognition',
             ],
             'example_recognize_desc' => [
                 'ru' => 'В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.',
+                'en' => 'In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.',
             ],
             'example_nottrue' => [
                 'ru' => 'Не верно распознано',
+                'en' => 'Not correctly recognized',
             ],
             'example_nottrue_desc' => [
                 'ru' => 'Если Вы сможете понять что ответ которые пришёл не верные. Обязательно добавьте ниже написанный код. Это Вам съекономит деньги.',
+                'en' => 'If You can understand that the answer which did not come true. Be sure to add below written code. It will save You money.',
             ],
             'example_balance' => [
                 'ru' => 'Баланс',
+                'en' => 'Balance',
             ],
             'example_error_lang_if' => [
                 'ru' => true,
@@ -254,30 +327,39 @@ class DeCaptchaWiki
             ],
             'example_error_lang' => [
                 'ru' => 'Язык ошибки',
+                'en' => 'Language errors',
             ],
             'example_error_lang_desc' => [
                 'ru' => 'По умолчанию ошибки на англиском языке, если необходимо переоперелить, сделайте следующее',
+                'en' => 'Default error in English, if you want to properlyt, do the following',
             ],
             'example_error_interception' => [
                 'ru' => 'Перехват ошибки',
+                'en' => 'Intercept errors',
             ],
             'example_error_interception_desc' => [
                 'ru' => 'При желании Вы можете перехватывать ошибку, но для этого надо вызвать setCauseAnError',
+                'en' => 'If you wish, You can catch the error, but you need to call setCauseAnError',
             ],
             'install' => [
                 'ru' => 'Установка',
+                'en' => 'Installation',
             ],
             'install_preferred' => [
                 'ru' => 'Предпочтительный способ установить это расширение через',
+                'en' => 'The preferred way to install this extension via',
             ],
             'install_start' => [
                 'ru' => 'Либо запустить',
+                'en' => 'Or you can run',
             ],
             'install_add' => [
                 'ru' => 'или добавить',
+                'en' => 'or add',
             ],
             'install_add_file' => [
                 'ru' => 'в файл',
+                'en' => 'in file',
             ],
             'slug_menu' => [
                 'ru' => 'Меню',
@@ -285,16 +367,19 @@ class DeCaptchaWiki
             ],
             'slug_menu_main' => [
                 'ru' => 'Главная',
+                'en' => 'Main',
             ],
             'slug_menu_another' => [
-                'ru' => 'Документация на англиском языке',
+                'ru' => 'Documentation in English language',
                 'en' => 'Документация на русском языке',
             ],
             'slug_menu_anchor' => [
                 'ru' => 'Якоря',
+                'en' => 'Anchor',
             ],
             'slug_menu_from_service' => [
                 'ru' => 'Другой функционал от сервиса',
+                'en' => 'Other functionality from the service',
             ],
         ];
     }

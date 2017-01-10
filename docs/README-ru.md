@@ -16,7 +16,7 @@ DeCaptcha
 [![StyleCI](https://styleci.io/repos/75013766/shield?branch=master)](https://styleci.io/repos/75013766)
 
 ###Меню
-+ [Документация на англиском языке](../docs/README-en.md)
++ [Documentation in English language](../docs/README-en.md)
 + [Описание](#Описание)
 + [Особенности](#Особенности)
 + [Сервисы](#Сервисы)

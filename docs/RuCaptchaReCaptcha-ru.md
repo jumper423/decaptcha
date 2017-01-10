@@ -2,7 +2,7 @@ RuCaptcha ReCaptcha v2 без браузера
 ==============
 ###Меню
 + [Главная](../docs/README-ru.md)
-+ [Документация на англиском языке](../docs/RuCaptchaReCaptcha-en.md)
++ [Documentation in English language](../docs/RuCaptchaReCaptcha-en.md)
 + Якоря
   + [Ссылка](#Ссылка)
   + [Описание сервиса](#Описание-сервиса)
