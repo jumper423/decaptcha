@@ -225,11 +225,10 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             $spec = $param;
         }
         if (!array_key_exists($param, $this->params) || is_null($this->params[$param])) {
-            if (array_key_exists($spec, $this->params) && !is_null($this->params[$spec])) {
-                $param = $spec;
-            } else {
+            if (!array_key_exists($spec, $this->params) || is_null($this->params[$spec])) {
                 return null;
             }
+            $param = $spec;
         }
         switch ($spec) {
             case static::PARAM_SPEC_FILE:
@@ -263,10 +262,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         if (empty($this->actions[$action])) {
             return [];
         }
+        $fields = $this->actions[$action][static::ACTION_FIELDS];
         if (!is_null($field)) {
-            $fields = $this->actions[$action][static::ACTION_FIELDS][$field][static::ACTION_FIELDS];
-        } else {
-            $fields = $this->actions[$action][static::ACTION_FIELDS];
+            $fields = $fields[$field][static::ACTION_FIELDS];
         }
         $params = [];
         foreach ($fields as $field => $settings) {
@@ -358,7 +356,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function curlResponse($url, $data, $isPost = true, $isJson = false)
     {
-        $ch = curl_init();
+        $curl = curl_init();
         if ($isJson) {
             $data = json_encode($data);
         } elseif (!$isPost) {
@@ -368,30 +366,30 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             }
             $url .= '?'.implode('&', $uri);
         }
-        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_URL, $url);
         if (!$isJson && version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {
-            curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
+            curl_setopt($curl, CURLOPT_SAFE_UPLOAD, false);
         }
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_POST, $isPost);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_ENCODING, 'gzip,deflate');
+        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
+        curl_setopt($curl, CURLOPT_POST, $isPost);
         if ($isPost) {
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         }
         if ($isJson) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            curl_setopt($curl, CURLOPT_HTTPHEADER, [
                 'Content-Type: application/json; charset=utf-8',
                 'Accept: application/json',
                 'Content-Length: '.strlen($data),
             ]);
         }
-        $result = curl_exec($ch);
-        if (curl_errno($ch)) {
-            throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_CURL, curl_error($ch), $this->errorLang);
+        $result = curl_exec($curl);
+        if (curl_errno($curl)) {
+            throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_CURL, curl_error($curl), $this->errorLang);
         }
-        curl_close($ch);
+        curl_close($curl);
 
         return $result;
     }
