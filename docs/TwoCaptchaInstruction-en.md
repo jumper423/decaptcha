@@ -1,4 +1,4 @@
-2Captcha Инструкция
+2Captcha Manual
 ==============
 ###Menu
 + [Main](../docs/README-en.md)
@@ -15,11 +15,11 @@
   + [2Captcha](../docs/TwoCaptcha-en.md)
   + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-en.md)
   + [2Captcha Grid (ReCaptcha v2)](../docs/TwoCaptchaGrid-en.md)
-  + [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-en.md)
+  + [2Captcha ReCaptcha v2 without a browser](../docs/TwoCaptchaReCaptcha-en.md)
 
 
 ###Link
-[The link to the service 2Captcha Инструкция](http://infoblog1.ru/goto/2captcha)
+[The link to the service 2Captcha Manual](http://infoblog1.ru/goto/2captcha)
 
 ###The description of the service
 RuCaptcha.com - antikapchu service manual image recognition, there are those who need real-time to recognize text from scanned documents, forms, and captures those who want to earn on entering text from the screen.

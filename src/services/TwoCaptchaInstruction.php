@@ -15,6 +15,7 @@ class TwoCaptchaInstruction extends RuCaptchaInstruction
 
         $this->wiki->setText(['service', 'name'], [
             'ru' => '2Captcha Инструкция',
+            'en' => '2Captcha Manual',
         ]);
         $this->wiki->setText(['service', 'href'], 'http://infoblog1.ru/goto/2captcha');
         $this->wiki->setText(['menu', 'from_service'], [

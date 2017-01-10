@@ -1,4 +1,4 @@
-2Captcha ReCaptcha v2 без браузера
+2Captcha ReCaptcha v2 without a browser
 ==============
 ###Menu
 + [Main](../docs/README-en.md)
@@ -13,13 +13,13 @@
   + [A description of the fields](#A-description-of-the-fields)
 + Other functionality from the service
   + [2Captcha](../docs/TwoCaptcha-en.md)
-  + [2Captcha Инструкция](../docs/TwoCaptchaInstruction-en.md)
+  + [2Captcha Manual](../docs/TwoCaptchaInstruction-en.md)
   + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-en.md)
   + [2Captcha Grid (ReCaptcha v2)](../docs/TwoCaptchaGrid-en.md)
 
 
 ###Link
-[The link to the service 2Captcha ReCaptcha v2 без браузера](http://infoblog1.ru/goto/2captcha)
+[The link to the service 2Captcha ReCaptcha v2 without a browser](http://infoblog1.ru/goto/2captcha)
 
 ###The description of the service
 RuCaptcha.com - antikapchu service manual image recognition, there are those who need real-time to recognize text from scanned documents, forms, and captures those who want to earn on entering text from the screen.

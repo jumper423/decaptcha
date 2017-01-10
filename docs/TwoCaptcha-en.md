@@ -12,10 +12,10 @@
   + [Examples](#Examples)
   + [A description of the fields](#A-description-of-the-fields)
 + Other functionality from the service
-  + [2Captcha Инструкция](../docs/TwoCaptchaInstruction-en.md)
+  + [2Captcha Manual](../docs/TwoCaptchaInstruction-en.md)
   + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-en.md)
   + [2Captcha Grid (ReCaptcha v2)](../docs/TwoCaptchaGrid-en.md)
-  + [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-en.md)
+  + [2Captcha ReCaptcha v2 without a browser](../docs/TwoCaptchaReCaptcha-en.md)
 
 
 ###Link
