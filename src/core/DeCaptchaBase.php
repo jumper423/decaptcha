@@ -178,9 +178,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             } elseif ($dataRecognize[static::DECODE_PARAM_RESPONSE] === $repeat) {
                 continue;
             }
-            throw new DeCaptchaErrors($dataRecognize[$error]);
+            throw new DeCaptchaErrors($dataRecognize[$error], null, $this->errorLang);
         }
-        throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT);
+        throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT, null, $this->errorLang);
     }
 
     /**

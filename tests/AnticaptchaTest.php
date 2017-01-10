@@ -30,7 +30,7 @@ class AnticaptchaTest extends PHPUnit_Framework_TestCase
         if ($captcha->recognize(__DIR__.'/data/Captcha.jpg')) {
             $this->assertEquals('11111111111111', $captcha->getCode());
         } else {
-            $this->assertEquals('Нет в допустимых значиниях поля: languagePool = ru', $captcha->getError());
+            $this->assertEquals('Нет в допустимых значениях поля: languagePool = ru', $captcha->getError());
         }
     }
 }
