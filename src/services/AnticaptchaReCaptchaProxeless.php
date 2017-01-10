@@ -52,9 +52,11 @@ class AnticaptchaReCaptchaProxeless extends Anticaptcha
 
         $this->wiki->setText(['service', 'name'], [
             'ru' => 'AntiCaptcha ReCaptcha v2 без браузера',
+            'en' => 'AntiCaptcha ReCaptcha v2 without a browser',
         ]);
         $this->wiki->setText(['recognize', 'price'], [
             'ru' => 'Стоимость Рекапчи: от 2 USD за 1000 решений.',
+            'en' => 'The cost Recaptcha: 2 USD per 1000 solutions.',
         ]);
         $this->wiki->setText(['recognize', 'desc'], [
             'ru' => 'Вам не нужно эмулировать браузер и запускать яваскрипты.
@@ -66,6 +68,15 @@ class AnticaptchaReCaptchaProxeless extends Anticaptcha
 Объект содержит данные о задаче на решение рекапчи гугла в браузере на компьютере работника. 
 Такая задача будет выполняться нашим сервисом с использованием наших собственных прокси-серверов и/или с IP адресов работников. 
 Стоимость решения такой задачи на 10% выше, чем у AnticaptchaReCaptcha, так как на нас ложится проблема обхода лимитов на количество решений рекапч с 1 IP адреса.',
+            'en' => 'You do not need to emulate a browser and run JavaScript.
+            
+You send us the meaning of "sitekey".
+
+We give you the "g-recaptcha-response" and you just do Submitting the form with this parameter.
+
+The object contains information about the problem to solve Google\'s reCAPTCHA in the browser on the employee\'s computer.
+This task will be performed by our service using our own proxy servers and / or IP addresses of employees.
+The cost of solving this problem is 10% higher than the AnticaptchaReCaptcha, as it falls on us to circumvent the problem of limits on the number of reCAPTCHA solutions with 1 IP address.',
         ]);
         $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',

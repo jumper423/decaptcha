@@ -54,7 +54,7 @@ class AnticaptchaReCaptcha extends AnticaptchaReCaptchaProxeless
 
         $this->wiki->setText(['service', 'name'], [
             'ru' => 'AntiCaptcha ReCaptcha v2 без браузера (с прокси)',
-            'en' => 'ReCaptcha AntiCaptcha v2 without a browser (with a proxy)',
+            'en' => 'AntiCaptcha ReCaptcha v2 without a browser (with a proxy)',
         ]);
         $this->wiki->setText(['recognize', 'desc'], [
             'ru' => 'Вам не нужно эмулировать браузер и запускать яваскрипты.
