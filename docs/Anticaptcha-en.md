@@ -20,17 +20,17 @@ Anti Captcha
 [The link to the service Anti Captcha](https://anti-captcha.com/)
 
 ###The description of the service
-Сервис AntiCaptcha, ранее белее известный как Antigate.
+The AntiCaptcha service, formerly known as whiter Antigate. 
+            
+100% of captchas can be recognized by our employees from around the world. That is why using our service you help thousands of people around the world to provide themselves and their families. 
 
-100% капч распознаются нашими работниками со всего мира. Именно поэтому используя наш сервис вы одновременно помогаете тысячам людей по всему миру обеспечивать себя и своих близких.
-
-Деньги, которые наши работники зарабатывают у нас считаются хорошей зарплатой в таких странах как Индия, Пакистан или Вьетнам. С вашей помощью теперь у них есть выбор между работой на грязном производстве и работой за компьютером.
+The money our employees earn are considered a good salary in countries such as India, Pakistan or Vietnam. With your help, they now have the choice between working on the dirty production and computer work.
 
 ###Prices
-От 0.7 USD за каждые 1000 капч, в зависимости от ваших объемов
+From 0.7 USD per 1000 captchas, depending on your volume
 
 ###Description recognition
-Решение обычной капчи с текстом.
+The solution to the normal captcha text.
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).
@@ -87,12 +87,12 @@ try {
  Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
- Language | ACTION_FIELD_LANGUAGE | STRING | - | en | en - англоязычная очередь; rn - группа стран Россия, Украина, Беларусь, Казахстан | Определяет язык очереди, в которую должна попасть капча. |
+ Language | ACTION_FIELD_LANGUAGE | STRING | - | en | en - English turn; rn - a group of countries Russia, Ukraine, Belarus, Kazakhstan | Determines the language of the queue to which you want to get captcha. |
  Picture | ACTION_FIELD_FILE | STRING | + |  |  | The path to the picture file or link to it |
- A few words | ACTION_FIELD_PHRASE | BOOLEAN | - |  | false - нет требований; true - работник должен ввести текст с одним или несколькими пробелами | The worker must enter text with one or more spaces |
- Register | ACTION_FIELD_REGSENSE | BOOLEAN | - |  | false - нет требований; true - работник увидит специальный сигнал что ответ необходимо вводить с учетом регистра | The worker must enter the answer case sensitive |
- Characters | ACTION_FIELD_NUMERIC | INTEGER | - |  | 0 - нет требований; 1 - можно вводить только цифры; 2 - вводить можно любые символы кроме цифр | What are the symbols used in captcha |
- Calculation | ACTION_FIELD_CALC | BOOLEAN | - |  | false - нет требований; true - работник увидит специальный сигнал что на капче изображено математическое выражение и необходимо ввести на него ответ | The captcha shows matematicheskaya expression and must be addressed |
+ A few words | ACTION_FIELD_PHRASE | BOOLEAN | - |  | false - there are no requirements; true - работник должен ввести текст с одним или несколькими пробелами | The worker must enter text with one or more spaces |
+ Register | ACTION_FIELD_REGSENSE | BOOLEAN | - |  | false - there are no requirements; true - the employee will see a special signal that the answer should be entered case sensitive | The worker must enter the answer case sensitive |
+ Characters | ACTION_FIELD_NUMERIC | INTEGER | - |  | 0 - there are no requirements; 1 - you can enter only numbers; 2 - you can enter any characters except numbers | What are the symbols used in captcha |
+ Calculation | ACTION_FIELD_CALC | BOOLEAN | - |  | false - there are no requirements; true - the employee will see a special signal on the captcha depicts a mathematical expression and you need to enter the answer | The captcha shows matematicheskaya expression and must be addressed |
  Length min | ACTION_FIELD_MIN_LEN | INTEGER | - |  |  | The minimum length of captcha |
  Length max | ACTION_FIELD_MAX_LEN | INTEGER | - |  |  | The maximum length of the captcha |
 
