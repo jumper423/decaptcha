@@ -40,9 +40,11 @@ class RuCaptchaClick extends RuCaptchaInstruction
         $this->wiki->setText(['service', 'name'], 'RuCaptcha ClickCaptcha');
         $this->wiki->setText(['recognize', 'price'], [
             'ru' => 'Стоимость 1000 распознаний данной капчи - 70 рублей.',
+            'en' => 'It costs $1,2 to recognize 1000 CAPTCHAs this way.',
         ]);
         $this->wiki->setText(['recognize', 'desc'], [
             'ru' => 'Распознание любой ClickCaptcha (в том числе и ReCaptcha 2.0). В ответ приходит массив координат, от верхнего левого угла.',
+            'en' => 'Recognizing any ClickCaptcha (including ReCaptcha 2.0). In response comes an array of coordinates from the top left corner.',
         ]);
         $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_INSTRUCTIONS => 'Where\'s the cat?',

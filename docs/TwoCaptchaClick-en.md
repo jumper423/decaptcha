@@ -29,10 +29,10 @@ The system works the Russian-speaking and English-speaking staff.
 Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixodrom services, antigate, anti-captcha and others, but also provides advanced functional replenishing at each round of combat automation. API RuCaptcha supports the decision ReCaptcha v2 (where you need to click on the pictures), ClickCaptcha (where you need to click on certain points) and Rotatecaptcha (FunCaptcha other CAPTCHA, you need to twist).
 
 ###Prices
-Стоимость 1000 распознаний данной капчи - 70 рублей.
+It costs $1,2 to recognize 1000 CAPTCHAs this way.
 
 ###Description recognition
-Распознание любой ClickCaptcha (в том числе и ReCaptcha 2.0). В ответ приходит массив координат, от верхнего левого угла.
+Recognizing any ClickCaptcha (including ReCaptcha 2.0). In response comes an array of coordinates from the top left corner.
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).
