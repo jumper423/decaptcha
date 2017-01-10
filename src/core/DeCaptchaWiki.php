@@ -26,214 +26,214 @@ class DeCaptchaWiki
             'constructor_data' => [
                 $class::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
             ],
-            'recognize_file' => true,
-            'recognize_data_file' => 'http://site.com/captcha.jpg',
-            'recognize_data' => [],
-            'field_main_name_' . $class::ACTION_FIELD_KEY => [
+            'recognize_file'                            => true,
+            'recognize_data_file'                       => 'http://site.com/captcha.jpg',
+            'recognize_data'                            => [],
+            'field_main_name_'.$class::ACTION_FIELD_KEY => [
                 'ru' => 'Ключ',
                 'en' => 'Key',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_KEY => [
+            'field_main_desc_'.$class::ACTION_FIELD_KEY => [
                 'ru' => 'Ключ от учетной записи',
                 'en' => 'Key account',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_LANGUAGE => [
+            'field_main_name_'.$class::ACTION_FIELD_LANGUAGE => [
                 'ru' => 'Язык',
                 'en' => 'Language',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_LANGUAGE => [
+            'field_main_desc_'.$class::ACTION_FIELD_LANGUAGE => [
                 'ru' => 'На каком языке текст на капче',
                 'en' => 'What language the text on the captcha',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_FILE => [
+            'field_main_name_'.$class::ACTION_FIELD_FILE => [
                 'ru' => 'Картинка',
                 'en' => 'Picture',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_FILE => [
+            'field_main_desc_'.$class::ACTION_FIELD_FILE => [
                 'ru' => 'Путь на файл с картинкой или ссылка на него',
                 'en' => 'The path to the picture file or link to it',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_PHRASE => [
+            'field_main_name_'.$class::ACTION_FIELD_PHRASE => [
                 'ru' => 'Несколько слов',
                 'en' => 'A few words',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_PHRASE => [
+            'field_main_desc_'.$class::ACTION_FIELD_PHRASE => [
                 'ru' => 'Работник должен ввести текст с одним или несколькими пробелами',
                 'en' => 'The worker must enter text with one or more spaces',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_REGSENSE => [
+            'field_main_name_'.$class::ACTION_FIELD_REGSENSE => [
                 'ru' => 'Регистр',
                 'en' => 'Register',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_REGSENSE => [
+            'field_main_desc_'.$class::ACTION_FIELD_REGSENSE => [
                 'ru' => 'Работник должен ввести ответ с учетом регистра',
                 'en' => 'The worker must enter the answer case sensitive',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_NUMERIC => [
+            'field_main_name_'.$class::ACTION_FIELD_NUMERIC => [
                 'ru' => 'Символы',
                 'en' => 'Characters',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_NUMERIC => [
+            'field_main_desc_'.$class::ACTION_FIELD_NUMERIC => [
                 'ru' => 'Какие символы используется в капче',
                 'en' => 'What are the symbols used in captcha',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_CALC => [
+            'field_main_name_'.$class::ACTION_FIELD_CALC => [
                 'ru' => 'Вычисление',
                 'en' => 'Calculation',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_CALC => [
+            'field_main_desc_'.$class::ACTION_FIELD_CALC => [
                 'ru' => 'На капче изображенно математичекая выражение и её необходимо решить',
                 'en' => 'The captcha shows matematicheskaya expression and must be addressed',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_MIN_LEN => [
+            'field_main_name_'.$class::ACTION_FIELD_MIN_LEN => [
                 'ru' => 'Длина min',
                 'en' => 'Length min',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_MIN_LEN => [
+            'field_main_desc_'.$class::ACTION_FIELD_MIN_LEN => [
                 'ru' => 'Минимальная длина капчи',
                 'en' => 'The minimum length of captcha',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_MAX_LEN => [
+            'field_main_name_'.$class::ACTION_FIELD_MAX_LEN => [
                 'ru' => 'Длина max',
                 'en' => 'Length max',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_MAX_LEN => [
+            'field_main_desc_'.$class::ACTION_FIELD_MAX_LEN => [
                 'ru' => 'Максимальная длина капчи',
                 'en' => 'The maximum length of the captcha',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_QUESTION => [
+            'field_main_name_'.$class::ACTION_FIELD_QUESTION => [
                 'ru' => 'Вопрос',
                 'en' => 'Question',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_QUESTION => [
+            'field_main_desc_'.$class::ACTION_FIELD_QUESTION => [
                 'ru' => 'На изображении задан вопрос, работник должен написать ответ',
                 'en' => 'The image asked, the employee must write the answer',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_IS_RUSSIAN => [
+            'field_main_name_'.$class::ACTION_FIELD_IS_RUSSIAN => [
                 'ru' => 'Кириллица',
                 'en' => 'Cyrillic',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_IS_RUSSIAN => [
+            'field_main_desc_'.$class::ACTION_FIELD_IS_RUSSIAN => [
                 'ru' => 'На изображении присутствуют русские символы',
                 'en' => 'In the image there are Russian characters',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_LANGUAGE => [
+            'field_main_name_'.$class::ACTION_FIELD_LANGUAGE => [
                 'ru' => 'Язык',
                 'en' => 'Language',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_LANGUAGE => [
+            'field_main_desc_'.$class::ACTION_FIELD_LANGUAGE => [
                 'ru' => 'Символы какого языка размещенны на капче',
                 'en' => 'The symbols of the language posted on the captcha',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_HEADER_ACAO => [
+            'field_main_name_'.$class::ACTION_FIELD_HEADER_ACAO => [
                 'ru' => 'Кросс-доменный',
                 'en' => 'Cross-domain',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_HEADER_ACAO => [
+            'field_main_desc_'.$class::ACTION_FIELD_HEADER_ACAO => [
                 'ru' => 'Необходимо для кросс-доменных AJAX запросов в браузерных приложениях.',
                 'en' => 'Need for cross-domain AJAX requests in browser-based applications.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_INSTRUCTIONS => [
+            'field_main_name_'.$class::ACTION_FIELD_INSTRUCTIONS => [
                 'ru' => 'Инструкция',
                 'en' => 'Manual',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_INSTRUCTIONS => [
+            'field_main_desc_'.$class::ACTION_FIELD_INSTRUCTIONS => [
                 'ru' => 'Текстовая капча или инструкция для прохождения капчи.',
                 'en' => 'Text captcha or manual to pass the captcha.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_PINGBACK => [
+            'field_main_name_'.$class::ACTION_FIELD_PINGBACK => [
                 'ru' => 'Ответ на',
                 'en' => 'Response to',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_PINGBACK => [
+            'field_main_desc_'.$class::ACTION_FIELD_PINGBACK => [
                 'ru' => 'Указание для сервера, что после распознания изображения, нужно отправить ответ на указанный адрес.',
                 'en' => 'Note to server, after recognizing the image, you need to send a reply to the specified address.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_LABEL => [
+            'field_main_name_'.$class::ACTION_FIELD_LABEL => [
                 'ru' => 'От куда',
                 'en' => 'From where',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_LABEL => [
+            'field_main_desc_'.$class::ACTION_FIELD_LABEL => [
                 'ru' => 'Пояснение от куда пришла капча ("vk", "google", "recaptcha", "yandex", "mailru", "yahoo" и т.д.).',
                 'en' => 'Clarification from where came the captcha ("vk", "google", "recaptcha", "yandex", "Google", "yahoo", etc.).',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_PAGEURL => [
+            'field_main_name_'.$class::ACTION_FIELD_PAGEURL => [
                 'ru' => 'Адрес',
                 'en' => 'Link',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_PAGEURL => [
+            'field_main_desc_'.$class::ACTION_FIELD_PAGEURL => [
                 'ru' => 'Адрес страницы на которой решается капча.',
                 'en' => 'The address of the page where the captcha is solved.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_GOOGLEKEY => [
+            'field_main_name_'.$class::ACTION_FIELD_GOOGLEKEY => [
                 'ru' => 'Google key',
                 'en' => 'Google key',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_GOOGLEKEY => [
+            'field_main_desc_'.$class::ACTION_FIELD_GOOGLEKEY => [
                 'ru' => 'Ключ-индентификатор рекапчи на целевой странице. <div class="g-recaptcha" data-sitekey="ВОТ_ЭТОТ"></div>',
                 'en' => 'Key-the identifier of the recaptcha on the landing page. <div class="g-recaptcha" data-sitekey="THIS"></div>',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_GOOGLETOKEN => [
+            'field_main_name_'.$class::ACTION_FIELD_GOOGLETOKEN => [
                 'ru' => 'Google token',
                 'en' => 'Google token',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_GOOGLETOKEN => [
+            'field_main_desc_'.$class::ACTION_FIELD_GOOGLETOKEN => [
                 'ru' => 'Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется. Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так: <script type="text/javascript" src="...." data-type="normal"  data-ray="..." async data-sitekey="..." data-stoken="ВОТ_ЭТОТ"></script> Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его.',
                 'en' => 'The secret token for the previous version of recaptcha. In most cases, sites use the new version and this token is not required. The secret token is generated on a Google server and inserted into the page in the attribute data-stoken. It looks like this: <script type="text/javascript" src="...." data-type="normal" data-ray="..." async data-sitekey="..." data-stoken="THIS"></script> the Token is valid a few minutes after generation, then you need to go back to the page and get it.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_PROXYTYPE => [
+            'field_main_name_'.$class::ACTION_FIELD_PROXYTYPE => [
                 'ru' => 'Тип прокси',
                 'en' => 'The proxy type',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_PROXYTYPE => [
+            'field_main_desc_'.$class::ACTION_FIELD_PROXYTYPE => [
                 'ru' => 'Тип прокси (http, socks4, ...)',
                 'en' => 'The proxy type (http, socks4, ...)',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_PROXY => [
+            'field_main_name_'.$class::ACTION_FIELD_PROXY => [
                 'ru' => 'Адрес прокси',
                 'en' => 'The proxy address',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_PROXY => [
+            'field_main_desc_'.$class::ACTION_FIELD_PROXY => [
                 'ru' => 'IP адрес прокси ipv4/ipv6.',
                 'en' => 'IP address of the proxy ipv4/ipv6.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_PROXYPORT => [
+            'field_main_name_'.$class::ACTION_FIELD_PROXYPORT => [
                 'ru' => 'Порт прокси',
                 'en' => 'Proxy port',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_PROXYPORT => [
+            'field_main_desc_'.$class::ACTION_FIELD_PROXYPORT => [
                 'ru' => 'Порт прокси.',
                 'en' => 'Proxy port.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_PROXYLOGIN => [
+            'field_main_name_'.$class::ACTION_FIELD_PROXYLOGIN => [
                 'ru' => 'Логин прокси',
                 'en' => 'Login proxy',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_PROXYLOGIN => [
+            'field_main_desc_'.$class::ACTION_FIELD_PROXYLOGIN => [
                 'ru' => 'Логин от прокси-сервера.',
                 'en' => 'Login from proxy server.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_PROXYPASS => [
+            'field_main_name_'.$class::ACTION_FIELD_PROXYPASS => [
                 'ru' => 'Пароль прокси',
                 'en' => 'Password proxy',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_PROXYPASS => [
+            'field_main_desc_'.$class::ACTION_FIELD_PROXYPASS => [
                 'ru' => 'Пароль от прокси-сервера.',
                 'en' => 'The password for the proxy server.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_USERAGENT => [
+            'field_main_name_'.$class::ACTION_FIELD_USERAGENT => [
                 'ru' => 'User-Agent браузера',
                 'en' => 'User-Agent browser',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_USERAGENT => [
+            'field_main_desc_'.$class::ACTION_FIELD_USERAGENT => [
                 'ru' => 'User-Agent браузера, используемый в эмуляции. Необходимо использовать подпись современного браузера, иначе Google будет возвращать ошибку, требуя обновить браузер.',
                 'en' => 'User-Agent browser used in emulation. You must use the signature modern browser, otherwise Google will return an error requiring you to upgrade your browser.',
             ],
-            'field_main_name_' . $class::ACTION_FIELD_COOKIES => [
+            'field_main_name_'.$class::ACTION_FIELD_COOKIES => [
                 'ru' => 'Куки',
                 'en' => 'Cookies',
             ],
-            'field_main_desc_' . $class::ACTION_FIELD_COOKIES => [
+            'field_main_desc_'.$class::ACTION_FIELD_COOKIES => [
                 'ru' => 'Дополнительные cookies которые мы должны использовать во время взаимодействия с целевой страницей.',
                 'en' => 'Additional cookies which we should use during the interaction with the target page.',
             ],
@@ -398,7 +398,7 @@ class DeCaptchaWiki
 
     /**
      * @param string|array $name
-     * @param string $separator
+     * @param string       $separator
      *
      * @return string|array
      */
@@ -433,17 +433,17 @@ class DeCaptchaWiki
 
     protected function viewInstall()
     {
-        $str = "{$this->getText(['install', 'preferred'])} [composer](http://getcomposer.org/download/)." . PHP_EOL;
+        $str = "{$this->getText(['install', 'preferred'])} [composer](http://getcomposer.org/download/).".PHP_EOL;
         $str .= PHP_EOL;
-        $str .= "{$this->getText(['install', 'start'])}" . PHP_EOL;
-        $str .= '```' . PHP_EOL;
-        $str .= 'php composer.phar require --prefer-dist jumper423/decaptcha "*"' . PHP_EOL;
-        $str .= '```' . PHP_EOL;
-        $str .= "{$this->getText(['install', 'add'])}" . PHP_EOL;
-        $str .= '```' . PHP_EOL;
-        $str .= '"jumper423/decaptcha": "*"' . PHP_EOL;
-        $str .= '```' . PHP_EOL;
-        $str .= "{$this->getText(['install', 'add', 'file'])} `composer.json`." . PHP_EOL;
+        $str .= "{$this->getText(['install', 'start'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= 'php composer.phar require --prefer-dist jumper423/decaptcha "*"'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= "{$this->getText(['install', 'add'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= '"jumper423/decaptcha": "*"'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= "{$this->getText(['install', 'add', 'file'])} `composer.json`.".PHP_EOL;
 
         return $str;
     }
@@ -453,12 +453,12 @@ class DeCaptchaWiki
         $class = $this->class;
         $rc = (new \ReflectionClass($class));
 
-        $str = "####{$this->getText(['example', 'initialization'])}" . PHP_EOL;
-        $str .= "{$this->getText(['example', 'initialization', 'desc'])}" . PHP_EOL;
-        $str .= '```' . PHP_EOL;
-        $str .= "use {$rc->getName()};" . PHP_EOL;
-        $str .= '' . PHP_EOL;
-        $str .= '$captcha = new ' . $rc->getShortName() . '([' . PHP_EOL;
+        $str = "####{$this->getText(['example', 'initialization'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'initialization', 'desc'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= "use {$rc->getName()};".PHP_EOL;
+        $str .= ''.PHP_EOL;
+        $str .= '$captcha = new '.$rc->getShortName().'(['.PHP_EOL;
         foreach ($this->texts['constructor_data'] as $key => $val) {
             $str .= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
             if (is_string($val)) {
@@ -466,14 +466,14 @@ class DeCaptchaWiki
             } else {
                 $str .= "{$val}";
             }
-            $str .= ',' . PHP_EOL;
+            $str .= ','.PHP_EOL;
         }
-        $str .= ']);' . PHP_EOL;
-        $str .= '```' . PHP_EOL;
+        $str .= ']);'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
 
-        $str .= "####{$this->getText(['example', 'recognize'])}" . PHP_EOL;
-        $str .= "{$this->getText(['example', 'recognize', 'desc'])}" . PHP_EOL;
-        $str .= '```' . PHP_EOL;
+        $str .= "####{$this->getText(['example', 'recognize'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'recognize', 'desc'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
         $str .= 'if ($captcha->recognize(';
         if ($this->texts['recognize_file']) {
             $str .= "'{$this->getText(['recognize', 'data', 'file'])}'";
@@ -482,7 +482,7 @@ class DeCaptchaWiki
             if ($this->texts['recognize_file']) {
                 $str .= ', ';
             }
-            $str .= '[' . PHP_EOL;
+            $str .= '['.PHP_EOL;
             foreach ($this->texts['recognize_data'] as $key => $val) {
                 $str .= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
                 if (is_string($val)) {
@@ -490,46 +490,46 @@ class DeCaptchaWiki
                 } else {
                     $str .= "{$val}";
                 }
-                $str .= ',' . PHP_EOL;
+                $str .= ','.PHP_EOL;
             }
             $str .= ']';
         }
-        $str .= ')) {' . PHP_EOL;
-        $str .= '    $code = $captcha->getCode();' . PHP_EOL;
-        $str .= '} else {' . PHP_EOL;
-        $str .= '    $error = $captcha->getError();' . PHP_EOL;
-        $str .= '}' . PHP_EOL;
-        $str .= '```' . PHP_EOL;
+        $str .= ')) {'.PHP_EOL;
+        $str .= '    $code = $captcha->getCode();'.PHP_EOL;
+        $str .= '} else {'.PHP_EOL;
+        $str .= '    $error = $captcha->getError();'.PHP_EOL;
+        $str .= '}'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
 
         if (in_array('notTrue', get_class_methods($class))) {
-            $str .= "####{$this->getText(['example', 'nottrue'])}" . PHP_EOL;
-            $str .= "{$this->getText(['example', 'nottrue', 'desc'])}" . PHP_EOL;
-            $str .= '```' . PHP_EOL;
-            $str .= '$captcha->notTrue();' . PHP_EOL;
-            $str .= '```' . PHP_EOL;
+            $str .= "####{$this->getText(['example', 'nottrue'])}".PHP_EOL;
+            $str .= "{$this->getText(['example', 'nottrue', 'desc'])}".PHP_EOL;
+            $str .= '```'.PHP_EOL;
+            $str .= '$captcha->notTrue();'.PHP_EOL;
+            $str .= '```'.PHP_EOL;
         }
 
         if (in_array('getBalance', get_class_methods($class))) {
-            $str .= "####{$this->getText(['example', 'balance'])}" . PHP_EOL;
-            $str .= '```' . PHP_EOL;
-            $str .= '$balance = $captcha->getBalance();' . PHP_EOL;
-            $str .= '```' . PHP_EOL;
+            $str .= "####{$this->getText(['example', 'balance'])}".PHP_EOL;
+            $str .= '```'.PHP_EOL;
+            $str .= '$balance = $captcha->getBalance();'.PHP_EOL;
+            $str .= '```'.PHP_EOL;
         }
 
         if ($this->getText(['example', 'error', 'lang', 'if'])) {
-            $str .= "####{$this->getText(['example', 'error', 'lang'])}" . PHP_EOL;
-            $str .= "{$this->getText(['example', 'error', 'lang', 'desc'])}" . PHP_EOL;
-            $str .= '```' . PHP_EOL;
-            $str .= '$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);' . PHP_EOL;
-            $str .= '```' . PHP_EOL;
+            $str .= "####{$this->getText(['example', 'error', 'lang'])}".PHP_EOL;
+            $str .= "{$this->getText(['example', 'error', 'lang', 'desc'])}".PHP_EOL;
+            $str .= '```'.PHP_EOL;
+            $str .= '$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);'.PHP_EOL;
+            $str .= '```'.PHP_EOL;
         }
 
-        $str .= "####{$this->getText(['example', 'error', 'interception'])}" . PHP_EOL;
-        $str .= "{$this->getText(['example', 'error', 'interception', 'desc'])}" . PHP_EOL;
-        $str .= '```' . PHP_EOL;
-        $str .= '$captcha->setCauseAnError(true);' . PHP_EOL;
+        $str .= "####{$this->getText(['example', 'error', 'interception'])}".PHP_EOL;
+        $str .= "{$this->getText(['example', 'error', 'interception', 'desc'])}".PHP_EOL;
+        $str .= '```'.PHP_EOL;
+        $str .= '$captcha->setCauseAnError(true);'.PHP_EOL;
         $str .= PHP_EOL;
-        $str .= 'try {' . PHP_EOL;
+        $str .= 'try {'.PHP_EOL;
         $str .= '    $captcha->recognize(';
         if ($this->texts['recognize_file']) {
             $str .= "'{$this->getText(['recognize', 'data', 'file'])}'";
@@ -538,7 +538,7 @@ class DeCaptchaWiki
             if ($this->texts['recognize_file']) {
                 $str .= ', ';
             }
-            $str .= '[' . PHP_EOL;
+            $str .= '['.PHP_EOL;
             foreach ($this->texts['recognize_data'] as $key => $val) {
                 $str .= "       {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
                 if (is_string($val)) {
@@ -546,16 +546,16 @@ class DeCaptchaWiki
                 } else {
                     $str .= "{$val}";
                 }
-                $str .= ',' . PHP_EOL;
+                $str .= ','.PHP_EOL;
             }
             $str .= '    ]';
         }
-        $str .= ');' . PHP_EOL;
-        $str .= '    $code = $captcha->getCode();' . PHP_EOL;
-        $str .= '} catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {' . PHP_EOL;
-        $str .= '    ...' . PHP_EOL;
-        $str .= '}' . PHP_EOL;
-        $str .= '```' . PHP_EOL;
+        $str .= ');'.PHP_EOL;
+        $str .= '    $code = $captcha->getCode();'.PHP_EOL;
+        $str .= '} catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {'.PHP_EOL;
+        $str .= '    ...'.PHP_EOL;
+        $str .= '}'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
 
         return $str;
     }
@@ -563,8 +563,8 @@ class DeCaptchaWiki
     protected function viewFields()
     {
         $class = $this->class;
-        $str = " {$this->getText(['table', 'th', 'name'])} | {$this->getText(['table', 'th', 'code'])} | {$this->getText(['table', 'th', 'type'])} | {$this->getText(['table', 'th', 'req'])} | {$this->getText(['table', 'th', 'def'])} | {$this->getText(['table', 'th', 'enum'])} | {$this->getText(['table', 'th', 'desc'])} " . PHP_EOL;
-        $str .= ' --- | --- | --- | --- | --- | --- | --- ' . PHP_EOL;
+        $str = " {$this->getText(['table', 'th', 'name'])} | {$this->getText(['table', 'th', 'code'])} | {$this->getText(['table', 'th', 'type'])} | {$this->getText(['table', 'th', 'req'])} | {$this->getText(['table', 'th', 'def'])} | {$this->getText(['table', 'th', 'enum'])} | {$this->getText(['table', 'th', 'desc'])} ".PHP_EOL;
+        $str .= ' --- | --- | --- | --- | --- | --- | --- '.PHP_EOL;
         foreach ($this->class->actions[$class::ACTION_RECOGNIZE][$class::ACTION_FIELDS] as $param => $setting) {
             if (array_key_exists($class::ACTION_FIELDS, $setting) && is_array($setting[$class::ACTION_FIELDS])) {
                 foreach ($setting[$class::ACTION_FIELDS] as $param1 => $setting1) {
@@ -588,9 +588,9 @@ class DeCaptchaWiki
         $class = $this->class;
         $str = " {$this->getText(['field', 'main', 'name', $param])} |";
         $str .= " {$this->getNameConst('ACTION_FIELD_', $param)} |";
-        $str .= ' ' . substr($this->getNameConst('PARAM_FIELD_TYPE_', $setting[$class::PARAM_SLUG_TYPE]), 17) . ' |';
-        $str .= ' ' . (array_key_exists($class::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-') . ' |';
-        $str .= ' ' . (array_key_exists($class::PARAM_SLUG_DEFAULT, $setting) ? $setting[$class::PARAM_SLUG_DEFAULT] : '') . ' |';
+        $str .= ' '.substr($this->getNameConst('PARAM_FIELD_TYPE_', $setting[$class::PARAM_SLUG_TYPE]), 17).' |';
+        $str .= ' '.(array_key_exists($class::PARAM_SLUG_REQUIRE, $setting) ? '+' : '-').' |';
+        $str .= ' '.(array_key_exists($class::PARAM_SLUG_DEFAULT, $setting) ? $setting[$class::PARAM_SLUG_DEFAULT] : '').' |';
         $str .= " {$this->getText(['field', 'slug', $class::PARAM_SLUG_ENUM, $param])} |";
         $str .= " {$this->getText(['field', 'main', 'desc', $param])} |";
         $str .= PHP_EOL;
@@ -600,9 +600,9 @@ class DeCaptchaWiki
 
     protected function viewMenu()
     {
-        $str = "+ [{$this->getText(['slug', 'menu', 'main'])}](../docs/README-{$this->lang}.md)" . PHP_EOL;
-        $str .= "+ [{$this->getText(['slug', 'menu', 'another'])}](../docs/" . $this->getFileName($this->lang == 'ru' ? 'en' : 'ru') . ')' . PHP_EOL;
-        $str .= "+ {$this->getText(['slug', 'menu', 'anchor'])}" . PHP_EOL;
+        $str = "+ [{$this->getText(['slug', 'menu', 'main'])}](../docs/README-{$this->lang}.md)".PHP_EOL;
+        $str .= "+ [{$this->getText(['slug', 'menu', 'another'])}](../docs/".$this->getFileName($this->lang == 'ru' ? 'en' : 'ru').')'.PHP_EOL;
+        $str .= "+ {$this->getText(['slug', 'menu', 'anchor'])}".PHP_EOL;
         foreach ([
                      ['slug', 'link'],
                      ['slug', 'service', 'desc'],
@@ -612,14 +612,14 @@ class DeCaptchaWiki
                      ['example'],
                      ['slug', 'fields', 'desc'],
                  ] as $anchor) {
-            $str .= "  + [{$this->getText($anchor)}](#" . implode('-', explode(' ', ($this->lang === 'en' ? mb_strtolower($this->getText($anchor)) : $this->getText($anchor)))) . ')' . PHP_EOL;
+            $str .= "  + [{$this->getText($anchor)}](#".implode('-', explode(' ', ($this->lang === 'en' ? mb_strtolower($this->getText($anchor)) : $this->getText($anchor)))).')'.PHP_EOL;
         }
         if ($this->getText(['menu', 'from_service'])) {
-            $str .= "+ {$this->getText(['slug', 'menu', 'from_service'])}" . PHP_EOL;
+            $str .= "+ {$this->getText(['slug', 'menu', 'from_service'])}".PHP_EOL;
             foreach ($this->texts['menu_from_service'] as $fromServiceClass) {
                 $fromServiceObject = new $fromServiceClass([]);
                 $fromServiceObjectWiki = $fromServiceObject->getWiki($this->lang);
-                $str .= "  + [{$fromServiceObjectWiki->getText(['service', 'name'])}](../docs/{$fromServiceObjectWiki->getFileName()})" . PHP_EOL;
+                $str .= "  + [{$fromServiceObjectWiki->getText(['service', 'name'])}](../docs/{$fromServiceObjectWiki->getFileName()})".PHP_EOL;
             }
         }
 
@@ -641,24 +641,24 @@ class DeCaptchaWiki
 
     public function view()
     {
-        $str = $this->getText(['service', 'name']) . PHP_EOL;
-        $str .= '==============' . PHP_EOL;
-        $str .= "###{$this->getText(['slug', 'menu'])}" . PHP_EOL;
-        $str .= $this->viewMenu() . PHP_EOL . PHP_EOL;
-        $str .= "###{$this->getText(['slug', 'link'])}" . PHP_EOL;
-        $str .= "[{$this->getText(['slug', 'link', 'to_service'])} {$this->getText(['service', 'name'])}]({$this->getText(['service', 'href'])})" . PHP_EOL . PHP_EOL;
-        $str .= "###{$this->getText(['slug', 'service', 'desc'])}" . PHP_EOL;
-        $str .= "{$this->getText(['service', 'desc'])}" . PHP_EOL . PHP_EOL;
-        $str .= "###{$this->getText(['slug', 'price'])}" . PHP_EOL;
-        $str .= "{$this->getText(['recognize', 'price'])}" . PHP_EOL . PHP_EOL;
-        $str .= "###{$this->getText(['slug', 'recognize', 'desc'])}" . PHP_EOL;
-        $str .= "{$this->getText(['recognize', 'desc'])}" . PHP_EOL . PHP_EOL;
-        $str .= "###{$this->getText(['install'])}" . PHP_EOL;
-        $str .= "{$this->viewInstall()}" . PHP_EOL . PHP_EOL;
-        $str .= "###{$this->getText(['example'])}" . PHP_EOL;
-        $str .= "{$this->viewExamples()}" . PHP_EOL . PHP_EOL;
-        $str .= "###{$this->getText(['slug', 'fields', 'desc'])}" . PHP_EOL;
-        $str .= $this->viewFields() . PHP_EOL;
+        $str = $this->getText(['service', 'name']).PHP_EOL;
+        $str .= '=============='.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'menu'])}".PHP_EOL;
+        $str .= $this->viewMenu().PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'link'])}".PHP_EOL;
+        $str .= "[{$this->getText(['slug', 'link', 'to_service'])} {$this->getText(['service', 'name'])}]({$this->getText(['service', 'href'])})".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'service', 'desc'])}".PHP_EOL;
+        $str .= "{$this->getText(['service', 'desc'])}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'price'])}".PHP_EOL;
+        $str .= "{$this->getText(['recognize', 'price'])}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'recognize', 'desc'])}".PHP_EOL;
+        $str .= "{$this->getText(['recognize', 'desc'])}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['install'])}".PHP_EOL;
+        $str .= "{$this->viewInstall()}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['example'])}".PHP_EOL;
+        $str .= "{$this->viewExamples()}".PHP_EOL.PHP_EOL;
+        $str .= "###{$this->getText(['slug', 'fields', 'desc'])}".PHP_EOL;
+        $str .= $this->viewFields().PHP_EOL;
 
         return $str;
     }
@@ -670,11 +670,11 @@ class DeCaptchaWiki
         }
         $class = $this->class;
 
-        return (new \ReflectionClass($class))->getShortName() . '-' . $lang . '.md';
+        return (new \ReflectionClass($class))->getShortName().'-'.$lang.'.md';
     }
 
     public function save()
     {
-        file_put_contents(__DIR__ . '/../../docs/' . $this->getFileName(), $this->view());
+        file_put_contents(__DIR__.'/../../docs/'.$this->getFileName(), $this->view());
     }
 }
