@@ -14,30 +14,46 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
         parent::__construct($class);
         $this->texts['slug_menu_desc'] = [
             'ru' => 'Описание',
+            'en' => 'Description',
         ];
         $this->texts['readme_main_desc'] = [
-            'ru' => 'Пакет создан для стандартизации всех сервисов по расгадыванию капч. 
+            'ru' => 'Пакет создан для стандартизации всех сервисов по разгадыванию капч. 
             У каждого сервиса есть свои особенности и теперь Вам надо будет всего лишь взглянуть на документацию конкретного сервиса чтобы правильно всё сделать.
             Так же пакет покрывает всю функциональсть сервисов. Если же Вам будет чего-то нехватать или будут предложения, я буду только рад их услышать.',
+            'en' => 'Package created to standardize all services for solving captcha.
+            Each service has its own features and now You will have to look at the documentation for the specific service to do everything right. 
+            The package covers the entire functionality services. If You will be something lacking or suggestions, I\'ll be glad to hear them.',
         ];
         $this->texts['slug_menu_services'] = [
             'ru' => 'Сервисы',
+            'en' => 'Services',
         ];
         $this->texts['readme_main_services'] = [
             'ru' => 'Распознавание капч для всех популярных сервисов',
+            'en' => 'Recognition captchas for all popular services',
         ];
         $this->texts['slug_menu_features'] = [
             'ru' => 'Особенности',
+            'en' => 'Features',
         ];
         $this->texts['readme_main_features'] = [
             'ru' => [
                 '+ Подходит для всех сервисов по распознаванию капч',
                 '+ Можно легко добавить новый сервис, используя уже готовый движок',
                 '+ Быстрая и интуительно понятная настройка',
-                '+ Распозвание как по пути до файла, так и по ссылки',
+                '+ Распознавание как по пути до файла, так и по ссылки',
                 '+ ReCaptcha v2 без браузера',
                 '+ Полная документация',
                 '+ Покрыт тестами',
+            ],
+            'en' => [
+                '+ Suitable for all recognition services captcha',
+                '+ You can easily add a new service using the existing engine',
+                '+ Intuitable fast and straightforward setup',
+                '+ Recognition as the path to the file and links',
+                '+ ReCaptcha v2 without a browser',
+                '+ Full documentation',
+                '+ Covered by tests',
             ],
         ];
     }
