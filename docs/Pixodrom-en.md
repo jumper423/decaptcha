@@ -23,7 +23,7 @@ Pixodrom
  ... 
 
 ###Description recognition
-Расшифровка капч с картики. Необходимо указать файл с картинкой или ссылку на него.
+Decrypt the captcha with image. You must specify a file with a picture or a link to it.
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).
@@ -86,13 +86,13 @@ try {
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
  Picture | ACTION_FIELD_FILE | MIX | + |  |  | The path to the picture file or link to it |
- A few words | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - одно слово; 1 - каптча имеет два слова | The worker must enter text with one or more spaces |
- Register | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - регистр ответа не имеет значения; 1 - регистр ответа имеет значение | The worker must enter the answer case sensitive |
+ A few words | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - one word; 1 - captcha has two words | The worker must enter text with one or more spaces |
+ Register | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - the case of the answer is irrelevant; 1 - the register response value | The worker must enter the answer case sensitive |
  Characters | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | 0 - parameter not used; 1 - captcha consists only of digits; 2 - the captcha has no numbers | What are the symbols used in captcha |
  Length min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | The minimum length of captcha |
  Length max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | The maximum length of the captcha |
- Calculation | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работнику нужно совершить математическое действие с капчи | The captcha shows matematicheskaya expression and must be addressed |
- Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Need for cross-domain AJAX requests in browser-based applications. |
+ Calculation | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - parameter not used; 1 - the worker needs to perform a mathematical operation with captcha | The captcha shows matematicheskaya expression and must be addressed |
+ Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - the default value; 1 - in.php will transfer Access-Control-Allow-Origin: * parameter in response header | Need for cross-domain AJAX requests in browser-based applications. |
  Cyrillic | ACTION_FIELD_IS_RUSSIAN | INTEGER | - | 0 | 0 - parameter not used; 1 - in the image there are Russian characters | In the image there are Russian characters |
  From where | ACTION_FIELD_LABEL | STRING | - |  |  | Clarification from where came the captcha ("vk", "google", "recaptcha", "yandex", "Google", "yahoo", etc.). |
 

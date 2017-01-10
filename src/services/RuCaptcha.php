@@ -230,23 +230,38 @@ class RuCaptcha extends DeCaptchaBase
 В системе работают русскоязычные и англоязычные работники.
 
 Cервис антикапчи RuCaptcha.com не только поддерживает стандартное API на равне с сервисами pixodrom, antigate, anti-captcha и других, но и предоставляет расширенный фукнционал пополняющийся под каждый виток борьбы с автоматизацией. API RuCaptcha поддерживает решение ReCaptcha v2 (где нужно кликнуть по картинкам), ClickCaptcha (где нужно кликнуть в определённые точки) и Rotatecaptcha (FunCaptcha и другие капчи, которые нужно крутить).',
+            'en' => 'RuCaptcha.com - antikapchu service manual image recognition, there are those who need real-time to recognize text from scanned documents, forms, and captures those who want to earn on entering text from the screen.
+
+The system works the Russian-speaking and English-speaking staff.
+
+Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixodrom services, antigate, anti-captcha and others, but also provides advanced functional replenishing at each round of combat automation. API RuCaptcha supports the decision ReCaptcha v2 (where you need to click on the pictures), ClickCaptcha (where you need to click on certain points) and Rotatecaptcha (FunCaptcha other CAPTCHA, you need to twist).',
         ]);
         $this->wiki->setText(['recognize', 'price'], [
             'ru' => 'От 18 до 44 руб. за 1000 капч в зависимости от нагрузки',
+            'en' => 'Starting from 0.5 USD for 1000 solved CAPTCHAs',
         ]);
         $this->wiki->setText(['recognize', 'desc'], [
             'ru' => 'Расшифровка капч с картики. Необходимо указать файл с картинкой или ссылку на него.',
+            'en' => 'Decrypt the captcha with image. You must specify a file with a picture or a link to it.',
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_PHRASE], [
             'ru' => [
                 '0 - одно слово',
                 '1 - каптча имеет два слова',
             ],
+            'en' => [
+                '0 - one word',
+                '1 - captcha has two words',
+            ],
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_REGSENSE], [
             'ru' => [
                 '0 - регистр ответа не имеет значения',
                 '1 - регистр ответа имеет значение',
+            ],
+            'en' => [
+                '0 - the case of the answer is irrelevant',
+                '1 - the register response value',
             ],
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_NUMERIC], [
@@ -256,6 +271,12 @@ Cервис антикапчи RuCaptcha.com не только поддержи�
                 '2 - капча состоит только из букв',
                 '3 - капча состоит либо только из цифр, либо только из букв',
             ],
+            'en' => [
+                '0 - parameter not used',
+                '1 - captcha consists only of digits',
+                '2 - captcha consists only of letters',
+                '3 - captcha consists of either only numbers or only letters',
+            ],
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_LANGUAGE], [
             'ru' => [
@@ -263,11 +284,20 @@ Cервис антикапчи RuCaptcha.com не только поддержи�
                 '1 - на капче только кириллические буквы',
                 '2 - на капче только латинские буквы',
             ],
+            'en' => [
+                '0 - parameter not used',
+                '1 - the captcha only Cyrillic letters',
+                '2 - displayed in a CAPTCHA latin characters only',
+            ],
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_QUESTION], [
             'ru' => [
                 '0 - параметр не задействован',
                 '1 - работник должен написать ответ',
+            ],
+            'en' => [
+                '0 - parameter not used',
+                '1 - the employee must write the answer',
             ],
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_CALC], [
@@ -275,11 +305,19 @@ Cервис антикапчи RuCaptcha.com не только поддержи�
                 '0 - параметр не задействован',
                 '1 - работнику нужно совершить математическое действие с капчи',
             ],
+            'en' => [
+                '0 - parameter not used',
+                '1 - the worker needs to perform a mathematical operation with captcha',
+            ],
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_HEADER_ACAO], [
             'ru' => [
                 '0 - значение по умолчанию',
                 '1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа',
+            ],
+            'en' => [
+                '0 - the default value',
+                '1 - in.php will transfer Access-Control-Allow-Origin: * parameter in response header',
             ],
         ]);
         $this->wiki->setText(['menu', 'from_service'], [

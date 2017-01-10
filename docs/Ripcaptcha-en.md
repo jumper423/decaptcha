@@ -23,7 +23,7 @@ We solve captchas.
 You will have to pay $0.70 for 1000 captchas
 
 ###Description recognition
-Расшифровка капч с картики. Необходимо указать файл с картинкой или ссылку на него.
+Decrypt the captcha with image. You must specify a file with a picture or a link to it.
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).
@@ -86,8 +86,8 @@ try {
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
  Picture | ACTION_FIELD_FILE | MIX | + |  |  | The path to the picture file or link to it |
- A few words | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - одно слово; 1 - каптча имеет два слова | The worker must enter text with one or more spaces |
- Register | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - регистр ответа не имеет значения; 1 - регистр ответа имеет значение | The worker must enter the answer case sensitive |
+ A few words | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - one word; 1 - captcha has two words | The worker must enter text with one or more spaces |
+ Register | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - the case of the answer is irrelevant; 1 - the register response value | The worker must enter the answer case sensitive |
  Characters | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | 0 - parameter not used; 1 - captcha consists only of digits | What are the symbols used in captcha |
  Length min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | The minimum length of captcha |
  Length max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | The maximum length of the captcha |
