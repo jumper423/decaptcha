@@ -43,7 +43,7 @@ Recognition captchas for all popular services
 
 + [RuCaptcha](../docs/RuCaptcha-en.md)
 + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-en.md)
-+ [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-en.md)
++ [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
 + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
 + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
 + [2Captcha](../docs/TwoCaptcha-en.md)

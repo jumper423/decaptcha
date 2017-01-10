@@ -13,7 +13,7 @@ RuCaptcha Grid (ReCaptcha v2)
   + [A description of the fields](#A-description-of-the-fields)
 + Other functionality from the service
   + [RuCaptcha](../docs/RuCaptcha-en.md)
-  + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-en.md)
+  + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
   + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-en.md)
 

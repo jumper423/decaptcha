@@ -32,7 +32,7 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
 Starting from 0.5 USD for 1000 solved CAPTCHAs
 
 ###Description recognition
-Распознание что написанно на картинке с пояснительной инструкцией
+Recognizing what is written on the picture with the explanatory statement
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).

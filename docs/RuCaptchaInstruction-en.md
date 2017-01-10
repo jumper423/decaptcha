@@ -1,4 +1,4 @@
-RuCaptcha Инструкция
+RuCaptcha Manual
 ==============
 ###Menu
 + [Main](../docs/README-en.md)
@@ -19,7 +19,7 @@ RuCaptcha Инструкция
 
 
 ###Link
-[The link to the service RuCaptcha Инструкция](http://infoblog1.ru/goto/rucaptcha)
+[The link to the service RuCaptcha Manual](http://infoblog1.ru/goto/rucaptcha)
 
 ###The description of the service
 RuCaptcha.com - antikapchu service manual image recognition, there are those who need real-time to recognize text from scanned documents, forms, and captures those who want to earn on entering text from the screen.
@@ -32,7 +32,7 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
 Starting from 0.5 USD for 1000 solved CAPTCHAs
 
 ###Description recognition
-Распознание что написанно на картинке с пояснительной инструкцией
+Recognizing what is written on the picture with the explanatory statement
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).

@@ -14,7 +14,7 @@ RuCaptcha ReCaptcha v2 без браузера
 + Other functionality from the service
   + [RuCaptcha](../docs/RuCaptcha-en.md)
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
-  + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-en.md)
+  + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
   + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
 
 
