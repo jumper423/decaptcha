@@ -1,27 +1,6 @@
 <?php
 
-include_once __DIR__.'/../src/core/DeCaptchaErrors.php';
-include_once __DIR__.'/../src/core/DeCaptchaInterface.php';
-include_once __DIR__.'/../src/core/DeCaptchaAbstract.php';
-include_once __DIR__.'/../src/core/DeCaptchaBase.php';
-include_once __DIR__.'/../src/services/RuCaptcha.php';
-include_once __DIR__.'/../src/services/RuCaptchaReCaptcha.php';
-include_once __DIR__.'/../src/services/RuCaptchaInstruction.php';
-include_once __DIR__.'/../src/services/RuCaptchaGrid.php';
-include_once __DIR__.'/../src/services/RuCaptchaClick.php';
-include_once __DIR__.'/../src/services/TwoCaptcha.php';
-include_once __DIR__.'/../src/services/TwoCaptchaReCaptcha.php';
-include_once __DIR__.'/../src/services/TwoCaptchaInstruction.php';
-include_once __DIR__.'/../src/services/TwoCaptchaGrid.php';
-include_once __DIR__.'/../src/services/TwoCaptchaClick.php';
-include_once __DIR__.'/../src/services/Anticaptcha.php';
-include_once __DIR__.'/../src/services/AnticaptchaReCaptchaProxeless.php';
-include_once __DIR__.'/../src/services/AnticaptchaReCaptcha.php';
-include_once __DIR__.'/../src/services/Captcha24.php';
-include_once __DIR__.'/../src/services/Pixodrom.php';
-include_once __DIR__.'/../src/services/Ripcaptcha.php';
-include_once __DIR__.'/../src/core/DeCaptchaWiki.php';
-include_once __DIR__.'/../src/core/DeCaptchaWikiMain.php';
+include_once __DIR__ . '/../vendor/autoload.php';
 
 $mainWiki = new \jumper423\decaptcha\core\DeCaptchaWikiMain(new \jumper423\decaptcha\services\RuCaptcha([]));
 foreach (['ru', 'en'] as $lang) {
