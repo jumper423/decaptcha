@@ -612,7 +612,11 @@ class DeCaptchaWiki
                      ['example'],
                      ['slug', 'fields', 'desc'],
                  ] as $anchor) {
-            $str .= "  + [{$this->getText($anchor)}](#".implode('-', explode(' ', mb_strtolower($this->getText($anchor)))).')'.PHP_EOL;
+            if ($this->lang === 'en') {
+                $str .= "  + [{$this->getText($anchor)}](#".implode('-', explode(' ', mb_strtolower($this->getText($anchor)))).')'.PHP_EOL;
+            } else {
+                $str .= "  + [{$this->getText($anchor)}](#".implode('-', explode(' ', $this->getText($anchor))).')'.PHP_EOL;
+            }
         }
         if ($this->getText(['menu', 'from_service'])) {
             $str .= "+ {$this->getText(['slug', 'menu', 'from_service'])}".PHP_EOL;
