@@ -1,4 +1,4 @@
-ReCaptcha AntiCaptcha v2 without a browser (with a proxy)
+AntiCaptcha ReCaptcha v2 without a browser (with a proxy)
 ==============
 ###Menu
 + [Main](../docs/README-en.md)
@@ -13,11 +13,11 @@ ReCaptcha AntiCaptcha v2 without a browser (with a proxy)
   + [A description of the fields](#A-description-of-the-fields)
 + Other functionality from the service
   + [Anti Captcha](../docs/Anticaptcha-en.md)
-  + [AntiCaptcha ReCaptcha v2 без браузера](../docs/AnticaptchaReCaptchaProxeless-en.md)
+  + [AntiCaptcha ReCaptcha v2 without a browser](../docs/AnticaptchaReCaptchaProxeless-en.md)
 
 
 ###Link
-[The link to the service ReCaptcha AntiCaptcha v2 without a browser (with a proxy)](https://anti-captcha.com/)
+[The link to the service AntiCaptcha ReCaptcha v2 without a browser (with a proxy)](https://anti-captcha.com/)
 
 ###The description of the service
 The AntiCaptcha service, formerly known as whiter Antigate. 
@@ -27,7 +27,7 @@ The AntiCaptcha service, formerly known as whiter Antigate.
 The money our employees earn are considered a good salary in countries such as India, Pakistan or Vietnam. With your help, they now have the choice between working on the dirty production and computer work.
 
 ###Prices
-Стоимость Рекапчи: от 2 USD за 1000 решений.
+The cost Recaptcha: 2 USD per 1000 solutions.
 
 ###Description recognition
 You don't need to emulate a browser and run the Java-scripts. 

@@ -1,4 +1,4 @@
-AntiCaptcha ReCaptcha v2 без браузера
+AntiCaptcha ReCaptcha v2 without a browser
 ==============
 ###Menu
 + [Main](../docs/README-en.md)
@@ -13,11 +13,11 @@ AntiCaptcha ReCaptcha v2 без браузера
   + [A description of the fields](#A-description-of-the-fields)
 + Other functionality from the service
   + [Anti Captcha](../docs/Anticaptcha-en.md)
-  + [ReCaptcha AntiCaptcha v2 without a browser (with a proxy)](../docs/AnticaptchaReCaptcha-en.md)
+  + [AntiCaptcha ReCaptcha v2 without a browser (with a proxy)](../docs/AnticaptchaReCaptcha-en.md)
 
 
 ###Link
-[The link to the service AntiCaptcha ReCaptcha v2 без браузера](https://anti-captcha.com/)
+[The link to the service AntiCaptcha ReCaptcha v2 without a browser](https://anti-captcha.com/)
 
 ###The description of the service
 The AntiCaptcha service, formerly known as whiter Antigate. 
@@ -27,18 +27,18 @@ The AntiCaptcha service, formerly known as whiter Antigate.
 The money our employees earn are considered a good salary in countries such as India, Pakistan or Vietnam. With your help, they now have the choice between working on the dirty production and computer work.
 
 ###Prices
-Стоимость Рекапчи: от 2 USD за 1000 решений.
+The cost Recaptcha: 2 USD per 1000 solutions.
 
 ###Description recognition
-Вам не нужно эмулировать браузер и запускать яваскрипты.
-            
-Вы присылаете нам значение "sitekey".
+You do not need to emulate a browser and run JavaScript.
+            
+You send us the meaning of "sitekey".
 
-Мы передаем вам "g-recaptcha-response" и вы просто делаете сабмит формы с этим параметром.
+We give you the "g-recaptcha-response" and you just do Submitting the form with this parameter.
 
-Объект содержит данные о задаче на решение рекапчи гугла в браузере на компьютере работника. 
-Такая задача будет выполняться нашим сервисом с использованием наших собственных прокси-серверов и/или с IP адресов работников. 
-Стоимость решения такой задачи на 10% выше, чем у AnticaptchaReCaptcha, так как на нас ложится проблема обхода лимитов на количество решений рекапч с 1 IP адреса.
+The object contains information about the problem to solve Google's reCAPTCHA in the browser on the employee's computer.
+This task will be performed by our service using our own proxy servers and / or IP addresses of employees.
+The cost of solving this problem is 10% higher than the AnticaptchaReCaptcha, as it falls on us to circumvent the problem of limits on the number of reCAPTCHA solutions with 1 IP address.
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).

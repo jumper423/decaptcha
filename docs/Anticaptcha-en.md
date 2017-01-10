@@ -12,8 +12,8 @@ Anti Captcha
   + [Examples](#Examples)
   + [A description of the fields](#A-description-of-the-fields)
 + Other functionality from the service
-  + [AntiCaptcha ReCaptcha v2 без браузера](../docs/AnticaptchaReCaptchaProxeless-en.md)
-  + [ReCaptcha AntiCaptcha v2 without a browser (with a proxy)](../docs/AnticaptchaReCaptcha-en.md)
+  + [AntiCaptcha ReCaptcha v2 without a browser](../docs/AnticaptchaReCaptchaProxeless-en.md)
+  + [AntiCaptcha ReCaptcha v2 without a browser (with a proxy)](../docs/AnticaptchaReCaptcha-en.md)
 
 
 ###Link
