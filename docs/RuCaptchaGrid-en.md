@@ -15,7 +15,7 @@ RuCaptcha Grid (ReCaptcha v2)
   + [RuCaptcha](../docs/RuCaptcha-en.md)
   + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
-  + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-en.md)
+  + [RuCaptcha ReCaptcha v2 without a browser](../docs/RuCaptchaReCaptcha-en.md)
 
 
 ###Link

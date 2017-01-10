@@ -29,21 +29,21 @@ The system works the Russian-speaking and English-speaking staff.
 Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixodrom services, antigate, anti-captcha and others, but also provides advanced functional replenishing at each round of combat automation. API RuCaptcha supports the decision ReCaptcha v2 (where you need to click on the pictures), ClickCaptcha (where you need to click on certain points) and Rotatecaptcha (FunCaptcha other CAPTCHA, you need to twist).
 
 ###Prices
-1000 решений стоят 160 рублей.
+1000 for $2,99
 
 ###Description recognition
-Данный способ позволяет пройти рекапчу без эмуляции браузера и отправки нам картинок, так же этот способ даёт 100%  прохождение капчи.
-            
-Где какие данные брать и куда вставлять? 
-Посмотрите HTML-код страницы, где Вы встретили капчу: 
+This method allows you to pass the reCAPTCHA without emulation browser and send us pictures, as this method gives 100% passing captcha.
+            
+Where any information to take and where to insert?
+See page HTML-code, where you met the captcha:
 
-1. найдите параметр
-data-sitekey=
-Это ключ сайта, он постоянен и уникален для каждого сайта (если администратор сайта не поменяет его вручную)
+1. Locate the parameter
+data-sitekey =
+This site key, it is constant and unique for each site (if the site administrator does not change it manually)
 
-2.найдите форму для текста
+2.Locate form for text
 ```<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; "></textarea>```
-Сюда вам нужно будет вставить ответ от нас.
+Here you will need to insert a reply from us.
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).

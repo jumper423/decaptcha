@@ -55,9 +55,11 @@ class RuCaptchaReCaptcha extends RuCaptcha
 
         $this->wiki->setText(['service', 'name'], [
             'ru' => 'RuCaptcha ReCaptcha v2 без браузера',
+            'en' => 'RuCaptcha ReCaptcha v2 without a browser',
         ]);
         $this->wiki->setText(['recognize', 'price'], [
             'ru' => '1000 решений стоят 160 рублей.',
+            'en' => '1000 for $2,99',
         ]);
         $this->wiki->setText(['recognize', 'desc'], [
             'ru' => 'Данный способ позволяет пройти рекапчу без эмуляции браузера и отправки нам картинок, так же этот способ даёт 100%  прохождение капчи.
@@ -72,6 +74,18 @@ data-sitekey=
 2.найдите форму для текста
 ```<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; "></textarea>```
 Сюда вам нужно будет вставить ответ от нас.',
+            'en' => 'This method allows you to pass the reCAPTCHA without emulation browser and send us pictures, as this method gives 100% passing captcha.
+            
+Where any information to take and where to insert?
+See page HTML-code, where you met the captcha:
+
+1. Locate the parameter
+data-sitekey =
+This site key, it is constant and unique for each site (if the site administrator does not change it manually)
+
+2.Locate form for text
+```<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; "></textarea>```
+Here you will need to insert a reply from us.',
         ]);
         $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',

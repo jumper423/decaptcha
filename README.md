@@ -42,7 +42,7 @@ Package created to standardize all services for solving captcha.
 Recognition captchas for all popular services
 
 + [RuCaptcha](../master/docs/RuCaptcha-en.md)
-+ [RuCaptcha ReCaptcha v2 без браузера](../master/docs/RuCaptchaReCaptcha-en.md)
++ [RuCaptcha ReCaptcha v2 without a browser](../master/docs/RuCaptchaReCaptcha-en.md)
 + [RuCaptcha Manual](../master/docs/RuCaptchaInstruction-en.md)
 + [RuCaptcha Grid (ReCaptcha v2)](../master/docs/RuCaptchaGrid-en.md)
 + [RuCaptcha ClickCaptcha](../master/docs/RuCaptchaClick-en.md)
