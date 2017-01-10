@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__ . '/../vendor/autoload.php';
+include_once __DIR__.'/../vendor/autoload.php';
 
 $mainWiki = new \jumper423\decaptcha\core\DeCaptchaWikiMain(new \jumper423\decaptcha\services\RuCaptcha([]));
 foreach (['ru', 'en'] as $lang) {
