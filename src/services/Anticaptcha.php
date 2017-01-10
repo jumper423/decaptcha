@@ -25,18 +25,18 @@ class Anticaptcha extends DeCaptchaBase
     const DECODE_ACTION_BALANCE = 4;
 
     protected $paramsNames = [
-        self::ACTION_FIELD_KEY => 'clientKey',
-        self::ACTION_FIELD_SOFT_ID => 'softId',
-        self::ACTION_FIELD_LANGUAGE => 'languagePool',
-        self::ACTION_FIELD_TASK => 'task',
-        self::ACTION_FIELD_METHOD => 'type',
-        self::ACTION_FIELD_FILE => 'body',
-        self::ACTION_FIELD_PHRASE => 'phrase',
-        self::ACTION_FIELD_REGSENSE => 'case',
-        self::ACTION_FIELD_NUMERIC => 'numeric',
-        self::ACTION_FIELD_CALC => 'math',
-        self::ACTION_FIELD_MIN_LEN => 'minLength',
-        self::ACTION_FIELD_MAX_LEN => 'maxLength',
+        self::ACTION_FIELD_KEY        => 'clientKey',
+        self::ACTION_FIELD_SOFT_ID    => 'softId',
+        self::ACTION_FIELD_LANGUAGE   => 'languagePool',
+        self::ACTION_FIELD_TASK       => 'task',
+        self::ACTION_FIELD_METHOD     => 'type',
+        self::ACTION_FIELD_FILE       => 'body',
+        self::ACTION_FIELD_PHRASE     => 'phrase',
+        self::ACTION_FIELD_REGSENSE   => 'case',
+        self::ACTION_FIELD_NUMERIC    => 'numeric',
+        self::ACTION_FIELD_CALC       => 'math',
+        self::ACTION_FIELD_MIN_LEN    => 'minLength',
+        self::ACTION_FIELD_MAX_LEN    => 'maxLength',
         self::ACTION_FIELD_CAPTCHA_ID => 'taskId',
     ];
 
@@ -45,25 +45,25 @@ class Anticaptcha extends DeCaptchaBase
         parent::init();
 
         $this->actions[static::ACTION_RECOGNIZE] = [
-            static::ACTION_URI => 'createTask',
+            static::ACTION_URI    => 'createTask',
             static::ACTION_METHOD => static::ACTION_METHOD_POST,
-            static::ACTION_JSON => true,
+            static::ACTION_JSON   => true,
             static::ACTION_FIELDS => [
                 static::ACTION_FIELD_KEY => [
                     static::PARAM_SLUG_REQUIRE => true,
-                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_API_KEY,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+                    static::PARAM_SLUG_SPEC    => static::PARAM_SPEC_API_KEY,
+                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
                 ],
                 static::ACTION_FIELD_SOFT_ID => [
                     static::PARAM_SLUG_VARIABLE => false,
-                    static::PARAM_SLUG_DEFAULT => 882,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
-                    static::PARAM_SLUG_NOTWIKI => true,
+                    static::PARAM_SLUG_DEFAULT  => 882,
+                    static::PARAM_SLUG_TYPE     => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_NOTWIKI  => true,
                 ],
                 static::ACTION_FIELD_LANGUAGE => [
                     static::PARAM_SLUG_DEFAULT => 'en',
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
-                    static::PARAM_SLUG_ENUM => [
+                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+                    static::PARAM_SLUG_ENUM    => [
                         'en',
                         'rn',
                     ],
@@ -71,20 +71,20 @@ class Anticaptcha extends DeCaptchaBase
                 static::ACTION_FIELD_TASK => [
                     static::PARAM_SLUG_REQUIRE => true,
                     static::PARAM_SLUG_DEFAULT => [],
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_OBJECT,
+                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_OBJECT,
                     static::PARAM_SLUG_NOTWIKI => true,
-                    static::ACTION_FIELDS => [
+                    static::ACTION_FIELDS      => [
                         static::ACTION_FIELD_METHOD => [
                             static::PARAM_SLUG_DEFAULT => 'ImageToTextTask',
                             static::PARAM_SLUG_REQUIRE => true,
-                            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+                            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
                             static::PARAM_SLUG_NOTWIKI => true,
                         ],
                         static::ACTION_FIELD_FILE => [
                             static::PARAM_SLUG_REQUIRE => true,
-                            static::PARAM_SLUG_SPEC => static::PARAM_SPEC_FILE,
-                            static::PARAM_SLUG_CODING => static::PARAM_SLUG_CODING_BASE64,
-                            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+                            static::PARAM_SLUG_SPEC    => static::PARAM_SPEC_FILE,
+                            static::PARAM_SLUG_CODING  => static::PARAM_SLUG_CODING_BASE64,
+                            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
                         ],
                         static::ACTION_FIELD_PHRASE => [
                             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_BOOLEAN,
@@ -126,31 +126,31 @@ class Anticaptcha extends DeCaptchaBase
             ],
         ];
         $this->actions[static::ACTION_UNIVERSAL_WITH_CAPTCHA] = [
-            static::ACTION_URI => 'getTaskResult',
+            static::ACTION_URI    => 'getTaskResult',
             static::ACTION_METHOD => static::ACTION_METHOD_POST,
-            static::ACTION_JSON => true,
+            static::ACTION_JSON   => true,
             static::ACTION_FIELDS => [
                 static::ACTION_FIELD_KEY => [
                     static::PARAM_SLUG_REQUIRE => true,
-                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_API_KEY,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+                    static::PARAM_SLUG_SPEC    => static::PARAM_SPEC_API_KEY,
+                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
                 ],
                 static::ACTION_FIELD_CAPTCHA_ID => [
                     static::PARAM_SLUG_REQUIRE => true,
-                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_CAPTCHA,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
+                    static::PARAM_SLUG_SPEC    => static::PARAM_SPEC_CAPTCHA,
+                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
                 ],
             ],
         ];
         $this->actions[static::ACTION_BALANCE] = [
-            static::ACTION_URI => 'getBalance',
+            static::ACTION_URI    => 'getBalance',
             static::ACTION_METHOD => static::ACTION_METHOD_POST,
-            static::ACTION_JSON => true,
+            static::ACTION_JSON   => true,
             static::ACTION_FIELDS => [
                 static::ACTION_FIELD_KEY => [
                     static::PARAM_SLUG_REQUIRE => true,
-                    static::PARAM_SLUG_SPEC => static::PARAM_SPEC_API_KEY,
-                    static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+                    static::PARAM_SLUG_SPEC    => static::PARAM_SPEC_API_KEY,
+                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
                 ],
             ],
         ];
@@ -314,6 +314,6 @@ The money our employees earn are considered a good salary in countries such as I
             return 0;
         }
 
-        return (float)$result[static::DECODE_PARAM_BALANCE];
+        return (float) $result[static::DECODE_PARAM_BALANCE];
     }
 }
