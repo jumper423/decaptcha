@@ -36,14 +36,20 @@ class Ripcaptcha extends RuCaptcha
         ]);
         $this->wiki->setText(['service', 'desc'], [
             'ru' => 'Мы отлично разгадываем капчи.',
+            'en' => 'We solve captchas.',
         ]);
         $this->wiki->setText(['recognize', 'price'], [
             'ru' => 'Вы платите от $0.70 за 1000 капч',
+            'en' => 'You will have to pay $0.70 for 1000 captchas',
         ]);
         $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_NUMERIC], [
             'ru' => [
                 '0 - параметр не задействован',
                 '1 - капча состоит только из цифр',
+            ],
+            'en' => [
+                '0 - parameter not used',
+                '1 - captcha consists only of digits',
             ],
         ]);
         $this->wiki->setText(['menu', 'from_service'], null);
