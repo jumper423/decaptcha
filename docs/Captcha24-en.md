@@ -17,9 +17,9 @@ Captcha24
 [The link to the service Captcha24](http://captcha24.com/)
 
 ###The description of the service
-captcha24.com - сервис ручного распознавания графических изображений, здесь встречаются те, кому нужно в режиме реального времени разгадывать изображения ( сканы документов, каптчи, другое) и те, кто готов это делать за деньги.
-
-99% работников captcha24 знают русский язык, а потому распознавание документов на русском языке доходит до 95%.
+captcha24.com service manual recognition of graphic images, there are those who need in real time to unravel the image ( scans of documents, captcha, etc.) and those who are willing to do it for the money. 
+            
+99% of employees captcha24 know Russian language, but because the recognition of documents in the Russian language comes to 95%.
 
 ###Prices
  ... 
@@ -90,10 +90,10 @@ try {
  Picture | ACTION_FIELD_FILE | MIX | + |  |  | The path to the picture file or link to it |
  A few words | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - одно слово; 1 - каптча имеет два слова | The worker must enter text with one or more spaces |
  Register | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - регистр ответа не имеет значения; 1 - регистр ответа имеет значение | The worker must enter the answer case sensitive |
- Characters | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - капча состоит только из цифр | What are the symbols used in captcha |
+ Characters | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | 0 - parameter not used; 1 - captcha consists only of digits | What are the symbols used in captcha |
  Length min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | The minimum length of captcha |
  Length max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | The maximum length of the captcha |
- Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы | The symbols of the language posted on the captcha |
+ Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - parameter not used; 1 - the captcha only Cyrillic letters | The symbols of the language posted on the captcha |
  Calculation | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работнику нужно совершить математическое действие с капчи | The captcha shows matematicheskaya expression and must be addressed |
  Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Need for cross-domain AJAX requests in browser-based applications. |
 
