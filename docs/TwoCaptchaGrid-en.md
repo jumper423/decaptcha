@@ -29,14 +29,14 @@ The system works the Russian-speaking and English-speaking staff.
 Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixodrom services, antigate, anti-captcha and others, but also provides advanced functional replenishing at each round of combat automation. API RuCaptcha supports the decision ReCaptcha v2 (where you need to click on the pictures), ClickCaptcha (where you need to click on certain points) and Rotatecaptcha (FunCaptcha other CAPTCHA, you need to twist).
 
 ###Prices
-Стоимость 1000 распознаний данной капчи - 70 рублей.
+It costs $1,2 to recognize 1000 CAPTCHAs this way.
 
 ###Description recognition
-Для решения рекапчи, где нужно выбирать определённые квадраты. В ответ придут номера картинок, на которые надо нажать.
-            
-Обратите внимание, что рекапчи бывают не только 3 на 3 квадрата, но попадаются и 4 на 4 квадрата. Что бы понять какую именно картинку Вы шлёте, мы смотрим размер в px картинки. Если она 300x300px, то мы накладываем на эту картинку сетку 3х3. Если размер другой - накладываем сетку 4х4. Поэтому не надо склеивать изображение с чем-либо.
+To solve reCAPTCHA, where you need to choose specific squares. The answer will come number of pictures, which you should click.
+            
+Note that not only are reCAPTCHA 3 by 3 square but there are also 4 by 4 square. To understand what kind of image you shlёte, we look at the size of the image px. If she 300x300px, then we put on this picture 3x3 grid. If the size of the other - impose a 4x4 grid. Therefore, it is not necessary to glue the picture with something.
 
-Обратите внимание, что необходимо засылать саму картинку рекапчи, а не делать её скриншот.
+Please note that you need to send the picture itself reCAPTCHA, instead of doing it the screenshot.
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).
