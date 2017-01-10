@@ -17,11 +17,11 @@ DeCaptcha
 
 ###Menu
 + [Документация на русском языке](../master/docs/README-ru.md)
-+ [Description](#Description)
-+ [Features](#Features)
-+ [Services](#Services)
-+ [Installation](#Installation)
-+ [Examples](#Examples)
++ [Description](#description)
++ [Features](#features)
++ [Services](#services)
++ [Installation](#installation)
++ [Examples](#examples)
 
 
 ###Description

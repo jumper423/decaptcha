@@ -140,7 +140,7 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
                      ['install'],
                      ['example'],
                  ] as $anchor) {
-            $str .= "+ [{$this->getText($anchor)}](#".implode('-', explode(' ', $this->getText($anchor))).')'.PHP_EOL;
+            $str .= "+ [{$this->getText($anchor)}](#".implode('-', explode(' ', mb_strtolower($this->getText($anchor)))).')'.PHP_EOL;
         }
 
         return $str;

@@ -4,13 +4,13 @@ R.I.P. Captcha
 + [Main](../docs/README-en.md)
 + [Документация на русском языке](../docs/Ripcaptcha-ru.md)
 + Anchor
-  + [Link](#Link)
-  + [The description of the service](#The-description-of-the-service)
-  + [Prices](#Prices)
-  + [Description recognition](#Description-recognition)
-  + [Installation](#Installation)
-  + [Examples](#Examples)
-  + [A description of the fields](#A-description-of-the-fields)
+  + [Link](#link)
+  + [The description of the service](#the-description-of-the-service)
+  + [Prices](#prices)
+  + [Description recognition](#description-recognition)
+  + [Installation](#installation)
+  + [Examples](#examples)
+  + [A description of the fields](#a-description-of-the-fields)
 
 
 ###Link
