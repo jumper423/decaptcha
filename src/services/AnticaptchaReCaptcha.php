@@ -54,6 +54,7 @@ class AnticaptchaReCaptcha extends AnticaptchaReCaptchaProxeless
 
         $this->wiki->setText(['service', 'name'], [
             'ru' => 'AntiCaptcha ReCaptcha v2 без браузера (с прокси)',
+            'en' => 'ReCaptcha AntiCaptcha v2 without a browser (with a proxy)',
         ]);
         $this->wiki->setText(['recognize', 'desc'], [
             'ru' => 'Вам не нужно эмулировать браузер и запускать яваскрипты.
@@ -69,6 +70,17 @@ class AnticaptchaReCaptcha extends AnticaptchaReCaptchaProxeless
 Перед выполнением задания система проверяет работоспособность вашего прокси-сервера и только после этого передает задачу работнику. Прокси должен обязательно обработать тестовый запрос в течение 5 секунд, иначе задача пометится ошибкой ERROR_PROXY_TIMEOUT и будет отменена.
 
 Капча может решаться довольно долго по сравнению с обычной капчей, но это компенсируется тем, что полученный g-captcha-response действует еще 120 секунд после того, как работник решил капчу.',
+            'en' => 'You don\'t need to emulate a browser and run the Java-scripts. 
+            
+You send us the value "sitekey". We give you "g-recaptcha-response" and you just make a submit form with this option. 
+
+The object contains information about a task on the solution of the recaptcha of Google in the browser on the computer of the employee. To ensure the universality of solutions of this type of captcha, we need to use all the data you use automation to fill out a form on the trust website, including a proxy, the user-agent of browser and cookies. This will avoid any problems if you change the Google code to your captcha. 
+
+Our system solutions are designed in such a way that the browser of the employee does not receive information about your proxy servers, cookies, and other data. All this data is stored on our server and are erased after the job. Machine employee does not have access to this data and communicates only with our servers. 
+
+Before performing the task, the system checks the performance of your proxy server, and only then passes the task to the worker. Proxies must be sure to handle the probe request within 5 seconds, otherwise the problem of litter bug ERROR_PROXY_TIMEOUT and will be canceled.
+
+Captcha can be solved for a long time compared with the usual CAPTCHA, but this is offset by the fact that the resulting g-captcha-response effect another 120 seconds after an employee has decided captcha.',
         ]);
         $this->wiki->setText(['constructor', 'data'], [
             static::ACTION_FIELD_KEY         => '94f39af4bb295c40546fba5c932e0d32',

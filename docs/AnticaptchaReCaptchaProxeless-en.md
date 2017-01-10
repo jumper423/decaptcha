@@ -13,7 +13,7 @@ AntiCaptcha ReCaptcha v2 без браузера
   + [A description of the fields](#A-description-of-the-fields)
 + Other functionality from the service
   + [Anti Captcha](../docs/Anticaptcha-en.md)
-  + [AntiCaptcha ReCaptcha v2 без браузера (с прокси)](../docs/AnticaptchaReCaptcha-en.md)
+  + [ReCaptcha AntiCaptcha v2 without a browser (with a proxy)](../docs/AnticaptchaReCaptcha-en.md)
 
 
 ###Link

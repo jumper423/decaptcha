@@ -1,4 +1,4 @@
-AntiCaptcha ReCaptcha v2 без браузера (с прокси)
+ReCaptcha AntiCaptcha v2 without a browser (with a proxy)
 ==============
 ###Menu
 + [Main](../docs/README-en.md)
@@ -17,7 +17,7 @@ AntiCaptcha ReCaptcha v2 без браузера (с прокси)
 
 
 ###Link
-[The link to the service AntiCaptcha ReCaptcha v2 без браузера (с прокси)](https://anti-captcha.com/)
+[The link to the service ReCaptcha AntiCaptcha v2 without a browser (with a proxy)](https://anti-captcha.com/)
 
 ###The description of the service
 The AntiCaptcha service, formerly known as whiter Antigate. 
@@ -30,19 +30,17 @@ The money our employees earn are considered a good salary in countries such as I
 Стоимость Рекапчи: от 2 USD за 1000 решений.
 
 ###Description recognition
-Вам не нужно эмулировать браузер и запускать яваскрипты.
+You don't need to emulate a browser and run the Java-scripts. 
             
-Вы присылаете нам значение "sitekey".
+You send us the value "sitekey". We give you "g-recaptcha-response" and you just make a submit form with this option. 
 
-Мы передаем вам "g-recaptcha-response" и вы просто делаете сабмит формы с этим параметром.
+The object contains information about a task on the solution of the recaptcha of Google in the browser on the computer of the employee. To ensure the universality of solutions of this type of captcha, we need to use all the data you use automation to fill out a form on the trust website, including a proxy, the user-agent of browser and cookies. This will avoid any problems if you change the Google code to your captcha. 
 
-Объект содержит данные о задаче на решение рекапчи гугла в браузере на компьютере работника. Для обеспечения универсальности решения этого вида капчи нам необходимо использовать все данные, которые вы используете во время автоматизации заполнения формы на целевом сайте, включая прокси, user-agent браузера и cookies. Это позволит избежать любых проблем при изменении гуглом кода своей капчи.
+Our system solutions are designed in such a way that the browser of the employee does not receive information about your proxy servers, cookies, and other data. All this data is stored on our server and are erased after the job. Machine employee does not have access to this data and communicates only with our servers. 
 
-Наша система решения выстроена таким образом, что браузер работника не получает данные о ваших прокси-серверах, cookies, и других данных. Все эти данные хранятся на нашем сервере и стираются после выполнения задания. Машина работника не имеет доступа к этим данным и взаимодействует исключительно с нашими серверами.
+Before performing the task, the system checks the performance of your proxy server, and only then passes the task to the worker. Proxies must be sure to handle the probe request within 5 seconds, otherwise the problem of litter bug ERROR_PROXY_TIMEOUT and will be canceled.
 
-Перед выполнением задания система проверяет работоспособность вашего прокси-сервера и только после этого передает задачу работнику. Прокси должен обязательно обработать тестовый запрос в течение 5 секунд, иначе задача пометится ошибкой ERROR_PROXY_TIMEOUT и будет отменена.
-
-Капча может решаться довольно долго по сравнению с обычной капчей, но это компенсируется тем, что полученный g-captcha-response действует еще 120 секунд после того, как работник решил капчу.
+Captcha can be solved for a long time compared with the usual CAPTCHA, but this is offset by the fact that the resulting g-captcha-response effect another 120 seconds after an employee has decided captcha.
 
 ###Installation
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).

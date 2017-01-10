@@ -52,7 +52,7 @@ Recognition captchas for all popular services
 + [2Captcha Grid (ReCaptcha v2)](../master/docs/TwoCaptchaGrid-en.md)
 + [2Captcha ClickCaptcha](../master/docs/TwoCaptchaClick-en.md)
 + [Anti Captcha](../master/docs/Anticaptcha-en.md)
-+ [AntiCaptcha ReCaptcha v2 без браузера (с прокси)](../master/docs/AnticaptchaReCaptcha-en.md)
++ [ReCaptcha AntiCaptcha v2 without a browser (with a proxy)](../master/docs/AnticaptchaReCaptcha-en.md)
 + [AntiCaptcha ReCaptcha v2 без браузера](../master/docs/AnticaptchaReCaptchaProxeless-en.md)
 + [Captcha24](../master/docs/Captcha24-en.md)
 + [Pixodrom](../master/docs/Pixodrom-en.md)
