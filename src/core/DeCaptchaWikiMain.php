@@ -83,41 +83,6 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
 [![StyleCI](https://styleci.io/repos/75013766/shield?branch=master)](https://styleci.io/repos/75013766)'.PHP_EOL;
     }
 
-    /**
-     * @param string|array $name
-     * @param string       $separator
-     *
-     * @return string|array
-     */
-    public function getText($name, $separator = '; ')
-    {
-        $getResult = function ($name, $texts) {
-            if (is_array($name)) {
-                $name = implode('_', $name);
-            }
-            if (!isset($texts[$name])) {
-                return null;
-            }
-            if (is_array($texts[$name])) {
-                if (isset($texts[$name][$this->lang])) {
-                    return $texts[$name][$this->lang];
-                }
-
-                return array_values($texts[$name])[0];
-            }
-
-            return $texts[$name];
-        };
-        $result = $getResult($name, $this->texts);
-        if (is_array($result)) {
-            if ($separator) {
-                $result = implode($separator, $result);
-            }
-        }
-
-        return $result;
-    }
-
     protected function viewMenu($master = '')
     {
         $str = "+ [{$this->getText(['slug', 'menu', 'another'])}](../{$master}docs/".$this->getFileName($this->lang == 'ru' ? 'en' : 'ru').')'.PHP_EOL;
