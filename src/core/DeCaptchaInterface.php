@@ -8,7 +8,7 @@ namespace jumper423\decaptcha\core;
 interface DeCaptchaInterface
 {
     /**
-     * @return string
+     * @return string|array
      */
     public function getCode();
 
