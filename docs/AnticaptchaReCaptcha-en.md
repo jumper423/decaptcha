@@ -17,7 +17,7 @@ AntiCaptcha ReCaptcha v2 without a browser (with a proxy)
 
 
 ###Link
-[The link to the service AntiCaptcha ReCaptcha v2 without a browser (with a proxy)](https://anti-captcha.com/)
+[The link to the service AntiCaptcha ReCaptcha v2 without a browser (with a proxy)](http://infoblog1.ru/goto/anti-captcha)
 
 ###The description of the service
 The AntiCaptcha service, formerly known as whiter Antigate. 

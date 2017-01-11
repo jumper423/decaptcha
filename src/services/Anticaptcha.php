@@ -199,7 +199,7 @@ class Anticaptcha extends DeCaptchaBase
         ];
 
         $this->wiki->setText(['service', 'name'], 'Anti Captcha');
-        $this->wiki->setText(['service', 'href'], 'https://anti-captcha.com/');
+        $this->wiki->setText(['service', 'href'], 'http://infoblog1.ru/goto/anti-captcha');
         $this->wiki->setText(['service', 'desc'], [
             'ru' => 'Сервис AntiCaptcha, ранее белее известный как Antigate.
 

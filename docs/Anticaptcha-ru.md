@@ -17,7 +17,7 @@ Anti Captcha
 
 
 ###Ссылка
-[Ссылка на сервис Anti Captcha](https://anti-captcha.com/)
+[Ссылка на сервис Anti Captcha](http://infoblog1.ru/goto/anti-captcha)
 
 ###Описание сервиса
 Сервис AntiCaptcha, ранее белее известный как Antigate.

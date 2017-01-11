@@ -17,7 +17,7 @@ AntiCaptcha ReCaptcha v2 без браузера (с прокси)
 
 
 ###Ссылка
-[Ссылка на сервис AntiCaptcha ReCaptcha v2 без браузера (с прокси)](https://anti-captcha.com/)
+[Ссылка на сервис AntiCaptcha ReCaptcha v2 без браузера (с прокси)](http://infoblog1.ru/goto/anti-captcha)
 
 ###Описание сервиса
 Сервис AntiCaptcha, ранее белее известный как Antigate.

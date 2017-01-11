@@ -17,7 +17,7 @@ Anti Captcha
 
 
 ###Link
-[The link to the service Anti Captcha](https://anti-captcha.com/)
+[The link to the service Anti Captcha](http://infoblog1.ru/goto/anti-captcha)
 
 ###The description of the service
 The AntiCaptcha service, formerly known as whiter Antigate. 

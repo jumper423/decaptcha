@@ -17,7 +17,7 @@ AntiCaptcha ReCaptcha v2 без браузера
 
 
 ###Ссылка
-[Ссылка на сервис AntiCaptcha ReCaptcha v2 без браузера](https://anti-captcha.com/)
+[Ссылка на сервис AntiCaptcha ReCaptcha v2 без браузера](http://infoblog1.ru/goto/anti-captcha)
 
 ###Описание сервиса
 Сервис AntiCaptcha, ранее белее известный как Antigate.
