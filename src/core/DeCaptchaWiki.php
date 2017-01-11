@@ -526,7 +526,8 @@ class DeCaptchaWiki
         return $str;
     }
 
-    protected function getRecognizeData(){
+    protected function getRecognizeData()
+    {
         $class = $this->class;
         $rc = (new \ReflectionClass($class));
         $str = '';
@@ -546,6 +547,7 @@ class DeCaptchaWiki
             }
             $str .= '    ]';
         }
+
         return $str;
     }
 
