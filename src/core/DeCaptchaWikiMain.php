@@ -85,18 +85,6 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
 
     /**
      * @param string|array $name
-     * @param string|array $value
-     */
-    public function setText($name, $value)
-    {
-        if (is_array($name)) {
-            $name = implode('_', $name);
-        }
-        $this->texts[$name] = $value;
-    }
-
-    /**
-     * @param string|array $name
      * @param string       $separator
      *
      * @return string|array
