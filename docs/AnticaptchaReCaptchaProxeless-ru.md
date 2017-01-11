@@ -45,7 +45,7 @@ AntiCaptcha ReCaptcha v2 без браузера
 
 Либо запустить
 ```
-php composer.phar require --prefer-dist jumper423/decaptcha "*"
+composer require --prefer-dist jumper423/decaptcha "*"
 ```
 или добавить
 ```
@@ -68,9 +68,9 @@ $captcha = new AnticaptchaReCaptchaProxeless([
 В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.
 ```
 if ($captcha->recognize([
-    AnticaptchaReCaptchaProxeless::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',
-    AnticaptchaReCaptchaProxeless::ACTION_FIELD_PAGEURL => 'http://site.com/recaptcha-ex',
-])) {
+       AnticaptchaReCaptchaProxeless::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',
+       AnticaptchaReCaptchaProxeless::ACTION_FIELD_PAGEURL => 'http://site.com/recaptcha-ex',
+    ])) {
     $code = $captcha->getCode();
 } else {
     $error = $captcha->getError();

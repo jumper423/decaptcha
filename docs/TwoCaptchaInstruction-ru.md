@@ -39,7 +39,7 @@ Cервис антикапчи RuCaptcha.com не только поддержи�
 
 Либо запустить
 ```
-php composer.phar require --prefer-dist jumper423/decaptcha "*"
+composer require --prefer-dist jumper423/decaptcha "*"
 ```
 или добавить
 ```
@@ -62,8 +62,8 @@ $captcha = new TwoCaptchaInstruction([
 В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.
 ```
 if ($captcha->recognize('http://site.com/captcha.jpg', [
-    TwoCaptchaInstruction::ACTION_FIELD_INSTRUCTIONS => 'What's in the picture?',
-])) {
+       TwoCaptchaInstruction::ACTION_FIELD_INSTRUCTIONS => 'What's in the picture?',
+    ])) {
     $code = $captcha->getCode();
 } else {
     $error = $captcha->getError();

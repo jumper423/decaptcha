@@ -39,7 +39,7 @@ Cервис антикапчи RuCaptcha.com не только поддержи�
 
 Либо запустить
 ```
-php composer.phar require --prefer-dist jumper423/decaptcha "*"
+composer require --prefer-dist jumper423/decaptcha "*"
 ```
 или добавить
 ```

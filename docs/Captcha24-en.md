@@ -32,7 +32,7 @@ The preferred way to install this extension via [composer](http://getcomposer.or
 
 Or you can run
 ```
-php composer.phar require --prefer-dist jumper423/decaptcha "*"
+composer require --prefer-dist jumper423/decaptcha "*"
 ```
 or add
 ```

@@ -437,7 +437,7 @@ class DeCaptchaWiki
         $str .= PHP_EOL;
         $str .= "{$this->getText(['install', 'start'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
-        $str .= 'php composer.phar require --prefer-dist jumper423/decaptcha "*"'.PHP_EOL;
+        $str .= 'composer require --prefer-dist jumper423/decaptcha "*"'.PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= "{$this->getText(['install', 'add'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;

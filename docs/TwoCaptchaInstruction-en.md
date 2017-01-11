@@ -39,7 +39,7 @@ The preferred way to install this extension via [composer](http://getcomposer.or
 
 Or you can run
 ```
-php composer.phar require --prefer-dist jumper423/decaptcha "*"
+composer require --prefer-dist jumper423/decaptcha "*"
 ```
 or add
 ```
@@ -62,8 +62,8 @@ $captcha = new TwoCaptchaInstruction([
 In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
 if ($captcha->recognize('http://site.com/captcha.jpg', [
-    TwoCaptchaInstruction::ACTION_FIELD_INSTRUCTIONS => 'What's in the picture?',
-])) {
+       TwoCaptchaInstruction::ACTION_FIELD_INSTRUCTIONS => 'What's in the picture?',
+    ])) {
     $code = $captcha->getCode();
 } else {
     $error = $captcha->getError();
