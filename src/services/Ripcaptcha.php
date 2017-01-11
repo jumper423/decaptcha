@@ -14,20 +14,20 @@ class Ripcaptcha extends RuCaptcha
         parent::init();
 
         unset(
-            $this->paramsNames[self::ACTION_FIELD_LANGUAGE],
-            $this->paramsNames[self::ACTION_FIELD_HEADER_ACAO],
-            $this->paramsNames[self::ACTION_FIELD_CALC],
-            $this->paramsNames[self::ACTION_FIELD_QUESTION],
-            $this->paramsNames[self::ACTION_FIELD_INSTRUCTIONS],
-            $this->paramsNames[self::ACTION_FIELD_PINGBACK],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_LANGUAGE],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_HEADER_ACAO],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_CALC],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_QUESTION],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_INSTRUCTIONS],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_PINGBACK]
+            $this->paramsNames[static::ACTION_FIELD_LANGUAGE],
+            $this->paramsNames[static::ACTION_FIELD_HEADER_ACAO],
+            $this->paramsNames[static::ACTION_FIELD_CALC],
+            $this->paramsNames[static::ACTION_FIELD_QUESTION],
+            $this->paramsNames[static::ACTION_FIELD_INSTRUCTIONS],
+            $this->paramsNames[static::ACTION_FIELD_PINGBACK],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LANGUAGE],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_HEADER_ACAO],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_CALC],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_QUESTION],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_INSTRUCTIONS],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PINGBACK]
         );
-        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_SOFT_ID][self::PARAM_SLUG_DEFAULT] = 0;
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SOFT_ID][static::PARAM_SLUG_DEFAULT] = 0;
 
         $this->wiki->setText(['service', 'name'], 'R.I.P. Captcha ');
         $this->wiki->setText(['service', 'href'], [

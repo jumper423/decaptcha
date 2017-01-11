@@ -14,17 +14,17 @@ class Pixodrom extends RuCaptcha
         parent::init();
 
         unset(
-            $this->paramsNames[self::ACTION_FIELD_LANGUAGE],
-            $this->paramsNames[self::ACTION_FIELD_QUESTION],
-            $this->paramsNames[self::ACTION_FIELD_INSTRUCTIONS],
-            $this->paramsNames[self::ACTION_FIELD_PINGBACK],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_LANGUAGE],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_QUESTION],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_INSTRUCTIONS],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_PINGBACK]
+            $this->paramsNames[static::ACTION_FIELD_LANGUAGE],
+            $this->paramsNames[static::ACTION_FIELD_QUESTION],
+            $this->paramsNames[static::ACTION_FIELD_INSTRUCTIONS],
+            $this->paramsNames[static::ACTION_FIELD_PINGBACK],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LANGUAGE],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_QUESTION],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_INSTRUCTIONS],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PINGBACK]
         );
-        $this->paramsNames[self::ACTION_FIELD_IS_RUSSIAN] = 'is_russian';
-        $this->paramsNames[self::ACTION_FIELD_LABEL] = 'label';
+        $this->paramsNames[static::ACTION_FIELD_IS_RUSSIAN] = 'is_russian';
+        $this->paramsNames[static::ACTION_FIELD_LABEL] = 'label';
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_IS_RUSSIAN] = [
             static::PARAM_SLUG_DEFAULT => 0,
             static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
@@ -41,7 +41,7 @@ class Pixodrom extends RuCaptcha
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LABEL] = [
             static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
         ];
-        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][self::ACTION_FIELD_SOFT_ID][self::PARAM_SLUG_DEFAULT] = 0;
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SOFT_ID][static::PARAM_SLUG_DEFAULT] = 0;
 
         $this->wiki->setText(['service', 'name'], 'Pixodrom');
         $this->wiki->setText(['service', 'href'], 'http://pixodrom.com/');
