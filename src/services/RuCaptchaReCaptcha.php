@@ -13,14 +13,14 @@ class RuCaptchaReCaptcha extends RuCaptcha
 
         unset(
             $this->paramsNames[static::ACTION_FIELD_FILE],
-            $this->paramsNames[static::ACTION_FIELD_PHRASE],
             $this->paramsNames[static::ACTION_FIELD_PINGBACK],
-            $this->paramsNames[static::ACTION_FIELD_REGSENSE],
             $this->paramsNames[static::ACTION_FIELD_NUMERIC],
-            $this->paramsNames[static::ACTION_FIELD_CALC],
             $this->paramsNames[static::ACTION_FIELD_MIN_LEN],
             $this->paramsNames[static::ACTION_FIELD_MAX_LEN],
             $this->paramsNames[static::ACTION_FIELD_QUESTION],
+            $this->paramsNames[static::ACTION_FIELD_PHRASE],
+            $this->paramsNames[static::ACTION_FIELD_CALC],
+            $this->paramsNames[static::ACTION_FIELD_REGSENSE],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_FILE],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PHRASE],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PINGBACK],
