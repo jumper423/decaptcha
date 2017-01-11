@@ -551,10 +551,12 @@ class DeCaptchaWiki
         return $str;
     }
 
-    protected function getRecognizeFile(){
+    protected function getRecognizeFile()
+    {
         if (!$this->texts['recognize_file']) {
             return '';
         }
+
         return "'{$this->getText(['recognize', 'data', 'file'])}'";
     }
 
