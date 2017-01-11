@@ -56,7 +56,7 @@ class Anticaptcha extends DeCaptchaBase
                 ],
                 static::ACTION_FIELD_SOFT_ID => [
                     static::PARAM_SLUG_VARIABLE => false,
-                    static::PARAM_SLUG_DEFAULT  => 882,
+                    static::PARAM_SLUG_DEFAULT  => 825,
                     static::PARAM_SLUG_TYPE     => static::PARAM_FIELD_TYPE_INTEGER,
                     static::PARAM_SLUG_NOTWIKI  => true,
                 ],
