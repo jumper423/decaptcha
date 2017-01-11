@@ -29,7 +29,7 @@ class Captcha24 extends RuCaptcha
             0,
             1,
         ];
-        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SOFT_ID][static::PARAM_SLUG_DEFAULT] = 0;
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SOFT_ID][static::PARAM_SLUG_DEFAULT] = 927;
 
         $this->wiki->setText(['service', 'name'], 'Captcha24');
         $this->wiki->setText(['service', 'href'], 'http://captcha24.com/');
