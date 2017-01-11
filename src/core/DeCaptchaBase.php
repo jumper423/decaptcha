@@ -219,7 +219,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * @return \CURLFile|mixed|null|string
+     * @return array|string
      */
     public function getCode()
     {
