@@ -478,22 +478,7 @@ class DeCaptchaWiki
         if ($this->texts['recognize_file']) {
             $str .= "'{$this->getText(['recognize', 'data', 'file'])}'";
         }
-        if ($this->texts['recognize_data']) {
-            if ($this->texts['recognize_file']) {
-                $str .= ', ';
-            }
-            $str .= '['.PHP_EOL;
-            foreach ($this->texts['recognize_data'] as $key => $val) {
-                $str .= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
-                if (is_string($val)) {
-                    $str .= "'{$val}'";
-                } else {
-                    $str .= "{$val}";
-                }
-                $str .= ','.PHP_EOL;
-            }
-            $str .= ']';
-        }
+        $str .= $this->getRecognizeData();
         $str .= ')) {'.PHP_EOL;
         $str .= '    $code = $captcha->getCode();'.PHP_EOL;
         $str .= '} else {'.PHP_EOL;
@@ -534,6 +519,21 @@ class DeCaptchaWiki
         if ($this->texts['recognize_file']) {
             $str .= "'{$this->getText(['recognize', 'data', 'file'])}'";
         }
+        $str .= $this->getRecognizeData();
+        $str .= ');'.PHP_EOL;
+        $str .= '    $code = $captcha->getCode();'.PHP_EOL;
+        $str .= '} catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {'.PHP_EOL;
+        $str .= '    ...'.PHP_EOL;
+        $str .= '}'.PHP_EOL;
+        $str .= '```'.PHP_EOL;
+
+        return $str;
+    }
+
+    protected function getRecognizeData(){
+        $class = $this->class;
+        $rc = (new \ReflectionClass($class));
+        $str = '';
         if ($this->texts['recognize_data']) {
             if ($this->texts['recognize_file']) {
                 $str .= ', ';
@@ -550,13 +550,6 @@ class DeCaptchaWiki
             }
             $str .= '    ]';
         }
-        $str .= ');'.PHP_EOL;
-        $str .= '    $code = $captcha->getCode();'.PHP_EOL;
-        $str .= '} catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {'.PHP_EOL;
-        $str .= '    ...'.PHP_EOL;
-        $str .= '}'.PHP_EOL;
-        $str .= '```'.PHP_EOL;
-
         return $str;
     }
 
