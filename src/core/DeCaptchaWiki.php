@@ -451,16 +451,16 @@ class DeCaptchaWiki
     protected function viewExamples()
     {
         $class = $this->class;
-        $rc = (new \ReflectionClass($class));
+        $reflection = (new \ReflectionClass($class));
 
         $str = "####{$this->getText(['example', 'initialization'])}".PHP_EOL;
         $str .= "{$this->getText(['example', 'initialization', 'desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
-        $str .= "use {$rc->getName()};".PHP_EOL;
+        $str .= "use {$reflection->getName()};".PHP_EOL;
         $str .= ''.PHP_EOL;
-        $str .= '$captcha = new '.$rc->getShortName().'(['.PHP_EOL;
+        $str .= '$captcha = new '.$reflection->getShortName().'(['.PHP_EOL;
         foreach ($this->texts['constructor_data'] as $key => $val) {
-            $str .= "    {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
+            $str .= "    {$reflection->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
             if (is_string($val)) {
                 $str .= "'{$val}'";
             } else {
@@ -529,7 +529,7 @@ class DeCaptchaWiki
     protected function getRecognizeData()
     {
         $class = $this->class;
-        $rc = (new \ReflectionClass($class));
+        $reflection = (new \ReflectionClass($class));
         $str = '';
         if ($this->texts['recognize_data']) {
             if ($this->texts['recognize_file']) {
@@ -537,7 +537,7 @@ class DeCaptchaWiki
             }
             $str .= '['.PHP_EOL;
             foreach ($this->texts['recognize_data'] as $key => $val) {
-                $str .= "       {$rc->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
+                $str .= "       {$reflection->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
                 if (is_string($val)) {
                     $str .= "'{$val}'";
                 } else {
