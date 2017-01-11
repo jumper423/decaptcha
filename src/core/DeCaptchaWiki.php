@@ -461,11 +461,7 @@ class DeCaptchaWiki
         $str .= '$captcha = new '.$reflection->getShortName().'(['.PHP_EOL;
         foreach ($this->texts['constructor_data'] as $key => $val) {
             $str .= "    {$reflection->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
-            if (is_string($val)) {
-                $str .= "'{$val}'";
-            } else {
-                $str .= "{$val}";
-            }
+            $str .= is_string($val) ? "'{$val}'" : $val;
             $str .= ','.PHP_EOL;
         }
         $str .= ']);'.PHP_EOL;
@@ -538,11 +534,7 @@ class DeCaptchaWiki
             $str .= '['.PHP_EOL;
             foreach ($this->texts['recognize_data'] as $key => $val) {
                 $str .= "       {$reflection->getShortName()}::{$this->getNameConst('ACTION_FIELD_', $key)} => ";
-                if (is_string($val)) {
-                    $str .= "'{$val}'";
-                } else {
-                    $str .= "{$val}";
-                }
+                $str .= is_string($val) ? "'{$val}'" : $val;
                 $str .= ','.PHP_EOL;
             }
             $str .= '    ]';
