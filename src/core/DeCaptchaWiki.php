@@ -475,9 +475,7 @@ class DeCaptchaWiki
         $str .= "{$this->getText(['example', 'recognize', 'desc'])}".PHP_EOL;
         $str .= '```'.PHP_EOL;
         $str .= 'if ($captcha->recognize(';
-        if ($this->texts['recognize_file']) {
-            $str .= "'{$this->getText(['recognize', 'data', 'file'])}'";
-        }
+        $str .= $this->getRecognizeFile();
         $str .= $this->getRecognizeData();
         $str .= ')) {'.PHP_EOL;
         $str .= '    $code = $captcha->getCode();'.PHP_EOL;
@@ -516,9 +514,7 @@ class DeCaptchaWiki
         $str .= PHP_EOL;
         $str .= 'try {'.PHP_EOL;
         $str .= '    $captcha->recognize(';
-        if ($this->texts['recognize_file']) {
-            $str .= "'{$this->getText(['recognize', 'data', 'file'])}'";
-        }
+        $str .= $this->getRecognizeFile();
         $str .= $this->getRecognizeData();
         $str .= ');'.PHP_EOL;
         $str .= '    $code = $captcha->getCode();'.PHP_EOL;
@@ -551,6 +547,13 @@ class DeCaptchaWiki
             $str .= '    ]';
         }
         return $str;
+    }
+
+    protected function getRecognizeFile(){
+        if (!$this->texts['recognize_file']) {
+            return '';
+        }
+        return "'{$this->getText(['recognize', 'data', 'file'])}'";
     }
 
     protected function viewFields()
