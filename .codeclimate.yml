@@ -15,6 +15,10 @@ engines:
         enabled: false
       Naming/LongVariable:
         enabled: false
+      Design/NpathComplexity:
+        enabled: false
+      CyclomaticComplexity:
+        enabled: false
 ratings:
   paths:
   - "**.php"
