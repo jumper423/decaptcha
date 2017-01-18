@@ -30,7 +30,6 @@ class DeCaptchaErrors extends Exception
     const ERROR_WRITE_ACCESS_FILE = 14;
     const ERROR_FILE_IS_NOT_LOADED = 15;
     const ERROR_FILE_NOT_FOUND = 16;
-    const ERROR_CURL = 17;
     const ERROR_PARAM_REQUIRE = 18;
     const ERROR_CAPTCHAIMAGE_BLOCKED = 19;
     const IP_BANNED = 20;
@@ -143,10 +142,6 @@ class DeCaptchaErrors extends Exception
         self::ERROR_FILE_NOT_FOUND => [
             self::LANG_RU => 'Файл не найден',
             self::LANG_EN => 'File not found',
-        ],
-        self::ERROR_CURL => [
-            self::LANG_RU => 'Ошибка CURL',
-            self::LANG_EN => 'Error CURL',
         ],
         self::ERROR_PARAM_REQUIRE => [
             self::LANG_RU => 'Обязательное поле не заполнено',

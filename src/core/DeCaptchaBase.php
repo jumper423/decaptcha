@@ -107,6 +107,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
      */
     public function __construct($params)
     {
+        parent::__construct();
         $this->setParams($params);
         $this->wiki = new DeCaptchaWiki($this);
         $this->init();
