@@ -275,7 +275,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             if (array_key_exists($field, $this->params) && (!array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) ^ (array_key_exists(self::PARAM_SLUG_VARIABLE, $settings) && $settings[self::PARAM_SLUG_VARIABLE] === false))) {
                 $value = $this->params[$field];
             }
-            if (array_key_exists(self::PARAM_SLUG_SPEC, $settings) && array_key_exists($settings[self::PARAM_SLUG_SPEC], $this->params)) {
+            if (array_key_exists(self::PARAM_SLUG_SPEC, $settings)) {
                 $value = $this->getParamSpec($field, $settings[self::PARAM_SLUG_SPEC], array_key_exists(self::PARAM_SLUG_CODING, $settings) ? $settings[self::PARAM_SLUG_CODING] : null);
             }
             if (is_null($value)) {

@@ -20,7 +20,7 @@ class AnticaptchaReCaptcha extends AnticaptchaReCaptchaProxeless
         $this->paramsNames[static::ACTION_FIELD_COOKIES] = 'cookies';
 
         $task = &$this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_TASK][static::ACTION_FIELDS];
-        $task[static::ACTION_FIELD_METHOD][static::PARAM_SLUG_DEFAULT] = 'NoCaptchaTaskProxyless';
+        $task[static::ACTION_FIELD_METHOD][static::PARAM_SLUG_DEFAULT] = 'NoCaptchaTask';
         $task[static::ACTION_FIELD_PROXYTYPE] = [
             static::PARAM_SLUG_REQUIRE => true,
             static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,

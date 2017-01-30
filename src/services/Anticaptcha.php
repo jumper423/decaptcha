@@ -309,7 +309,9 @@ The money our employees earn are considered a good salary in countries such as I
      */
     public function getBalance()
     {
-        $result = $this->requestUniversal('getbalance');
+        $this->setParam(static::ACTION_FIELD_ACTION, static::ACTION_BALANCE);
+        $response = $this->getResponse(static::ACTION_BALANCE);
+        $result = $this->decodeResponse(static::DECODE_ACTION_BALANCE, $response);
         if ($result[static::DECODE_PARAM_RESPONSE] != 0) {
             return 0;
         }

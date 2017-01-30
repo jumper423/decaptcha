@@ -78,8 +78,8 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     ];
 
     protected $limitSettings = [
-        self::ACTION_RECOGNIZE              => 3,
-        self::ACTION_UNIVERSAL_WITH_CAPTCHA => 20,
+        self::ACTION_RECOGNIZE => 5,
+        self::ACTION_UNIVERSAL_WITH_CAPTCHA => 40,
     ];
 
     /**
