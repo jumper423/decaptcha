@@ -15,7 +15,8 @@ DeCaptcha
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/d485629c-1830-440d-82ab-a567bfa5ddc5/mini.png)](https://insight.sensiolabs.com/projects/d485629c-1830-440d-82ab-a567bfa5ddc5)
 [![StyleCI](https://styleci.io/repos/75013766/shield?branch=master)](https://styleci.io/repos/75013766)
 
-###Menu
+Menu
+--------------
 + [Документация на русском языке](../master/docs/README-ru.md)
 + [Description](#description)
 + [Features](#features)
@@ -24,12 +25,14 @@ DeCaptcha
 + [Examples](#examples)
 
 
-###Description
+Description
+--------------
 Package created to standardize all services for solving captcha.
             Each service has its own features and now You will have to look at the documentation for the specific service to do everything right. 
             The package covers the entire functionality services. If You will be something lacking or suggestions, I'll be glad to hear them.
 
-###Features
+Features
+--------------
 + Suitable for all recognition services captcha
 + You can easily add a new service using the existing engine
 + Intuitable fast and straightforward setup
@@ -38,7 +41,8 @@ Package created to standardize all services for solving captcha.
 + Full documentation
 + Covered by tests
 
-###Services
+Services
+--------------
 Recognition captchas for all popular services
 
 + [RuCaptcha](../master/docs/RuCaptcha-en.md)
@@ -59,7 +63,8 @@ Recognition captchas for all popular services
 + [R.I.P. Captcha ](../master/docs/Ripcaptcha-en.md)
 
 
-###Installation
+Installation
+--------------
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).
 
 Or you can run
@@ -73,7 +78,8 @@ or add
 in file `composer.json`.
 
 
-###Examples
+Examples
+--------------
 __Initialization__
 Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```

@@ -119,22 +119,28 @@ class DeCaptchaWikiMain extends DeCaptchaWiki
     {
         $str = $this->viewHeader().PHP_EOL;
 
-        $str .= "###{$this->getText(['slug', 'menu'])}".PHP_EOL;
+        $str .= "{$this->getText(['slug', 'menu'])}".PHP_EOL;
+        $str .= '--------------'.PHP_EOL;
         $str .= $this->viewMenu($master).PHP_EOL.PHP_EOL;
 
-        $str .= "###{$this->getText(['slug', 'menu', 'desc'])}".PHP_EOL;
+        $str .= "{$this->getText(['slug', 'menu', 'desc'])}".PHP_EOL;
+        $str .= '--------------'.PHP_EOL;
         $str .= $this->getText(['readme', 'main', 'desc']).PHP_EOL.PHP_EOL;
 
-        $str .= "###{$this->getText(['slug', 'menu', 'features'])}".PHP_EOL;
+        $str .= "{$this->getText(['slug', 'menu', 'features'])}".PHP_EOL;
+        $str .= '--------------'.PHP_EOL;
         $str .= $this->getText(['readme', 'main', 'features'], PHP_EOL).PHP_EOL.PHP_EOL;
 
-        $str .= "###{$this->getText(['slug', 'menu', 'services'])}".PHP_EOL;
+        $str .= "{$this->getText(['slug', 'menu', 'services'])}".PHP_EOL;
+        $str .= '--------------'.PHP_EOL;
         $str .= "{$this->getText(['readme', 'main', 'services'])}".PHP_EOL.PHP_EOL;
         $str .= "{$this->viewServices($master)}".PHP_EOL.PHP_EOL;
 
-        $str .= "###{$this->getText(['install'])}".PHP_EOL;
+        $str .= "{$this->getText(['install'])}".PHP_EOL;
+        $str .= '--------------'.PHP_EOL;
         $str .= "{$this->viewInstall()}".PHP_EOL.PHP_EOL;
-        $str .= "###{$this->getText(['example'])}".PHP_EOL;
+        $str .= "{$this->getText(['example'])}".PHP_EOL;
+        $str .= '--------------'.PHP_EOL;
         $str .= "{$this->viewExamples()}".PHP_EOL.PHP_EOL;
 
         return $str;
