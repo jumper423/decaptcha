@@ -1,6 +1,7 @@
 Anti Captcha
 ==============
-###Menu
+Menu
+--------------
 + [Main](../docs/README-en.md)
 + [Документация на русском языке](../docs/Anticaptcha-ru.md)
 + Anchor
@@ -16,23 +17,28 @@ Anti Captcha
   + [AntiCaptcha ReCaptcha v2 without a browser (with a proxy)](../docs/AnticaptchaReCaptcha-en.md)
 
 
-###Link
+Link
+--------------
 [The link to the service Anti Captcha](http://infoblog1.ru/goto/anti-captcha)
 
-###The description of the service
+The description of the service
+--------------
 The AntiCaptcha service, formerly known as whiter Antigate. 
             
 100% of captchas can be recognized by our employees from around the world. That is why using our service you help thousands of people around the world to provide themselves and their families. 
 
 The money our employees earn are considered a good salary in countries such as India, Pakistan or Vietnam. With your help, they now have the choice between working on the dirty production and computer work.
 
-###Prices
+Prices
+--------------
 From 0.7 USD per 1000 captchas, depending on your volume
 
-###Description recognition
+Description recognition
+--------------
 The solution to the normal captcha text.
 
-###Installation
+Installation
+--------------
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).
 
 Or you can run
@@ -46,8 +52,9 @@ or add
 in file `composer.json`.
 
 
-###Examples
-####Initialization
+Examples
+--------------
+__Initialization__
 Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```
 use jumper423\decaptcha\services\Anticaptcha;
@@ -56,7 +63,7 @@ $captcha = new Anticaptcha([
     Anticaptcha::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
 ]);
 ```
-####Recognition
+__Recognition__
 In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
 if ($captcha->recognize('http://site.com/captcha.jpg')) {
@@ -65,11 +72,11 @@ if ($captcha->recognize('http://site.com/captcha.jpg')) {
     $error = $captcha->getError();
 }
 ```
-####Balance
+__Balance__
 ```
 $balance = $captcha->getBalance();
 ```
-####Intercept errors
+__Intercept errors__
 If you wish, You can catch the error, but you need to call setCauseAnError
 ```
 $captcha->setCauseAnError(true);
@@ -83,7 +90,8 @@ try {
 ```
 
 
-###A description of the fields
+A description of the fields
+--------------
  Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |

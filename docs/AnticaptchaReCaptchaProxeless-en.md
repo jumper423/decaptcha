@@ -1,6 +1,7 @@
 AntiCaptcha ReCaptcha v2 without a browser
 ==============
-###Menu
+Menu
+--------------
 + [Main](../docs/README-en.md)
 + [Документация на русском языке](../docs/AnticaptchaReCaptchaProxeless-ru.md)
 + Anchor
@@ -16,20 +17,24 @@ AntiCaptcha ReCaptcha v2 without a browser
   + [AntiCaptcha ReCaptcha v2 without a browser (with a proxy)](../docs/AnticaptchaReCaptcha-en.md)
 
 
-###Link
+Link
+--------------
 [The link to the service AntiCaptcha ReCaptcha v2 without a browser](http://infoblog1.ru/goto/anti-captcha)
 
-###The description of the service
+The description of the service
+--------------
 The AntiCaptcha service, formerly known as whiter Antigate. 
             
 100% of captchas can be recognized by our employees from around the world. That is why using our service you help thousands of people around the world to provide themselves and their families. 
 
 The money our employees earn are considered a good salary in countries such as India, Pakistan or Vietnam. With your help, they now have the choice between working on the dirty production and computer work.
 
-###Prices
+Prices
+--------------
 The cost Recaptcha: 2 USD per 1000 solutions.
 
-###Description recognition
+Description recognition
+--------------
 You do not need to emulate a browser and run JavaScript.
             
 You send us the meaning of "sitekey".
@@ -40,7 +45,8 @@ The object contains information about the problem to solve Google's reCAPTCHA in
 This task will be performed by our service using our own proxy servers and / or IP addresses of employees.
 The cost of solving this problem is 10% higher than the AnticaptchaReCaptcha, as it falls on us to circumvent the problem of limits on the number of reCAPTCHA solutions with 1 IP address.
 
-###Installation
+Installation
+--------------
 The preferred way to install this extension via [composer](http://getcomposer.org/download/).
 
 Or you can run
@@ -54,8 +60,9 @@ or add
 in file `composer.json`.
 
 
-###Examples
-####Initialization
+Examples
+--------------
+__Initialization__
 Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```
 use jumper423\decaptcha\services\AnticaptchaReCaptchaProxeless;
@@ -64,7 +71,7 @@ $captcha = new AnticaptchaReCaptchaProxeless([
     AnticaptchaReCaptchaProxeless::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
 ]);
 ```
-####Recognition
+__Recognition__
 In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
 if ($captcha->recognize([
@@ -76,11 +83,11 @@ if ($captcha->recognize([
     $error = $captcha->getError();
 }
 ```
-####Balance
+__Balance__
 ```
 $balance = $captcha->getBalance();
 ```
-####Intercept errors
+__Intercept errors__
 If you wish, You can catch the error, but you need to call setCauseAnError
 ```
 $captcha->setCauseAnError(true);
@@ -97,7 +104,8 @@ try {
 ```
 
 
-###A description of the fields
+A description of the fields
+--------------
  Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
