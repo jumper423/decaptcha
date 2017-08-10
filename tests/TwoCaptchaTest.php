@@ -5,23 +5,23 @@
  */
 class TwoCaptchaTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
-     * @expectedExceptionMessage Нулевой либо отрицательный баланс
-     * @expectedExceptionCode 3
-     */
-    public function testRecognizeBalanceError1()
-    {
+    ///**
+    // * @expectedException \jumper423\decaptcha\core\DeCaptchaErrors
+    // * @expectedExceptionMessage Нулевой либо отрицательный баланс
+    // * @expectedExceptionCode 3
+    // */
+    //public function testRecognizeBalanceError1()
+    //{
         //$captcha = new \jumper423\decaptcha\services\TwoCaptcha([
         //    \jumper423\decaptcha\services\TwoCaptcha::ACTION_FIELD_KEY => '200a1ed2b6ca001d8171c655658086ed',
         //]);
         //$captcha->setErrorLang(\jumper423\decaptcha\core\DeCaptchaErrors::LANG_RU);
         //$captcha->setCauseAnError(true);
         //$captcha->recognize(__DIR__.'/data/Captcha.jpg');
-    }
+    //}
 
-    public function testRecognizeBalanceError2()
-    {
+    //public function testRecognizeBalanceError2()
+    //{
         //$captcha = new \jumper423\decaptcha\services\TwoCaptcha([
         //    \jumper423\decaptcha\services\TwoCaptcha::ACTION_FIELD_KEY => '200a1ed2b6ca001d8171c655658086ed',
         //]);
@@ -31,7 +31,7 @@ class TwoCaptchaTest extends PHPUnit_Framework_TestCase
         //} else {
         //    $this->assertEquals('Нулевой либо отрицательный баланс', $captcha->getError());
         //}
-    }
+    //}
 
     public function testGetBalance()
     {
