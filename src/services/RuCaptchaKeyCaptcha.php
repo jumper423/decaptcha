@@ -3,7 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class RuCaptchaKeyCaptcha
+ * Class RuCaptchaKeyCaptcha.
  */
 class RuCaptchaKeyCaptcha extends RuCaptcha
 {
@@ -43,23 +43,23 @@ class RuCaptchaKeyCaptcha extends RuCaptcha
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_METHOD][static::PARAM_SLUG_DEFAULT] = 'keycaptcha';
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SSC_USER_ID] = [
             static::PARAM_SLUG_REQUIRE => true,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SSC_SESSION_ID] = [
             static::PARAM_SLUG_REQUIRE => true,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SSC_WEB_SERVER_SIGN] = [
             static::PARAM_SLUG_REQUIRE => true,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SSC_WEB_SERVER_SIGN2] = [
             static::PARAM_SLUG_REQUIRE => true,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PAGEURL] = [
             static::PARAM_SLUG_REQUIRE => true,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
 
         $this->wiki->setText(['service', 'name'], [
@@ -151,10 +151,10 @@ In this case, you need to thoroughly understand the code of the page and the scr
 5) Submit the form.',
         ]);
         $this->wiki->setText(['recognize', 'data'], [
-            static::ACTION_FIELD_PAGEURL => 'https://www.keycaptcha.com/signup/',
-            static::ACTION_FIELD_SSC_USER_ID => '15',
-            static::ACTION_FIELD_SSC_SESSION_ID => 'd49b0eb43165997c786bdb62a75aa12c',
-            static::ACTION_FIELD_SSC_WEB_SERVER_SIGN => 'dbf758481b1371aa641364276b5ff0c4-pz-',
+            static::ACTION_FIELD_PAGEURL              => 'https://www.keycaptcha.com/signup/',
+            static::ACTION_FIELD_SSC_USER_ID          => '15',
+            static::ACTION_FIELD_SSC_SESSION_ID       => 'd49b0eb43165997c786bdb62a75aa12c',
+            static::ACTION_FIELD_SSC_WEB_SERVER_SIGN  => 'dbf758481b1371aa641364276b5ff0c4-pz-',
             static::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => '1117c0251c885edd1ce16dff799e5310',
         ]);
         $this->wiki->setText(['recognize', 'file'], false);

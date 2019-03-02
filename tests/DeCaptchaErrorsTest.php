@@ -1,6 +1,6 @@
 <?php
 
-use \jumper423\decaptcha\core\DeCaptchaErrors;
+use jumper423\decaptcha\core\DeCaptchaErrors;
 
 /**
  * Class DeCaptchaErrorsTest.

@@ -170,6 +170,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         if (file_exists($fileName)) {
             return $fileName;
         }
+
         throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_NOT_FOUND, $fileName, $this->errorLang);
     }
 
