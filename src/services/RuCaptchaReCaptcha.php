@@ -36,6 +36,7 @@ class RuCaptchaReCaptcha extends RuCaptcha
         $this->paramsNames[static::ACTION_FIELD_PROXY] = 'proxy';
         $this->paramsNames[static::ACTION_FIELD_PROXYTYPE] = 'proxytype';
         $this->paramsNames[static::ACTION_FIELD_PAGEURL] = 'pageurl';
+        $this->paramsNames[static::ACTION_FIELD_INVISIBLE] = 'invisible';
 
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_METHOD][static::PARAM_SLUG_DEFAULT] = 'userrecaptcha';
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_GOOGLEKEY] = [
@@ -51,6 +52,10 @@ class RuCaptchaReCaptcha extends RuCaptcha
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PAGEURL] = [
             static::PARAM_SLUG_REQUIRE => true,
             static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+        ];
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_INVISIBLE] = [
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
+            static::PARAM_SLUG_DEFAULT => 0,
         ];
 
         $this->wiki->setText(['service', 'name'], [

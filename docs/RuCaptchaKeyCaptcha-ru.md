@@ -1,9 +1,9 @@
-2Captcha ClickCaptcha
+RuCaptcha KeyCaptcha
 ==============
 Меню
 --------------
 + [Главная](../docs/README-ru.md)
-+ [Documentation in English language](../docs/TwoCaptchaClick-en.md)
++ [Documentation in English language](../docs/RuCaptchaKeyCaptcha-en.md)
 + Якоря
   + [Ссылка](#Ссылка)
   + [Описание сервиса](#Описание-сервиса)
@@ -13,16 +13,16 @@
   + [Примеры](#Примеры)
   + [Описание полей](#Описание-полей)
 + Другой функционал от сервиса
-  + [2Captcha](../docs/TwoCaptcha-ru.md)
-  + [2Captcha Инструкция](../docs/TwoCaptchaInstruction-ru.md)
-  + [2Captcha Сетка (ReCaptcha v2)](../docs/TwoCaptchaGrid-ru.md)
-  + [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-ru.md)
-  + [2Captcha KeyCaptcha](../docs/TwoCaptchaKeyCaptcha-ru.md)
+  + [RuCaptcha](../docs/RuCaptcha-ru.md)
+  + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-ru.md)
+  + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
+  + [RuCaptcha Сетка (ReCaptcha v2)](../docs/RuCaptchaGrid-ru.md)
+  + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
 
 
 Ссылка
 --------------
-[Ссылка на сервис 2Captcha ClickCaptcha](http://infoblog1.ru/goto/2captcha)
+[Ссылка на сервис RuCaptcha KeyCaptcha](http://infoblog1.ru/goto/rucaptcha)
 
 Описание сервиса
 --------------
@@ -34,11 +34,49 @@ Cервис антикапчи RuCaptcha.com не только поддержи�
 
 Цены
 --------------
-Стоимость 1000 распознаний данной капчи - 70 рублей.
+1000 решений стоят 39 рублей.
 
 Описание распознания
 --------------
-Распознание любой ClickCaptcha (в том числе и ReCaptcha 2.0). В ответ приходит массив координат, от верхнего левого угла.
+KeyCaptcha — это такой вид капчи, для решения которой нужно собрать небольшой пазл.
+
+Чтобы решить KeyCaptcha с помощью нашего сервиса, нужно:
+
+1) Найти следующие параметры KeyCaptcha в исходном коде страницы:
+
+```
+s_s_c_user_id
+s_s_c_session_id
+s_s_c_web_server_sign
+s_s_c_web_server_sign2
+```
+
+2) Узакать эти параметры в методе recognize
+
+3) Найдите и удалите следующий блок, который подключает javascript-файл:
+
+```
+<script language="JavaScript" src="http://backs.keycaptcha.com/swfs/cap.js"></script>
+```
+
+Найдите и удалите элемент div с id="div_for_keycaptcha":
+
+```
+<div id="div_for_keycaptcha"...>...</div>
+```
+
+```
+Внимание: иногда содержимое страницы генерируется динамически и вы можете не найти нужные элементы или они могут немного отличаться.
+В таком случае вам нужно хорошенько разобраться в коде страницы и используемых на ней скриптов.
+```
+
+4) Найдите элемент с id="capcode" и измените его значение на ответ, полученный от нашего сервера.
+
+```
+<input name="capcode" id="capcode" value="-->CODE<--" type="hidden">
+```
+
+5) Отправить форму.
 
 Установка
 --------------
@@ -60,17 +98,21 @@ composer require --prefer-dist jumper423/decaptcha "*"
 __Инициализация__
 Указываем ключ, обязательные и дополнительные параметры. Старайтесь по максимуму их заполнить это способствует более быстрому распознанию капчи.
 ```
-use jumper423\decaptcha\services\TwoCaptchaClick;
+use jumper423\decaptcha\services\RuCaptchaKeyCaptcha;
 
-$captcha = new TwoCaptchaClick([
-    TwoCaptchaClick::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
+$captcha = new RuCaptchaKeyCaptcha([
+    RuCaptchaKeyCaptcha::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
 ]);
 ```
 __Распознавание__
 В первом параметре передаём ссылку или путь на файл с картинкой, во второй параметры распознания при необходимости переопределения тех которые были переданы при инициализации.
 ```
-if ($captcha->recognize('http://site.com/captcha.jpg', [
-       TwoCaptchaClick::ACTION_FIELD_INSTRUCTIONS => 'Where's the cat?',
+if ($captcha->recognize([
+       RuCaptchaKeyCaptcha::ACTION_FIELD_PAGEURL => 'https://www.keycaptcha.com/signup/',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_USER_ID => '15',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_SESSION_ID => 'd49b0eb43165997c786bdb62a75aa12c',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN => 'dbf758481b1371aa641364276b5ff0c4-pz-',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => '1117c0251c885edd1ce16dff799e5310',
     ])) {
     $code = $captcha->getCode();
 } else {
@@ -97,8 +139,12 @@ __Перехват ошибки__
 $captcha->setCauseAnError(true);
 
 try {
-    $captcha->recognize('http://site.com/captcha.jpg', [
-       TwoCaptchaClick::ACTION_FIELD_INSTRUCTIONS => 'Where's the cat?',
+    $captcha->recognize([
+       RuCaptchaKeyCaptcha::ACTION_FIELD_PAGEURL => 'https://www.keycaptcha.com/signup/',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_USER_ID => '15',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_SESSION_ID => 'd49b0eb43165997c786bdb62a75aa12c',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN => 'dbf758481b1371aa641364276b5ff0c4-pz-',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => '1117c0251c885edd1ce16dff799e5310',
     ]);
     $code = $captcha->getCode();
 } catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {
@@ -112,9 +158,11 @@ try {
  Название | Код | Тип | Обяз. | По ум. | Возможные значения | Описание 
  --- | --- | --- | --- | --- | --- | --- 
  Ключ | ACTION_FIELD_KEY | STRING | + |  |  | Ключ от учетной записи |
- Картинка | ACTION_FIELD_FILE | MIX | + |  |  | Путь на файл с картинкой или ссылка на него |
- Язык | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы; 2 - на капче только латинские буквы | Символы какого языка размещенны на капче |
- Вопрос | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работник должен написать ответ | На изображении задан вопрос, работник должен написать ответ |
  Кросс-доменный | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Необходимо для кросс-доменных AJAX запросов в браузерных приложениях. |
- Инструкция | ACTION_FIELD_INSTRUCTIONS | STRING | + |  |  | Текстовая капча или инструкция для прохождения капчи. |
+ Ответ на | ACTION_FIELD_PINGBACK | STRING | - |  |  | Указание для сервера, что после распознания изображения, нужно отправить ответ на указанный адрес. |
+ Параметра s_s_c_user_id | ACTION_FIELD_SSC_USER_ID | STRING | + |  |  | Значение параметра s_s_c_user_id, найденное на странице |
+ Параметра s_s_c_session_id | ACTION_FIELD_SSC_SESSION_ID | STRING | + |  |  | Значение параметра s_s_c_session_id, найденное на странице |
+ Параметра s_s_c_web_server_sign | ACTION_FIELD_SSC_WEB_SERVER_SIGN | STRING | + |  |  | Значение параметра s_s_c_web_server_sign, найденное на странице |
+ Параметра s_s_c_web_server_sign2 | ACTION_FIELD_SSC_WEB_SERVER_SIGN2 | STRING | + |  |  | Значение параметра s_s_c_web_server_sign2, найденное на странице |
+ Адрес | ACTION_FIELD_PAGEURL | STRING | + |  |  | Адрес страницы на которой решается капча. |
 

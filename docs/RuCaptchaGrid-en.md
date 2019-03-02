@@ -17,6 +17,7 @@ Menu
   + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
   + [RuCaptcha ReCaptcha v2 without a browser](../docs/RuCaptchaReCaptcha-en.md)
+  + [RuCaptcha KeyCaptcha](../docs/RuCaptchaKeyCaptcha-en.md)
 
 
 Link

@@ -42,6 +42,7 @@ class RuCaptchaClick extends RuCaptchaGrid
             RuCaptchaInstruction::class,
             RuCaptchaGrid::class,
             RuCaptchaReCaptcha::class,
+            RuCaptchaKeyCaptcha::class,
         ]);
     }
 

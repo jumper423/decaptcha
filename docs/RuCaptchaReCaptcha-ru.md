@@ -131,4 +131,5 @@ try {
  Адрес прокси | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP адрес прокси ipv4/ipv6. |
  Тип прокси | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | Тип прокси (http, socks4, ...) |
  Адрес | ACTION_FIELD_PAGEURL | STRING | + |  |  | Адрес страницы на которой решается капча. |
+ Невидимая ReCaptcha | ACTION_FIELD_INVISIBLE | INTEGER | - | 0 |  | 1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha. |
 

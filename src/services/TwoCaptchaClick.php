@@ -20,6 +20,7 @@ class TwoCaptchaClick extends RuCaptchaClick
             TwoCaptchaInstruction::class,
             TwoCaptchaGrid::class,
             TwoCaptchaReCaptcha::class,
+            TwoCaptchaKeyCaptcha::class,
         ]);
     }
 }

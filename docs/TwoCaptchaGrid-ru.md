@@ -17,6 +17,7 @@
   + [2Captcha Инструкция](../docs/TwoCaptchaInstruction-ru.md)
   + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-ru.md)
   + [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-ru.md)
+  + [2Captcha KeyCaptcha](../docs/TwoCaptchaKeyCaptcha-ru.md)
 
 
 Ссылка

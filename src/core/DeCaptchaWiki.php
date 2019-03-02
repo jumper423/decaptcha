@@ -181,6 +181,46 @@ class DeCaptchaWiki
                 'ru' => 'Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется. Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так: <script type="text/javascript" src="...." data-type="normal"  data-ray="..." async data-sitekey="..." data-stoken="ВОТ_ЭТОТ"></script> Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его.',
                 'en' => 'The secret token for the previous version of recaptcha. In most cases, sites use the new version and this token is not required. The secret token is generated on a Google server and inserted into the page in the attribute data-stoken. It looks like this: <script type="text/javascript" src="...." data-type="normal" data-ray="..." async data-sitekey="..." data-stoken="THIS"></script> the Token is valid a few minutes after generation, then you need to go back to the page and get it.',
             ],
+            'field_main_name_'.$class::ACTION_FIELD_INVISIBLE => [
+                'ru' => 'Невидимая ReCaptcha',
+                'en' => 'Invisible ReCaptcha',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_INVISIBLE => [
+                'ru' => '1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.',
+                'en' => '1 - tells us that the site is invisible ReCaptcha. 0 - regular ReCaptcha.',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_SSC_USER_ID => [
+                'ru' => 'Параметра s_s_c_user_id',
+                'en' => 'Parameter s_s_c_user_id',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_SSC_USER_ID => [
+                'ru' => 'Значение параметра s_s_c_user_id, найденное на странице',
+                'en' => 'The value of the s_s_c_user_id parameter found on the page',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_SSC_SESSION_ID => [
+                'ru' => 'Параметра s_s_c_session_id',
+                'en' => 'Parameter s_s_c_session_id',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_SSC_SESSION_ID => [
+                'ru' => 'Значение параметра s_s_c_session_id, найденное на странице',
+                'en' => 'The value of the s_s_c_session_id parameter found on the page',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_SSC_WEB_SERVER_SIGN => [
+                'ru' => 'Параметра s_s_c_web_server_sign',
+                'en' => 'Parameter s_s_c_web_server_sign',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_SSC_WEB_SERVER_SIGN => [
+                'ru' => 'Значение параметра s_s_c_web_server_sign, найденное на странице',
+                'en' => 'The value of the s_s_c_web_server_sign parameter found on the page',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => [
+                'ru' => 'Параметра s_s_c_web_server_sign2',
+                'en' => 'Parameter s_s_c_web_server_sign2',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => [
+                'ru' => 'Значение параметра s_s_c_web_server_sign2, найденное на странице',
+                'en' => 'The value of the s_s_c_web_server_sign2 parameter found on the page',
+            ],
             'field_main_name_'.$class::ACTION_FIELD_PROXYTYPE => [
                 'ru' => 'Тип прокси',
                 'en' => 'The proxy type',

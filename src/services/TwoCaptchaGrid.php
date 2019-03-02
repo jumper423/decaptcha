@@ -23,6 +23,7 @@ class TwoCaptchaGrid extends RuCaptchaGrid
             TwoCaptchaInstruction::class,
             TwoCaptchaClick::class,
             TwoCaptchaReCaptcha::class,
+            TwoCaptchaKeyCaptcha::class,
         ]);
     }
 }

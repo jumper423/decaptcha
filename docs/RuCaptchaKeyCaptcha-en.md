@@ -1,9 +1,9 @@
-RuCaptcha
+RuCaptcha KeyCaptcha
 ==============
 Menu
 --------------
 + [Main](../docs/README-en.md)
-+ [Документация на русском языке](../docs/RuCaptcha-ru.md)
++ [Документация на русском языке](../docs/RuCaptchaKeyCaptcha-ru.md)
 + Anchor
   + [Link](#link)
   + [The description of the service](#the-description-of-the-service)
@@ -13,16 +13,16 @@ Menu
   + [Examples](#examples)
   + [A description of the fields](#a-description-of-the-fields)
 + Other functionality from the service
-  + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
+  + [RuCaptcha](../docs/RuCaptcha-en.md)
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
+  + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
   + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
   + [RuCaptcha ReCaptcha v2 without a browser](../docs/RuCaptchaReCaptcha-en.md)
-  + [RuCaptcha KeyCaptcha](../docs/RuCaptchaKeyCaptcha-en.md)
 
 
 Link
 --------------
-[The link to the service RuCaptcha](http://infoblog1.ru/goto/rucaptcha)
+[The link to the service RuCaptcha KeyCaptcha](http://infoblog1.ru/goto/rucaptcha)
 
 The description of the service
 --------------
@@ -34,11 +34,49 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
 
 Prices
 --------------
-Starting from 0.5 USD for 1000 solved CAPTCHAs
+1000 for $0,7
 
 Description recognition
 --------------
-Decrypt the captcha with image. You must specify a file with a picture or a link to it.
+KeyCaptcha is a kind of captcha, for the solution of which you need to assemble a small puzzle.
+
+To solve KeyCaptcha using our service, you need:
+
+1) Find the following KeyCaptcha parameters in the page source code:
+
+```
+s_s_c_user_id
+s_s_c_session_id
+s_s_c_web_server_sign
+s_s_c_web_server_sign2
+```
+
+2) See these parameters in the method recognize
+
+3) Find and delete the following block that connects the javascript file:
+
+```
+<script language = "JavaScript" src = "http://backs.keycaptcha.com/swfs/cap.js"> </ script>
+```
+
+Find and delete the div element with id = "div_for_keycaptcha":
+
+```
+<div id = "div_for_keycaptcha" ...> ... </ div>
+```
+
+```
+Attention: sometimes the page content is dynamically generated and you may not find the elements you need or they may differ slightly.
+In this case, you need to thoroughly understand the code of the page and the scripts used on it.
+```
+
+4) Find the element with id = "capcode" and change its value to the response received from our server.
+
+```
+<input name = "capcode" id = "capcode" value = "-> CODE <-" type = "hidden">
+```
+
+5) Submit the form.
 
 Installation
 --------------
@@ -60,16 +98,22 @@ Examples
 __Initialization__
 Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```
-use jumper423\decaptcha\services\RuCaptcha;
+use jumper423\decaptcha\services\RuCaptchaKeyCaptcha;
 
-$captcha = new RuCaptcha([
-    RuCaptcha::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
+$captcha = new RuCaptchaKeyCaptcha([
+    RuCaptchaKeyCaptcha::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
 ]);
 ```
 __Recognition__
 In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
-if ($captcha->recognize('http://site.com/captcha.jpg')) {
+if ($captcha->recognize([
+       RuCaptchaKeyCaptcha::ACTION_FIELD_PAGEURL => 'https://www.keycaptcha.com/signup/',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_USER_ID => '15',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_SESSION_ID => 'd49b0eb43165997c786bdb62a75aa12c',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN => 'dbf758481b1371aa641364276b5ff0c4-pz-',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => '1117c0251c885edd1ce16dff799e5310',
+    ])) {
     $code = $captcha->getCode();
 } else {
     $error = $captcha->getError();
@@ -90,7 +134,13 @@ If you wish, You can catch the error, but you need to call setCauseAnError
 $captcha->setCauseAnError(true);
 
 try {
-    $captcha->recognize('http://site.com/captcha.jpg');
+    $captcha->recognize([
+       RuCaptchaKeyCaptcha::ACTION_FIELD_PAGEURL => 'https://www.keycaptcha.com/signup/',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_USER_ID => '15',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_SESSION_ID => 'd49b0eb43165997c786bdb62a75aa12c',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN => 'dbf758481b1371aa641364276b5ff0c4-pz-',
+       RuCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => '1117c0251c885edd1ce16dff799e5310',
+    ]);
     $code = $captcha->getCode();
 } catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {
     ...
@@ -103,16 +153,11 @@ A description of the fields
  Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
- Picture | ACTION_FIELD_FILE | MIX | + |  |  | The path to the picture file or link to it |
- A few words | ACTION_FIELD_PHRASE | INTEGER | - | 0 | 0 - one word; 1 - captcha has two words | The worker must enter text with one or more spaces |
- Register | ACTION_FIELD_REGSENSE | INTEGER | - | 0 | 0 - the case of the answer is irrelevant; 1 - the register response value | The worker must enter the answer case sensitive |
- Characters | ACTION_FIELD_NUMERIC | INTEGER | - | 0 | 0 - parameter not used; 1 - captcha consists only of digits; 2 - captcha consists only of letters; 3 - captcha consists of either only numbers or only letters | What are the symbols used in captcha |
- Length min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | The minimum length of captcha |
- Length max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | The maximum length of the captcha |
- Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - parameter not used; 1 - the captcha only Cyrillic letters; 2 - displayed in a CAPTCHA latin characters only | The symbols of the language posted on the captcha |
- Question | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - parameter not used; 1 - the employee must write the answer | The image asked, the employee must write the answer |
- Calculation | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - parameter not used; 1 - the worker needs to perform a mathematical operation with captcha | The captcha shows matematicheskaya expression and must be addressed |
  Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - the default value; 1 - in.php will transfer Access-Control-Allow-Origin: * parameter in response header | Need for cross-domain AJAX requests in browser-based applications. |
- Manual | ACTION_FIELD_INSTRUCTIONS | STRING | - |  |  | Text captcha or manual to pass the captcha. |
  Response to | ACTION_FIELD_PINGBACK | STRING | - |  |  | Note to server, after recognizing the image, you need to send a reply to the specified address. |
+ Parameter s_s_c_user_id | ACTION_FIELD_SSC_USER_ID | STRING | + |  |  | The value of the s_s_c_user_id parameter found on the page |
+ Parameter s_s_c_session_id | ACTION_FIELD_SSC_SESSION_ID | STRING | + |  |  | The value of the s_s_c_session_id parameter found on the page |
+ Parameter s_s_c_web_server_sign | ACTION_FIELD_SSC_WEB_SERVER_SIGN | STRING | + |  |  | The value of the s_s_c_web_server_sign parameter found on the page |
+ Parameter s_s_c_web_server_sign2 | ACTION_FIELD_SSC_WEB_SERVER_SIGN2 | STRING | + |  |  | The value of the s_s_c_web_server_sign2 parameter found on the page |
+ Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
 

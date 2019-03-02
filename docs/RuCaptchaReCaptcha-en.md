@@ -126,4 +126,5 @@ A description of the fields
  The proxy address | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP address of the proxy ipv4/ipv6. |
  The proxy type | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | The proxy type (http, socks4, ...) |
  Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
+ Invisible ReCaptcha | ACTION_FIELD_INVISIBLE | INTEGER | - | 0 |  | 1 - tells us that the site is invisible ReCaptcha. 0 - regular ReCaptcha. |
 
