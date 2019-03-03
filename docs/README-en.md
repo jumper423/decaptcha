@@ -63,6 +63,7 @@ Recognition captchas for all popular services
 + [Captcha24](../docs/Captcha24-en.md)
 + [Pixodrom](../docs/Pixodrom-en.md)
 + [R.I.P. Captcha ](../docs/Ripcaptcha-en.md)
++ [SociaLink](../docs/Socialink-en.md)
 
 
 Installation

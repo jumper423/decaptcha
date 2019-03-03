@@ -63,6 +63,7 @@ DeCaptcha
 + [Captcha24](../docs/Captcha24-ru.md)
 + [Pixodrom](../docs/Pixodrom-ru.md)
 + [R.I.P. Captcha ](../docs/Ripcaptcha-ru.md)
++ [SociaLink](../docs/Socialink-ru.md)
 
 
 Установка

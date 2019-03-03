@@ -23,6 +23,7 @@ foreach (['ru', 'en'] as $lang) {
                  new \jumper423\decaptcha\services\Captcha24([]),
                  new \jumper423\decaptcha\services\Pixodrom([]),
                  new \jumper423\decaptcha\services\Ripcaptcha([]),
+                 new \jumper423\decaptcha\services\Socialink([]),
              ] as $class) {
         $mainWiki->addClass($class);
         $class->getWiki($lang)->save();

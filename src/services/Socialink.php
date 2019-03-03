@@ -41,5 +41,20 @@ class Socialink extends RuCaptcha
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_SOFT_ID][static::PARAM_SLUG_DEFAULT] = 0;
 
         $this->wiki->setText(['menu', 'from_service'], null);
+
+        $this->wiki->setText(['service', 'name'], 'SociaLink');
+        $this->wiki->setText(['service', 'href'], 'http://www.socialink.ru/?key=84333');
+        $this->wiki->setText(['service', 'desc'], [
+            'ru' => 'Распознавание капч, капчи на русском языке, в любое время суток, начисление заработка в онлайне',
+            'en' => 'Recognition of captcha, captcha in Russian, at any time of the day, the accrual of earnings online',
+        ]);
+        $this->wiki->setText(['recognize', 'price'], [
+            'ru' => 'От 18 до 44 руб. за 1000 капч в зависимости от нагрузки',
+            'en' => 'Starting from 0.5 USD for 1000 solved CAPTCHAs',
+        ]);
+        $this->wiki->setText(['recognize', 'desc'], [
+            'ru' => 'Расшифровка капч с картики. Необходимо указать файл с картинкой или ссылку на него.',
+            'en' => 'Decrypt the captcha with image. You must specify a file with a picture or a link to it.',
+        ]);
     }
 }
