@@ -35,6 +35,7 @@ class RuCaptcha extends DeCaptchaBase
         self::ACTION_FIELD_INSTRUCTIONS => 'textinstructions',
         self::ACTION_FIELD_PINGBACK     => 'pingback',
         self::ACTION_FIELD_CALC         => 'calc',
+        self::ACTION_FIELD_LANG         => 'lang',
     ];
 
     public function init()
@@ -102,6 +103,9 @@ class RuCaptcha extends DeCaptchaBase
                         1,
                         2,
                     ],
+                ],
+                static::ACTION_FIELD_LANG => [
+                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
                 ],
                 static::ACTION_FIELD_QUESTION => [
                     static::PARAM_SLUG_DEFAULT => 0,

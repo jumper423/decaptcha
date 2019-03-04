@@ -115,6 +115,7 @@ A description of the fields
  Length min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | The minimum length of captcha |
  Length max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | The maximum length of the captcha |
  Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - parameter not used; 1 - the captcha only Cyrillic letters; 2 - displayed in a CAPTCHA latin characters only | The symbols of the language posted on the captcha |
+ Language code | ACTION_FIELD_LANG | STRING | - |  |  | See the list of supported languages. https://2captcha.com/api-rucaptcha#language |
  Question | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - parameter not used; 1 - the employee must write the answer | The image asked, the employee must write the answer |
  Calculation | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - parameter not used; 1 - the worker needs to perform a mathematical operation with captcha | The captcha shows matematicheskaya expression and must be addressed |
  Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - the default value; 1 - in.php will transfer Access-Control-Allow-Origin: * parameter in response header | Need for cross-domain AJAX requests in browser-based applications. |

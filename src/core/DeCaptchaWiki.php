@@ -45,6 +45,14 @@ class DeCaptchaWiki
                 'ru' => 'На каком языке текст на капче',
                 'en' => 'What language the text on the captcha',
             ],
+            'field_main_name_'.$class::ACTION_FIELD_LANG => [
+                'ru' => 'Код языка',
+                'en' => 'Language code',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_LANG => [
+                'ru' => 'См. список поддерживаемых языков. https://rucaptcha.com/api-rucaptcha#language',
+                'en' => 'See the list of supported languages. https://2captcha.com/api-rucaptcha#language',
+            ],
             'field_main_name_'.$class::ACTION_FIELD_FILE => [
                 'ru' => 'Картинка',
                 'en' => 'Picture',

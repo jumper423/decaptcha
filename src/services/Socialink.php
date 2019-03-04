@@ -16,9 +16,11 @@ class Socialink extends RuCaptcha
             $this->paramsNames[static::ACTION_FIELD_QUESTION],
             $this->paramsNames[static::ACTION_FIELD_INSTRUCTIONS],
             $this->paramsNames[static::ACTION_FIELD_PINGBACK],
+            $this->paramsNames[static::ACTION_FIELD_LANG],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_QUESTION],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_INSTRUCTIONS],
-            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PINGBACK]
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PINGBACK],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LANG]
         );
         $this->paramsNames[static::ACTION_FIELD_IS_RUSSIAN] = 'is_russian';
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_IS_RUSSIAN] = [

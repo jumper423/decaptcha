@@ -120,7 +120,7 @@ A description of the fields
  Response to | ACTION_FIELD_PINGBACK | STRING | - |  |  | Note to server, after recognizing the image, you need to send a reply to the specified address. |
  Parameter data-pkey | ACTION_FIELD_PUBLICKEY | STRING | + |  |  | Find a div with FunCaptcha and look at the value of the data-pkey parameter, or find an element with the name (name) fc-token, and cut the key from its value after the pk |
  Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
- Истользовать JS | ACTION_FIELD_NOJS | INTEGER | - | 0 |  | Tells us to solve FunCaptcha with javascript turned off. It can be used in case the normal method for some reason does not work. Important: keep in mind that in this case we will return only part of the token. The above is what to do in this case. |
+ Истользовать JS | ACTION_FIELD_NOJS | INTEGER | - | 0 | 0 - use javascript; 1 - do not use javascript | Tells us to solve FunCaptcha with javascript turned off. It can be used in case the normal method for some reason does not work. Important: keep in mind that in this case we will return only part of the token. The above is what to do in this case. |
  User-Agent browser | ACTION_FIELD_USERAGENT | STRING | - |  |  | User-Agent browser used in emulation. You must use the signature modern browser, otherwise Google will return an error requiring you to upgrade your browser. |
  The proxy address | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP address of the proxy ipv4/ipv6. |
  The proxy type | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | The proxy type (http, socks4, ...) |

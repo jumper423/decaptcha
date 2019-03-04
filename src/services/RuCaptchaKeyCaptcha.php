@@ -19,6 +19,7 @@ class RuCaptchaKeyCaptcha extends RuCaptcha
             $this->paramsNames[static::ACTION_FIELD_MIN_LEN],
             $this->paramsNames[static::ACTION_FIELD_MAX_LEN],
             $this->paramsNames[static::ACTION_FIELD_LANGUAGE],
+            $this->paramsNames[static::ACTION_FIELD_LANG],
             $this->paramsNames[static::ACTION_FIELD_QUESTION],
             $this->paramsNames[static::ACTION_FIELD_INSTRUCTIONS],
             $this->paramsNames[static::ACTION_FIELD_CALC],
@@ -29,6 +30,7 @@ class RuCaptchaKeyCaptcha extends RuCaptcha
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_MIN_LEN],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_MAX_LEN],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LANGUAGE],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LANG],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_QUESTION],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_INSTRUCTIONS],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_CALC]

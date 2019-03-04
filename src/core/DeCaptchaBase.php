@@ -52,6 +52,7 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_FIELD_SSC_WEB_SERVER_SIGN2 = 36;
     const ACTION_FIELD_NOJS = 37;
     const ACTION_FIELD_PUBLICKEY = 38;
+    const ACTION_FIELD_LANG = 39;
 
     const RESPONSE_RECOGNIZE_OK = 'OK';
     const RESPONSE_RECOGNIZE_REPEAT = 'ERROR_NO_SLOT_AVAILABLE';

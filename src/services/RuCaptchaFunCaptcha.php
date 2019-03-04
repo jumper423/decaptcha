@@ -19,6 +19,7 @@ class RuCaptchaFunCaptcha extends RuCaptcha
             $this->paramsNames[static::ACTION_FIELD_MIN_LEN],
             $this->paramsNames[static::ACTION_FIELD_MAX_LEN],
             $this->paramsNames[static::ACTION_FIELD_LANGUAGE],
+            $this->paramsNames[static::ACTION_FIELD_LANG],
             $this->paramsNames[static::ACTION_FIELD_QUESTION],
             $this->paramsNames[static::ACTION_FIELD_INSTRUCTIONS],
             $this->paramsNames[static::ACTION_FIELD_CALC],
@@ -29,6 +30,7 @@ class RuCaptchaFunCaptcha extends RuCaptcha
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_MIN_LEN],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_MAX_LEN],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LANGUAGE],
+            $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_LANG],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_QUESTION],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_INSTRUCTIONS],
             $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_CALC]
@@ -89,6 +91,16 @@ class RuCaptchaFunCaptcha extends RuCaptcha
 3) Find the element with the id fc-token and change its value to the resulting CODE.
 
 Important: if you use the nojs = 1 parameter, the API will return only a part of the token in this form: 3084f4a302b176cd7.96368058 | r = ap-southeast-1 and you need to collect the entire token entirely by yourself, using the original fc-token value.',
+        ]);
+        $this->wiki->setText(['field', 'slug', static::PARAM_SLUG_ENUM, static::ACTION_FIELD_NOJS], [
+            'ru' => [
+                '0 - использовать JavaScript',
+                '1 - не использовать JavaScript',
+            ],
+            'en' => [
+                '0 - use javascript',
+                '1 - do not use javascript',
+            ],
         ]);
         $this->wiki->setText(['recognize', 'data'], [
             static::ACTION_FIELD_PAGEURL   => 'http://mysite.com/page/with/funcaptcha/',
