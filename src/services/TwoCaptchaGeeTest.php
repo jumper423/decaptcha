@@ -3,7 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class TwoCaptchaGeeTest
+ * Class TwoCaptchaGeeTest.
  */
 class TwoCaptchaGeeTest extends RuCaptchaGeeTest
 {

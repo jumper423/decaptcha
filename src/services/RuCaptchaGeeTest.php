@@ -5,7 +5,7 @@ namespace jumper423\decaptcha\services;
 use jumper423\decaptcha\core\DeCaptchaErrors;
 
 /**
- * Class RuCaptchaGeeTest
+ * Class RuCaptchaGeeTest.
  */
 class RuCaptchaGeeTest extends RuCaptcha
 {
@@ -148,6 +148,7 @@ geetest_seccode',
                 }
             }
         }
+
         return $values;
     }
 }
