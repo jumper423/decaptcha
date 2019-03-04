@@ -19,6 +19,7 @@ RuCaptcha ReCaptcha v3
   + [RuCaptcha Сетка (ReCaptcha v2)](../docs/RuCaptchaGrid-ru.md)
   + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-ru.md)
   + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
+  + [RuCaptcha GeeTest](../docs/RuCaptchaGeeTest-ru.md)
 
 
 Ссылка

@@ -253,6 +253,30 @@ class DeCaptchaWiki
                 'ru' => 'Требуемое значение рейтинга (score). На текущий момент сложно получить токен со score выше 0.3',
                 'en' => 'Required rating value (score). Currently it is difficult to get a token with a score above 0.3',
             ],
+            'field_main_name_'.$class::ACTION_FIELD_GT => [
+                'ru' => 'Параметр gt',
+                'en' => 'gt parameter',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_GT => [
+                'ru' => 'Значение параметра gt найденное на сайте',
+                'en' => 'The value of the api_server parameter found on the site',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_CHALLENGE => [
+                'ru' => 'Параметр challenge',
+                'en' => 'challenge parameter',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_CHALLENGE => [
+                'ru' => 'Значение параметра challenge найденное на сайте',
+                'en' => 'The value of the api_server parameter found on the site',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_API_SERVER => [
+                'ru' => 'Параметр api_server',
+                'en' => 'api_server parameter',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_API_SERVER => [
+                'ru' => 'Значение параметра api_server найденное на сайте',
+                'en' => 'The value of the api_server parameter found on the site',
+            ],
             'field_main_name_'.$class::ACTION_FIELD_PROXYTYPE => [
                 'ru' => 'Тип прокси',
                 'en' => 'The proxy type',

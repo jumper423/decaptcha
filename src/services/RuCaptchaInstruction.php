@@ -32,6 +32,7 @@ class RuCaptchaInstruction extends RuCaptcha
             RuCaptchaKeyCaptcha::class,
             RuCaptchaFunCaptcha::class,
             RuCaptchaReCaptchaV3::class,
+            RuCaptchaGeeTest::class,
         ]);
     }
 }

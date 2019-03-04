@@ -115,6 +115,7 @@ Important: if you use the nojs = 1 parameter, the API will return only a part of
             RuCaptchaReCaptcha::class,
             RuCaptchaFunCaptcha::class,
             RuCaptchaReCaptchaV3::class,
+            RuCaptchaGeeTest::class,
         ]);
     }
 

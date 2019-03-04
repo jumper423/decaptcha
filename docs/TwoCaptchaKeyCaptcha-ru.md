@@ -19,6 +19,7 @@
   + [2Captcha Сетка (ReCaptcha v2)](../docs/TwoCaptchaGrid-ru.md)
   + [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-ru.md)
   + [2Captcha ReCaptcha v3](../docs/TwoCaptchaReCaptchaV3-ru.md)
+  + [2Captcha GeeTest](../docs/TwoCaptchaGeeTest-ru.md)
 
 
 Ссылка

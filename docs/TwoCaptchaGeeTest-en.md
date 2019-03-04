@@ -1,9 +1,9 @@
-RuCaptcha Grid (ReCaptcha v2)
+2Captcha GeeTest
 ==============
 Menu
 --------------
 + [Main](../docs/README-en.md)
-+ [Документация на русском языке](../docs/RuCaptchaGrid-ru.md)
++ [Документация на русском языке](../docs/TwoCaptchaGeeTest-ru.md)
 + Anchor
   + [Link](#link)
   + [The description of the service](#the-description-of-the-service)
@@ -13,19 +13,19 @@ Menu
   + [Examples](#examples)
   + [A description of the fields](#a-description-of-the-fields)
 + Other functionality from the service
-  + [RuCaptcha](../docs/RuCaptcha-en.md)
-  + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
-  + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
-  + [RuCaptcha ReCaptcha v2 without a browser](../docs/RuCaptchaReCaptcha-en.md)
-  + [RuCaptcha KeyCaptcha](../docs/RuCaptchaKeyCaptcha-en.md)
-  + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-en.md)
-  + [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-en.md)
-  + [RuCaptcha GeeTest](../docs/RuCaptchaGeeTest-en.md)
+  + [2Captcha](../docs/TwoCaptcha-en.md)
+  + [2Captcha Manual](../docs/TwoCaptchaInstruction-en.md)
+  + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-en.md)
+  + [2Captcha Grid (ReCaptcha v2)](../docs/TwoCaptchaGrid-en.md)
+  + [2Captcha KeyCaptcha](../docs/TwoCaptchaKeyCaptcha-en.md)
+  + [2Captcha FunCaptcha](../docs/TwoCaptchaFunCaptcha-en.md)
+  + [2Captcha ReCaptcha v2 without a browser](../docs/TwoCaptchaReCaptcha-en.md)
+  + [2Captcha ReCaptcha v3](../docs/TwoCaptchaReCaptchaV3-en.md)
 
 
 Link
 --------------
-[The link to the service RuCaptcha Grid (ReCaptcha v2)](http://infoblog1.ru/goto/rucaptcha)
+[The link to the service 2Captcha GeeTest](http://infoblog1.ru/goto/2captcha)
 
 The description of the service
 --------------
@@ -37,15 +37,23 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
 
 Prices
 --------------
-It costs $1,2 to recognize 1000 CAPTCHAs this way.
+1000 for $0,7
 
 Description recognition
 --------------
-To solve reCAPTCHA, where you need to choose specific squares. The answer will come number of pictures, which you should click.
-            
-Note that not only are reCAPTCHA 3 by 3 square but there are also 4 by 4 square. To understand what kind of image you shlёte, we look at the size of the image px. If she 300x300px, then we put on this picture 3x3 grid. If the size of the other - impose a 4x4 grid. Therefore, it is not necessary to glue the picture with something.
+1) Find the following parameters on the site page with captcha (they can usually be found inside the initGeetest function):
 
-Please note that you need to send the picture itself reCAPTCHA, instead of doing it the screenshot.
+gt - site public key (static)
+challenge - dynamic task key
+api_server - API domain (required for some sites)
+
+2) Submit a request
+
+3) Use the values received in the response in the request to the site, passing them in the corresponding request fields:
+
+geetest_challenge
+geetest_validate
+geetest_seccode
 
 Installation
 --------------
@@ -67,17 +75,20 @@ Examples
 __Initialization__
 Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```
-use jumper423\decaptcha\services\RuCaptchaGrid;
+use jumper423\decaptcha\services\TwoCaptchaGeeTest;
 
-$captcha = new RuCaptchaGrid([
-    RuCaptchaGrid::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
+$captcha = new TwoCaptchaGeeTest([
+    TwoCaptchaGeeTest::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
 ]);
 ```
 __Recognition__
 In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
-if ($captcha->recognize('http://site.com/captcha.jpg', [
-       RuCaptchaGrid::ACTION_FIELD_INSTRUCTIONS => 'Where's the cat?',
+if ($captcha->recognize([
+       TwoCaptchaGeeTest::ACTION_FIELD_PAGEURL => 'http://mysite.com/page/with/gettest/',
+       TwoCaptchaGeeTest::ACTION_FIELD_GT => 'f1ab2cdefa3456789012345b6c78d90e',
+       TwoCaptchaGeeTest::ACTION_FIELD_CHALLENGE => '12345678abc90123d45678ef90123a456b',
+       TwoCaptchaGeeTest::ACTION_FIELD_API_SERVER => 'api-na.geetest.com',
     ])) {
     $code = $captcha->getCode();
 } else {
@@ -99,8 +110,11 @@ If you wish, You can catch the error, but you need to call setCauseAnError
 $captcha->setCauseAnError(true);
 
 try {
-    $captcha->recognize('http://site.com/captcha.jpg', [
-       RuCaptchaGrid::ACTION_FIELD_INSTRUCTIONS => 'Where's the cat?',
+    $captcha->recognize([
+       TwoCaptchaGeeTest::ACTION_FIELD_PAGEURL => 'http://mysite.com/page/with/gettest/',
+       TwoCaptchaGeeTest::ACTION_FIELD_GT => 'f1ab2cdefa3456789012345b6c78d90e',
+       TwoCaptchaGeeTest::ACTION_FIELD_CHALLENGE => '12345678abc90123d45678ef90123a456b',
+       TwoCaptchaGeeTest::ACTION_FIELD_API_SERVER => 'api-na.geetest.com',
     ]);
     $code = $captcha->getCode();
 } catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {
@@ -114,8 +128,10 @@ A description of the fields
  Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
- Picture | ACTION_FIELD_FILE | MIX | + |  |  | The path to the picture file or link to it |
- Question | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - parameter not used; 1 - the employee must write the answer | The image asked, the employee must write the answer |
  Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - the default value; 1 - in.php will transfer Access-Control-Allow-Origin: * parameter in response header | Need for cross-domain AJAX requests in browser-based applications. |
- Manual | ACTION_FIELD_INSTRUCTIONS | STRING | + |  |  | Text captcha or manual to pass the captcha. |
+ Response to | ACTION_FIELD_PINGBACK | STRING | - |  |  | Note to server, after recognizing the image, you need to send a reply to the specified address. |
+ Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
+ gt parameter | ACTION_FIELD_GT | STRING | + |  |  | The value of the api_server parameter found on the site |
+ challenge parameter | ACTION_FIELD_CHALLENGE | STRING | + |  |  | The value of the api_server parameter found on the site |
+ api_server parameter | ACTION_FIELD_API_SERVER | STRING | + |  |  | The value of the api_server parameter found on the site |
 

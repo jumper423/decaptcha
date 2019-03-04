@@ -20,6 +20,7 @@ Menu
   + [2Captcha KeyCaptcha](../docs/TwoCaptchaKeyCaptcha-en.md)
   + [2Captcha FunCaptcha](../docs/TwoCaptchaFunCaptcha-en.md)
   + [2Captcha ReCaptcha v3](../docs/TwoCaptchaReCaptchaV3-en.md)
+  + [2Captcha GeeTest](../docs/TwoCaptchaGeeTest-en.md)
 
 
 Link

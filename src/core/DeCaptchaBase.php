@@ -55,6 +55,9 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_FIELD_LANG = 39;
     const ACTION_FIELD_VERSION = 40;
     const ACTION_FIELD_MIN_SCORE = 41;
+    const ACTION_FIELD_GT = 42;
+    const ACTION_FIELD_CHALLENGE = 43;
+    const ACTION_FIELD_API_SERVER = 44;
 
     const RESPONSE_RECOGNIZE_OK = 'OK';
     const RESPONSE_RECOGNIZE_REPEAT = 'ERROR_NO_SLOT_AVAILABLE';

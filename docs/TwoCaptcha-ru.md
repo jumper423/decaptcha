@@ -20,6 +20,7 @@
   + [2Captcha KeyCaptcha](../docs/TwoCaptchaKeyCaptcha-ru.md)
   + [2Captcha FunCaptcha](../docs/TwoCaptchaFunCaptcha-ru.md)
   + [2Captcha ReCaptcha v3](../docs/TwoCaptchaReCaptchaV3-ru.md)
+  + [2Captcha GeeTest](../docs/TwoCaptchaGeeTest-ru.md)
 
 
 Ссылка

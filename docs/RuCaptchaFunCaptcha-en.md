@@ -20,6 +20,7 @@ Menu
   + [RuCaptcha ReCaptcha v2 without a browser](../docs/RuCaptchaReCaptcha-en.md)
   + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-en.md)
   + [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-en.md)
+  + [RuCaptcha GeeTest](../docs/RuCaptchaGeeTest-en.md)
 
 
 Link

@@ -20,6 +20,7 @@ Menu
   + [2Captcha ReCaptcha v2 without a browser](../docs/TwoCaptchaReCaptcha-en.md)
   + [2Captcha FunCaptcha](../docs/TwoCaptchaFunCaptcha-en.md)
   + [2Captcha ReCaptcha v3](../docs/TwoCaptchaReCaptchaV3-en.md)
+  + [2Captcha GeeTest](../docs/TwoCaptchaGeeTest-en.md)
 
 
 Link

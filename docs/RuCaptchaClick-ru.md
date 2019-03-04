@@ -20,6 +20,7 @@ RuCaptcha ClickCaptcha
   + [RuCaptcha KeyCaptcha](../docs/RuCaptchaKeyCaptcha-ru.md)
   + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-ru.md)
   + [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-ru.md)
+  + [RuCaptcha GeeTest](../docs/RuCaptchaGeeTest-ru.md)
 
 
 Ссылка

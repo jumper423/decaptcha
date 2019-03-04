@@ -332,6 +332,7 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
             RuCaptchaKeyCaptcha::class,
             RuCaptchaFunCaptcha::class,
             RuCaptchaReCaptchaV3::class,
+            RuCaptchaGeeTest::class,
         ]);
     }
 

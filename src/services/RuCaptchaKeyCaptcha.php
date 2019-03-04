@@ -174,6 +174,7 @@ In this case, you need to thoroughly understand the code of the page and the scr
             RuCaptchaReCaptcha::class,
             RuCaptchaFunCaptcha::class,
             RuCaptchaReCaptchaV3::class,
+            RuCaptchaGeeTest::class,
         ]);
     }
 

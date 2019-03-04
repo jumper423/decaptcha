@@ -38,6 +38,8 @@ class RuCaptchaReCaptchaV3 extends RuCaptcha
         $this->paramsNames[static::ACTION_FIELD_PROXY] = 'proxy';
         $this->paramsNames[static::ACTION_FIELD_PROXYTYPE] = 'proxytype';
         $this->paramsNames[static::ACTION_FIELD_PAGEURL] = 'pageurl';
+        $this->paramsNames[static::ACTION_FIELD_ACTION] = 'action';
+        $this->paramsNames[static::ACTION_FIELD_MIN_SCORE] = 'min_score';
 
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_METHOD][static::PARAM_SLUG_DEFAULT] = 'userrecaptcha';
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_VERSION] = [
@@ -169,6 +171,7 @@ $captcha->true();
             RuCaptchaGrid::class,
             RuCaptchaFunCaptcha::class,
             RuCaptchaReCaptcha::class,
+            RuCaptchaGeeTest::class,
         ]);
     }
 

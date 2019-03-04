@@ -108,6 +108,7 @@ Here you will need to insert a reply from us.',
             RuCaptchaGrid::class,
             RuCaptchaFunCaptcha::class,
             RuCaptchaReCaptchaV3::class,
+            RuCaptchaGeeTest::class,
         ]);
     }
 
