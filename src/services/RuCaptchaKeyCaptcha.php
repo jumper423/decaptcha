@@ -61,6 +61,12 @@ class RuCaptchaKeyCaptcha extends RuCaptcha
             static::PARAM_SLUG_REQUIRE => true,
             static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PROXY] = [
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+        ];
+        $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PROXYTYPE] = [
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
+        ];
 
         $this->wiki->setText(['service', 'name'], [
             'ru' => 'RuCaptcha KeyCaptcha',

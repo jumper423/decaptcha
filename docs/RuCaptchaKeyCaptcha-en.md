@@ -161,4 +161,6 @@ A description of the fields
  Parameter s_s_c_web_server_sign | ACTION_FIELD_SSC_WEB_SERVER_SIGN | STRING | + |  |  | The value of the s_s_c_web_server_sign parameter found on the page |
  Parameter s_s_c_web_server_sign2 | ACTION_FIELD_SSC_WEB_SERVER_SIGN2 | STRING | + |  |  | The value of the s_s_c_web_server_sign2 parameter found on the page |
  Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
+ The proxy address | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP address of the proxy ipv4/ipv6. |
+ The proxy type | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | The proxy type (http, socks4, ...) |
 

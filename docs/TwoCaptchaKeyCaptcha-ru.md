@@ -165,4 +165,6 @@ try {
  Параметра s_s_c_web_server_sign | ACTION_FIELD_SSC_WEB_SERVER_SIGN | STRING | + |  |  | Значение параметра s_s_c_web_server_sign, найденное на странице |
  Параметра s_s_c_web_server_sign2 | ACTION_FIELD_SSC_WEB_SERVER_SIGN2 | STRING | + |  |  | Значение параметра s_s_c_web_server_sign2, найденное на странице |
  Адрес | ACTION_FIELD_PAGEURL | STRING | + |  |  | Адрес страницы на которой решается капча. |
+ Адрес прокси | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP адрес прокси ipv4/ipv6. |
+ Тип прокси | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | Тип прокси (http, socks4, ...) |
 
