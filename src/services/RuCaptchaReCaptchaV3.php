@@ -3,7 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class RuCaptchaReCaptchaV3
+ * Class RuCaptchaReCaptchaV3.
  */
 class RuCaptchaReCaptchaV3 extends RuCaptcha
 {
