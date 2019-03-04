@@ -47,6 +47,7 @@ Recognition captchas for all popular services
 
 + [RuCaptcha](../master/docs/RuCaptcha-en.md)
 + [RuCaptcha ReCaptcha v2 without a browser](../master/docs/RuCaptchaReCaptcha-en.md)
++ [RuCaptcha ReCaptcha v3](../master/docs/RuCaptchaReCaptchaV3-en.md)
 + [RuCaptcha Manual](../master/docs/RuCaptchaInstruction-en.md)
 + [RuCaptcha Grid (ReCaptcha v2)](../master/docs/RuCaptchaGrid-en.md)
 + [RuCaptcha ClickCaptcha](../master/docs/RuCaptchaClick-en.md)
@@ -54,6 +55,7 @@ Recognition captchas for all popular services
 + [RuCaptcha FunCaptcha](../master/docs/RuCaptchaFunCaptcha-en.md)
 + [2Captcha](../master/docs/TwoCaptcha-en.md)
 + [2Captcha ReCaptcha v2 without a browser](../master/docs/TwoCaptchaReCaptcha-en.md)
++ [2Captcha ReCaptcha v3](../master/docs/TwoCaptchaReCaptchaV3-en.md)
 + [2Captcha Manual](../master/docs/TwoCaptchaInstruction-en.md)
 + [2Captcha Grid (ReCaptcha v2)](../master/docs/TwoCaptchaGrid-en.md)
 + [2Captcha ClickCaptcha](../master/docs/TwoCaptchaClick-en.md)

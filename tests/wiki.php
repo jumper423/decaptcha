@@ -7,6 +7,7 @@ foreach (['ru', 'en'] as $lang) {
     foreach ([
                  new \jumper423\decaptcha\services\RuCaptcha([]),
                  new \jumper423\decaptcha\services\RuCaptchaReCaptcha([]),
+                 new \jumper423\decaptcha\services\RuCaptchaReCaptchaV3([]),
                  new \jumper423\decaptcha\services\RuCaptchaInstruction([]),
                  new \jumper423\decaptcha\services\RuCaptchaGrid([]),
                  new \jumper423\decaptcha\services\RuCaptchaClick([]),
@@ -14,6 +15,7 @@ foreach (['ru', 'en'] as $lang) {
                  new \jumper423\decaptcha\services\RuCaptchaFunCaptcha([]),
                  new \jumper423\decaptcha\services\TwoCaptcha([]),
                  new \jumper423\decaptcha\services\TwoCaptchaReCaptcha([]),
+                 new \jumper423\decaptcha\services\TwoCaptchaReCaptchaV3([]),
                  new \jumper423\decaptcha\services\TwoCaptchaInstruction([]),
                  new \jumper423\decaptcha\services\TwoCaptchaGrid([]),
                  new \jumper423\decaptcha\services\TwoCaptchaClick([]),

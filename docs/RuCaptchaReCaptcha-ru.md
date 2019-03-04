@@ -18,6 +18,7 @@ RuCaptcha ReCaptcha v2 без браузера
   + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
   + [RuCaptcha Сетка (ReCaptcha v2)](../docs/RuCaptchaGrid-ru.md)
   + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-ru.md)
+  + [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-ru.md)
 
 
 Ссылка

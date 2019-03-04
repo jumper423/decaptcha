@@ -70,6 +70,7 @@ Please note that you need to send the picture itself reCAPTCHA, instead of doing
             RuCaptchaReCaptcha::class,
             RuCaptchaKeyCaptcha::class,
             RuCaptchaFunCaptcha::class,
+            RuCaptchaReCaptchaV3::class,
         ]);
     }
 

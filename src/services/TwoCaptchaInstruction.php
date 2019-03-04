@@ -25,6 +25,7 @@ class TwoCaptchaInstruction extends RuCaptchaInstruction
             TwoCaptchaReCaptcha::class,
             TwoCaptchaKeyCaptcha::class,
             TwoCaptchaFunCaptcha::class,
+            TwoCaptchaReCaptchaV3::class,
         ]);
     }
 }

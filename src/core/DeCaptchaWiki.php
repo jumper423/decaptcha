@@ -245,6 +245,14 @@ class DeCaptchaWiki
                 'ru' => 'Говорит нам решать FunCaptcha с выключенным javascript. Может быть использован в случае, если нормальный метод по какой-то причине не срабатывает. Важно: имейте в виду, что в этом случае мы вернём только часть токена. Выше описано, что делать в этом случае.',
                 'en' => 'Tells us to solve FunCaptcha with javascript turned off. It can be used in case the normal method for some reason does not work. Important: keep in mind that in this case we will return only part of the token. The above is what to do in this case.',
             ],
+            'field_main_name_'.$class::ACTION_FIELD_MIN_SCORE => [
+                'ru' => 'Минимальный рейтинг',
+                'en' => 'Min rating',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_MIN_SCORE => [
+                'ru' => 'Требуемое значение рейтинга (score). На текущий момент сложно получить токен со score выше 0.3',
+                'en' => 'Required rating value (score). Currently it is difficult to get a token with a score above 0.3',
+            ],
             'field_main_name_'.$class::ACTION_FIELD_PROXYTYPE => [
                 'ru' => 'Тип прокси',
                 'en' => 'The proxy type',

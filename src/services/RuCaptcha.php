@@ -331,6 +331,7 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
             RuCaptchaReCaptcha::class,
             RuCaptchaKeyCaptcha::class,
             RuCaptchaFunCaptcha::class,
+            RuCaptchaReCaptchaV3::class,
         ]);
     }
 
@@ -352,5 +353,15 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
     public function notTrue()
     {
         return $this->requestUniversal('reportbad')[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_REPORTBAD_OK;
+    }
+
+    /**
+     * Верно распознана.
+     *
+     * @return bool
+     */
+    public function true()
+    {
+        return $this->requestUniversal('reportgood')[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_REPORTBAD_OK;
     }
 }

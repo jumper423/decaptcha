@@ -18,6 +18,7 @@ Menu
   + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
   + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
   + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-en.md)
+  + [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-en.md)
 
 
 Link

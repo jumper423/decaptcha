@@ -47,6 +47,7 @@ DeCaptcha
 
 + [RuCaptcha](../docs/RuCaptcha-ru.md)
 + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
++ [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-ru.md)
 + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
 + [RuCaptcha Сетка (ReCaptcha v2)](../docs/RuCaptchaGrid-ru.md)
 + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-ru.md)
@@ -54,6 +55,7 @@ DeCaptcha
 + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-ru.md)
 + [2Captcha](../docs/TwoCaptcha-ru.md)
 + [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-ru.md)
++ [2Captcha ReCaptcha v3](../docs/TwoCaptchaReCaptchaV3-ru.md)
 + [2Captcha Инструкция](../docs/TwoCaptchaInstruction-ru.md)
 + [2Captcha Сетка (ReCaptcha v2)](../docs/TwoCaptchaGrid-ru.md)
 + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-ru.md)

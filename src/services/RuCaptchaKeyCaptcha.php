@@ -173,6 +173,7 @@ In this case, you need to thoroughly understand the code of the page and the scr
             RuCaptchaGrid::class,
             RuCaptchaReCaptcha::class,
             RuCaptchaFunCaptcha::class,
+            RuCaptchaReCaptchaV3::class,
         ]);
     }
 
