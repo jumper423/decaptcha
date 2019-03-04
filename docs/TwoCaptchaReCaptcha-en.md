@@ -18,6 +18,7 @@ Menu
   + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-en.md)
   + [2Captcha Grid (ReCaptcha v2)](../docs/TwoCaptchaGrid-en.md)
   + [2Captcha KeyCaptcha](../docs/TwoCaptchaKeyCaptcha-en.md)
+  + [2Captcha FunCaptcha](../docs/TwoCaptchaFunCaptcha-en.md)
 
 
 Link

@@ -18,6 +18,7 @@ RuCaptcha KeyCaptcha
   + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
   + [RuCaptcha Сетка (ReCaptcha v2)](../docs/RuCaptchaGrid-ru.md)
   + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
+  + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-ru.md)
 
 
 Ссылка

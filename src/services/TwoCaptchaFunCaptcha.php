@@ -3,9 +3,9 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class TwoCaptchaReCaptcha.
+ * Class TwoCaptchaFunCaptcha
  */
-class TwoCaptchaReCaptcha extends RuCaptchaReCaptcha
+class TwoCaptchaFunCaptcha extends RuCaptchaFunCaptcha
 {
     protected $host = '2captcha.com';
 
@@ -14,8 +14,8 @@ class TwoCaptchaReCaptcha extends RuCaptchaReCaptcha
         parent::init();
 
         $this->wiki->setText(['service', 'name'], [
-            'ru' => '2Captcha ReCaptcha v2 без браузера',
-            'en' => '2Captcha ReCaptcha v2 without a browser',
+            'ru' => '2Captcha FunCaptcha',
+            'en' => '2Captcha FunCaptcha',
         ]);
         $this->wiki->setText(['service', 'href'], 'http://infoblog1.ru/goto/2captcha');
         $this->wiki->setText(['menu', 'from_service'], [
@@ -23,7 +23,7 @@ class TwoCaptchaReCaptcha extends RuCaptchaReCaptcha
             TwoCaptchaInstruction::class,
             TwoCaptchaClick::class,
             TwoCaptchaGrid::class,
-            TwoCaptchaKeyCaptcha::class,
+            TwoCaptchaReCaptcha::class,
             TwoCaptchaFunCaptcha::class,
         ]);
     }

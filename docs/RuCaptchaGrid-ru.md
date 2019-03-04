@@ -18,6 +18,7 @@ RuCaptcha Сетка (ReCaptcha v2)
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-ru.md)
   + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
   + [RuCaptcha KeyCaptcha](../docs/RuCaptchaKeyCaptcha-ru.md)
+  + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-ru.md)
 
 
 Ссылка

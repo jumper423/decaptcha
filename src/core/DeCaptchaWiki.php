@@ -221,6 +221,22 @@ class DeCaptchaWiki
                 'ru' => 'Значение параметра s_s_c_web_server_sign2, найденное на странице',
                 'en' => 'The value of the s_s_c_web_server_sign2 parameter found on the page',
             ],
+            'field_main_name_'.$class::ACTION_FIELD_PUBLICKEY => [
+                'ru' => 'Параметра data-pkey',
+                'en' => 'Parameter data-pkey',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_PUBLICKEY => [
+                'ru' => 'Найти div с FunCaptcha и посмотреть на значение параметра data-pkey или же найти элемент с именем (name) fc-token, а из его значения вырезать ключ, который указан после pk',
+                'en' => 'Find a div with FunCaptcha and look at the value of the data-pkey parameter, or find an element with the name (name) fc-token, and cut the key from its value after the pk',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_NOJS => [
+                'ru' => 'Истользовать JS',
+                'en' => 'Истользовать JS',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_NOJS => [
+                'ru' => 'Говорит нам решать FunCaptcha с выключенным javascript. Может быть использован в случае, если нормальный метод по какой-то причине не срабатывает. Важно: имейте в виду, что в этом случае мы вернём только часть токена. Выше описано, что делать в этом случае.',
+                'en' => 'Tells us to solve FunCaptcha with javascript turned off. It can be used in case the normal method for some reason does not work. Important: keep in mind that in this case we will return only part of the token. The above is what to do in this case.',
+            ],
             'field_main_name_'.$class::ACTION_FIELD_PROXYTYPE => [
                 'ru' => 'Тип прокси',
                 'en' => 'The proxy type',

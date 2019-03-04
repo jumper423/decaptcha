@@ -1,9 +1,9 @@
-2Captcha ClickCaptcha
+2Captcha FunCaptcha
 ==============
 Menu
 --------------
 + [Main](../docs/README-en.md)
-+ [Документация на русском языке](../docs/TwoCaptchaClick-ru.md)
++ [Документация на русском языке](../docs/TwoCaptchaFunCaptcha-ru.md)
 + Anchor
   + [Link](#link)
   + [The description of the service](#the-description-of-the-service)
@@ -15,15 +15,15 @@ Menu
 + Other functionality from the service
   + [2Captcha](../docs/TwoCaptcha-en.md)
   + [2Captcha Manual](../docs/TwoCaptchaInstruction-en.md)
+  + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-en.md)
   + [2Captcha Grid (ReCaptcha v2)](../docs/TwoCaptchaGrid-en.md)
   + [2Captcha ReCaptcha v2 without a browser](../docs/TwoCaptchaReCaptcha-en.md)
-  + [2Captcha KeyCaptcha](../docs/TwoCaptchaKeyCaptcha-en.md)
   + [2Captcha FunCaptcha](../docs/TwoCaptchaFunCaptcha-en.md)
 
 
 Link
 --------------
-[The link to the service 2Captcha ClickCaptcha](http://infoblog1.ru/goto/2captcha)
+[The link to the service 2Captcha FunCaptcha](http://infoblog1.ru/goto/2captcha)
 
 The description of the service
 --------------
@@ -35,11 +35,17 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
 
 Prices
 --------------
-It costs $1,2 to recognize 1000 CAPTCHAs this way.
+1000 for $0,7
 
 Description recognition
 --------------
-Recognizing any ClickCaptcha (including ReCaptcha 2.0). In response comes an array of coordinates from the top left corner.
+1) You need to find the public key FunCaptcha. There are two ways to do this: you can find a div with FunCaptcha and look at the value of the data-pkey parameter, or find an element with the name (name) fc-token, and from its value cut the key that is specified after pk.
+
+2) See these parameters in the method recognize
+
+3) Find the element with the id fc-token and change its value to the resulting CODE.
+
+Important: if you use the nojs = 1 parameter, the API will return only a part of the token in this form: 3084f4a302b176cd7.96368058 | r = ap-southeast-1 and you need to collect the entire token entirely by yourself, using the original fc-token value.
 
 Installation
 --------------
@@ -61,17 +67,18 @@ Examples
 __Initialization__
 Specify the key mandatory and optional parameters. Try the best to fill this promotes more rapid recognition of captcha.
 ```
-use jumper423\decaptcha\services\TwoCaptchaClick;
+use jumper423\decaptcha\services\TwoCaptchaFunCaptcha;
 
-$captcha = new TwoCaptchaClick([
-    TwoCaptchaClick::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
+$captcha = new TwoCaptchaFunCaptcha([
+    TwoCaptchaFunCaptcha::ACTION_FIELD_KEY => '94f39af4bb295c40546fba5c932e0d32',
 ]);
 ```
 __Recognition__
 In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
-if ($captcha->recognize('http://site.com/captcha.jpg', [
-       TwoCaptchaClick::ACTION_FIELD_INSTRUCTIONS => 'Where's the cat?',
+if ($captcha->recognize([
+       TwoCaptchaFunCaptcha::ACTION_FIELD_PAGEURL => 'http://mysite.com/page/with/funcaptcha/',
+       TwoCaptchaFunCaptcha::ACTION_FIELD_PUBLICKEY => '12AB34CD-56F7-AB8C-9D01-2EF3456789A0',
     ])) {
     $code = $captcha->getCode();
 } else {
@@ -93,8 +100,9 @@ If you wish, You can catch the error, but you need to call setCauseAnError
 $captcha->setCauseAnError(true);
 
 try {
-    $captcha->recognize('http://site.com/captcha.jpg', [
-       TwoCaptchaClick::ACTION_FIELD_INSTRUCTIONS => 'Where's the cat?',
+    $captcha->recognize([
+       TwoCaptchaFunCaptcha::ACTION_FIELD_PAGEURL => 'http://mysite.com/page/with/funcaptcha/',
+       TwoCaptchaFunCaptcha::ACTION_FIELD_PUBLICKEY => '12AB34CD-56F7-AB8C-9D01-2EF3456789A0',
     ]);
     $code = $captcha->getCode();
 } catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {
@@ -108,9 +116,10 @@ A description of the fields
  Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
- Picture | ACTION_FIELD_FILE | MIX | + |  |  | The path to the picture file or link to it |
- Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - parameter not used; 1 - the captcha only Cyrillic letters; 2 - displayed in a CAPTCHA latin characters only | The symbols of the language posted on the captcha |
- Question | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - parameter not used; 1 - the employee must write the answer | The image asked, the employee must write the answer |
  Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - the default value; 1 - in.php will transfer Access-Control-Allow-Origin: * parameter in response header | Need for cross-domain AJAX requests in browser-based applications. |
- Manual | ACTION_FIELD_INSTRUCTIONS | STRING | + |  |  | Text captcha or manual to pass the captcha. |
+ Response to | ACTION_FIELD_PINGBACK | STRING | - |  |  | Note to server, after recognizing the image, you need to send a reply to the specified address. |
+ Parameter data-pkey | ACTION_FIELD_PUBLICKEY | STRING | + |  |  | Find a div with FunCaptcha and look at the value of the data-pkey parameter, or find an element with the name (name) fc-token, and cut the key from its value after the pk |
+ Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
+ Истользовать JS | ACTION_FIELD_NOJS | INTEGER | - | 0 |  | Tells us to solve FunCaptcha with javascript turned off. It can be used in case the normal method for some reason does not work. Important: keep in mind that in this case we will return only part of the token. The above is what to do in this case. |
+ User-Agent browser | ACTION_FIELD_USERAGENT | STRING | - |  |  | User-Agent browser used in emulation. You must use the signature modern browser, otherwise Google will return an error requiring you to upgrade your browser. |
 

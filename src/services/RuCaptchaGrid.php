@@ -65,6 +65,7 @@ Please note that you need to send the picture itself reCAPTCHA, instead of doing
             RuCaptchaClick::class,
             RuCaptchaReCaptcha::class,
             RuCaptchaKeyCaptcha::class,
+            RuCaptchaFunCaptcha::class,
         ]);
     }
 

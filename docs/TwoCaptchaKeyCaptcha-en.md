@@ -34,22 +34,49 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
 
 Prices
 --------------
-1000 for $2,99
+1000 for $0,7
 
 Description recognition
 --------------
-This method allows you to pass the reCAPTCHA without emulation browser and send us pictures, as this method gives 100% passing captcha.
-            
-Where any information to take and where to insert?
-See page HTML-code, where you met the captcha:
+KeyCaptcha is a kind of captcha, for the solution of which you need to assemble a small puzzle.
 
-1. Locate the parameter
-data-sitekey =
-This site key, it is constant and unique for each site (if the site administrator does not change it manually)
+To solve KeyCaptcha using our service, you need:
 
-2.Locate form for text
-```<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; "></textarea>```
-Here you will need to insert a reply from us.
+1) Find the following KeyCaptcha parameters in the page source code:
+
+```
+s_s_c_user_id
+s_s_c_session_id
+s_s_c_web_server_sign
+s_s_c_web_server_sign2
+```
+
+2) See these parameters in the method recognize
+
+3) Find and delete the following block that connects the javascript file:
+
+```
+<script language = "JavaScript" src = "http://backs.keycaptcha.com/swfs/cap.js"> </ script>
+```
+
+Find and delete the div element with id = "div_for_keycaptcha":
+
+```
+<div id = "div_for_keycaptcha" ...> ... </ div>
+```
+
+```
+Attention: sometimes the page content is dynamically generated and you may not find the elements you need or they may differ slightly.
+In this case, you need to thoroughly understand the code of the page and the scripts used on it.
+```
+
+4) Find the element with id = "capcode" and change its value to the response received from our server.
+
+```
+<input name = "capcode" id = "capcode" value = "-> CODE <-" type = "hidden">
+```
+
+5) Submit the form.
 
 Installation
 --------------
@@ -81,8 +108,11 @@ __Recognition__
 In the first parameter, pass the link or path to the picture file in the second parameters of the recognition if necessary, override those which were transferred during the initialization.
 ```
 if ($captcha->recognize([
-       TwoCaptchaKeyCaptcha::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',
-       TwoCaptchaKeyCaptcha::ACTION_FIELD_PAGEURL => 'http://site.com/recaptcha-ex',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_PAGEURL => 'https://www.keycaptcha.com/signup/',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_SSC_USER_ID => '15',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_SSC_SESSION_ID => 'd49b0eb43165997c786bdb62a75aa12c',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN => 'dbf758481b1371aa641364276b5ff0c4-pz-',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => '1117c0251c885edd1ce16dff799e5310',
     ])) {
     $code = $captcha->getCode();
 } else {
@@ -105,8 +135,11 @@ $captcha->setCauseAnError(true);
 
 try {
     $captcha->recognize([
-       TwoCaptchaKeyCaptcha::ACTION_FIELD_GOOGLEKEY => '54as5c6a5s4ca4s56a4sc56a',
-       TwoCaptchaKeyCaptcha::ACTION_FIELD_PAGEURL => 'http://site.com/recaptcha-ex',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_PAGEURL => 'https://www.keycaptcha.com/signup/',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_SSC_USER_ID => '15',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_SSC_SESSION_ID => 'd49b0eb43165997c786bdb62a75aa12c',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN => 'dbf758481b1371aa641364276b5ff0c4-pz-',
+       TwoCaptchaKeyCaptcha::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => '1117c0251c885edd1ce16dff799e5310',
     ]);
     $code = $captcha->getCode();
 } catch (\jumper423\decaptcha\core\DeCaptchaErrors $e) {
@@ -120,12 +153,11 @@ A description of the fields
  Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
- Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - parameter not used; 1 - the captcha only Cyrillic letters; 2 - displayed in a CAPTCHA latin characters only | The symbols of the language posted on the captcha |
  Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - the default value; 1 - in.php will transfer Access-Control-Allow-Origin: * parameter in response header | Need for cross-domain AJAX requests in browser-based applications. |
- Manual | ACTION_FIELD_INSTRUCTIONS | STRING | - |  |  | Text captcha or manual to pass the captcha. |
- Google key | ACTION_FIELD_GOOGLEKEY | STRING | + |  |  | Key-the identifier of the recaptcha on the landing page. <div class="g-recaptcha" data-sitekey="THIS"></div> |
- The proxy address | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP address of the proxy ipv4/ipv6. |
- The proxy type | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | The proxy type (http, socks4, ...) |
+ Response to | ACTION_FIELD_PINGBACK | STRING | - |  |  | Note to server, after recognizing the image, you need to send a reply to the specified address. |
+ Parameter s_s_c_user_id | ACTION_FIELD_SSC_USER_ID | STRING | + |  |  | The value of the s_s_c_user_id parameter found on the page |
+ Parameter s_s_c_session_id | ACTION_FIELD_SSC_SESSION_ID | STRING | + |  |  | The value of the s_s_c_session_id parameter found on the page |
+ Parameter s_s_c_web_server_sign | ACTION_FIELD_SSC_WEB_SERVER_SIGN | STRING | + |  |  | The value of the s_s_c_web_server_sign parameter found on the page |
+ Parameter s_s_c_web_server_sign2 | ACTION_FIELD_SSC_WEB_SERVER_SIGN2 | STRING | + |  |  | The value of the s_s_c_web_server_sign2 parameter found on the page |
  Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
- Invisible ReCaptcha | ACTION_FIELD_INVISIBLE | INTEGER | - | 0 |  | 1 - tells us that the site is invisible ReCaptcha. 0 - regular ReCaptcha. |
 

@@ -164,6 +164,7 @@ In this case, you need to thoroughly understand the code of the page and the scr
             RuCaptchaInstruction::class,
             RuCaptchaGrid::class,
             RuCaptchaReCaptcha::class,
+            RuCaptchaFunCaptcha::class,
         ]);
     }
 

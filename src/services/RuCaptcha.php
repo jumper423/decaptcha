@@ -326,6 +326,7 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
             RuCaptchaGrid::class,
             RuCaptchaReCaptcha::class,
             RuCaptchaKeyCaptcha::class,
+            RuCaptchaFunCaptcha::class,
         ]);
     }
 

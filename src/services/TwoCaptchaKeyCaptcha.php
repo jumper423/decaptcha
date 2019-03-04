@@ -5,7 +5,7 @@ namespace jumper423\decaptcha\services;
 /**
  * Class TwoCaptchaKeyCaptcha.
  */
-class TwoCaptchaKeyCaptcha extends RuCaptchaReCaptcha
+class TwoCaptchaKeyCaptcha extends RuCaptchaKeyCaptcha
 {
     protected $host = '2captcha.com';
 

@@ -18,6 +18,7 @@ Menu
   + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
   + [RuCaptcha ReCaptcha v2 without a browser](../docs/RuCaptchaReCaptcha-en.md)
   + [RuCaptcha KeyCaptcha](../docs/RuCaptchaKeyCaptcha-en.md)
+  + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-en.md)
 
 
 Link

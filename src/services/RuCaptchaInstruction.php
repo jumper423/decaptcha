@@ -30,6 +30,7 @@ class RuCaptchaInstruction extends RuCaptcha
             RuCaptchaGrid::class,
             RuCaptchaReCaptcha::class,
             RuCaptchaKeyCaptcha::class,
+            RuCaptchaFunCaptcha::class,
         ]);
     }
 }
