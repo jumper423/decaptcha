@@ -3,7 +3,7 @@
 namespace jumper423\decaptcha\services;
 
 /**
- * Class RuCaptchaFunCaptcha
+ * Class RuCaptchaFunCaptcha.
  */
 class RuCaptchaFunCaptcha extends RuCaptcha
 {
@@ -42,14 +42,14 @@ class RuCaptchaFunCaptcha extends RuCaptcha
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_METHOD][static::PARAM_SLUG_DEFAULT] = 'funcaptcha';
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PUBLICKEY] = [
             static::PARAM_SLUG_REQUIRE => true,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_PAGEURL] = [
             static::PARAM_SLUG_REQUIRE => true,
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_STRING,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
         ];
         $this->actions[static::ACTION_RECOGNIZE][static::ACTION_FIELDS][static::ACTION_FIELD_NOJS] = [
-            static::PARAM_SLUG_TYPE => static::PARAM_FIELD_TYPE_INTEGER,
+            static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_INTEGER,
             static::PARAM_SLUG_DEFAULT => 0,
             static::PARAM_SLUG_ENUM    => [
                 0,
@@ -91,7 +91,7 @@ class RuCaptchaFunCaptcha extends RuCaptcha
 Important: if you use the nojs = 1 parameter, the API will return only a part of the token in this form: 3084f4a302b176cd7.96368058 | r = ap-southeast-1 and you need to collect the entire token entirely by yourself, using the original fc-token value.',
         ]);
         $this->wiki->setText(['recognize', 'data'], [
-            static::ACTION_FIELD_PAGEURL => 'http://mysite.com/page/with/funcaptcha/',
+            static::ACTION_FIELD_PAGEURL   => 'http://mysite.com/page/with/funcaptcha/',
             static::ACTION_FIELD_PUBLICKEY => '12AB34CD-56F7-AB8C-9D01-2EF3456789A0',
         ]);
         $this->wiki->setText(['recognize', 'file'], false);
