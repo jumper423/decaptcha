@@ -17,6 +17,9 @@ RuCaptcha ReCaptcha v2 без браузера
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-ru.md)
   + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
   + [RuCaptcha Сетка (ReCaptcha v2)](../docs/RuCaptchaGrid-ru.md)
+  + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-ru.md)
+  + [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-ru.md)
+  + [RuCaptcha GeeTest](../docs/RuCaptchaGeeTest-ru.md)
 
 
 Ссылка
@@ -124,11 +127,11 @@ try {
  Название | Код | Тип | Обяз. | По ум. | Возможные значения | Описание 
  --- | --- | --- | --- | --- | --- | --- 
  Ключ | ACTION_FIELD_KEY | STRING | + |  |  | Ключ от учетной записи |
- Язык | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы; 2 - на капче только латинские буквы | Символы какого языка размещенны на капче |
  Кросс-доменный | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Необходимо для кросс-доменных AJAX запросов в браузерных приложениях. |
  Инструкция | ACTION_FIELD_INSTRUCTIONS | STRING | - |  |  | Текстовая капча или инструкция для прохождения капчи. |
  Google key | ACTION_FIELD_GOOGLEKEY | STRING | + |  |  | Ключ-индентификатор рекапчи на целевой странице. <div class="g-recaptcha" data-sitekey="ВОТ_ЭТОТ"></div> |
  Адрес прокси | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP адрес прокси ipv4/ipv6. |
  Тип прокси | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | Тип прокси (http, socks4, ...) |
  Адрес | ACTION_FIELD_PAGEURL | STRING | + |  |  | Адрес страницы на которой решается капча. |
+ Невидимая ReCaptcha | ACTION_FIELD_INVISIBLE | INTEGER | - | 0 |  | 1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha. |
 

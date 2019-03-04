@@ -45,6 +45,19 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_FIELD_COOKIES = 29;
     const ACTION_FIELD_PROXYPORT = 30;
     const ACTION_FIELD_COORDINATE = 31;
+    const ACTION_FIELD_INVISIBLE = 32;
+    const ACTION_FIELD_SSC_USER_ID = 33;
+    const ACTION_FIELD_SSC_SESSION_ID = 34;
+    const ACTION_FIELD_SSC_WEB_SERVER_SIGN = 35;
+    const ACTION_FIELD_SSC_WEB_SERVER_SIGN2 = 36;
+    const ACTION_FIELD_NOJS = 37;
+    const ACTION_FIELD_PUBLICKEY = 38;
+    const ACTION_FIELD_LANG = 39;
+    const ACTION_FIELD_VERSION = 40;
+    const ACTION_FIELD_MIN_SCORE = 41;
+    const ACTION_FIELD_GT = 42;
+    const ACTION_FIELD_CHALLENGE = 43;
+    const ACTION_FIELD_API_SERVER = 44;
 
     const RESPONSE_RECOGNIZE_OK = 'OK';
     const RESPONSE_RECOGNIZE_REPEAT = 'ERROR_NO_SLOT_AVAILABLE';
@@ -178,8 +191,10 @@ class DeCaptchaBase extends DeCaptchaAbstract implements DeCaptchaInterface
             } elseif ($dataRecognize[static::DECODE_PARAM_RESPONSE] === $repeat) {
                 continue;
             }
+
             throw new DeCaptchaErrors($dataRecognize[$error], null, $this->errorLang);
         }
+
         throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_LIMIT, null, $this->errorLang);
     }
 

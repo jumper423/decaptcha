@@ -17,6 +17,9 @@ Menu
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-en.md)
   + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
   + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
+  + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-en.md)
+  + [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-en.md)
+  + [RuCaptcha GeeTest](../docs/RuCaptchaGeeTest-en.md)
 
 
 Link
@@ -119,11 +122,11 @@ A description of the fields
  Name | Code | Type | Req. | By def. | Possible values | Description 
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
- Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - parameter not used; 1 - the captcha only Cyrillic letters; 2 - displayed in a CAPTCHA latin characters only | The symbols of the language posted on the captcha |
  Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - the default value; 1 - in.php will transfer Access-Control-Allow-Origin: * parameter in response header | Need for cross-domain AJAX requests in browser-based applications. |
  Manual | ACTION_FIELD_INSTRUCTIONS | STRING | - |  |  | Text captcha or manual to pass the captcha. |
  Google key | ACTION_FIELD_GOOGLEKEY | STRING | + |  |  | Key-the identifier of the recaptcha on the landing page. <div class="g-recaptcha" data-sitekey="THIS"></div> |
  The proxy address | ACTION_FIELD_RECAPTCHA | STRING | - |  |  | IP address of the proxy ipv4/ipv6. |
  The proxy type | ACTION_FIELD_PROXYTYPE | STRING | - |  |  | The proxy type (http, socks4, ...) |
  Link | ACTION_FIELD_PAGEURL | STRING | + |  |  | The address of the page where the captcha is solved. |
+ Invisible ReCaptcha | ACTION_FIELD_INVISIBLE | INTEGER | - | 0 |  | 1 - tells us that the site is invisible ReCaptcha. 0 - regular ReCaptcha. |
 

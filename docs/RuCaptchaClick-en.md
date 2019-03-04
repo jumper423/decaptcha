@@ -17,6 +17,10 @@ Menu
   + [RuCaptcha Manual](../docs/RuCaptchaInstruction-en.md)
   + [RuCaptcha Grid (ReCaptcha v2)](../docs/RuCaptchaGrid-en.md)
   + [RuCaptcha ReCaptcha v2 without a browser](../docs/RuCaptchaReCaptcha-en.md)
+  + [RuCaptcha KeyCaptcha](../docs/RuCaptchaKeyCaptcha-en.md)
+  + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-en.md)
+  + [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-en.md)
+  + [RuCaptcha GeeTest](../docs/RuCaptchaGeeTest-en.md)
 
 
 Link
@@ -107,7 +111,6 @@ A description of the fields
  --- | --- | --- | --- | --- | --- | --- 
  Key | ACTION_FIELD_KEY | STRING | + |  |  | Key account |
  Picture | ACTION_FIELD_FILE | MIX | + |  |  | The path to the picture file or link to it |
- Language | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - parameter not used; 1 - the captcha only Cyrillic letters; 2 - displayed in a CAPTCHA latin characters only | The symbols of the language posted on the captcha |
  Question | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - parameter not used; 1 - the employee must write the answer | The image asked, the employee must write the answer |
  Cross-domain | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - the default value; 1 - in.php will transfer Access-Control-Allow-Origin: * parameter in response header | Need for cross-domain AJAX requests in browser-based applications. |
  Manual | ACTION_FIELD_INSTRUCTIONS | STRING | + |  |  | Text captcha or manual to pass the captcha. |

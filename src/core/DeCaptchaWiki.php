@@ -45,6 +45,14 @@ class DeCaptchaWiki
                 'ru' => 'На каком языке текст на капче',
                 'en' => 'What language the text on the captcha',
             ],
+            'field_main_name_'.$class::ACTION_FIELD_LANG => [
+                'ru' => 'Код языка',
+                'en' => 'Language code',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_LANG => [
+                'ru' => 'См. список поддерживаемых языков. https://rucaptcha.com/api-rucaptcha#language',
+                'en' => 'See the list of supported languages. https://2captcha.com/api-rucaptcha#language',
+            ],
             'field_main_name_'.$class::ACTION_FIELD_FILE => [
                 'ru' => 'Картинка',
                 'en' => 'Picture',
@@ -180,6 +188,94 @@ class DeCaptchaWiki
             'field_main_desc_'.$class::ACTION_FIELD_GOOGLETOKEN => [
                 'ru' => 'Секретный токен для предыдущей версии рекапчи. В большинстве случаев сайты используют новую версию и этот токен не требуется. Секретный токен генерируется на сервере Google и вставляется на страницу в атрибуте data-stoken. Выглядит это примерно так: <script type="text/javascript" src="...." data-type="normal"  data-ray="..." async data-sitekey="..." data-stoken="ВОТ_ЭТОТ"></script> Токен действует пару минут после генерации, затем нужно снова зайти на страницу и получить его.',
                 'en' => 'The secret token for the previous version of recaptcha. In most cases, sites use the new version and this token is not required. The secret token is generated on a Google server and inserted into the page in the attribute data-stoken. It looks like this: <script type="text/javascript" src="...." data-type="normal" data-ray="..." async data-sitekey="..." data-stoken="THIS"></script> the Token is valid a few minutes after generation, then you need to go back to the page and get it.',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_INVISIBLE => [
+                'ru' => 'Невидимая ReCaptcha',
+                'en' => 'Invisible ReCaptcha',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_INVISIBLE => [
+                'ru' => '1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.',
+                'en' => '1 - tells us that the site is invisible ReCaptcha. 0 - regular ReCaptcha.',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_SSC_USER_ID => [
+                'ru' => 'Параметра s_s_c_user_id',
+                'en' => 'Parameter s_s_c_user_id',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_SSC_USER_ID => [
+                'ru' => 'Значение параметра s_s_c_user_id, найденное на странице',
+                'en' => 'The value of the s_s_c_user_id parameter found on the page',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_SSC_SESSION_ID => [
+                'ru' => 'Параметра s_s_c_session_id',
+                'en' => 'Parameter s_s_c_session_id',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_SSC_SESSION_ID => [
+                'ru' => 'Значение параметра s_s_c_session_id, найденное на странице',
+                'en' => 'The value of the s_s_c_session_id parameter found on the page',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_SSC_WEB_SERVER_SIGN => [
+                'ru' => 'Параметра s_s_c_web_server_sign',
+                'en' => 'Parameter s_s_c_web_server_sign',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_SSC_WEB_SERVER_SIGN => [
+                'ru' => 'Значение параметра s_s_c_web_server_sign, найденное на странице',
+                'en' => 'The value of the s_s_c_web_server_sign parameter found on the page',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => [
+                'ru' => 'Параметра s_s_c_web_server_sign2',
+                'en' => 'Parameter s_s_c_web_server_sign2',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_SSC_WEB_SERVER_SIGN2 => [
+                'ru' => 'Значение параметра s_s_c_web_server_sign2, найденное на странице',
+                'en' => 'The value of the s_s_c_web_server_sign2 parameter found on the page',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_PUBLICKEY => [
+                'ru' => 'Параметра data-pkey',
+                'en' => 'Parameter data-pkey',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_PUBLICKEY => [
+                'ru' => 'Найти div с FunCaptcha и посмотреть на значение параметра data-pkey или же найти элемент с именем (name) fc-token, а из его значения вырезать ключ, который указан после pk',
+                'en' => 'Find a div with FunCaptcha and look at the value of the data-pkey parameter, or find an element with the name (name) fc-token, and cut the key from its value after the pk',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_NOJS => [
+                'ru' => 'Истользовать JS',
+                'en' => 'Истользовать JS',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_NOJS => [
+                'ru' => 'Говорит нам решать FunCaptcha с выключенным javascript. Может быть использован в случае, если нормальный метод по какой-то причине не срабатывает. Важно: имейте в виду, что в этом случае мы вернём только часть токена. Выше описано, что делать в этом случае.',
+                'en' => 'Tells us to solve FunCaptcha with javascript turned off. It can be used in case the normal method for some reason does not work. Important: keep in mind that in this case we will return only part of the token. The above is what to do in this case.',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_MIN_SCORE => [
+                'ru' => 'Минимальный рейтинг',
+                'en' => 'Min rating',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_MIN_SCORE => [
+                'ru' => 'Требуемое значение рейтинга (score). На текущий момент сложно получить токен со score выше 0.3',
+                'en' => 'Required rating value (score). Currently it is difficult to get a token with a score above 0.3',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_GT => [
+                'ru' => 'Параметр gt',
+                'en' => 'gt parameter',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_GT => [
+                'ru' => 'Значение параметра gt найденное на сайте',
+                'en' => 'The value of the api_server parameter found on the site',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_CHALLENGE => [
+                'ru' => 'Параметр challenge',
+                'en' => 'challenge parameter',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_CHALLENGE => [
+                'ru' => 'Значение параметра challenge найденное на сайте',
+                'en' => 'The value of the api_server parameter found on the site',
+            ],
+            'field_main_name_'.$class::ACTION_FIELD_API_SERVER => [
+                'ru' => 'Параметр api_server',
+                'en' => 'api_server parameter',
+            ],
+            'field_main_desc_'.$class::ACTION_FIELD_API_SERVER => [
+                'ru' => 'Значение параметра api_server найденное на сайте',
+                'en' => 'The value of the api_server parameter found on the site',
             ],
             'field_main_name_'.$class::ACTION_FIELD_PROXYTYPE => [
                 'ru' => 'Тип прокси',

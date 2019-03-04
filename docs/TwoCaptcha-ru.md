@@ -17,6 +17,10 @@
   + [2Captcha ClickCaptcha](../docs/TwoCaptchaClick-ru.md)
   + [2Captcha Сетка (ReCaptcha v2)](../docs/TwoCaptchaGrid-ru.md)
   + [2Captcha ReCaptcha v2 без браузера](../docs/TwoCaptchaReCaptcha-ru.md)
+  + [2Captcha KeyCaptcha](../docs/TwoCaptchaKeyCaptcha-ru.md)
+  + [2Captcha FunCaptcha](../docs/TwoCaptchaFunCaptcha-ru.md)
+  + [2Captcha ReCaptcha v3](../docs/TwoCaptchaReCaptchaV3-ru.md)
+  + [2Captcha GeeTest](../docs/TwoCaptchaGeeTest-ru.md)
 
 
 Ссылка
@@ -114,6 +118,7 @@ try {
  Длина min | ACTION_FIELD_MIN_LEN | INTEGER | - | 0 |  | Минимальная длина капчи |
  Длина max | ACTION_FIELD_MAX_LEN | INTEGER | - | 0 |  | Максимальная длина капчи |
  Язык | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы; 2 - на капче только латинские буквы | Символы какого языка размещенны на капче |
+ Код языка | ACTION_FIELD_LANG | STRING | - |  |  | См. список поддерживаемых языков. https://rucaptcha.com/api-rucaptcha#language |
  Вопрос | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работник должен написать ответ | На изображении задан вопрос, работник должен написать ответ |
  Вычисление | ACTION_FIELD_CALC | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работнику нужно совершить математическое действие с капчи | На капче изображенно математичекая выражение и её необходимо решить |
  Кросс-доменный | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Необходимо для кросс-доменных AJAX запросов в браузерных приложениях. |

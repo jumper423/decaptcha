@@ -31,6 +31,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const PARAM_FIELD_TYPE_MIX = 3;
     const PARAM_FIELD_TYPE_OBJECT = 4;
     const PARAM_FIELD_TYPE_BOOLEAN = 5;
+    const PARAM_FIELD_TYPE_FLOAT = 6;
 
     const PARAM_SLUG_DEFAULT = 1;
     const PARAM_SLUG_TYPE = 2;
@@ -170,6 +171,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
         if (file_exists($fileName)) {
             return $fileName;
         }
+
         throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_FILE_NOT_FOUND, $fileName, $this->errorLang);
     }
 
@@ -286,6 +288,9 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
             }
             if (array_key_exists($field, $this->paramsNames)) {
                 switch ($settings[self::PARAM_SLUG_TYPE]) {
+                    case self::PARAM_FIELD_TYPE_FLOAT:
+                        $value = (float) $value;
+                        break;
                     case self::PARAM_FIELD_TYPE_INTEGER:
                         $value = (int) $value;
                         break;

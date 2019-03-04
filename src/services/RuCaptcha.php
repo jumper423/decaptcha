@@ -35,6 +35,7 @@ class RuCaptcha extends DeCaptchaBase
         self::ACTION_FIELD_INSTRUCTIONS => 'textinstructions',
         self::ACTION_FIELD_PINGBACK     => 'pingback',
         self::ACTION_FIELD_CALC         => 'calc',
+        self::ACTION_FIELD_LANG         => 'lang',
     ];
 
     public function init()
@@ -102,6 +103,9 @@ class RuCaptcha extends DeCaptchaBase
                         1,
                         2,
                     ],
+                ],
+                static::ACTION_FIELD_LANG => [
+                    static::PARAM_SLUG_TYPE    => static::PARAM_FIELD_TYPE_STRING,
                 ],
                 static::ACTION_FIELD_QUESTION => [
                     static::PARAM_SLUG_DEFAULT => 0,
@@ -325,6 +329,10 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
             RuCaptchaClick::class,
             RuCaptchaGrid::class,
             RuCaptchaReCaptcha::class,
+            RuCaptchaKeyCaptcha::class,
+            RuCaptchaFunCaptcha::class,
+            RuCaptchaReCaptchaV3::class,
+            RuCaptchaGeeTest::class,
         ]);
     }
 
@@ -346,5 +354,15 @@ Tuning anticaptcha RuCaptcha.com not only supports API standard on par with pixo
     public function notTrue()
     {
         return $this->requestUniversal('reportbad')[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_REPORTBAD_OK;
+    }
+
+    /**
+     * Верно распознана.
+     *
+     * @return bool
+     */
+    public function true()
+    {
+        return $this->requestUniversal('reportgood')[static::DECODE_PARAM_RESPONSE] === static::RESPONSE_REPORTBAD_OK;
     }
 }

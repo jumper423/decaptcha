@@ -17,6 +17,10 @@ RuCaptcha Сетка (ReCaptcha v2)
   + [RuCaptcha Инструкция](../docs/RuCaptchaInstruction-ru.md)
   + [RuCaptcha ClickCaptcha](../docs/RuCaptchaClick-ru.md)
   + [RuCaptcha ReCaptcha v2 без браузера](../docs/RuCaptchaReCaptcha-ru.md)
+  + [RuCaptcha KeyCaptcha](../docs/RuCaptchaKeyCaptcha-ru.md)
+  + [RuCaptcha FunCaptcha](../docs/RuCaptchaFunCaptcha-ru.md)
+  + [RuCaptcha ReCaptcha v3](../docs/RuCaptchaReCaptchaV3-ru.md)
+  + [RuCaptcha GeeTest](../docs/RuCaptchaGeeTest-ru.md)
 
 
 Ссылка
@@ -116,7 +120,6 @@ try {
  --- | --- | --- | --- | --- | --- | --- 
  Ключ | ACTION_FIELD_KEY | STRING | + |  |  | Ключ от учетной записи |
  Картинка | ACTION_FIELD_FILE | MIX | + |  |  | Путь на файл с картинкой или ссылка на него |
- Язык | ACTION_FIELD_LANGUAGE | INTEGER | - | 0 | 0 - параметр не задействован; 1 - на капче только кириллические буквы; 2 - на капче только латинские буквы | Символы какого языка размещенны на капче |
  Вопрос | ACTION_FIELD_QUESTION | INTEGER | - | 0 | 0 - параметр не задействован; 1 - работник должен написать ответ | На изображении задан вопрос, работник должен написать ответ |
  Кросс-доменный | ACTION_FIELD_HEADER_ACAO | INTEGER | - | 0 | 0 - значение по умолчанию; 1 - in.php передаст Access-Control-Allow-Origin: * параметр в заголовке ответа | Необходимо для кросс-доменных AJAX запросов в браузерных приложениях. |
  Инструкция | ACTION_FIELD_INSTRUCTIONS | STRING | + |  |  | Текстовая капча или инструкция для прохождения капчи. |
