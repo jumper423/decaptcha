@@ -3,6 +3,7 @@
 namespace jumper423\decaptcha\core;
 
 use Exception;
+use GuzzleHttp\Client;
 
 /**
  * Class DeCaptchaAbstract.
@@ -17,8 +18,8 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     const ACTION_METHOD = 3;
     const ACTION_JSON = 4;
 
-    const ACTION_METHOD_POST = 1;
-    const ACTION_METHOD_GET = 2;
+    const ACTION_METHOD_POST = 'post';
+    const ACTION_METHOD_GET = 'get';
 
     const DECODE_FORMAT = 1;
     const DECODE_ACTION = 2;
@@ -70,6 +71,23 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     protected $decodeSettings = [];
     protected $actions = [];
     protected $paramsNames = [];
+
+    /**
+     * @var Client
+     */
+    protected $client = null;
+
+    public function __construct()
+    {
+        $this->client = new Client([
+            'timeout'         => 30,
+            'connect_timeout' => 30,
+            'headers'         => [
+                'Accept-Encoding' => 'gzip,deflate',
+                'User-Agent'      => 'DeCaptcha',
+            ],
+        ]);
+    }
 
     protected function resetLimits()
     {
@@ -219,7 +237,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      * @param $spec
      * @param $coding
      *
-     * @return \CURLFile|mixed|null|string
+     * @return mixed|null|string
      */
     public function getParamSpec($param, $spec = null, $coding = null)
     {
@@ -239,7 +257,7 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
                         return base64_encode(file_get_contents($this->params[$param]));
                 }
 
-                return (version_compare(PHP_VERSION, '5.5.0') >= 0) ? new \CURLFile($this->getFilePath($this->params[$param])) : '@'.$this->getFilePath($this->params[$param]);
+                return '@'.$this->getFilePath($this->params[$param]);
             case static::PARAM_SPEC_API_KEY:
                 return is_callable($this->params[$param]) ? $this->params[$param]() : $this->params[$param];
             case static::PARAM_SPEC_CAPTCHA:
@@ -321,10 +339,10 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
      */
     protected function getResponse($action)
     {
-        return $this->curlResponse(
+        return $this->sendRequest(
+            $this->actions[$action][static::ACTION_METHOD],
             $this->getActionUrl($action),
             $this->getParams($action),
-            array_key_exists(static::ACTION_METHOD, $this->actions[$action]) && $this->actions[$action][static::ACTION_METHOD] === static::ACTION_METHOD_POST,
             array_key_exists(static::ACTION_JSON, $this->actions[$action]) && $this->actions[$action][static::ACTION_JSON] === true
         );
     }
@@ -350,53 +368,31 @@ abstract class DeCaptchaAbstract implements DeCaptchaInterface
     }
 
     /**
-     * @param string $url
-     * @param array  $data
-     * @param bool   $isPost
-     * @param bool   $isJson
+     * @param string       $method Request method
+     * @param string       $url    Request URL
+     * @param array|string $data   Request payload
+     * @param bool         $isJson Whether request payload should be serialized as JSON
      *
-     * @throws DeCaptchaErrors
+     * @throws \InvalidArgumentException Invalid arguments combination
      *
      * @return string
      */
-    protected function curlResponse($url, $data, $isPost = true, $isJson = false)
+    protected function sendRequest($method, $url, $data, $isJson = false)
     {
-        $curl = curl_init();
-        if ($isJson) {
-            $data = json_encode($data);
-        } elseif (!$isPost) {
-            $uri = [];
-            foreach ($data as $key => $value) {
-                $uri[] = "$key=$value";
-            }
-            $url .= '?'.implode('&', $uri);
+        if ($method === static::ACTION_METHOD_GET && $isJson) {
+            throw new \InvalidArgumentException('JSON encoding with GET requests is not supported.');
         }
-        curl_setopt($curl, CURLOPT_URL, $url);
-        if (!$isJson && version_compare(PHP_VERSION, '5.5.0') >= 0 && version_compare(PHP_VERSION, '7.0') < 0 && defined('CURLOPT_SAFE_UPLOAD')) {
-            curl_setopt($curl, CURLOPT_SAFE_UPLOAD, false);
-        }
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_ENCODING, 'gzip,deflate');
-        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($curl, CURLOPT_POST, $isPost);
-        if ($isPost) {
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        }
-        if ($isJson) {
-            curl_setopt($curl, CURLOPT_HTTPHEADER, [
-                'Content-Type: application/json; charset=utf-8',
-                'Accept: application/json',
-                'Content-Length: '.strlen($data),
-            ]);
-        }
-        $result = curl_exec($curl);
-        if (curl_errno($curl)) {
-            throw new DeCaptchaErrors(DeCaptchaErrors::ERROR_CURL, curl_error($curl), $this->errorLang);
-        }
-        curl_close($curl);
 
-        return $result;
+        $options = [];
+
+        $encType = $isJson ? 'json' : 'query';
+        $options[$encType] = $data;
+
+        $response = $this->client->request($method, $url, $options);
+
+        $body = $response->getBody();
+
+        return (string) $body;
     }
 
     abstract public function getCode();
